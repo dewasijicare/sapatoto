@@ -21,7 +21,15 @@
         .show-more-button:hover { color: #fff !important; text-shadow: 0 0 10px #f472b6; }
         #maincontent h1.text-center { color: #a855f7 !important; text-transform: uppercase !important; margin-top: 1.5rem !important; margin-bottom: 1rem !important; text-shadow: 0 0 10px rgba(168, 85, 247, 0.6); }
         .togel-countdown-timer.closing-soon { color: #a855f7 !important; text-shadow: 0 0 5px #a855f7; font-weight: bold; }
-        #maincontent .nav-tabs .nav-link { border-radius: 8px 8px 0 0 !important; } .copy-btn{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border:1px solid #ec4899!important;padding:2px 10px!important;font-size:.8em!important;transition:all .3s ease}.copy-btn:hover{background-color:rgba(236, 72, 153, .3)!important;color:#fff!important}.copy-btn.copy-btn-success{background-color:rgba(46,204,113,.2)!important;color:#2ecc71!important;border-color:#27ae60!important}#receiver-bank-label i,#receiver-number-label i,#receiver-name-label i{margin-right:8px}#maincontent .nav-tabs{border-bottom:1px solid #ec4899!important}#maincontent .nav-tabs .nav-link{background-color:transparent!important;border:1px solid transparent!important;border-bottom:none!important;color:#bdc3c7!important}#maincontent .nav-tabs .nav-link.active{background-color:#1a252f!important;border-color:#ec4899!important;color:#fff!important}body{background-color:#0c0c1e!important;font-family:'Exo 2',sans-serif!important}.form-label{color:#ecf0f1!important;text-shadow:0 0 5px #ec4899}.form-control,.form-select{background-color:#1a252f!important;border:1px solid #34495e!important;color:#fff!important;border-radius:5px;transition:all .3s ease}.form-control:focus,.form-select:focus{border-color:#bdc3c7!important;box-shadow:0 0 10px rgba(189,195,199,.8)!important}.btn-primary{background:linear-gradient(45deg,#be185d,#ec4899)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #ec4899,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-primary:hover{transform:scale(1.05);box-shadow:0 0 20px #ec4899,0 0 30px #be185d,inset 0 0 5px rgba(255,255,255,.4)}.btn-secondary{background:linear-gradient(45deg,#a855f7,#9333ea)!important;border-color:#a855f7!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #a855f7,inset 0 0 5px rgba(255,255,255,.7);transition:all .3s ease}.btn-secondary:hover{transform:scale(1.05);background:linear-gradient(45deg,#c084fc,#a855f7)!important;box-shadow:0 0 20px #a855f7,0 0 30px #9333ea,inset 0 0 5px rgba(255,255,255,.8)}.btn-danger{background:linear-gradient(45deg,#e74c3c,#c0392b)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #e74c3c,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-danger:hover{transform:scale(1.05);box-shadow:0 0 20px #e74c3c,0 0 30px #c0392b,inset 0 0 5px rgba(255,255,255,.4)}nav#navbar-top.navbar.bg-dark{background-color:#1a252f!important;border-bottom:1px solid #ec4899!important;box-shadow:0 2px 10px rgba(236, 72, 153, .3)!important}button#sidebarCollapse{background:0 0!important;border:none!important}button#sidebarCollapse i{color:#ecf0f1!important;transition:all .3s ease}button#sidebarCollapse:hover i{color:#f472b6!important;text-shadow:0 0 10px #f472b6}nav#sidebar{background-color:#1a252f!important;border-right:1px solid #ec4899!important;box-shadow:2px 0 10px rgba(236, 72, 153, .3)!important}#sidebar .d-flex[style*="background-image"]{background-image:none!important;background-color:#2c3e50!important;border-bottom:2px solid #ec4899;box-shadow:0 2px 5px rgba(236, 72, 153, .2)}#sidebar .nav-link{color:#ecf0f1!important;border-radius:5px;transition:all .3s ease;border-left:3px solid transparent;margin:0;padding:.4rem 1rem!important}#sidebar .nav-link:hover,#sidebar .nav-item.active .nav-link{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border-left-color:#f472b6}#sidebar hr{border-top:1px solid #34495e;margin:.5rem 1rem}#sidebar > .d-flex.justify-content-between.p-3{display:none!important}.sapatoto-profile-icon{width:36px;height:36px}#custom-sidebar-toggle{position:fixed!important;top:20px!important;left:255px!important;transform:none!important;z-index:99999!important;font-size:2.5rem!important;color:#f472b6!important;text-shadow:0 0 10px #f472b6!important;transition:all .4s ease!important;text-decoration:none!important;display:none}#custom-sidebar-toggle.show{display:block!important;opacity:1!important;visibility:visible!important}#custom-sidebar-toggle:hover{color:#fff!important;transform:scale(1.1)!important}#gacor-game-sidebar h5{color:#ecf0f1;text-transform:uppercase;font-weight:700;text-shadow:0 0 8px rgba(236, 72, 153, .7);border-bottom:1px solid #34495e;padding-bottom:10px;margin-bottom:15px;font-size:1rem}#gacor-game-sidebar h5 i{color:#f472b6;margin-right:8px}.gacor-card-container{display:grid;gap:10px}.gacor-card{display:flex;align-items:center;text-decoration:none;background:linear-gradient(145deg,#2c3e50,#1a252f);border:1px solid #ec4899;border-radius:10px;padding:10px;transition:all .3s ease}.gacor-card:hover{transform:translateY(-3px);box-shadow:0 3px 15px rgba(236, 72, 153, .5)}.gacor-card img{width:70px;height:70px;border-radius:8px;margin-right:10px;flex-shrink:0}.gacor-info{flex:1;min-width:0}.gacor-info strong{color:#fff;font-size:.9em;display:block}.gacor-time{font-size:.75em;color:#bdc3c7;opacity:.8}.gacor-time i{color:#f472b6}.gacor-card-placeholder{text-align:center;padding:20px;color:#bdc3c7;background:rgba(0,0,0,.2);border-radius:10px;border:1px dashed #34495e}#row-quicklogin.card,#maincontent .card.shadow{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;box-shadow:0 0 20px rgba(236, 72, 153, .6)!important;border-radius:15px!important}#maincontent .card.shadow h1,#maincontent .card.shadow h3,#maincontent .card.shadow h4{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7)!important;text-transform:uppercase;font-weight:700}#maincontent .card.shadow h3{border-bottom:1px solid #34495e;padding-bottom:15px;margin-bottom:25px}#maincontent .card.shadow a{color:#f472b6!important;text-decoration:none;transition:all .3s ease}#maincontent .card.shadow a:hover{color:#fff!important;text-shadow:0 0 10px #f472b6}.form-label i.bi{margin-right:8px;vertical-align:-2px}.btn-custom-promo{display:flex!important;align-items:center!important;justify-content:center!important;padding:10px 15px!important;font-size:1em!important;font-weight:700!important;text-transform:uppercase!important;color:#fff!important;border:none!important;border-radius:8px!important;background:linear-gradient(90deg,#be185d,#9d174d)!important;box-shadow:0 0 15px rgba(190, 24, 93, .5),inset 0 0 5px rgba(255,255,255,.3);transition:all .3s ease;text-decoration:none}.btn-custom-promo:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 5px 25px rgba(190, 24, 93, .7),0 0 30px rgba(244, 114, 182, .5),inset 0 0 8px rgba(255,255,255,.5);color:#fef3c7!important;background:linear-gradient(90deg,#ec4899,#be185d)!important}.btn-custom-promo i.bi{margin-right:10px;font-size:1.1em}#row-togel > .d-flex,.d-flex.justify-content-between{justify-content:center!important}#row-togel h3,h3.my-2,.my_5 > h3.text-center{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7);text-transform:uppercase}#row-togel h3 a,h3.my-2 a{color:inherit!important;text-decoration:none!important;transition:color .3s ease}#row-togel h3 a:hover,h3.my-2 a:hover{color:#f472b6!important}.d-flex.justify-content-between > a{display:none!important}h3.my-2 i.bi,.my_5 > h3.text-center i.bi{margin-right:10px;vertical-align:-1px}#maincontent .alert.alert-primary,.modal-body .alert.alert-warning{background:linear-gradient(160deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:10px!important;color:#ecf0f1!important;box-shadow:0 0 15px rgba(236, 72, 153, .5)}#maincontent .alert.alert-primary h4,#maincontent .alert.alert-primary span,.modal-body .alert.alert-warning small,.modal-body .alert.alert-warning strong{color:#ecf0f1!important}#maincontent .alert.alert-primary .fw-bold{color:#fff!important}.table{color:#ecf0f1!important;border-color:#34495e!important}.table th,.table td{background-color:transparent!important;border-color:#34495e!important}.table thead{border-color:inherit}.table thead th{background-color:rgba(236, 72, 153, .1)!important;border-bottom:2px solid #ec4899!important}.table a{color:#f472b6!important;text-decoration:none!important}.table a:hover{color:#fff!important}#carousel-togel .owl-stage{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px;transform:none!important;width:100%!important}#carousel-togel .owl-item{width:auto!important;margin-right:0!important}#carousel-togel .card,.row.g-3 .card{background:linear-gradient(160deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:15px!important;box-shadow:0 0 15px rgba(236, 72, 153, .5)!important;transition:transform .3s ease,box-shadow .3s ease;width:100%!important;font-family:'Exo 2',sans-serif!important}#carousel-togel .card:hover,.row.g-3 .card:hover{transform:translateY(-5px) scale(1.03);box-shadow:0 5px 25px rgba(236, 72, 153, .7)!important}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}#carousel-togel .card,.row.g-3 .card{animation:fadeIn .6s ease-out forwards}#carousel-togel .card-body > .text-center > div:first-child,.row.g-3 .card-body > .text-center > div:first-child{color:#bdc3c7;font-size:.8em!important}#carousel-togel .card h2,.row.g-3 .card h2{background:0 0!important;margin:8px 0!important;font-size:2.2em!important}#carousel-togel .card h2 a,.row.g-3 .card h2 a{color:#fff!important;text-shadow:0 0 6px #fff,0 0 18px rgba(236,240,241,.7);letter-spacing:2px}#carousel-togel .card .togel-countdown-timer,.row.g-3 .card .togel-countdown-timer{color:#f472b6;opacity:.8}.owl-nav,.owl-dots{display:none!important}.glassmorphism{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;box-shadow:0 0 10px rgba(236, 72, 153, .4)!important;backdrop-filter:none!important;transition:all .3s ease}.glassmorphism:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(236, 72, 153, .6)!important}.glassmorphism a img{max-height:25px!important;width:auto!important;max-width:80%!important}#selectProvider .btn-outline-primary{display:flex!important;align-items:center!important;justify-content:center!important;background-color:transparent;border:1px solid #ec4899;color:#f472b6;transition:all .3s ease;border-radius:8px}#selectProvider .btn-outline-primary:hover{background-color:rgba(236, 72, 153, .2);color:#fff;box-shadow:0 0 10px rgba(236, 72, 153, .5)}#selectProvider .btn-outline-primary.active{background:linear-gradient(45deg,#be185d,#ec4899)!important;border-color:#ec4899!important;color:#fff!important;box-shadow:0 0 15px #ec4899}.row.g-1 [class*=col-] > a,.row.g-1 [class*=col-] > div > a{display:block;border-radius:8px!important;overflow:hidden;border:1px solid transparent;transition:all .3s ease;line-height:0}.row.g-1 [class*=col-] > a:hover,.row.g-1 [class*=col-] > div > a:hover{border-color:#ec4899;box-shadow:0 0 15px rgba(236, 72, 153, .6);transform:scale(1.05);z-index:10;position:relative}.row.mb-3.g-1 [class*=col-] > a:hover,.row.mb-3.g-1 [class*=col-] > a:focus{border-color:transparent!important;box-shadow:none!important;outline:0!important}.glassmorphism a:hover,.glassmorphism a:focus{border-color:transparent!important;box-shadow:none!important;outline:0!important;transform:none!important;z-index:auto!important}.modal-content{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:15px!important}.modal-header,.modal-header.bg-danger{background-color:#1a252f!important;border-bottom:1px solid #ec4899!important;border-top-left-radius:15px;border-top-right-radius:15px}.modal-title{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7)!important;font-size:1rem!important;padding-right:1rem;text-transform:uppercase}.modal-title i.bi{margin-right:8px;vertical-align:-2px;color:#f472b6;text-shadow:0 0 5px #f472b6}.modal-header .btn-close{background:transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f472b6'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat!important;opacity:.8!important;transition:all .3s ease}.modal-header .btn-close:hover{opacity:1!important;transform:scale(1.2) rotate(90deg)}.modal-body .row,.modal-body .text-muted{color:#bdc3c7!important}.modal-body .col-12.text-center > strong{color:#a855f7!important;text-shadow:0 0 8px #9333ea;font-size:1.1rem;line-height:1.2;display:block}.modal-body .col-12.text-center:first-of-type{padding-bottom:0!important}.modal-body .col-12.text-center:nth-of-type(2){padding-top:0!important;margin-bottom:1rem}.modal-footer{border-top:1px solid #34495e!important;background-color:#1a252f!important;border-bottom-left-radius:15px;border-bottom-right-radius:15px;padding-top:15px}.list-group{border-radius:8px;overflow:hidden}.list-group-item{background-color:rgba(0,0,0,.2)!important;border-color:#34495e!important}.list-group-item .d-flex{align-items:center!important}.list-group-item h6{font-size:2.8rem!important;line-height:1!important;font-weight:700!important;margin-right:.75rem!important;color:#f472b6!important;text-shadow:0 0 5px #f472b6}.list-group-item strong.text-danger{color:#ecf0f1!important;text-shadow:none!important}@keyframes flowAnimation{0%{background-position:200% 0}100%{background-position:-200% 0}}.progress{background-color:#1a252f!important;border:1px solid #34495e;border-radius:8px!important;height:22px!important;padding:2px}.progress-bar-rtp{border-radius:6px!important;animation:flowAnimation 2s linear infinite;background-size:200% 100%!important;color:#fff!important;font-weight:700;font-size:.8em;text-shadow:0 0 3px rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center}.progress-bar-rtp.bg-success{background-image:linear-gradient(90deg,#2ecc71 25%,#27ae60 50%,#2ecc71 75%)!important;box-shadow:0 0 10px #2ecc71}.progress-bar-rtp.bg-warning{background-image:linear-gradient(90deg,#f1c40f 25%,#f39c12 50%,#f1c40f 75%)!important;box-shadow:0 0 10px #f1c40f}.progress-bar-rtp.bg-danger{background-image:linear-gradient(90deg,#e74c3c 25%,#c0392b 50%,#e74c3c 75%)!important;box-shadow:0 0 10px #e74c3c}.progress-bar-rtp.bg-primary{background-image:linear-gradient(90deg,#3498db 25%,#2980b9 50%,#3498db 75%)!important;box-shadow:0 0 10px #3498db}.pagination{justify-content:center}.pagination .page-link{background-color:transparent;border:1px solid #ec4899;color:#f472b6;margin:0 3px;border-radius:5px}.pagination .page-item:not(.disabled) .page-link:hover{background-color:rgba(236, 72, 153, .2);color:#fff}.pagination .page-item.active .page-link{background:linear-gradient(45deg,#be185d,#ec4899);border-color:#ec4899;color:#fff}.pagination .page-item.disabled .page-link{background-color:#2c3e50;border-color:#34495e;color:#566573}
+        #maincontent .nav-tabs .nav-link { border-radius: 8px 8px 0 0 !important; } .copy-btn{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border:1px solid #ec4899!important;padding:2px 10px!important;font-size:.8em!important;transition:all .3s ease}.copy-btn:hover{background-color:rgba(236, 72, 153, .3)!important;color:#fff!important}.copy-btn.copy-btn-success{background-color:rgba(46,204,113,.2)!important;color:#2ecc71!important;border-color:#27ae60!important}#receiver-bank-label i,#receiver-number-label i,#receiver-name-label i{margin-right:8px}#maincontent .nav-tabs{border-bottom:1px solid #ec4899!important}#maincontent .nav-tabs .nav-link{background-color:transparent!important;border:1px solid transparent!important;border-bottom:none!important;color:#bdc3c7!important}#maincontent .nav-tabs .nav-link.active{background-color:#1a252f!important;border-color:#ec4899!important;color:#fff!important}body{background-color:#0c0c1e!important;font-family:'Exo 2',sans-serif!important}.form-label{color:#ecf0f1!important;text-shadow:0 0 5px #ec4899}.form-control,.form-select{background-color:#1a252f!important;border:1px solid #34495e!important;color:#fff!important;border-radius:5px;transition:all .3s ease}.form-control:focus,.form-select:focus{border-color:#bdc3c7!important;box-shadow:0 0 10px rgba(189,195,199,.8)!important}.btn-primary{background:linear-gradient(45deg,#be185d,#ec4899)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #ec4899,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-primary:hover{transform:scale(1.05);box-shadow:0 0 20px #ec4899,0 0 30px #be185d,inset 0 0 5px rgba(255,255,255,.4)}.btn-secondary{background:linear-gradient(45deg,#a855f7,#9333ea)!important;border-color:#a855f7!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #a855f7,inset 0 0 5px rgba(255,255,255,.7);transition:all .3s ease}.btn-secondary:hover{transform:scale(1.05);background:linear-gradient(45deg,#c084fc,#a855f7)!important;box-shadow:0 0 20px #a855f7,0 0 30px #9333ea,inset 0 0 5px rgba(255,255,255,.8)}.btn-danger{background:linear-gradient(45deg,#e74c3c,#c0392b)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #e74c3c,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-danger:hover{transform:scale(1.05);box-shadow:0 0 20px #e74c3c,0 0 30px #c0392b,inset 0 0 5px rgba(255,255,255,.4)}nav#navbar-top.navbar.bg-dark{background-color:#1a252f!important;border-bottom:1px solid #ec4899!important;box-shadow:0 2px 10px rgba(236, 72, 153, .3)!important}button#sidebarCollapse{background:0 0!important;border:none!important}button#sidebarCollapse i{color:#ecf0f1!important;transition:all .3s ease}button#sidebarCollapse:hover i{color:#f472b6!important;text-shadow:0 0 10px #f472b6}nav#sidebar{background-color:#1a252f!important;border-right:1px solid #ec4899!important;box-shadow:2px 0 10px rgba(236, 72, 153, .3)!important}#sidebar .d-flex[style*="background-image"]{background-image:none!important;background-color:#2c3e50!important;border-bottom:2px solid #ec4899;box-shadow:0 2px 5px rgba(236, 72, 153, .2)}#sidebar .nav-link{color:#ecf0f1!important;border-radius:5px;transition:all .3s ease;border-left:3px solid transparent;margin:0;padding:.4rem 1rem!important}#sidebar .nav-link:hover,#sidebar .nav-item.active .nav-link{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border-left-color:#f472b6}#sidebar hr{border-top:1px solid #34495e;margin:.5rem 1rem}#sidebar > .d-flex.justify-content-between.p-3{display:none!important}.sapatoto-profile-icon{width:36px;height:36px}
+        
+        /* [DIPERBARUI] CSS Tombol Tutup Sidebar - Menjadi Kotak Rounded */
+        #custom-sidebar-toggle{position:fixed!important;top:20px!important;left:255px!important;width:38px!important;height:38px!important;background:linear-gradient(45deg,#be185d,#ec4899)!important;border-radius:8px!important;box-shadow:0 0 10px rgba(236, 72, 153, 0.6)!important;z-index:99999!important;color:#fff!important;transition:all .4s ease!important;text-decoration:none!important;display:none;align-items:center;justify-content:center}
+        #custom-sidebar-toggle i{font-size:1.5rem!important;line-height:0!important}
+        #custom-sidebar-toggle.show{display:flex!important;opacity:1!important;visibility:visible!important}
+        #custom-sidebar-toggle:hover{background:linear-gradient(45deg,#ec4899,#be185d)!important;box-shadow:0 0 15px rgba(236, 72, 153, 0.8)!important;transform:scale(1.05)!important}
+
+        #gacor-game-sidebar h5{color:#ecf0f1;text-transform:uppercase;font-weight:700;text-shadow:0 0 8px rgba(236, 72, 153, .7);border-bottom:1px solid #34495e;padding-bottom:10px;margin-bottom:15px;font-size:1rem}#gacor-game-sidebar h5 i{color:#f472b6;margin-right:8px}.gacor-card-container{display:grid;gap:10px}.gacor-card{display:flex;align-items:center;text-decoration:none;background:linear-gradient(145deg,#2c3e50,#1a252f);border:1px solid #ec4899;border-radius:10px;padding:10px;transition:all .3s ease}.gacor-card:hover{transform:translateY(-3px);box-shadow:0 3px 15px rgba(236, 72, 153, .5)}.gacor-card img{width:70px;height:70px;border-radius:8px;margin-right:10px;flex-shrink:0}.gacor-info{flex:1;min-width:0}.gacor-info strong{color:#fff;font-size:.9em;display:block}.gacor-time{font-size:.75em;color:#bdc3c7;opacity:.8}.gacor-time i{color:#f472b6}.gacor-card-placeholder{text-align:center;padding:20px;color:#bdc3c7;background:rgba(0,0,0,.2);border-radius:10px;border:1px dashed #34495e}#row-quicklogin.card,#maincontent .card.shadow{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;box-shadow:0 0 20px rgba(236, 72, 153, .6)!important;border-radius:15px!important}#maincontent .card.shadow h1,#maincontent .card.shadow h3,#maincontent .card.shadow h4{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7)!important;text-transform:uppercase;font-weight:700}#maincontent .card.shadow h3{border-bottom:1px solid #34495e;padding-bottom:15px;margin-bottom:25px}#maincontent .card.shadow a{color:#f472b6!important;text-decoration:none;transition:all .3s ease}#maincontent .card.shadow a:hover{color:#fff!important;text-shadow:0 0 10px #f472b6}.form-label i.bi{margin-right:8px;vertical-align:-2px}.btn-custom-promo{display:flex!important;align-items:center!important;justify-content:center!important;padding:10px 15px!important;font-size:1em!important;font-weight:700!important;text-transform:uppercase!important;color:#fff!important;border:none!important;border-radius:8px!important;background:linear-gradient(90deg,#be185d,#9d174d)!important;box-shadow:0 0 15px rgba(190, 24, 93, .5),inset 0 0 5px rgba(255,255,255,.3);transition:all .3s ease;text-decoration:none}.btn-custom-promo:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 5px 25px rgba(190, 24, 93, .7),0 0 30px rgba(244, 114, 182, .5),inset 0 0 8px rgba(255,255,255,.5);color:#fef3c7!important;background:linear-gradient(90deg,#ec4899,#be185d)!important}.btn-custom-promo i.bi{margin-right:10px;font-size:1.1em}#row-togel > .d-flex,.d-flex.justify-content-between{justify-content:center!important}#row-togel h3,h3.my-2,.my_5 > h3.text-center{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7);text-transform:uppercase}#row-togel h3 a,h3.my-2 a{color:inherit!important;text-decoration:none!important;transition:color .3s ease}#row-togel h3 a:hover,h3.my-2 a:hover{color:#f472b6!important}.d-flex.justify-content-between > a{display:none!important}h3.my-2 i.bi,.my_5 > h3.text-center i.bi{margin-right:10px;vertical-align:-1px}#maincontent .alert.alert-primary,.modal-body .alert.alert-warning{background:linear-gradient(160deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:10px!important;color:#ecf0f1!important;box-shadow:0 0 15px rgba(236, 72, 153, .5)}#maincontent .alert.alert-primary h4,#maincontent .alert.alert-primary span,.modal-body .alert.alert-warning small,.modal-body .alert.alert-warning strong{color:#ecf0f1!important}#maincontent .alert.alert-primary .fw-bold{color:#fff!important}.table{color:#ecf0f1!important;border-color:#34495e!important}.table th,.table td{background-color:transparent!important;border-color:#34495e!important}.table thead{border-color:inherit}.table thead th{background-color:rgba(236, 72, 153, .1)!important;border-bottom:2px solid #ec4899!important}.table a{color:#f472b6!important;text-decoration:none!important}.table a:hover{color:#fff!important}#carousel-togel .owl-stage{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px;transform:none!important;width:100%!important}#carousel-togel .owl-item{width:auto!important;margin-right:0!important}#carousel-togel .card,.row.g-3 .card{background:linear-gradient(160deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:15px!important;box-shadow:0 0 15px rgba(236, 72, 153, .5)!important;transition:transform .3s ease,box-shadow .3s ease;width:100%!important;font-family:'Exo 2',sans-serif!important}#carousel-togel .card:hover,.row.g-3 .card:hover{transform:translateY(-5px) scale(1.03);box-shadow:0 5px 25px rgba(236, 72, 153, .7)!important}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}#carousel-togel .card,.row.g-3 .card{animation:fadeIn .6s ease-out forwards}#carousel-togel .card-body > .text-center > div:first-child,.row.g-3 .card-body > .text-center > div:first-child{color:#bdc3c7;font-size:.8em!important}#carousel-togel .card h2,.row.g-3 .card h2{background:0 0!important;margin:8px 0!important;font-size:2.2em!important}#carousel-togel .card h2 a,.row.g-3 .card h2 a{color:#fff!important;text-shadow:0 0 6px #fff,0 0 18px rgba(236,240,241,.7);letter-spacing:2px}#carousel-togel .card .togel-countdown-timer,.row.g-3 .card .togel-countdown-timer{color:#f472b6;opacity:.8}.owl-nav,.owl-dots{display:none!important}.glassmorphism{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;box-shadow:0 0 10px rgba(236, 72, 153, .4)!important;backdrop-filter:none!important;transition:all .3s ease}.glassmorphism:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(236, 72, 153, .6)!important}.glassmorphism a img{max-height:25px!important;width:auto!important;max-width:80%!important}#selectProvider .btn-outline-primary{display:flex!important;align-items:center!important;justify-content:center!important;background-color:transparent;border:1px solid #ec4899;color:#f472b6;transition:all .3s ease;border-radius:8px}#selectProvider .btn-outline-primary:hover{background-color:rgba(236, 72, 153, .2);color:#fff;box-shadow:0 0 10px rgba(236, 72, 153, .5)}#selectProvider .btn-outline-primary.active{background:linear-gradient(45deg,#be185d,#ec4899)!important;border-color:#ec4899!important;color:#fff!important;box-shadow:0 0 15px #ec4899}.row.g-1 [class*=col-] > a,.row.g-1 [class*=col-] > div > a{display:block;border-radius:8px!important;overflow:hidden;border:1px solid transparent;transition:all .3s ease;line-height:0}.row.g-1 [class*=col-] > a:hover,.row.g-1 [class*=col-] > div > a:hover{border-color:#ec4899;box-shadow:0 0 15px rgba(236, 72, 153, .6);transform:scale(1.05);z-index:10;position:relative}.row.mb-3.g-1 [class*=col-] > a:hover,.row.mb-3.g-1 [class*=col-] > a:focus{border-color:transparent!important;box-shadow:none!important;outline:0!important}.glassmorphism a:hover,.glassmorphism a:focus{border-color:transparent!important;box-shadow:none!important;outline:0!important;transform:none!important;z-index:auto!important}.modal-content{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:15px!important}.modal-header,.modal-header.bg-danger{background-color:#1a252f!important;border-bottom:1px solid #ec4899!important;border-top-left-radius:15px;border-top-right-radius:15px}.modal-title{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7)!important;font-size:1rem!important;padding-right:1rem;text-transform:uppercase}.modal-title i.bi{margin-right:8px;vertical-align:-2px;color:#f472b6;text-shadow:0 0 5px #f472b6}.modal-header .btn-close{background:transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f472b6'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat!important;opacity:.8!important;transition:all .3s ease}.modal-header .btn-close:hover{opacity:1!important;transform:scale(1.2) rotate(90deg)}.modal-body .row,.modal-body .text-muted{color:#bdc3c7!important}.modal-body .col-12.text-center > strong{color:#a855f7!important;text-shadow:0 0 8px #9333ea;font-size:1.1rem;line-height:1.2;display:block}.modal-body .col-12.text-center:first-of-type{padding-bottom:0!important}.modal-body .col-12.text-center:nth-of-type(2){padding-top:0!important;margin-bottom:1rem}.modal-footer{border-top:1px solid #34495e!important;background-color:#1a252f!important;border-bottom-left-radius:15px;border-bottom-right-radius:15px;padding-top:15px}.list-group{border-radius:8px;overflow:hidden}.list-group-item{background-color:rgba(0,0,0,.2)!important;border-color:#34495e!important}.list-group-item .d-flex{align-items:center!important}.list-group-item h6{font-size:2.8rem!important;line-height:1!important;font-weight:700!important;margin-right:.75rem!important;color:#f472b6!important;text-shadow:0 0 5px #f472b6}.list-group-item strong.text-danger{color:#ecf0f1!important;text-shadow:none!important}@keyframes flowAnimation{0%{background-position:200% 0}100%{background-position:-200% 0}}.progress{background-color:#1a252f!important;border:1px solid #34495e;border-radius:8px!important;height:22px!important;padding:2px}.progress-bar-rtp{border-radius:6px!important;animation:flowAnimation 2s linear infinite;background-size:200% 100%!important;color:#fff!important;font-weight:700;font-size:.8em;text-shadow:0 0 3px rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center}.progress-bar-rtp.bg-success{background-image:linear-gradient(90deg,#2ecc71 25%,#27ae60 50%,#2ecc71 75%)!important;box-shadow:0 0 10px #2ecc71}.progress-bar-rtp.bg-warning{background-image:linear-gradient(90deg,#f1c40f 25%,#f39c12 50%,#f1c40f 75%)!important;box-shadow:0 0 10px #f1c40f}.progress-bar-rtp.bg-danger{background-image:linear-gradient(90deg,#e74c3c 25%,#c0392b 50%,#e74c3c 75%)!important;box-shadow:0 0 10px #e74c3c}.progress-bar-rtp.bg-primary{background-image:linear-gradient(90deg,#3498db 25%,#2980b9 50%,#3498db 75%)!important;box-shadow:0 0 10px #3498db}.pagination{justify-content:center}.pagination .page-link{background-color:transparent;border:1px solid #ec4899;color:#f472b6;margin:0 3px;border-radius:5px}.pagination .page-item:not(.disabled) .page-link:hover{background-color:rgba(236, 72, 153, .2);color:#fff}.pagination .page-item.active .page-link{background:linear-gradient(45deg,#be185d,#ec4899);border-color:#ec4899;color:#fff}.pagination .page-item.disabled .page-link{background-color:#2c3e50;border-color:#34495e;color:#566573}
         #deposit-form .alert .my-3, #deposit-form .alert .d-grid { margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; }
         #maincontent .border.border-top-0 { border-color: #ec4899 !important; }
         #maincontent #withdraw-form h4 { text-align: center !important; color: #a855f7 !important; text-shadow: 0 0 8px rgba(168, 85, 247, 0.5); margin-bottom: 1.5rem !important; }
@@ -306,15 +314,13 @@
     // [FUNGSI DIPERBARUI] Untuk inisialisasi input bet agar memiliki format
     function initializeBetFormatting() {
         document.querySelectorAll('#betting-page-container td.td-input > input.form-control[name^="bet"]:not(.display-input), #betting-page-container td.td-input > input.form-control[id^="bet-"]:not(.display-input)').forEach(originalInput => {
-            // Cek apakah input sudah diformat atau merupakan input tersembunyi
             if (originalInput.dataset.betFormatted === 'true' || originalInput.offsetParent === null || originalInput.type === 'hidden') return;
             
-            // Cari apakah sudah ada display input sebelumnya
             let displayInput = originalInput.previousElementSibling;
             if (!displayInput || !displayInput.classList.contains('display-input')) {
                 displayInput = originalInput.cloneNode(true);
                 displayInput.id = 'display_' + originalInput.id;
-                displayInput.classList.add('display-input'); // Tambahkan class untuk identifikasi
+                displayInput.classList.add('display-input'); 
                 displayInput.type = 'text';
                 displayInput.inputMode = 'numeric';
                 displayInput.pattern = '[0-9,]*';
@@ -325,21 +331,16 @@
             originalInput.style.display = 'none';
             displayInput.value = formatNumberWithCommas(originalInput.value);
 
-            
             const handleInput = () => {
                 const rawValue = displayInput.value.replace(/,/g, '');
-                
                 if (/^\d*$/.test(rawValue)) {
                     originalInput.value = rawValue;
                     originalInput.dispatchEvent(new Event('change', { bubbles: true }));
                     const cursorPosition = displayInput.selectionStart;
                     const originalLength = displayInput.value.length;
-                    
                     const formattedValue = formatNumberWithCommas(rawValue);
                     displayInput.value = formattedValue;
-                    
                     const newLength = displayInput.value.length;
-                    
                     if(newLength > originalLength) {
                         const newCursorPosition = cursorPosition + (newLength - originalLength);
                         displayInput.setSelectionRange(newCursorPosition, newCursorPosition);
@@ -371,26 +372,65 @@
     function addMainBalanceToggle(forceUpdate = false) { const panel = document.querySelector('#member-status-panel'); if (!panel) return; const balanceSpan = panel.querySelector('.text-gradient'); const link = panel.querySelector('a'); if (!balanceSpan || !link) return; if (panel.dataset.toggleAdded === 'true' && !forceUpdate) return; const originalValue = (forceUpdate && link.dataset.originalBalance) ? link.dataset.originalBalance : balanceSpan.textContent.trim(); if(!link.dataset.originalBalance) link.dataset.originalBalance = originalValue; const updateView = (state) => { if (state === 'hidden') { balanceSpan.textContent = '•••••'; if (link.querySelector('.balance-toggle-icon')) link.querySelector('.balance-toggle-icon').className = 'bi bi-eye-slash-fill balance-toggle-icon'; } else { balanceSpan.textContent = originalValue; if (link.querySelector('.balance-toggle-icon')) link.querySelector('.balance-toggle-icon').className = 'bi bi-eye-fill balance-toggle-icon'; } }; if (panel.dataset.toggleAdded !== 'true') { const toggleIcon = document.createElement('i'); toggleIcon.className = 'bi bi-eye-fill balance-toggle-icon'; toggleIcon.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); const newState = (localStorage.getItem('balanceVisibility') || 'visible') === 'visible' ? 'hidden' : 'visible'; localStorage.setItem('balanceVisibility', newState); updateView(newState); addSidebarBalanceToggle(); }); link.appendChild(toggleIcon); panel.dataset.toggleAdded = 'true'; } const savedState = localStorage.getItem('balanceVisibility'); if (savedState) updateView(savedState); }
     function fetchRtpWithIframe() { return new Promise((e,t)=>{const o=document.createElement("iframe");o.src="/rtp",o.style.display="none",o.onload=function(){try{const a=o.contentDocument||o.contentWindow.document,n=a.querySelectorAll('.row.mb-3.g-1 > div[class*="col-"]');if(0===n.length)return t(new Error("No games found"));const l=Array.from(n).filter(e=>{const t=e.querySelector(".progress-bar-rtp");return t&&parseInt(t.textContent)>=75});if(0===l.length)return t(new Error("No games with RTP >= 75%"));const c=l.map(e=>{const t=e.querySelector("a"),o=e.querySelector(".progress-bar-rtp");return{link:t.dataset.playurl,image:t.querySelector("img").src,name:t.dataset.gamename,percentage:parseInt(o.textContent),colorClass:Array.from(o.classList).find(e=>e.startsWith("bg-"))}});e(c)}catch(e){t(e)}finally{document.body.removeChild(o)}},o.onerror=function(){t(new Error("Failed to load RTP iframe")),document.body.removeChild(o)},document.body.appendChild(o)})}
     function displayGacorGames(container, games) { let e="";games.forEach(t=>{const o=new Date;let a=o.getHours();const n=o.getMinutes();let l=5*Math.ceil((n+1)/5),r=[];l>=60&&(a=(a+1)%24,l=0);for(let e=l;e<60;e+=5)r.push(`${String(a).padStart(2,"0")}:${String(e).padStart(2,"0")}`);0===r.length&&(a=(a+1)%24,r.push(`${String(a).padStart(2,"0")}:00`));const c=r[Math.floor(Math.random()*r.length)];e+=`<a href="${t.link}" target="_blank" class="gacor-card"><img src="${t.image}" alt="${t.name}"><div class="gacor-info"><strong title="${t.name}">${t.name}</strong><div class="gacor-time"><i class="bi bi-clock-fill"></i> Pola Berlaku Jam: ${c}</div><div class="progress mt-2"><div class="progress-bar-rtp ${t.colorClass}" role="progressbar" style="width: ${t.percentage}%">${t.percentage}%</div></div></div></a>`}),container.innerHTML=`<h5><i class="bi bi-stars"></i> GAME GACOR SAAT INI</h5><div class="gacor-card-container">${e}</div>`;const t=container.querySelectorAll(".gacor-info strong");t.forEach(e=>{const t=20;e.textContent.length>t&&(e.textContent=e.textContent.substring(0,t-3)+"...")})}
-    async function injectGacorGame() { if(document.getElementById("gacor-game-sidebar"))return;const e=document.getElementById("sidebar");if(!e)return;const t=document.createElement("div");t.id="gacor-game-sidebar",t.className="m-3",t.innerHTML='<h5><i class="bi bi-stars"></i> GAME GACOR SAAT INI</h5><div class="gacor-card-placeholder">Mencari sinyal gacor...</div>',e.appendChild(t);const o=!!document.querySelector('#sidebar .d-flex[style*="background-image"]'),a=o?1:3;try{const e=await fetchRtpWithIframe(),o=e.sort(()=>.5-Math.random()).slice(0,a);displayGacorGames(t,o)}catch(e){console.error("Gagal memuat game gacor, menggunakan fallback:",e);const o={link:"/launch-pragmatic/vs20olympgold",image:"https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympgold.png",name:"Gates of Olympus",percentage:96,colorClass:"bg-primary"};displayGacorGames(t,[o].slice(0,a))}}
+    
+    // [DIPERBARUI] Inject Gacor Game di POSISI ATAS (Sebelum Menu List)
+    async function injectGacorGame() { 
+        if(document.getElementById("gacor-game-sidebar"))return;
+        const e=document.getElementById("sidebar");
+        if(!e)return;
+        
+        const t=document.createElement("div");
+        t.id="gacor-game-sidebar";
+        t.className="m-3";
+        t.innerHTML='<h5><i class="bi bi-stars"></i> GAME GACOR SAAT INI</h5><div class="gacor-card-placeholder">Mencari sinyal gacor...</div>';
+        
+        // Logika baru: Cari pembungkus menu (ul atau div.nav) dan masukkan widget di atasnya
+        const menuContainer = e.querySelector("ul") || e.querySelector(".nav") || e.querySelector("li")?.parentNode;
+        if (menuContainer) {
+            e.insertBefore(t, menuContainer);
+        } else {
+            e.prepend(t); // Jika tidak ketemu ul, paksakan di paling atas
+        }
+
+        const o=!!document.querySelector('#sidebar .d-flex[style*="background-image"]'),a=o?1:3;
+        try {
+            const e=await fetchRtpWithIframe(),o=e.sort(()=>.5-Math.random()).slice(0,a);
+            displayGacorGames(t,o);
+        } catch(err) {
+            console.error("Gagal memuat game gacor, menggunakan fallback:",err);
+            const fallback={link:"/launch-pragmatic/vs20olympgold",image:"https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympgold.png",name:"Gates of Olympus",percentage:96,colorClass:"bg-primary"};
+            displayGacorGames(t,[fallback].slice(0,a));
+        }
+    }
+
     function styleRtpModal() { const rtpModalLabel = document.querySelector('#rtpModalLabel'); if (!rtpModalLabel || rtpModalLabel.closest('.modal-content').dataset.styled === 'true') return; const modalContent = rtpModalLabel.closest('.modal-content'); modalContent.querySelectorAll(".list-group-item small > strong").forEach(title => { if (title.textContent.includes("Step")) title.textContent = title.textContent.replace(/Step \d+:\s*/, "").trim(); }); ["Provider Name", "Slot Game"].forEach(labelText => { const labelDiv = Array.from(modalContent.querySelectorAll(".modal-body .row .col-6")).find(el => el.textContent.trim() === labelText); if (labelDiv) { const row = labelDiv.closest(".row"); if (row) { const valueDiv = row.querySelector(".col-6.text-end"); if (valueDiv) { valueDiv.classList.remove("col-6", "text-end"); valueDiv.classList.add("col-12", "text-center"); if (labelText === "Provider Name") valueDiv.style.paddingBottom = "0rem"; if (labelText === "Slot Game") valueDiv.style.marginBottom = "1rem"; } labelDiv.remove(); } } }); const modalTitle = modalContent.querySelector(".modal-title"); if (modalTitle && !modalTitle.querySelector("i")) modalTitle.innerHTML = `<i class="bi bi-controller"></i> TIPS BERMAIN`; const noteElement = modalContent.querySelector(".text-muted.text-center"); if (noteElement && noteElement.textContent.includes("Lakukan Pola diatas Sebanyak 2x")) noteElement.innerHTML = "<small><strong>Note : </strong> Jika Tersedia / Ingin Membeli Fitur Spin, Lakukan Pola diatas Sebanyak 2x Terlebih Dahulu</small>"; modalContent.dataset.styled = "true"; }
     function runAllOtherScripts() { [{selector:"h3.my-2:not(#row-togel h3)",oldText:"Terbaru",newText:"GAME TERBARU",icon:"bi-stars"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"100 RP",newText:"GAME RP 100",icon:"bi-coin"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"Populer",newText:"GAME POPULER",icon:"bi-fire"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"Terakhir Dimainkan",newText:"TERAKHIR DIMAINKAN",icon:"bi-clock-history"},{selector:"h3.text-center",oldText:"Provider Kami",newText:"PROVIDER KAMI",icon:"bi-puzzle-fill"},{selector:"h3.text-center",oldText:"Cara Pembayaran",newText:"CARA PEMBAYARAN",icon:"bi-wallet-fill"},{selector:"h3.text-center",oldText:"Temui Kami",newText:"TEMUI KAMI",icon:"bi-people-fill"}].forEach(e=>{document.querySelectorAll(e.selector).forEach(t=>{if(t.textContent.trim().includes(e.oldText)&&!t.querySelector("i"))t.innerHTML=`<i class="bi ${e.icon}"></i> ${e.newText}`})}); const e=document.querySelector("#row-togel h3"),t=document.querySelector("#row-togel > .d-flex > a");if(e&&t&&!e.querySelector("a")){var o=t.href,l="PASARAN TOGEL";const n=document.createElement("a");n.href=o;const c=document.createElement("i");c.className="bi bi-bullseye",n.appendChild(c),n.appendChild(document.createTextNode(` ${l}`)),e.innerHTML="",e.appendChild(n)} document.querySelectorAll(".progress-bar-rtp").forEach(e=>{let t=e.textContent.trim();t.includes("[RTP]")&&(e.textContent=t.replace(/\s*\[RTP\]\s*/,""))}); const r=document.querySelector("#row-quicklogin .card-body");if(r&&!document.querySelector(".custom-promo-buttons-container")){const e=[{text:"WHATSAPP SAPATOTO",link:"https://wa.me/6282312054466",icon:"bi-whatsapp"},{text:"GROUP FACEBOOK",link:"https://www.facebook.com/groups/1633061267257649",icon:"bi-facebook"}],t=document.createElement("div");t.className="custom-promo-buttons-container mt-4 d-grid gap-2",e.forEach(e=>{const o=document.createElement("a");o.href=e.link,o.target="_blank",o.className="btn btn-custom-promo",o.innerHTML=`<i class="bi ${e.icon}"></i> ${e.text}`,t.appendChild(o)});const o=r.lastElementChild;o&&o.parentNode.insertBefore(t,o.nextSibling)} const i={username:"bi-person-fill",password:"bi-key-fill",confirmpassword:"bi-shield-lock-fill",email:"bi-envelope-fill",phone:"bi-phone-fill",agentbankid:"bi-bank",bankAccountNumber:"bi-credit-card-2-front-fill",bankaccountname:"bi-person-vcard-fill"};for(const[e,t]of Object.entries(i)){const o=document.querySelector(`label[for="${e}"]`);o&&!o.querySelector("i")&&(o.innerHTML=`<i class="bi ${t}"></i> ${o.innerText}`)} }
-    function createSidebarToggleButton(){if(document.getElementById("custom-sidebar-toggle"))return;const e=document.createElement("a");e.id="custom-sidebar-toggle",e.href="#",e.innerHTML='<i class="bi bi-arrow-left-circle-fill"></i>',document.body.appendChild(e),e.addEventListener("click",function(e){e.preventDefault(),document.getElementById("sidebar").classList.remove("active"),document.querySelector(".overlay").classList.remove("active")})}
+    
+    // [DIPERBARUI] Membuat tombol tutup (close) sidebar dengan ikon panah minimalis
+    function createSidebarToggleButton(){
+        if(document.getElementById("custom-sidebar-toggle"))return;
+        const e=document.createElement("a");
+        e.id="custom-sidebar-toggle";
+        e.href="#";
+        e.innerHTML='<i class="bi bi-chevron-left"></i>'; // Menggunakan ikon chevron-left
+        document.body.appendChild(e);
+        e.addEventListener("click",function(e){
+            e.preventDefault();
+            document.getElementById("sidebar").classList.remove("active");
+            document.querySelector(".overlay").classList.remove("active");
+        });
+    }
+
     function updateProfileElements(){const e=document.querySelector("#sidebar .bi-person-circle");if(e){const t=document.createElement("img");t.src="https://raw.githubusercontent.com/dewasijicare/images/main/icon_gaban_36x36.png",t.className="sapatoto-profile-icon",e.parentNode.replaceChild(t,e)}const t=Array.from(document.querySelectorAll("#sidebar span")).find(e=>e.textContent.includes("CREDIT:"));t&&(t.style.color="#a855f7")}
     const BANK_ICONS = {'DANA':'https://adiltoto.org/images/dana_ok.png','OVO':'https://adiltoto.org/images/ovo_ok.png','GOPAY':'https://adiltoto.org/images/gopay_ok.png','LINKAJA':'https://adiltoto.org/images/link_ok.png','BCA':'https://adiltoto.org/images/bca_ok.png','BNI':'https://adiltoto.org/images/bni_ok.png','BRI':'https://adiltoto.org/images/bri_ok.png','MANDIRI':'https://adiltoto.org/images/mandiri_ok.png','SEABANK':'https://adiltoto.org/images/seabank_ok.png','JAGO':'https://adiltoto.org/images/jago_ok.png'};
     const ICON_MAPPINGS = {'receiver-bank-label':'bi-bank2','receiver-name-label':'bi-person-vcard','receiver-number-label':'bi-credit-card-2-front','agentmemberbankid':'bi-wallet2','amount':'bi-cash-coin','promocode':'bi-tag-fill'};
     function initializeDepositForm(depositForm) { 
         if(!depositForm||depositForm.dataset.initialized==='true')return;
 
-        // --- PERMINTAAN BARU: Hapus label "Bank" dan "Nama Rek" ---
         const bankLabel = document.getElementById('receiver-bank-label');
         const nameLabel = document.getElementById('receiver-name-label');
-        if (bankLabel) {
-            bankLabel.remove();
-        }
-        if (nameLabel) {
-            nameLabel.remove();
-        }
-        // --- AKHIR PERUBAHAN ---
+        if (bankLabel) { bankLabel.remove(); }
+        if (nameLabel) { nameLabel.remove(); }
 
         const nameContainer=document.getElementById('receiver-name')?.closest('div');
         const numberContainer=document.getElementById('receiver-number')?.closest('div');
@@ -416,16 +456,10 @@
                     })
                 });
                 
-                // --- PERMINTAAN BARU: Hapus label "Nomor Rek" ---
                 const labelEl=document.getElementById('receiver-number-label');
-                if (labelEl) {
-                    labelEl.remove(); // Hapus elemen label
-                }
-                // --- AKHIR PERUBAHAN ---
+                if (labelEl) { labelEl.remove(); }
                 
                 const contentWrapper=document.createElement('div');
-                
-                // --- PERUBAHAN: Hanya append 'numberSpan' ---
                 contentWrapper.append(numberSpan); 
                 
                 numberContainer.innerHTML='';
@@ -626,10 +660,8 @@
         const loginForm = document.querySelector('form[action="/login"]');
         if (!loginForm) return;
 
-        // Cek flag agar tidak dijalankan berulang
         if (loginForm.dataset.customStyled === 'true') return;
 
-        // Layout Centering (Opsional, menjaga layout tetap di tengah)
         const loginCard = loginForm.closest('.card.shadow');
         if (loginCard && !loginCard.parentElement.classList.contains('col-lg-6')) {
              try {
@@ -644,7 +676,6 @@
              } catch(e){}
         }
 
-        // --- STYLE USERNAME ---
         const usernameInput = loginForm.querySelector('#username');
         if (usernameInput) {
             const oldGroup = usernameInput.closest('.form-group');
@@ -661,7 +692,6 @@
             }
         }
 
-        // --- STYLE PASSWORD (Handling .password-wrapper) ---
         const passInput = loginForm.querySelector('#pass');
         const passWrapper = loginForm.querySelector('.password-wrapper');
         const toggleBtn = loginForm.querySelector('#togglePass');
@@ -675,11 +705,9 @@
             passInput.classList.add('form-control');
             passInput.placeholder = 'Password';
             
-            // Ganti wrapper lama dengan input group baru
             passWrapper.replaceWith(newGroup);
             newGroup.appendChild(passInput);
 
-            // Pindahkan dan style tombol mata
             if (toggleBtn) {
                 toggleBtn.style.position = 'absolute';
                 toggleBtn.style.top = '50%';
@@ -702,30 +730,24 @@
         if (!form || form.dataset.styled === 'true') return;
         form.dataset.styled = 'true';
 
-        // --- 0. INJECT CSS KHUSUS VALIDASI (REVISI: TANPA BORDER TEBAL) ---
         const styleId = 'sapatoto-validation-style';
         if (!document.getElementById(styleId)) {
             const style = document.createElement('style');
             style.id = styleId;
             style.innerHTML = `
-                /* 1. Tampilkan pesan error hanya teks merah kecil di bawah */
                 .has-validation-error .invalid-feedback {
                     display: block !important;
-                    color: #ff4444 !important; /* Merah cerah */
+                    color: #ff4444 !important; 
                     font-size: 0.8em;
                     margin-top: 4px;
                     text-align: left;
                     font-weight: normal;
                 }
-                
-                /* 2. Border Input saat Error: Tipis saja (1px), jangan tebal */
                 .form-control.is-invalid {
                     border-color: #ff4444 !important;
-                    background-image: none !important; /* Hapus icon pentung bawaan bootstrap */
-                    box-shadow: none !important; /* Hapus shadow tebal */
+                    background-image: none !important; 
+                    box-shadow: none !important; 
                 }
-
-                /* 3. Pastikan Input Group Relative agar Icon Mata terkunci */
                 .input-group {
                     position: relative;
                 }
@@ -737,7 +759,6 @@
         const mainRow = card ? card.querySelector('.row.mb-3') : null;
         const buttonWrapper = card ? card.querySelector('.d-grid.gap-3.mb-3') : null;
 
-        // --- 1. LAYOUT & MERGE KOLOM ---
         if (mainRow) {
             mainRow.querySelectorAll('.col-lg-6').forEach(col => {
                 col.classList.remove('col-lg-6');
@@ -746,7 +767,6 @@
             mainRow.querySelectorAll('h3').forEach(el => el.remove());
         }
 
-        // Center Layout Logic
         if (card && !card.parentElement.classList.contains('col-lg-6')) {
             try {
                 const cardParent = card.parentElement;
@@ -766,7 +786,6 @@
             form.append(buttonWrapper);
         }
 
-        // --- 2. CONFIGURASI FIELD ---
         const fieldConfig = {
             'username': { icon: 'bi-person-fill', placeholder: 'User Name' },
             'password': { icon: 'bi-key-fill', placeholder: 'Password' },
@@ -779,17 +798,13 @@
             'referralcode': { icon: 'bi-people-fill', placeholder: 'Kode Referral / Afiliasi' }
         };
 
-        // --- 3. EKSEKUSI STYLING ---
         Object.keys(fieldConfig).forEach(id => {
             const input = form.querySelector(`#${id}`);
             if (!input) return;
 
             const config = fieldConfig[id];
-            
-            // Container asli (penampung invalid-feedback)
             const originalContainer = input.closest('.form-group') || input.closest('.mb-3');
 
-            // Set Placeholder
             if (input.tagName === 'SELECT') {
                 input.classList.add('form-select');
                 let defaultOption = input.querySelector('option[value=""]');
@@ -809,14 +824,11 @@
                 input.placeholder = config.placeholder;
             }
 
-            // --- LOGIKA PEMBUATAN INPUT GROUP ---
-            // Cek apakah sudah ada input-group
             let inputGroup = input.closest('.input-group');
             
             if (!inputGroup) {
-                // Buat wrapper baru
                 inputGroup = document.createElement('div');
-                inputGroup.className = 'input-group mb-0'; // mb-0 agar error msg nempel rapi
+                inputGroup.className = 'input-group mb-0'; 
                 
                 const iconSpan = document.createElement('span');
                 iconSpan.className = 'input-group-text';
@@ -825,12 +837,10 @@
                 inputGroup.appendChild(iconSpan);
                 inputGroup.appendChild(input);
 
-                // Masukkan kembali ke DOM
                 if (originalContainer) {
                     const lbl = originalContainer.querySelector('label');
                     if(lbl) lbl.style.display = 'none';
 
-                    // Insert sebelum invalid-feedback agar struktur: Group -> Error
                     const feedback = originalContainer.querySelector('.invalid-feedback');
                     if(feedback) {
                         originalContainer.insertBefore(inputGroup, feedback);
@@ -839,18 +849,14 @@
                     }
                 }
             } else {
-                // Update icon saja jika re-run
                 const icon = inputGroup.querySelector('.input-group-text i');
                 if(icon) icon.className = `bi ${config.icon}`;
             }
         });
 
-        // --- 4. FIX POSISI TOMBOL MATA (SOLUSI ABSOLUT KE INPUT GROUP) ---
-        // Kode ini WAJIB ADA agar tombol mata bawaan masuk ke dalam kolom input
         const toggles = form.querySelectorAll('span[id^="toggle"]');
         toggles.forEach(toggle => {
             let targetInput = null;
-            // Deteksi apakah ini tombol untuk password biasa atau konfirmasi
             if (toggle.id.toLowerCase().includes('confirm')) {
                 targetInput = form.querySelector('#confirmPassword');
             } else {
@@ -860,10 +866,7 @@
             if (targetInput) {
                 const group = targetInput.closest('.input-group');
                 if (group) {
-                    // PINDAHKAN tombol bawaan ke dalam group input yang baru
                     group.appendChild(toggle);
-                    
-                    // Atur posisi agar rapi di sebelah kanan
                     toggle.style.position = 'absolute';
                     toggle.style.right = '15px';
                     toggle.style.top = '50%';
@@ -872,7 +875,6 @@
                     toggle.style.cursor = 'pointer';
                     toggle.style.display = 'block'; 
 
-                    // Mengubah warna jadi ungu cerah sapatoto agar terlihat jelas di background gelap
                     const eyeIcon = toggle.querySelector('i');
                     if(eyeIcon) {
                         eyeIcon.style.color = '#a855f7'; 
@@ -881,27 +883,20 @@
             }
         });
         
-        // --- 5. VALIDATION WATCHER (Tanpa Border Tebal) ---
         setInterval(() => {
             const allInputs = form.querySelectorAll('input, select');
             allInputs.forEach(input => {
                 const container = input.closest('.form-group') || input.closest('.mb-3');
-                
                 if (!container) return;
-
                 const isInvalid = input.classList.contains('is-invalid');
-                
                 if (isInvalid) {
-                    // Trigger text error muncul
                     container.classList.add('has-validation-error');
-                    // KITA HAPUS logic penambahan border tebal di sini
                 } else {
                     container.classList.remove('has-validation-error');
                 }
             });
         }, 500);
 
-        // Re-order Layout Akhir
         const fieldOrder = Object.keys(fieldConfig);
         fieldOrder.forEach(id => {
             const el = form.querySelector(`#${id}`);
@@ -1003,7 +998,6 @@
         });
     }
     function stylePagePadding() {
-        // Cari judul halaman "Deposit", "Withdraw", ATAU "Result Togel"
         const depositTitle = Array.from(document.querySelectorAll('h1.text-center')).find(h1 => h1.textContent.trim() === 'Deposit');
         const withdrawTitle = Array.from(document.querySelectorAll('h1.text-center')).find(h1 => h1.textContent.trim() === 'Withdraw');
         const resultTitle = Array.from(document.querySelectorAll('#maincontent h3')).find(h3 => h3.textContent.trim() === 'Result Togel');
@@ -1011,12 +1005,8 @@
         const title = depositTitle || withdrawTitle || resultTitle;
         
         if (title) {
-            // --- SELEKTOR DIPERBARUI & PADDING DITAMBAH ---
-            // Mencari kolom terluar (col-lg-6, col-lg-6 col-xl-4, dll)
             const mainColumn = title.closest('[class*="col-lg-"]');
-            
             if (mainColumn && !mainColumn.dataset.colPadded) {
-                // Beri padding L/R 12px
                 mainColumn.style.padding = '0 12px'; 
                 mainColumn.dataset.colPadded = 'true';
             }
@@ -1025,7 +1015,6 @@
     function styleDepositFormFields(depositForm) {
         if (!depositForm) return;
 
-        // --- REQUEST (LAMA): Menambahkan padding p-3 ke wrapper ---
         const contentWrapper = depositForm.parentElement;
         if (contentWrapper && contentWrapper.classList.contains('border-top-0') && !contentWrapper.dataset.padded) {
             contentWrapper.classList.remove('p-2'); 
@@ -1033,12 +1022,10 @@
             contentWrapper.dataset.padded = 'true';
         }
 
-        // --- REQUEST 1 (DIUBAH): Style "Akun Bank" ---
         const agentBankSelect = depositForm.querySelector('#agentmemberbankid');
         const currentWrapper = agentBankSelect ? agentBankSelect.closest('.form-group, .profile-row') : null;
 
         if (agentBankSelect && currentWrapper && !agentBankSelect.dataset.styledAsInputGroup) {
-            
             const originalLabel = document.querySelector('label[for="agentmemberbankid"]'); 
             const labelIcon = originalLabel ? originalLabel.querySelector('i.bi') : null;
 
@@ -1052,11 +1039,9 @@
             if (labelIcon) {
                 labelSpan.appendChild(labelIcon.cloneNode(true));
             } else {
-                labelSpan.innerHTML = '<i class="bi bi-wallet2"></i>'; // Fallback
+                labelSpan.innerHTML = '<i class="bi bi-wallet2"></i>'; 
             }
             
-            // --- REQUEST 1 (DIPERBAIKI): Menambahkan spasi label ---
-            // Menggunakan TextNode \u00A0 (non-breaking space) adalah cara paling aman
             labelSpan.appendChild(document.createTextNode('\u00A0Akun Saya')); 
 
             agentBankSelect.style.backgroundColor = '';
@@ -1072,7 +1057,6 @@
             if (agentBankSelect.dataset.styled) delete agentBankSelect.dataset.styled;
         }
 
-        // --- REQUEST 1 (LAMA): Memperpendek teks opsi dropdown ---
         if (agentBankSelect && !agentBankSelect.dataset.optionsShortened) {
             const options = agentBankSelect.querySelectorAll('option');
             options.forEach(option => {
@@ -1087,8 +1071,6 @@
             agentBankSelect.dataset.optionsShortened = 'true';
         }
 
-
-        // --- REQUEST 2 (LAMA): Style "Jumlah" (Biarkan, sudah benar) ---
         const amountInput = depositForm.querySelector('#amount');
         if (amountInput && !amountInput.dataset.styled) {
             const amountGroup = amountInput.closest('.form-group');
@@ -1106,7 +1088,7 @@
                 if (labelIcon) {
                     iconSpan.appendChild(labelIcon.cloneNode(true));
                 } else {
-                    iconSpan.innerHTML = '<i class="bi bi-cash-coin"></i>'; // Fallback
+                    iconSpan.innerHTML = '<i class="bi bi-cash-coin"></i>'; 
                 }
                 
                 amountInput.placeholder = placeholderText; 
@@ -1119,7 +1101,6 @@
             }
         }
 
-        // --- REQUEST 3 (DIUBAH): Style "Kode Promo" ---
         const promoInput = depositForm.querySelector('#promocode');
         if (promoInput && !promoInput.dataset.styled) {
             const promoGroup = promoInput.closest('.form-group');
@@ -1128,7 +1109,7 @@
                 const labelIcon = label ? label.querySelector('i.bi') : null;
 
                 const newInputGroup = document.createElement('div');
-                newInputGroup.className = 'input-group'; // Hapus mb-3, akan di-handle wrapper
+                newInputGroup.className = 'input-group'; 
                 newInputGroup.setAttribute('bis_skin_checked', '1');
                 
                 const iconSpan = document.createElement('span');
@@ -1136,35 +1117,30 @@
                 if (labelIcon) {
                     iconSpan.appendChild(labelIcon.cloneNode(true));
                 } else {
-                    iconSpan.innerHTML = '<i class="bi bi-tag-fill"></i>'; // Fallback
+                    iconSpan.innerHTML = '<i class="bi bi-tag-fill"></i>'; 
                 }
                 
-                // (BARU) Buat wrapper untuk clear button
                 const wrapper = document.createElement('div');
-                wrapper.className = 'promo-input-wrapper mb-3'; // position: relative
+                wrapper.className = 'promo-input-wrapper mb-3'; 
 
                 promoInput.placeholder = "Pilih promo yang tersedia";
-                promoInput.dataset.clearable = 'true'; // Tandai input ini
+                promoInput.dataset.clearable = 'true'; 
                 
                 newInputGroup.appendChild(iconSpan);
                 newInputGroup.appendChild(promoInput);
                 
-                // (BARU) Buat clear button
                 const clearBtn = document.createElement('i');
                 clearBtn.className = 'bi bi-x-circle-fill promo-clear-btn';
-                clearBtn.id = 'promo-clear-btn-instance'; // Beri ID unik
+                clearBtn.id = 'promo-clear-btn-instance'; 
                 
                 wrapper.appendChild(newInputGroup);
-                // **KESALAHAN TELAH DIHAPUS DARI SINI**
                 wrapper.appendChild(clearBtn);
 
-                promoGroup.replaceWith(wrapper); // Ganti form-group lama
-                promoInput.dataset.styled = 'true'; // Tandai selesai
+                promoGroup.replaceWith(wrapper); 
+                promoInput.dataset.styled = 'true'; 
             }
         }
 
-
-        // --- REQUEST 4 (LAMA): Style "Pilihan Promo" (Biarkan, sudah benar) ---
         const promoButtonContainer = depositForm.querySelector('.row.g-2.mb-3');
         if (promoButtonContainer && !promoButtonContainer.dataset.styled) {
             const purpleButtons = promoButtonContainer.querySelectorAll('button.promo-button.btn-purple-moon');
@@ -1188,12 +1164,10 @@
     function initializePromoSelection() {
         const promoBoxes = document.querySelectorAll('.promo-choice-box');
         const promoInput = document.getElementById('promocode');
-        const clearBtn = document.getElementById('promo-clear-btn-instance'); // Ambil tombol X
+        const clearBtn = document.getElementById('promo-clear-btn-instance'); 
 
-        // Jika salah satu elemen tidak ada, jangan jalankan
         if (!promoBoxes.length || !promoInput || !clearBtn) return;
 
-        // Fungsi untuk update status tombol X
         const updateClearButton = () => {
             if (promoInput.value) {
                 clearBtn.classList.add('visible');
@@ -1202,20 +1176,17 @@
             }
         };
 
-        // Fungsi untuk clear promo
         const clearPromo = () => {
             promoInput.value = '';
             promoBoxes.forEach(box => box.classList.remove('selected'));
             updateClearButton();
         };
 
-        // Event listener untuk tombol X (pastikan hanya ditambah sekali)
         if (!clearBtn.dataset.promoInitialized) {
             clearBtn.addEventListener('click', clearPromo);
             clearBtn.dataset.promoInitialized = 'true';
         }
 
-        // Event listener untuk promo box (pastikan hanya ditambah sekali)
         promoBoxes.forEach(function(box) {
             if (box.dataset.promoInitialized === 'true') {
                 return; 
@@ -1226,10 +1197,8 @@
                 const selectedCode = box.getAttribute('data-code');
                 
                 if (box.classList.contains('selected')) {
-                    // Jika klik yg aktif, clear
                     clearPromo(); 
                 } else {
-                    // Jika klik yg baru
                     promoBoxes.forEach(b => b.classList.remove('selected'));
                     box.classList.add('selected');
                     promoInput.value = selectedCode;
@@ -1238,24 +1207,20 @@
             });
         });
 
-        // Cek status awal saat load (jika halaman refresh & value tersimpan)
         updateClearButton();
     }
     function styleWithdrawPage() {
-        // Target form utama
         const withdrawForm = document.querySelector('#withdraw-form');
         if (!withdrawForm || withdrawForm.dataset.styled === 'true') {
-            return; // Berhenti jika tidak ada atau sudah di-style
+            return; 
         }
 
-        // --- REQ 2 (Inner Spacing) ---
         const card = withdrawForm.closest('.card.p-1');
         if (card) {
             card.classList.remove('p-1');
-            card.classList.add('p-3'); // Ganti padding dalam
+            card.classList.add('p-3'); 
         }
 
-        // --- REQ 3 (Bank Column) ---
         const bankSelect = withdrawForm.querySelector('#agentmemberbankid');
         const bankGroup = bankSelect ? bankSelect.closest('.form-group') : null;
         
@@ -1273,19 +1238,17 @@
             if (labelIcon) {
                 newBankSpan.appendChild(labelIcon.cloneNode(true));
             } else {
-                newBankSpan.innerHTML = '<i class="bi bi-wallet2"></i>'; // Fallback
+                newBankSpan.innerHTML = '<i class="bi bi-wallet2"></i>'; 
             }
-            newBankSpan.appendChild(document.createTextNode('\u00A0Akun Saya')); // Teks baru: "Akun Saya"
+            newBankSpan.appendChild(document.createTextNode('\u00A0Akun Saya')); 
             
             newBankGroup.appendChild(newBankSpan);
-            newBankGroup.appendChild(bankSelect); // Pindahkan select
-            bankGroup.replaceWith(newBankGroup);  // Ganti
+            newBankGroup.appendChild(bankSelect); 
+            bankGroup.replaceWith(newBankGroup);  
 
-            // --- REQ 4 (Shorten Options) ---
             const options = bankSelect.querySelectorAll('option');
             options.forEach(option => {
                 const originalText = option.textContent;
-                // Format: "BCA - Sapa Toto - 1440387555"
                 const parts = originalText.split(' - '); 
                 if (parts.length === 3) {
                     option.textContent = `${parts[0].trim()} - ${parts[2].trim()}`; 
@@ -1293,7 +1256,6 @@
             });
         }
 
-        // --- REQ 3 (Jumlah Column) ---
         const amountInput = withdrawForm.querySelector('#amount');
         const amountGroup = amountInput ? amountInput.closest('.form-group') : null;
         
@@ -1311,45 +1273,38 @@
             if (labelIcon) {
                 newAmountSpan.appendChild(labelIcon.cloneNode(true));
             } else {
-                newAmountSpan.innerHTML = '<i class="bi bi-cash-coin"></i>'; // Fallback
+                newAmountSpan.innerHTML = '<i class="bi bi-cash-coin"></i>'; 
             }
             
             newAmountGroup.appendChild(newAmountSpan);
-            amountInput.placeholder = placeholderText; // Set placeholder
-            newAmountGroup.appendChild(amountInput); // Pindahkan input
-            amountGroup.replaceWith(newAmountGroup); // Ganti
+            amountInput.placeholder = placeholderText; 
+            newAmountGroup.appendChild(amountInput); 
+            amountGroup.replaceWith(newAmountGroup); 
         }
         
-        withdrawForm.dataset.styled = 'true'; // Tandai selesai
+        withdrawForm.dataset.styled = 'true'; 
     }
     function styleResultPage() {
-        // Target judul "Result Togel"
         const title = Array.from(document.querySelectorAll('#maincontent h3')).find(h => h.textContent.trim() === 'Result Togel');
-        if (!title) return; // Berhenti jika bukan halaman Result
+        if (!title) return; 
 
-        // Target <div class="mb-5"> yang berisi dropdown, link, dan tombol
         const mainContainer = title.parentElement.nextElementSibling; 
         
         if (!mainContainer || !mainContainer.classList.contains('mb-5') || mainContainer.dataset.styled === 'true') {
-            return; // Berhenti jika tidak ada, atau sudah di-style
+            return; 
         }
 
         const oldSelect = mainContainer.querySelector('select[name="m"]');
-        if (!oldSelect) return; // Perlu select untuk lanjut
+        if (!oldSelect) return; 
         
-        // 1. Cek apakah elemen opsional (link dan tombol) ada
         const urlLink = mainContainer.querySelector('a[target="_blank"]');
         const scheduleBtn = mainContainer.querySelector('button[data-bs-target="#scheduleModal"]');
         const modal = document.querySelector('#scheduleModal');
 
-        // 2. Kurangi margin (ini aman dilakukan di kedua kasus)
         mainContainer.classList.remove('mb-5');
         mainContainer.classList.add('mb-3');
 
-        // 3. JIKA KASUS NORMAL (Ada link dan tombol)
         if (urlLink && scheduleBtn && modal) {
-            
-            // Ekstrak info dari modal
             const modalBody = modal.querySelector('.modal-body');
             const allTextNodes = modalBody ? Array.from(modalBody.querySelectorAll('.card-body > *')) : [];
             const tutupEl = allTextNodes.find(el => el.textContent.includes('Tutup:'));
@@ -1359,13 +1314,11 @@
             const hasil = hasilEl ? hasilEl.textContent.trim() : 'Hasil: -';
             const hariText = hariEl ? hariEl.textContent.replace('Hari Aktif:', '').trim() : '-';
             
-            // Buat Input Group (Dropdown + Tombol)
             const newGroup = document.createElement('div');
             newGroup.className = 'input-group mb-3';
             oldSelect.className = 'form-select'; 
             oldSelect.style = ''; 
 
-            // --- BARIS DIPERBAIKI (MENGGUNAKAN !important) ---
             oldSelect.style.setProperty('border-color', '#a855f7', 'important');
             
             const newBtn = document.createElement('a');
@@ -1374,7 +1327,6 @@
             newBtn.href = urlLink.href; 
             newBtn.innerHTML = 'Website <i class="bi bi-arrow-up-right-square"></i>';
             
-            // Buat kotak info jadwal
             const scheduleBox = document.createElement('div');
             scheduleBox.className = 'alert alert-primary p-2';
             scheduleBox.style.alignItems = 'center';
@@ -1387,7 +1339,6 @@
                 </div>
             `;
 
-            // Susun ulang
             newGroup.appendChild(oldSelect); 
             newGroup.appendChild(newBtn);    
             mainContainer.innerHTML = '';       
@@ -1395,20 +1346,15 @@
             mainContainer.appendChild(scheduleBox); 
             modal.remove();
 
-        // 4. JIKA KASUS "SEMUA" (Tidak ada link/tombol)
         } else {
-            // Kita hanya perlu men-style dropdown-nya saja
-            
-            // --- BARIS DIPERBAIKI (MENGGUNAKAN !important) ---
             oldSelect.style.setProperty('border-color', '#a855f7', 'important');
-            oldSelect.style.width = '100%'; // Buat jadi full width
+            oldSelect.style.width = '100%'; 
             
-            // Hapus elemen-elemen kosong yang tidak perlu
             if (urlLink) urlLink.parentElement.remove();
             if (scheduleBtn) scheduleBtn.parentElement.remove();
         }
         
-        mainContainer.dataset.styled = 'true'; // Tandai selesai
+        mainContainer.dataset.styled = 'true'; 
     }
     function styleResultTableHighlight() {
         const resultTitle = Array.from(document.querySelectorAll('#maincontent h3')).find(h => h.textContent.trim() === 'Result Togel');
@@ -1416,64 +1362,49 @@
             return; 
         }
         const tableBody = document.querySelector('#maincontent .table-bordered tbody');
-        if (!tableBody || !tableBody.firstElementChild) return; // Berhenti jika tabel/baris tidak ada
+        if (!tableBody || !tableBody.firstElementChild) return; 
 
-        // Cek Halaman 1 (untuk sorot kuning/ungu)
         const activePageLink = document.querySelector('.pagination .page-item.active a');
         let isPageOne = false;
         if (activePageLink) {
             if (activePageLink.textContent.trim() === '1') isPageOne = true;
         } else {
-            isPageOne = true; // Anggap halaman 1 jika tidak ada pagination
+            isPageOne = true; 
         }
 
-        // Ambil SEMUA baris
         const allRows = tableBody.querySelectorAll('tr');
 
-        // Opsi format hari
         const dayOptions = { weekday: 'long' };
-        const locale = 'id-ID'; // Bahasa Indonesia
+        const locale = 'id-ID'; 
 
         allRows.forEach((row, index) => {
             const dateCell = row.querySelector('td:first-child');
             if (!dateCell) return;
 
-            // --- FUNGSI 1: Format Tanggal (REQ BARU) ---
             const originalDateStr = dateCell.textContent.trim();
             
-            // Cek jika sudah diformat (agar observer tidak menambah "Minggu, Minggu,")
             if (dateCell.dataset.dateFormatted !== 'true') {
-                // Format: "26-10-2025"
                 const parts = originalDateStr.split('-');
                 if (parts.length === 3) {
-                    // parts[2] = YYYY, parts[1] = MM (1-based), parts[0] = DD
-                    // new Date(YYYY, MM-1, DD)
                     try {
                         const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
                         const dayName = dateObj.toLocaleDateString(locale, dayOptions);
                         
-                        // Gabungkan: "Minggu, 26-10-2025"
                         dateCell.textContent = `${dayName}, ${originalDateStr}`;
-                        dateCell.dataset.dateFormatted = 'true'; // Tandai sudah diformat
+                        dateCell.dataset.dateFormatted = 'true'; 
                     } catch (e) {
                         console.error("SapatotoTheme Error (Parsing Date):", e);
-                        // Jika error, biarkan tanggal aslinya
                     }
                 }
             }
-            // --- AKHIR FUNGSI TANGGAL ---
             
-            // --- FUNGSI 2: Sorot Baris ---
-            // Selalu reset style-nya dulu (penting saat pindah ke Halaman 2, 3, dst.)
             row.style.color = '';
             row.style.fontWeight = '';
 
-            // Terapkan style HANYA jika ini baris pertama (index 0) DAN di Halaman 1
             if (index === 0 && isPageOne) {
                 row.style.color = '#a855f7';
                 row.style.fontWeight = 'bold';
             }
-            // --- AKHIR FUNGSI SOROT ---
         });
     }
     function styleLogoutButton() {
@@ -1498,9 +1429,7 @@
         }
     }
 
-// [MODIFIKASI] Ini sekarang adalah fungsi pemindai utama kita
     function runDynamicStyling() {
-        // --- JALANKAN SEMUA FUNGSI STYLING ANDA ---
         initializeSwipeableHeaderMenu();
         updateProfileElements();
         addSidebarBalanceToggle();
@@ -1521,11 +1450,10 @@
         styleWithdrawPage();
         styleResultPage();
         styleResultTableHighlight();
-        // hidePageOnePagination(); // <-- DIHAPUS
         styleWithdrawForm();
         styleRtpModal();
         styleConfirmationModal(); 
-        initializeBetFormatting(); // Fungsi Anda akan berjalan dengan aman
+        initializeBetFormatting(); 
         
         styleBettingPage(); 
         styleQuickLogin();
@@ -1538,15 +1466,14 @@
     
     // --- INISIALISASI SKRIP ---
     document.addEventListener('DOMContentLoaded', () => {
-        // redirectToPageTwo(); // <-- DIHAPUS
         setupPersistentCountdownIntervals();
         createSidebarToggleButton();
         runAllOtherScripts();
         injectGacorGame();
         
         
-        setInterval(runDynamicStyling, 250); // Pindai halaman setiap 250ms
-        runDynamicStyling(); // Jalankan 1x saat halaman pertama kali dimuat
+        setInterval(runDynamicStyling, 250); 
+        runDynamicStyling(); 
         
         document.body.addEventListener('change', (event) => {
             if (event.target.id === 'agentmemberbankid') {
