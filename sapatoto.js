@@ -299,7 +299,6 @@
     // --- KUMPULAN FUNGSI ---
     let intervalsInitialized = false;
 
-    // [FUNGSI BARU] Untuk format angka dengan koma
     function formatNumberWithCommas(val) {
         if (val === null || val === undefined) return '';
         let stringVal = val.toString().replace(/,/g, '');
@@ -311,7 +310,6 @@
         }
     }
     
-    // [FUNGSI DIPERBARUI] Untuk inisialisasi input bet agar memiliki format
     function initializeBetFormatting() {
         document.querySelectorAll('#betting-page-container td.td-input > input.form-control[name^="bet"]:not(.display-input), #betting-page-container td.td-input > input.form-control[id^="bet-"]:not(.display-input)').forEach(originalInput => {
             if (originalInput.dataset.betFormatted === 'true' || originalInput.offsetParent === null || originalInput.type === 'hidden') return;
@@ -373,29 +371,41 @@
     function fetchRtpWithIframe() { return new Promise((e,t)=>{const o=document.createElement("iframe");o.src="/rtp",o.style.display="none",o.onload=function(){try{const a=o.contentDocument||o.contentWindow.document,n=a.querySelectorAll('.row.mb-3.g-1 > div[class*="col-"]');if(0===n.length)return t(new Error("No games found"));const l=Array.from(n).filter(e=>{const t=e.querySelector(".progress-bar-rtp");return t&&parseInt(t.textContent)>=75});if(0===l.length)return t(new Error("No games with RTP >= 75%"));const c=l.map(e=>{const t=e.querySelector("a"),o=e.querySelector(".progress-bar-rtp");return{link:t.dataset.playurl,image:t.querySelector("img").src,name:t.dataset.gamename,percentage:parseInt(o.textContent),colorClass:Array.from(o.classList).find(e=>e.startsWith("bg-"))}});e(c)}catch(e){t(e)}finally{document.body.removeChild(o)}},o.onerror=function(){t(new Error("Failed to load RTP iframe")),document.body.removeChild(o)},document.body.appendChild(o)})}
     function displayGacorGames(container, games) { let e="";games.forEach(t=>{const o=new Date;let a=o.getHours();const n=o.getMinutes();let l=5*Math.ceil((n+1)/5),r=[];l>=60&&(a=(a+1)%24,l=0);for(let e=l;e<60;e+=5)r.push(`${String(a).padStart(2,"0")}:${String(e).padStart(2,"0")}`);0===r.length&&(a=(a+1)%24,r.push(`${String(a).padStart(2,"0")}:00`));const c=r[Math.floor(Math.random()*r.length)];e+=`<a href="${t.link}" target="_blank" class="gacor-card"><img src="${t.image}" alt="${t.name}"><div class="gacor-info"><strong title="${t.name}">${t.name}</strong><div class="gacor-time"><i class="bi bi-clock-fill"></i> Pola Berlaku Jam: ${c}</div><div class="progress mt-2"><div class="progress-bar-rtp ${t.colorClass}" role="progressbar" style="width: ${t.percentage}%">${t.percentage}%</div></div></div></a>`}),container.innerHTML=`<h5><i class="bi bi-stars"></i> GAME GACOR SAAT INI</h5><div class="gacor-card-container">${e}</div>`;const t=container.querySelectorAll(".gacor-info strong");t.forEach(e=>{const t=20;e.textContent.length>t&&(e.textContent=e.textContent.substring(0,t-3)+"...")})}
     
-    // [DIPERBARUI] Inject Gacor Game di POSISI ATAS (Sebelum Menu List)
+    // [DIPERBARUI] Inject Gacor Game di POSISI ATAS (Sangat Aman & Anti-Crash)
     async function injectGacorGame() { 
-        if(document.getElementById("gacor-game-sidebar"))return;
+        if(document.getElementById("gacor-game-sidebar")) return;
         const e=document.getElementById("sidebar");
-        if(!e)return;
-        
+        if(!e) return;
+
         const t=document.createElement("div");
         t.id="gacor-game-sidebar";
-        t.className="m-3";
+        t.className="mx-3 mt-3 mb-4"; // Tambah mb-4 untuk jarak ke bawah sebelum menu
         t.innerHTML='<h5><i class="bi bi-stars"></i> GAME GACOR SAAT INI</h5><div class="gacor-card-placeholder">Mencari sinyal gacor...</div>';
         
-        // Logika baru: Cari pembungkus menu (ul atau div.nav) dan masukkan widget di atasnya
-        const menuContainer = e.querySelector("ul") || e.querySelector(".nav") || e.querySelector("li")?.parentNode;
+        // Logika baru yang LEBIH AMAN (tanpa optional chaining yg bikin error)
+        let menuContainer = e.querySelector("ul.list-unstyled") || e.querySelector("ul") || e.querySelector(".nav");
+        
+        // Jika tidak ketemu ul/nav langsung, cari item <li> pertama dan ambil induknya
+        if (!menuContainer) {
+            let tempLi = e.querySelector("li");
+            if (tempLi) {
+                menuContainer = tempLi.parentNode;
+            }
+        }
+
+        // Sisipkan kotak gacor tepat di atas menu
         if (menuContainer) {
             e.insertBefore(t, menuContainer);
         } else {
-            e.prepend(t); // Jika tidak ketemu ul, paksakan di paling atas
+            // Fallback jika anehnya menu tidak ada, taruh di paling bawah
+            e.appendChild(t); 
         }
 
-        const o=!!document.querySelector('#sidebar .d-flex[style*="background-image"]'),a=o?1:3;
+        const o=!!document.querySelector('#sidebar .d-flex[style*="background-image"]'), a=o?1:3;
         try {
-            const e=await fetchRtpWithIframe(),o=e.sort(()=>.5-Math.random()).slice(0,a);
-            displayGacorGames(t,o);
+            const games = await fetchRtpWithIframe();
+            const selected = games.sort(()=>.5-Math.random()).slice(0,a);
+            displayGacorGames(t,selected);
         } catch(err) {
             console.error("Gagal memuat game gacor, menggunakan fallback:",err);
             const fallback={link:"/launch-pragmatic/vs20olympgold",image:"https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympgold.png",name:"Gates of Olympus",percentage:96,colorClass:"bg-primary"};
@@ -406,13 +416,12 @@
     function styleRtpModal() { const rtpModalLabel = document.querySelector('#rtpModalLabel'); if (!rtpModalLabel || rtpModalLabel.closest('.modal-content').dataset.styled === 'true') return; const modalContent = rtpModalLabel.closest('.modal-content'); modalContent.querySelectorAll(".list-group-item small > strong").forEach(title => { if (title.textContent.includes("Step")) title.textContent = title.textContent.replace(/Step \d+:\s*/, "").trim(); }); ["Provider Name", "Slot Game"].forEach(labelText => { const labelDiv = Array.from(modalContent.querySelectorAll(".modal-body .row .col-6")).find(el => el.textContent.trim() === labelText); if (labelDiv) { const row = labelDiv.closest(".row"); if (row) { const valueDiv = row.querySelector(".col-6.text-end"); if (valueDiv) { valueDiv.classList.remove("col-6", "text-end"); valueDiv.classList.add("col-12", "text-center"); if (labelText === "Provider Name") valueDiv.style.paddingBottom = "0rem"; if (labelText === "Slot Game") valueDiv.style.marginBottom = "1rem"; } labelDiv.remove(); } } }); const modalTitle = modalContent.querySelector(".modal-title"); if (modalTitle && !modalTitle.querySelector("i")) modalTitle.innerHTML = `<i class="bi bi-controller"></i> TIPS BERMAIN`; const noteElement = modalContent.querySelector(".text-muted.text-center"); if (noteElement && noteElement.textContent.includes("Lakukan Pola diatas Sebanyak 2x")) noteElement.innerHTML = "<small><strong>Note : </strong> Jika Tersedia / Ingin Membeli Fitur Spin, Lakukan Pola diatas Sebanyak 2x Terlebih Dahulu</small>"; modalContent.dataset.styled = "true"; }
     function runAllOtherScripts() { [{selector:"h3.my-2:not(#row-togel h3)",oldText:"Terbaru",newText:"GAME TERBARU",icon:"bi-stars"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"100 RP",newText:"GAME RP 100",icon:"bi-coin"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"Populer",newText:"GAME POPULER",icon:"bi-fire"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"Terakhir Dimainkan",newText:"TERAKHIR DIMAINKAN",icon:"bi-clock-history"},{selector:"h3.text-center",oldText:"Provider Kami",newText:"PROVIDER KAMI",icon:"bi-puzzle-fill"},{selector:"h3.text-center",oldText:"Cara Pembayaran",newText:"CARA PEMBAYARAN",icon:"bi-wallet-fill"},{selector:"h3.text-center",oldText:"Temui Kami",newText:"TEMUI KAMI",icon:"bi-people-fill"}].forEach(e=>{document.querySelectorAll(e.selector).forEach(t=>{if(t.textContent.trim().includes(e.oldText)&&!t.querySelector("i"))t.innerHTML=`<i class="bi ${e.icon}"></i> ${e.newText}`})}); const e=document.querySelector("#row-togel h3"),t=document.querySelector("#row-togel > .d-flex > a");if(e&&t&&!e.querySelector("a")){var o=t.href,l="PASARAN TOGEL";const n=document.createElement("a");n.href=o;const c=document.createElement("i");c.className="bi bi-bullseye",n.appendChild(c),n.appendChild(document.createTextNode(` ${l}`)),e.innerHTML="",e.appendChild(n)} document.querySelectorAll(".progress-bar-rtp").forEach(e=>{let t=e.textContent.trim();t.includes("[RTP]")&&(e.textContent=t.replace(/\s*\[RTP\]\s*/,""))}); const r=document.querySelector("#row-quicklogin .card-body");if(r&&!document.querySelector(".custom-promo-buttons-container")){const e=[{text:"WHATSAPP SAPATOTO",link:"https://wa.me/6282312054466",icon:"bi-whatsapp"},{text:"GROUP FACEBOOK",link:"https://www.facebook.com/groups/1633061267257649",icon:"bi-facebook"}],t=document.createElement("div");t.className="custom-promo-buttons-container mt-4 d-grid gap-2",e.forEach(e=>{const o=document.createElement("a");o.href=e.link,o.target="_blank",o.className="btn btn-custom-promo",o.innerHTML=`<i class="bi ${e.icon}"></i> ${e.text}`,t.appendChild(o)});const o=r.lastElementChild;o&&o.parentNode.insertBefore(t,o.nextSibling)} const i={username:"bi-person-fill",password:"bi-key-fill",confirmpassword:"bi-shield-lock-fill",email:"bi-envelope-fill",phone:"bi-phone-fill",agentbankid:"bi-bank",bankAccountNumber:"bi-credit-card-2-front-fill",bankaccountname:"bi-person-vcard-fill"};for(const[e,t]of Object.entries(i)){const o=document.querySelector(`label[for="${e}"]`);o&&!o.querySelector("i")&&(o.innerHTML=`<i class="bi ${t}"></i> ${o.innerText}`)} }
     
-    // [DIPERBARUI] Membuat tombol tutup (close) sidebar dengan ikon panah minimalis
     function createSidebarToggleButton(){
         if(document.getElementById("custom-sidebar-toggle"))return;
         const e=document.createElement("a");
         e.id="custom-sidebar-toggle";
         e.href="#";
-        e.innerHTML='<i class="bi bi-chevron-left"></i>'; // Menggunakan ikon chevron-left
+        e.innerHTML='<i class="bi bi-chevron-left"></i>'; 
         document.body.appendChild(e);
         e.addEventListener("click",function(e){
             e.preventDefault();
@@ -592,7 +601,6 @@
         const card = document.getElementById('row-quicklogin');
         if (!card) return;
 
-        // Stylisasi Username
         const usernameInput = card.querySelector('#username');
         if (usernameInput && !usernameInput.closest('.input-group')) {
             const group = document.createElement('div');
@@ -601,38 +609,31 @@
             usernameInput.placeholder = 'User Name';
             usernameInput.classList.add('form-control');
             
-            // Bungkus input dengan group
             usernameInput.parentNode.insertBefore(group, usernameInput);
             group.appendChild(usernameInput);
         }
 
-        // Stylisasi Password (Menangani struktur div relative & tombol toggle bawaan)
         const passInput = card.querySelector('#pass');
         const toggleBtn = card.querySelector('#togglePass');
 
         if (passInput && !passInput.closest('.input-group')) {
-            // Cari container relative bawaan HTML
             const oldContainer = passInput.closest('div[style*="position: relative"]');
 
             if (oldContainer) {
                 const newGroup = document.createElement('div');
                 newGroup.className = 'input-group mb-3';
-                newGroup.style.position = 'relative'; // Agar tombol mata absolute terhadap ini
+                newGroup.style.position = 'relative'; 
 
-                // Tambah Icon Kunci
                 const iconSpan = document.createElement('span');
                 iconSpan.className = 'input-group-text';
                 iconSpan.innerHTML = '<i class="bi bi-key-fill"></i>';
 
-                // Setup Input
                 passInput.classList.add('form-control');
                 passInput.placeholder = 'Password';
                 
-                // Susun Group
                 newGroup.appendChild(iconSpan);
                 newGroup.appendChild(passInput);
 
-                // Pindahkan Tombol Mata
                 if (toggleBtn) {
                     toggleBtn.style.position = 'absolute';
                     toggleBtn.style.top = '50%';
@@ -641,14 +642,12 @@
                     toggleBtn.style.zIndex = '100';
                     toggleBtn.style.cursor = 'pointer';
                     
-                    // Ubah warna icon jadi ungu cerah sapatoto
                     const icon = toggleBtn.querySelector('i');
                     if(icon) icon.style.color = '#a855f7';
                     
                     newGroup.appendChild(toggleBtn);
                 }
 
-                // Ganti container lama dengan group baru
                 oldContainer.replaceWith(newGroup);
             }
         }
