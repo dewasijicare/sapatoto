@@ -288,7 +288,21 @@
         
         /* Placeholder styling */
         #maincontent .td-input textarea.form-control::placeholder {
-            color: rgba(236, 240, 241, 0.5) !important; 
+            color: rgba(236, 240, 241, 0.5) !important;    
+        }
+        a[href*="promosi"].btn, a[href*="promo"].btn, a[href="/promosi"], a[href="/promo"] {
+            background: linear-gradient(45deg, #00d2ff, #3a7bd5) !important;
+            border: none !important;
+            color: #fff !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.6), inset 0 0 5px rgba(255, 255, 255, 0.4) !important;
+            transition: all .3s ease !important;
+        }
+        a[href*="promosi"].btn:hover, a[href*="promo"].btn:hover, a[href="/promosi"]:hover, a[href="/promo"]:hover {
+            transform: scale(1.05) !important;
+            background: linear-gradient(45deg, #3a7bd5, #00d2ff) !important;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.8), 0 0 35px rgba(58, 123, 213, 0.6), inset 0 0 8px rgba(255, 255, 255, 0.6) !important;
         }
     `;
     const styleElement = document.createElement('style');
@@ -1577,6 +1591,7 @@
         }
     });
 })();
+
 
 
 
