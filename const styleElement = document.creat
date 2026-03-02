@@ -24,7 +24,7 @@
         #maincontent .nav-tabs .nav-link { border-radius: 8px 8px 0 0 !important; } .copy-btn{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border:1px solid #ec4899!important;padding:2px 10px!important;font-size:.8em!important;transition:all .3s ease}.copy-btn:hover{background-color:rgba(236, 72, 153, .3)!important;color:#fff!important}.copy-btn.copy-btn-success{background-color:rgba(46,204,113,.2)!important;color:#2ecc71!important;border-color:#27ae60!important}#receiver-bank-label i,#receiver-number-label i,#receiver-name-label i{margin-right:8px}#maincontent .nav-tabs{border-bottom:1px solid #ec4899!important}#maincontent .nav-tabs .nav-link{background-color:transparent!important;border:1px solid transparent!important;border-bottom:none!important;color:#bdc3c7!important}#maincontent .nav-tabs .nav-link.active{background-color:#1a252f!important;border-color:#ec4899!important;color:#fff!important}body{background-color:#0c0c1e!important;font-family:'Exo 2',sans-serif!important}.form-label{color:#ecf0f1!important;text-shadow:0 0 5px #ec4899}.form-control,.form-select{background-color:#1a252f!important;border:1px solid #34495e!important;color:#fff!important;border-radius:5px;transition:all .3s ease}.form-control:focus,.form-select:focus{border-color:#bdc3c7!important;box-shadow:0 0 10px rgba(189,195,199,.8)!important}.btn-primary{background:linear-gradient(45deg,#be185d,#ec4899)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #ec4899,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-primary:hover{transform:scale(1.05);box-shadow:0 0 20px #ec4899,0 0 30px #be185d,inset 0 0 5px rgba(255,255,255,.4)}.btn-secondary{background:linear-gradient(45deg,#a855f7,#9333ea)!important;border-color:#a855f7!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #a855f7,inset 0 0 5px rgba(255,255,255,.7);transition:all .3s ease}.btn-secondary:hover{transform:scale(1.05);background:linear-gradient(45deg,#c084fc,#a855f7)!important;box-shadow:0 0 20px #a855f7,0 0 30px #9333ea,inset 0 0 5px rgba(255,255,255,.8)}.btn-danger{background:linear-gradient(45deg,#e74c3c,#c0392b)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #e74c3c,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-danger:hover{transform:scale(1.05);box-shadow:0 0 20px #e74c3c,0 0 30px #c0392b,inset 0 0 5px rgba(255,255,255,.4)}nav#navbar-top.navbar.bg-dark{background-color:#1a252f!important;border-bottom:1px solid #ec4899!important;box-shadow:0 2px 10px rgba(236, 72, 153, .3)!important}button#sidebarCollapse{background:0 0!important;border:none!important}button#sidebarCollapse i{color:#ecf0f1!important;transition:all .3s ease}button#sidebarCollapse:hover i{color:#f472b6!important;text-shadow:0 0 10px #f472b6}nav#sidebar{background-color:#1a252f!important;border-right:1px solid #ec4899!important;box-shadow:2px 0 10px rgba(236, 72, 153, .3)!important}#sidebar .d-flex[style*="background-image"]{background-image:none!important;background-color:#2c3e50!important;border-bottom:2px solid #ec4899;box-shadow:0 2px 5px rgba(236, 72, 153, .2)}#sidebar .nav-link{color:#ecf0f1!important;border-radius:5px;transition:all .3s ease;border-left:3px solid transparent;margin:0;padding:.4rem 1rem!important}#sidebar .nav-link:hover,#sidebar .nav-item.active .nav-link{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border-left-color:#f472b6}#sidebar hr{border-top:1px solid #34495e;margin:.5rem 1rem}#sidebar > .d-flex.justify-content-between.p-3{display:none!important}.sapatoto-profile-icon{width:36px;height:36px}
         
         /* [MODIFIKASI] TAMPILAN BARU TOMBOL TUTUP SIDEBAR YANG MENEMPEL KE GARIS */
-        #custom-sidebar-toggle{position:fixed!important;top:75px!important;left:300px!important;transform:none!important;z-index:99999!important;font-size:1.2rem!important;color:#ecf0f1!important;background-color:#1a252f!important;border:1px solid #ec4899!important;border-left:none!important;border-radius:0 8px 8px 0!important;padding:8px 6px!important;box-shadow:3px 0 10px rgba(236,72,153,.3)!important;transition:all .3s ease!important;text-decoration:none!important;display:none}
+        #custom-sidebar-toggle{position:fixed!important;top:75px!important;left:300px!important;transform:none!important;z-index:99999!important;font-size:1.2rem!important;color:#ecf0f1!important;background-color:#1a252f!important;border:1px solid #ec4899!important;border-left:none!important;border-radius:0 8px 8px 0!important;padding:10px 8px!important;box-shadow:3px 0 10px rgba(236,72,153,.3)!important;transition:all .3s ease!important;text-decoration:none!important;display:none}
         #custom-sidebar-toggle.show{display:block!important;opacity:1!important;visibility:visible!important}
         #custom-sidebar-toggle:hover{color:#fff!important;background-color:#ec4899!important}
         
@@ -91,54 +91,206 @@
         #confirmModal #invoice-content .badge { background-color: #a855f7 !important; color: #1a252f !important; font-weight: bold; }
         #confirmModal #invoice-content tfoot { background-color: rgba(236, 72, 153, .1) !important; color: #ecf0f1 !important; }
         #confirmModal #invoice-content tfoot th { font-weight: 700; }
-        #confirmModal .modal-footer .btn-outline-primary { background: linear-gradient(45deg, #c0392b, #e74c3c) !important; border: none !important; color: #fff !important; box-shadow: 0 0 10px #e74c3c, inset 0 0 5px rgba(255, 255, 255, .4); }
-        #confirmModal .modal-footer .btn-outline-primary:hover { box-shadow: 0 0 20px #e74c3c, 0 0 30px #c0392b, inset 0 0 5px rgba(255, 255, 255, .4) !important; transform: scale(1.05); }
-        #confirmModal .modal-footer .btn-danger { background: linear-gradient(45deg, #be185d, #ec4899) !important; border: none !important; color: #fff !important; box-shadow: 0 0 10px #ec4899, inset 0 0 5px rgba(255,255,255,.4) !important; }
-        #confirmModal .modal-footer .btn-danger:hover { box-shadow: 0 0 20px #ec4899, 0 0 30px #be185d, inset 0 0 5px rgba(255,255,255,.4) !important; transform: scale(1.05); }
-        
+        #confirmModal .modal-footer .btn-outline-primary {
+            background: linear-gradient(45deg, #c0392b, #e74c3c) !important;
+            border: none !important;
+            color: #fff !important;
+            box-shadow: 0 0 10px #e74c3c, inset 0 0 5px rgba(255, 255, 255, .4);
+        }
+        #confirmModal .modal-footer .btn-outline-primary:hover {
+            box-shadow: 0 0 20px #e74c3c, 0 0 30px #c0392b, inset 0 0 5px rgba(255, 255, 255, .4) !important;
+            transform: scale(1.05);
+        }
+        #confirmModal .modal-footer .btn-danger {
+            background: linear-gradient(45deg, #be185d, #ec4899) !important;
+            border: none !important;
+            color: #fff !important;
+            box-shadow: 0 0 10px #ec4899, inset 0 0 5px rgba(255,255,255,.4) !important;
+        }
+        #confirmModal .modal-footer .btn-danger:hover {
+             box-shadow: 0 0 20px #ec4899, 0 0 30px #be185d, inset 0 0 5px rgba(255,255,255,.4) !important;
+             transform: scale(1.05);
+        }
         /* CSS UNTUK TOMBOL CLEAR PROMO */
-        .promo-input-wrapper { position: relative; }
-        .promo-clear-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #e74c3c; display: none; font-size: 1.1rem; z-index: 5; line-height: 1; transition: color 0.2s ease; }
-        .promo-clear-btn:hover { color: #f5b7b1; }
-        .promo-clear-btn.visible { display: block; }
-        #promocode[data-clearable="true"] { padding-right: 35px !important; }
+        .promo-input-wrapper {
+            position: relative;
+        }
+        .promo-clear-btn {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #e74c3c; 
+            display: none; 
+            font-size: 1.1rem;
+            z-index: 5;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+        .promo-clear-btn:hover {
+            color: #f5b7b1; 
+        }
+        /* Kelas 'visible' akan ditambah/dihapus oleh JavaScript */
+        .promo-clear-btn.visible {
+            display: block;
+        }
+        /* Beri padding di input agar teks tidak tertutup tombol */
+        #promocode[data-clearable="true"] {
+            padding-right: 35px !important;
+        }
+        /* CSS KHUSUS UNTUK PROMO BOX (IDE #1) */
+        .promo-choice-box {
+            background-color: #1a252f; 
+            border: 2px solid #34495e; 
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: border-color 0.2s ease-in-out;
+            color: #ecf0f1; 
+        }
+        .promo-choice-box:hover {
+            border-color: #bdc3c7; 
+        }
+        .promo-choice-box.selected {
+            border-color: #a855f7; 
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.6); 
+        }
+        .promo-choice-box h5 {
+            color: #a855f7; 
+            margin-bottom: 0.5rem;
+        }
+        .promo-choice-box small {
+            color: #ecf0f1; 
+            font-size: 0.85em;
+        }
+        /* CSS UNTUK JUDUL HALAMAN STATIS (RESULT, DLL) */
+        #maincontent .container .text-center h3 {
+            color: #a855f7 !important;
+            text-transform: uppercase !important;
+            margin-top: 1.5rem !important;
+            margin-bottom: 1rem !important;
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
+        }
+        /* CSS UNTUK MENGECILKAN FONT TABEL RESULT */
+        #maincontent .table-bordered tbody td {
+            font-size: 0.85em; 
+        }
+        /* CSS UNTUK HILANGKAN BULLET POINT WITHDRAW */
+        #withdraw-form div[style*="font-size:0.8em"] ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        /* CSS UNTUK HILANGKAN BULLET POINT KETENTUAN */
+        #deposit-form div[style*="font-size:0.8em"] ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        /* [CSS BARU] Perbaikan warna teks deskripsi permainan */
+        #betting-page-container div[id^="panel-"] .card-body small,
+        #betting-page-container div[id^="panel-"] .card-body small p {
+            color: #bdc3c7 !important;
+        }
+        /* [CSS BARU] Style untuk Box Countdown Pembayaran (Deposit) */
+        #maincontent .card.text-center.border-danger {
+            background: linear-gradient(145deg, #a73c2e, #c0392b) !important;
+            border: 1px solid #e74c3c !important;
+            color: #fff !important;
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.6);
+            border-radius: 15px !important;
+        }
         
-        /* CSS KHUSUS UNTUK PROMO BOX */
-        .promo-choice-box { background-color: #1a252f; border: 2px solid #34495e; border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; cursor: pointer; transition: border-color 0.2s ease-in-out; color: #ecf0f1; }
-        .promo-choice-box:hover { border-color: #bdc3c7; }
-        .promo-choice-box.selected { border-color: #a855f7; box-shadow: 0 0 10px rgba(168, 85, 247, 0.6); }
-        .promo-choice-box h5 { color: #a855f7; margin-bottom: 0.5rem; }
-        .promo-choice-box small { color: #ecf0f1; font-size: 0.85em; }
+        #maincontent .card.text-center.border-danger .card-title.text-danger {
+            color: #fff !important;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+            margin-bottom: 0.5rem !important;
+        }
         
-        /* CSS UNTUK JUDUL & TABEL RESULT */
-        #maincontent .container .text-center h3 { color: #a855f7 !important; text-transform: uppercase !important; margin-top: 1.5rem !important; margin-bottom: 1rem !important; text-shadow: 0 0 10px rgba(168, 85, 247, 0.6); }
-        #maincontent .table-bordered tbody td { font-size: 0.85em; }
-        #withdraw-form div[style*="font-size:0.8em"] ul { list-style-type: none; padding-left: 0; }
-        #deposit-form div[style*="font-size:0.8em"] ul { list-style-type: none; padding-left: 0; }
-        #betting-page-container div[id^="panel-"] .card-body small, #betting-page-container div[id^="panel-"] .card-body small p { color: #bdc3c7 !important; }
+        #maincontent .card.text-center.border-danger .card-title i {
+            color: #a855f7 !important; 
+            text-shadow: 0 0 5px #a855f7;
+        }
         
-        /* Box Countdown Pembayaran (Deposit) */
-        #maincontent .card.text-center.border-danger { background: linear-gradient(145deg, #a73c2e, #c0392b) !important; border: 1px solid #e74c3c !important; color: #fff !important; box-shadow: 0 0 15px rgba(231, 76, 60, 0.6); border-radius: 15px !important; }
-        #maincontent .card.text-center.border-danger .card-title.text-danger { color: #fff !important; text-shadow: 0 1px 3px rgba(0,0,0,0.4); margin-bottom: 0.5rem !important; }
-        #maincontent .card.text-center.border-danger .card-title i { color: #a855f7 !important; text-shadow: 0 0 5px #a855f7; }
-        #maincontent .card.text-center.border-danger span.countdown.badge.bg-danger { background: none !important; color: #a855f7 !important; text-shadow: 0 0 8px rgba(168, 85, 247, 0.7); font-size: 1.5rem !important; font-weight: 700; padding: 0 !important; line-height: 1.2; }
-        #maincontent .alert.alert-primary > div.mb-2 { display: none !important; }
-        #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] { margin-top: 1rem !important; }
-        #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] span, #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] strong { color: #fff !important; }
+        #maincontent .card.text-center.border-danger span.countdown.badge.bg-danger {
+            background: none !important;
+            color: #a855f7 !important;
+            text-shadow: 0 0 8px rgba(168, 85, 247, 0.7);
+            font-size: 1.5rem !important; 
+            font-weight: 700;
+            padding: 0 !important;
+            line-height: 1.2;
+        }
+        /* [FIX] Sembunyikan kontainer logo bank default yang duplikat */
+        #maincontent .alert.alert-primary > div.mb-2 {
+            display: none !important;
+        }
+        /* [CSS BARU] Mengatur tombol QRIS di info deposit */
+        #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] {
+            margin-top: 1rem !important; 
+        }
         
-        /* Status Badge (Ditolak, Sukses, dll) */
-        #maincontent .badge.bg-danger { background: linear-gradient(45deg, #e74c3c, #c0392b) !important; color: #fff !important; box-shadow: 0 0 5px rgba(231, 76, 60, 0.5); border: 1px solid #e74c3c; text-shadow: 0 1px 2px rgba(0,0,0,0.3); font-weight: 600; }
-        #maincontent .badge.bg-success { background: linear-gradient(45deg, #2ecc71, #27ae60) !important; color: #fff !important; box-shadow: 0 0 5px rgba(46, 204, 113, 0.5); border: 1px solid #2ecc71; text-shadow: 0 1px 2px rgba(0,0,0,0.3); font-weight: 600; }
-        #maincontent .badge.bg-warning { background: linear-gradient(45deg, #a855f7, #9333ea) !important; color: #fff !important; box-shadow: 0 0 5px rgba(168, 85, 247, 0.5); border: 1px solid #a855f7; text-shadow: 0 1px 1px rgba(255,255,255,0.2); font-weight: 600; }
-        #maincontent .badge.bg-primary { background: linear-gradient(45deg, #be185d, #ec4899) !important; color: #fff !important; box-shadow: 0 0 5px rgba(236, 72, 153, 0.5); border: 1px solid #ec4899; text-shadow: 0 1px 2px rgba(0,0,0,0.3); font-weight: 600; }
+        #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] span,
+        #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] strong {
+            color: #fff !important;
+        }
+        /* [CSS BARU] Mengatur Status Badge (Ditolak, Sukses, dll) */
+        #maincontent .badge.bg-danger {
+            background: linear-gradient(45deg, #e74c3c, #c0392b) !important;
+            color: #fff !important;
+            box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+            border: 1px solid #e74c3c;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            font-weight: 600;
+        }
+
+        #maincontent .badge.bg-success {
+            background: linear-gradient(45deg, #2ecc71, #27ae60) !important;
+            color: #fff !important;
+            box-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
+            border: 1px solid #2ecc71;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            font-weight: 600;
+        }
         
-        /* Tabel Input Bet & Textarea */
-        #maincontent tbody tr.table-warning th { color: #fff !important; background-color: #2c3e50 !important; border-color: #34495e !important; }
-        #maincontent .td-input textarea.form-control { background-color: #2c3e50 !important; color: #ecf0f1 !important; border: 1px solid #34495e !important; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); resize: vertical; }
-        #maincontent .td-input textarea.form-control::placeholder { color: rgba(236, 240, 241, 0.5) !important; }
+        #maincontent .badge.bg-warning {
+            background: linear-gradient(45deg, #a855f7, #9333ea) !important;
+            color: #fff !important; 
+            box-shadow: 0 0 5px rgba(168, 85, 247, 0.5);
+            border: 1px solid #a855f7;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.2);
+            font-weight: 600;
+        }
         
-        /* [CLASS BARU] Untuk Tombol PROMOSI Biru Neon (Gaming) */
-        .btn-gaming-promo {
+        #maincontent .badge.bg-primary {
+            background: linear-gradient(45deg, #be185d, #ec4899) !important;
+            color: #fff !important;
+            box-shadow: 0 0 5px rgba(236, 72, 153, 0.5);
+            border: 1px solid #ec4899;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            font-weight: 600;
+        }
+        /* [CSS BARU] Mengatur style untuk header "Input" di tabel bet multi-line */
+        #maincontent tbody tr.table-warning th {
+            color: #fff !important; 
+            background-color: #2c3e50 !important; 
+            border-color: #34495e !important; 
+        }
+        
+        /* Mengatur style untuk textarea input bet */
+        #maincontent .td-input textarea.form-control {
+            background-color: #2c3e50 !important; 
+            color: #ecf0f1 !important; 
+            border: 1px solid #34495e !important; 
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+            resize: vertical; 
+        }
+        
+        /* Placeholder styling */
+        #maincontent .td-input textarea.form-control::placeholder {
+            color: rgba(236, 240, 241, 0.5) !important;    
+        }
+        a[href*="promosi"].btn, a[href*="promo"].btn, a[href="/promosi"], a[href="/promo"] {
             background: linear-gradient(45deg, #00d2ff, #3a7bd5) !important;
             border: none !important;
             color: #fff !important;
@@ -147,7 +299,7 @@
             box-shadow: 0 0 15px rgba(0, 210, 255, 0.6), inset 0 0 5px rgba(255, 255, 255, 0.4) !important;
             transition: all .3s ease !important;
         }
-        .btn-gaming-promo:hover {
+        a[href*="promosi"].btn:hover, a[href*="promo"].btn:hover, a[href="/promosi"]:hover, a[href="/promo"]:hover {
             transform: scale(1.05) !important;
             background: linear-gradient(45deg, #3a7bd5, #00d2ff) !important;
             box-shadow: 0 0 25px rgba(0, 210, 255, 0.8), 0 0 35px rgba(58, 123, 213, 0.6), inset 0 0 8px rgba(255, 255, 255, 0.6) !important;
@@ -160,40 +312,55 @@
     // --- KUMPULAN FUNGSI ---
     let intervalsInitialized = false;
 
+    // [FUNGSI BARU] Untuk format angka dengan koma
     function formatNumberWithCommas(val) {
         if (val === null || val === undefined) return '';
         let stringVal = val.toString().replace(/,/g, '');
         if (isNaN(stringVal) || stringVal.trim() === '') return '';
-        try { return Number(stringVal).toLocaleString('en-US'); } catch (e) { return stringVal; }
+        try {
+            return Number(stringVal).toLocaleString('en-US');
+        } catch (e) {
+            return stringVal;
+        }
     }
     
+    // [FUNGSI DIPERBARUI] Untuk inisialisasi input bet agar memiliki format
     function initializeBetFormatting() {
         document.querySelectorAll('#betting-page-container td.td-input > input.form-control[name^="bet"]:not(.display-input), #betting-page-container td.td-input > input.form-control[id^="bet-"]:not(.display-input)').forEach(originalInput => {
+            // Cek apakah input sudah diformat atau merupakan input tersembunyi
             if (originalInput.dataset.betFormatted === 'true' || originalInput.offsetParent === null || originalInput.type === 'hidden') return;
+            
+            // Cari apakah sudah ada display input sebelumnya
             let displayInput = originalInput.previousElementSibling;
             if (!displayInput || !displayInput.classList.contains('display-input')) {
                 displayInput = originalInput.cloneNode(true);
                 displayInput.id = 'display_' + originalInput.id;
-                displayInput.classList.add('display-input');
+                displayInput.classList.add('display-input'); // Tambahkan class untuk identifikasi
                 displayInput.type = 'text';
                 displayInput.inputMode = 'numeric';
                 displayInput.pattern = '[0-9,]*';
                 displayInput.removeAttribute('name'); 
                 originalInput.parentNode.insertBefore(displayInput, originalInput);
             }
+    
             originalInput.style.display = 'none';
             displayInput.value = formatNumberWithCommas(originalInput.value);
 
+            
             const handleInput = () => {
                 const rawValue = displayInput.value.replace(/,/g, '');
+                
                 if (/^\d*$/.test(rawValue)) {
                     originalInput.value = rawValue;
                     originalInput.dispatchEvent(new Event('change', { bubbles: true }));
                     const cursorPosition = displayInput.selectionStart;
                     const originalLength = displayInput.value.length;
+                    
                     const formattedValue = formatNumberWithCommas(rawValue);
                     displayInput.value = formattedValue;
+                    
                     const newLength = displayInput.value.length;
+                    
                     if(newLength > originalLength) {
                         const newCursorPosition = cursorPosition + (newLength - originalLength);
                         displayInput.setSelectionRange(newCursorPosition, newCursorPosition);
@@ -204,10 +371,12 @@
                     displayInput.value = formatNumberWithCommas(originalInput.value);
                 }
             };
+            
             const handleBlur = () => {
                 displayInput.value = formatNumberWithCommas(originalInput.value);
                 originalInput.dispatchEvent(new Event('change', { bubbles: true }));
             };
+
             displayInput.addEventListener('input', handleInput);
             displayInput.addEventListener('blur', handleBlur);
             originalInput.dataset.betFormatted = 'true';
@@ -227,18 +396,26 @@
     function styleRtpModal() { const rtpModalLabel = document.querySelector('#rtpModalLabel'); if (!rtpModalLabel || rtpModalLabel.closest('.modal-content').dataset.styled === 'true') return; const modalContent = rtpModalLabel.closest('.modal-content'); modalContent.querySelectorAll(".list-group-item small > strong").forEach(title => { if (title.textContent.includes("Step")) title.textContent = title.textContent.replace(/Step \d+:\s*/, "").trim(); }); ["Provider Name", "Slot Game"].forEach(labelText => { const labelDiv = Array.from(modalContent.querySelectorAll(".modal-body .row .col-6")).find(el => el.textContent.trim() === labelText); if (labelDiv) { const row = labelDiv.closest(".row"); if (row) { const valueDiv = row.querySelector(".col-6.text-end"); if (valueDiv) { valueDiv.classList.remove("col-6", "text-end"); valueDiv.classList.add("col-12", "text-center"); if (labelText === "Provider Name") valueDiv.style.paddingBottom = "0rem"; if (labelText === "Slot Game") valueDiv.style.marginBottom = "1rem"; } labelDiv.remove(); } } }); const modalTitle = modalContent.querySelector(".modal-title"); if (modalTitle && !modalTitle.querySelector("i")) modalTitle.innerHTML = `<i class="bi bi-controller"></i> TIPS BERMAIN`; const noteElement = modalContent.querySelector(".text-muted.text-center"); if (noteElement && noteElement.textContent.includes("Lakukan Pola diatas Sebanyak 2x")) noteElement.innerHTML = "<small><strong>Note : </strong> Jika Tersedia / Ingin Membeli Fitur Spin, Lakukan Pola diatas Sebanyak 2x Terlebih Dahulu</small>"; modalContent.dataset.styled = "true"; }
     function runAllOtherScripts() { [{selector:"h3.my-2:not(#row-togel h3)",oldText:"Terbaru",newText:"GAME TERBARU",icon:"bi-stars"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"100 RP",newText:"GAME RP 100",icon:"bi-coin"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"Populer",newText:"GAME POPULER",icon:"bi-fire"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"Terakhir Dimainkan",newText:"TERAKHIR DIMAINKAN",icon:"bi-clock-history"},{selector:"h3.text-center",oldText:"Provider Kami",newText:"PROVIDER KAMI",icon:"bi-puzzle-fill"},{selector:"h3.text-center",oldText:"Cara Pembayaran",newText:"CARA PEMBAYARAN",icon:"bi-wallet-fill"},{selector:"h3.text-center",oldText:"Temui Kami",newText:"TEMUI KAMI",icon:"bi-people-fill"}].forEach(e=>{document.querySelectorAll(e.selector).forEach(t=>{if(t.textContent.trim().includes(e.oldText)&&!t.querySelector("i"))t.innerHTML=`<i class="bi ${e.icon}"></i> ${e.newText}`})}); const e=document.querySelector("#row-togel h3"),t=document.querySelector("#row-togel > .d-flex > a");if(e&&t&&!e.querySelector("a")){var o=t.href,l="PASARAN TOGEL";const n=document.createElement("a");n.href=o;const c=document.createElement("i");c.className="bi bi-bullseye",n.appendChild(c),n.appendChild(document.createTextNode(` ${l}`)),e.innerHTML="",e.appendChild(n)} document.querySelectorAll(".progress-bar-rtp").forEach(e=>{let t=e.textContent.trim();t.includes("[RTP]")&&(e.textContent=t.replace(/\s*\[RTP\]\s*/,""))}); const r=document.querySelector("#row-quicklogin .card-body");if(r&&!document.querySelector(".custom-promo-buttons-container")){const e=[{text:"WHATSAPP SAPATOTO",link:"https://wa.me/6282312054466",icon:"bi-whatsapp"},{text:"GROUP FACEBOOK",link:"https://www.facebook.com/groups/1633061267257649",icon:"bi-facebook"}],t=document.createElement("div");t.className="custom-promo-buttons-container mt-4 d-grid gap-2",e.forEach(e=>{const o=document.createElement("a");o.href=e.link,o.target="_blank",o.className="btn btn-custom-promo",o.innerHTML=`<i class="bi ${e.icon}"></i> ${e.text}`,t.appendChild(o)});const o=r.lastElementChild;o&&o.parentNode.insertBefore(t,o.nextSibling)} const i={username:"bi-person-fill",password:"bi-key-fill",confirmpassword:"bi-shield-lock-fill",email:"bi-envelope-fill",phone:"bi-phone-fill",agentbankid:"bi-bank",bankAccountNumber:"bi-credit-card-2-front-fill",bankaccountname:"bi-person-vcard-fill"};for(const[e,t]of Object.entries(i)){const o=document.querySelector(`label[for="${e}"]`);o&&!o.querySelector("i")&&(o.innerHTML=`<i class="bi ${t}"></i> ${o.innerText}`)} }
     
+    // [MODIFIKASI] MENGGANTI ICON DARI LINGKARAN MENJADI CHEVRON-LEFT
     function createSidebarToggleButton(){if(document.getElementById("custom-sidebar-toggle"))return;const e=document.createElement("a");e.id="custom-sidebar-toggle",e.href="#",e.innerHTML='<i class="bi bi-chevron-left"></i>',document.body.appendChild(e),e.addEventListener("click",function(e){e.preventDefault(),document.getElementById("sidebar").classList.remove("active"),document.querySelector(".overlay").classList.remove("active")})}
     
     function updateProfileElements(){const e=document.querySelector("#sidebar .bi-person-circle");if(e){const t=document.createElement("img");t.src="https://raw.githubusercontent.com/dewasijicare/images/main/icon_gaban_36x36.png",t.className="sapatoto-profile-icon",e.parentNode.replaceChild(t,e)}const t=Array.from(document.querySelectorAll("#sidebar span")).find(e=>e.textContent.includes("CREDIT:"));t&&(t.style.color="#a855f7")}
     const BANK_ICONS = {'DANA':'https://adiltoto.org/images/dana_ok.png','OVO':'https://adiltoto.org/images/ovo_ok.png','GOPAY':'https://adiltoto.org/images/gopay_ok.png','LINKAJA':'https://adiltoto.org/images/link_ok.png','BCA':'https://adiltoto.org/images/bca_ok.png','BNI':'https://adiltoto.org/images/bni_ok.png','BRI':'https://adiltoto.org/images/bri_ok.png','MANDIRI':'https://adiltoto.org/images/mandiri_ok.png','SEABANK':'https://adiltoto.org/images/seabank_ok.png','JAGO':'https://adiltoto.org/images/jago_ok.png'};
     const ICON_MAPPINGS = {'receiver-bank-label':'bi-bank2','receiver-name-label':'bi-person-vcard','receiver-number-label':'bi-credit-card-2-front','agentmemberbankid':'bi-wallet2','amount':'bi-cash-coin','promocode':'bi-tag-fill'};
-    
     function initializeDepositForm(depositForm) { 
         if(!depositForm||depositForm.dataset.initialized==='true')return;
+
+        // --- PERMINTAAN BARU: Hapus label "Bank" dan "Nama Rek" ---
         const bankLabel = document.getElementById('receiver-bank-label');
         const nameLabel = document.getElementById('receiver-name-label');
-        if (bankLabel) bankLabel.remove();
-        if (nameLabel) nameLabel.remove();
+        if (bankLabel) {
+            bankLabel.remove();
+        }
+        if (nameLabel) {
+            nameLabel.remove();
+        }
+        // --- AKHIR PERUBAHAN ---
+
         const nameContainer=document.getElementById('receiver-name')?.closest('div');
         const numberContainer=document.getElementById('receiver-number')?.closest('div');
         if(nameContainer&&numberContainer&&nameContainer.parentElement===numberContainer.parentElement){
@@ -262,10 +439,19 @@
                         },1500)
                     })
                 });
+                
+                // --- PERMINTAAN BARU: Hapus label "Nomor Rek" ---
                 const labelEl=document.getElementById('receiver-number-label');
-                if (labelEl) labelEl.remove(); 
+                if (labelEl) {
+                    labelEl.remove(); // Hapus elemen label
+                }
+                // --- AKHIR PERUBAHAN ---
+                
                 const contentWrapper=document.createElement('div');
+                
+                // --- PERUBAHAN: Hanya append 'numberSpan' ---
                 contentWrapper.append(numberSpan); 
+                
                 numberContainer.innerHTML='';
                 numberContainer.append(contentWrapper,newCopyButton);
                 numberContainer.style.display='flex';
@@ -284,8 +470,10 @@
     function styleBettingPage() {
         const bettingContainer = document.querySelector('#select-market')?.closest('.container[class*="my-"]');
         if (!bettingContainer) return;
+     
         bettingContainer.classList.remove('my-5');
         bettingContainer.classList.add('my-3'); 
+     
         if (!bettingContainer.dataset.styledOnce) {
             bettingContainer.id = 'betting-page-container';
             const marketLabel = document.querySelector('label[for="select-market"]');
@@ -319,15 +507,19 @@
                     });
                 }
             }
-            bettingContainer.querySelectorAll('.btn-group[role="group"]').forEach(group => { group.classList.add('bet-type-toggle'); });
+            bettingContainer.querySelectorAll('.btn-group[role="group"]').forEach(group => {
+                group.classList.add('bet-type-toggle');
+            });
             bettingContainer.dataset.styledOnce = 'true';
         }
+     
         bettingContainer.querySelectorAll('div[id^="panel-"]:not([data-panel-styled="true"])').forEach(panel => {
             panel.dataset.panelStyled = 'true';
             panel.classList.remove('bg-dark', 'border', 'rounded-3', 'p-1', 'p-3');
             if (!panel.classList.contains('card')) panel.classList.add('card', 'mb-3');
             const cardHeader = panel.querySelector('.card-header');
             const cardBody = panel.querySelector('.card-body');
+     
             if (!cardHeader && !cardBody) {
                 const infoDiv = panel.querySelector('.mb-3');
                 const title = infoDiv ? (infoDiv.querySelector('strong')?.textContent.trim() || 'Panel Permainan') : 'Panel Permainan';
@@ -336,32 +528,61 @@
                 newCardHeader.innerHTML = `<i class="bi bi-joystick"></i> ${title}`;
                 const newCardBody = document.createElement('div');
                 newCardBody.className = 'card-body';
-                while (panel.firstChild) { newCardBody.appendChild(panel.firstChild); }
+                while (panel.firstChild) {
+                    newCardBody.appendChild(panel.firstChild);
+                }
                 panel.appendChild(newCardHeader);
                 panel.appendChild(newCardBody);
             }
+     
             const infoDivInsideBody = panel.querySelector('.card-body > .mb-3');
             if (infoDivInsideBody) {
                 const descriptionWrapper = infoDivInsideBody.querySelector('.ms-3');
-                if (descriptionWrapper) descriptionWrapper.classList.remove('ms-3');
+                if (descriptionWrapper) {
+                    descriptionWrapper.classList.remove('ms-3');
+                }
+     
                 const duplicateTitle = infoDivInsideBody.querySelector('strong');
-                if (duplicateTitle && duplicateTitle.nextElementSibling && duplicateTitle.nextElementSibling.matches('div')) duplicateTitle.style.display = 'none';
+                if (duplicateTitle && duplicateTitle.nextElementSibling && duplicateTitle.nextElementSibling.matches('div')) {
+                    duplicateTitle.style.display = 'none';
+                }
+     
                 infoDivInsideBody.style.marginTop = '0.5rem';
             }
-            if (panel.id === 'panel-closed') panel.classList.add('panel-closed-themed');
-            panel.querySelectorAll('.table-input thead.table-warning').forEach(thead => { thead.classList.remove('table-warning'); });
-            panel.querySelectorAll('.fa-plus').forEach(icon => { icon.className = 'bi bi-plus-lg'; });
-            panel.querySelectorAll('input[name="digit"]:not([type="tel"])').forEach(input => { input.type = 'tel'; input.pattern = '[0-9]*'; });
-            panel.querySelectorAll('input[name^="bet"]:not([type="number"])').forEach(input => { input.type = 'number'; input.inputMode = 'numeric'; });
-            panel.querySelectorAll('button[type="reset"].btn-outline-danger').forEach(resetButton => { resetButton.classList.remove('btn-outline-danger'); resetButton.classList.add('btn-danger'); });
+     
+            if (panel.id === 'panel-closed') {
+                panel.classList.add('panel-closed-themed');
+            }
+            panel.querySelectorAll('.table-input thead.table-warning').forEach(thead => {
+                thead.classList.remove('table-warning');
+            });
+            panel.querySelectorAll('.fa-plus').forEach(icon => {
+                icon.className = 'bi bi-plus-lg';
+            });
+            panel.querySelectorAll('input[name="digit"]:not([type="tel"])').forEach(input => {
+                input.type = 'tel';
+                input.pattern = '[0-9]*';
+            });
+            panel.querySelectorAll('input[name^="bet"]:not([type="number"])').forEach(input => {
+                input.type = 'number';
+                input.inputMode = 'numeric';
+            });
+            panel.querySelectorAll('button[type="reset"].btn-outline-danger').forEach(resetButton => {
+                resetButton.classList.remove('btn-outline-danger');
+                resetButton.classList.add('btn-danger');
+            });
             const addRowButton = panel.querySelector('button[onclick="addRow(event)"]');
-            if (addRowButton) addRowButton.classList.remove('btn-outline-primary');
+            if (addRowButton) {
+                addRowButton.classList.remove('btn-outline-primary');
+            }
         });
     }
 
     function styleQuickLogin() {
         const card = document.getElementById('row-quicklogin');
         if (!card) return;
+
+        // Stylisasi Username
         const usernameInput = card.querySelector('#username');
         if (usernameInput && !usernameInput.closest('.input-group')) {
             const group = document.createElement('div');
@@ -369,24 +590,39 @@
             group.innerHTML = '<span class="input-group-text"><i class="bi bi-person-fill"></i></span>';
             usernameInput.placeholder = 'User Name';
             usernameInput.classList.add('form-control');
+            
+            // Bungkus input dengan group
             usernameInput.parentNode.insertBefore(group, usernameInput);
             group.appendChild(usernameInput);
         }
+
+        // Stylisasi Password (Menangani struktur div relative & tombol toggle bawaan)
         const passInput = card.querySelector('#pass');
         const toggleBtn = card.querySelector('#togglePass');
+
         if (passInput && !passInput.closest('.input-group')) {
+            // Cari container relative bawaan HTML
             const oldContainer = passInput.closest('div[style*="position: relative"]');
+
             if (oldContainer) {
                 const newGroup = document.createElement('div');
                 newGroup.className = 'input-group mb-3';
-                newGroup.style.position = 'relative'; 
+                newGroup.style.position = 'relative'; // Agar tombol mata absolute terhadap ini
+
+                // Tambah Icon Kunci
                 const iconSpan = document.createElement('span');
                 iconSpan.className = 'input-group-text';
                 iconSpan.innerHTML = '<i class="bi bi-key-fill"></i>';
+
+                // Setup Input
                 passInput.classList.add('form-control');
                 passInput.placeholder = 'Password';
+                
+                // Susun Group
                 newGroup.appendChild(iconSpan);
                 newGroup.appendChild(passInput);
+
+                // Pindahkan Tombol Mata
                 if (toggleBtn) {
                     toggleBtn.style.position = 'absolute';
                     toggleBtn.style.top = '50%';
@@ -394,19 +630,30 @@
                     toggleBtn.style.transform = 'translateY(-50%)';
                     toggleBtn.style.zIndex = '100';
                     toggleBtn.style.cursor = 'pointer';
+                    
+                    // Ubah warna icon jadi ungu cerah sapatoto
                     const icon = toggleBtn.querySelector('i');
                     if(icon) icon.style.color = '#a855f7';
+                    
                     newGroup.appendChild(toggleBtn);
                 }
+
+                // Ganti container lama dengan group baru
                 oldContainer.replaceWith(newGroup);
             }
         }
+        
         card.dataset.styled = 'true';
     }
     
     function styleLoginPage() {
         const loginForm = document.querySelector('form[action="/login"]');
-        if (!loginForm || loginForm.dataset.customStyled === 'true') return;
+        if (!loginForm) return;
+
+        // Cek flag agar tidak dijalankan berulang
+        if (loginForm.dataset.customStyled === 'true') return;
+
+        // Layout Centering (Opsional, menjaga layout tetap di tengah)
         const loginCard = loginForm.closest('.card.shadow');
         if (loginCard && !loginCard.parentElement.classList.contains('col-lg-6')) {
              try {
@@ -420,6 +667,8 @@
                 newCol.appendChild(loginCard);
              } catch(e){}
         }
+
+        // --- STYLE USERNAME ---
         const usernameInput = loginForm.querySelector('#username');
         if (usernameInput) {
             const oldGroup = usernameInput.closest('.form-group');
@@ -427,24 +676,34 @@
                 const newGroup = document.createElement('div');
                 newGroup.className = 'input-group mb-3';
                 newGroup.innerHTML = '<span class="input-group-text"><i class="bi bi-person-fill"></i></span>';
+                
                 usernameInput.classList.add('form-control');
                 usernameInput.placeholder = 'User Name';
+                
                 oldGroup.replaceWith(newGroup);
                 newGroup.appendChild(usernameInput);
             }
         }
+
+        // --- STYLE PASSWORD (Handling .password-wrapper) ---
         const passInput = loginForm.querySelector('#pass');
         const passWrapper = loginForm.querySelector('.password-wrapper');
         const toggleBtn = loginForm.querySelector('#togglePass');
+
         if (passInput && passWrapper) {
             const newGroup = document.createElement('div');
             newGroup.className = 'input-group mb-3';
             newGroup.style.position = 'relative'; 
             newGroup.innerHTML = '<span class="input-group-text"><i class="bi bi-key-fill"></i></span>';
+            
             passInput.classList.add('form-control');
             passInput.placeholder = 'Password';
+            
+            // Ganti wrapper lama dengan input group baru
             passWrapper.replaceWith(newGroup);
             newGroup.appendChild(passInput);
+
+            // Pindahkan dan style tombol mata
             if (toggleBtn) {
                 toggleBtn.style.position = 'absolute';
                 toggleBtn.style.top = '50%';
@@ -454,9 +713,11 @@
                 toggleBtn.style.cursor = 'pointer';
                 const icon = toggleBtn.querySelector('i');
                 if(icon) icon.style.color = '#a855f7';
+                
                 newGroup.appendChild(toggleBtn);
             }
         }
+
         loginForm.dataset.customStyled = 'true';
     }
     
@@ -464,24 +725,52 @@
         const form = document.querySelector('form[action="/register"]');
         if (!form || form.dataset.styled === 'true') return;
         form.dataset.styled = 'true';
+
+        // --- 0. INJECT CSS KHUSUS VALIDASI (REVISI: TANPA BORDER TEBAL) ---
         const styleId = 'sapatoto-validation-style';
         if (!document.getElementById(styleId)) {
             const style = document.createElement('style');
             style.id = styleId;
             style.innerHTML = `
-                .has-validation-error .invalid-feedback { display: block !important; color: #ff4444 !important; font-size: 0.8em; margin-top: 4px; text-align: left; font-weight: normal; }
-                .form-control.is-invalid { border-color: #ff4444 !important; background-image: none !important; box-shadow: none !important; }
-                .input-group { position: relative; }
+                /* 1. Tampilkan pesan error hanya teks merah kecil di bawah */
+                .has-validation-error .invalid-feedback {
+                    display: block !important;
+                    color: #ff4444 !important; /* Merah cerah */
+                    font-size: 0.8em;
+                    margin-top: 4px;
+                    text-align: left;
+                    font-weight: normal;
+                }
+                
+                /* 2. Border Input saat Error: Tipis saja (1px), jangan tebal */
+                .form-control.is-invalid {
+                    border-color: #ff4444 !important;
+                    background-image: none !important; /* Hapus icon pentung bawaan bootstrap */
+                    box-shadow: none !important; /* Hapus shadow tebal */
+                }
+
+                /* 3. Pastikan Input Group Relative agar Icon Mata terkunci */
+                .input-group {
+                    position: relative;
+                }
             `;
             document.head.appendChild(style);
         }
+
         const card = form.closest('.card.shadow');
         const mainRow = card ? card.querySelector('.row.mb-3') : null;
         const buttonWrapper = card ? card.querySelector('.d-grid.gap-3.mb-3') : null;
+
+        // --- 1. LAYOUT & MERGE KOLOM ---
         if (mainRow) {
-            mainRow.querySelectorAll('.col-lg-6').forEach(col => { col.classList.remove('col-lg-6'); col.classList.add('col-12'); });
+            mainRow.querySelectorAll('.col-lg-6').forEach(col => {
+                col.classList.remove('col-lg-6');
+                col.classList.add('col-12');
+            });
             mainRow.querySelectorAll('h3').forEach(el => el.remove());
         }
+
+        // Center Layout Logic
         if (card && !card.parentElement.classList.contains('col-lg-6')) {
             try {
                 const cardParent = card.parentElement;
@@ -494,58 +783,160 @@
                 newCol.appendChild(card);
             } catch(e) {}
         }
-        if (mainRow && buttonWrapper) { mainRow.before(form); form.append(mainRow); form.append(buttonWrapper); }
-        const fieldConfig = { 'username': { icon: 'bi-person-fill', placeholder: 'User Name' }, 'password': { icon: 'bi-key-fill', placeholder: 'Password' }, 'confirmPassword': { icon: 'bi-shield-check', placeholder: 'Konfirmasi Password' }, 'email': { icon: 'bi-envelope-fill', placeholder: 'Email' }, 'phone': { icon: 'bi-phone-fill', placeholder: 'Nomor HP' }, 'agentbankid': { icon: 'bi-bank', placeholder: 'Pilih Bank' }, 'bankAccountNumber': { icon: 'bi-credit-card-2-front-fill', placeholder: 'Nomor Rekening' }, 'bankaccountname': { icon: 'bi-person-vcard-fill', placeholder: 'Nama di Rekening' }, 'referralcode': { icon: 'bi-people-fill', placeholder: 'Kode Referral / Afiliasi' } };
+
+        if (mainRow && buttonWrapper) {
+            mainRow.before(form);
+            form.append(mainRow);
+            form.append(buttonWrapper);
+        }
+
+        // --- 2. CONFIGURASI FIELD ---
+        const fieldConfig = {
+            'username': { icon: 'bi-person-fill', placeholder: 'User Name' },
+            'password': { icon: 'bi-key-fill', placeholder: 'Password' },
+            'confirmPassword': { icon: 'bi-shield-check', placeholder: 'Konfirmasi Password' },
+            'email': { icon: 'bi-envelope-fill', placeholder: 'Email' },
+            'phone': { icon: 'bi-phone-fill', placeholder: 'Nomor HP' },
+            'agentbankid': { icon: 'bi-bank', placeholder: 'Pilih Bank' },
+            'bankAccountNumber': { icon: 'bi-credit-card-2-front-fill', placeholder: 'Nomor Rekening' },
+            'bankaccountname': { icon: 'bi-person-vcard-fill', placeholder: 'Nama di Rekening' },
+            'referralcode': { icon: 'bi-people-fill', placeholder: 'Kode Referral / Afiliasi' }
+        };
+
+        // --- 3. EKSEKUSI STYLING ---
         Object.keys(fieldConfig).forEach(id => {
             const input = form.querySelector(`#${id}`);
             if (!input) return;
+
             const config = fieldConfig[id];
+            
+            // Container asli (penampung invalid-feedback)
             const originalContainer = input.closest('.form-group') || input.closest('.mb-3');
+
+            // Set Placeholder
             if (input.tagName === 'SELECT') {
                 input.classList.add('form-select');
                 let defaultOption = input.querySelector('option[value=""]');
-                if (defaultOption) { defaultOption.textContent = config.placeholder; } else { defaultOption = document.createElement('option'); defaultOption.value = ""; defaultOption.textContent = config.placeholder; defaultOption.disabled = true; defaultOption.selected = true; input.prepend(defaultOption); input.value = ""; }
-            } else { input.classList.add('form-control'); input.placeholder = config.placeholder; }
+                if (defaultOption) {
+                    defaultOption.textContent = config.placeholder;
+                } else {
+                    defaultOption = document.createElement('option');
+                    defaultOption.value = "";
+                    defaultOption.textContent = config.placeholder;
+                    defaultOption.disabled = true;
+                    defaultOption.selected = true;
+                    input.prepend(defaultOption);
+                    input.value = "";
+                }
+            } else {
+                input.classList.add('form-control');
+                input.placeholder = config.placeholder;
+            }
+
+            // --- LOGIKA PEMBUATAN INPUT GROUP ---
+            // Cek apakah sudah ada input-group
             let inputGroup = input.closest('.input-group');
+            
             if (!inputGroup) {
+                // Buat wrapper baru
                 inputGroup = document.createElement('div');
-                inputGroup.className = 'input-group mb-0'; 
+                inputGroup.className = 'input-group mb-0'; // mb-0 agar error msg nempel rapi
+                
                 const iconSpan = document.createElement('span');
                 iconSpan.className = 'input-group-text';
                 iconSpan.innerHTML = `<i class="bi ${config.icon}"></i>`;
+                
                 inputGroup.appendChild(iconSpan);
                 inputGroup.appendChild(input);
+
+                // Masukkan kembali ke DOM
                 if (originalContainer) {
                     const lbl = originalContainer.querySelector('label');
                     if(lbl) lbl.style.display = 'none';
+
+                    // Insert sebelum invalid-feedback agar struktur: Group -> Error
                     const feedback = originalContainer.querySelector('.invalid-feedback');
-                    if(feedback) { originalContainer.insertBefore(inputGroup, feedback); } else { originalContainer.appendChild(inputGroup); }
+                    if(feedback) {
+                        originalContainer.insertBefore(inputGroup, feedback);
+                    } else {
+                        originalContainer.appendChild(inputGroup);
+                    }
                 }
-            } else { const icon = inputGroup.querySelector('.input-group-text i'); if(icon) icon.className = `bi ${config.icon}`; }
+            } else {
+                // Update icon saja jika re-run
+                const icon = inputGroup.querySelector('.input-group-text i');
+                if(icon) icon.className = `bi ${config.icon}`;
+            }
         });
+
+        // --- 4. FIX POSISI TOMBOL MATA (SOLUSI ABSOLUT KE INPUT GROUP) ---
+        // Kode ini WAJIB ADA agar tombol mata bawaan masuk ke dalam kolom input
         const toggles = form.querySelectorAll('span[id^="toggle"]');
         toggles.forEach(toggle => {
-            let targetInput = toggle.id.toLowerCase().includes('confirm') ? form.querySelector('#confirmPassword') : form.querySelector('#password');
+            let targetInput = null;
+            // Deteksi apakah ini tombol untuk password biasa atau konfirmasi
+            if (toggle.id.toLowerCase().includes('confirm')) {
+                targetInput = form.querySelector('#confirmPassword');
+            } else {
+                targetInput = form.querySelector('#password');
+            }
+
             if (targetInput) {
                 const group = targetInput.closest('.input-group');
                 if (group) {
+                    // PINDAHKAN tombol bawaan ke dalam group input yang baru
                     group.appendChild(toggle);
-                    toggle.style.position = 'absolute'; toggle.style.right = '15px'; toggle.style.top = '50%'; toggle.style.transform = 'translateY(-50%)'; toggle.style.zIndex = '10'; toggle.style.cursor = 'pointer'; toggle.style.display = 'block'; 
+                    
+                    // Atur posisi agar rapi di sebelah kanan
+                    toggle.style.position = 'absolute';
+                    toggle.style.right = '15px';
+                    toggle.style.top = '50%';
+                    toggle.style.transform = 'translateY(-50%)';
+                    toggle.style.zIndex = '10';
+                    toggle.style.cursor = 'pointer';
+                    toggle.style.display = 'block'; 
+
+                    // Mengubah warna jadi ungu cerah sapatoto agar terlihat jelas di background gelap
                     const eyeIcon = toggle.querySelector('i');
-                    if(eyeIcon) eyeIcon.style.color = '#a855f7'; 
+                    if(eyeIcon) {
+                        eyeIcon.style.color = '#a855f7'; 
+                    }
                 }
             }
         });
+        
+        // --- 5. VALIDATION WATCHER (Tanpa Border Tebal) ---
         setInterval(() => {
             const allInputs = form.querySelectorAll('input, select');
             allInputs.forEach(input => {
                 const container = input.closest('.form-group') || input.closest('.mb-3');
+                
                 if (!container) return;
-                input.classList.contains('is-invalid') ? container.classList.add('has-validation-error') : container.classList.remove('has-validation-error');
+
+                const isInvalid = input.classList.contains('is-invalid');
+                
+                if (isInvalid) {
+                    // Trigger text error muncul
+                    container.classList.add('has-validation-error');
+                    // KITA HAPUS logic penambahan border tebal di sini
+                } else {
+                    container.classList.remove('has-validation-error');
+                }
             });
         }, 500);
+
+        // Re-order Layout Akhir
         const fieldOrder = Object.keys(fieldConfig);
-        fieldOrder.forEach(id => { const el = form.querySelector(`#${id}`); if(el) { const group = el.closest('.form-group') || el.closest('.mb-3'); const btnContainer = form.querySelector('.d-grid'); if(group && btnContainer) { form.insertBefore(group, btnContainer); } } });
+        fieldOrder.forEach(id => {
+            const el = form.querySelector(`#${id}`);
+            if(el) {
+                const group = el.closest('.form-group') || el.closest('.mb-3');
+                const btnContainer = form.querySelector('.d-grid');
+                if(group && btnContainer) {
+                    form.insertBefore(group, btnContainer);
+                }
+            }
+        });
     }
     
     function styleProfilePage() {
@@ -598,72 +989,130 @@
         const form = document.querySelector('form[action="/change-password"]');
         if (!form || form.dataset.styled === 'true') return;
         form.dataset.styled = 'true';
-        const iconMapping = { 'currentpassword': 'bi-key-fill', 'password': 'bi-shield-lock-fill', 'confirmpassword': 'bi-shield-check' };
+
+        const iconMapping = {
+            'currentpassword': 'bi-key-fill',
+            'password': 'bi-shield-lock-fill',
+            'confirmpassword': 'bi-shield-check'
+        };
+
         form.querySelectorAll('.form-group').forEach(group => {
             const label = group.querySelector('label');
             const input = group.querySelector('input');
             if (!label || !input) return;
+
             const iconClass = iconMapping[input.id];
             if (!iconClass) return;
+            
             const placeholderText = label.textContent.trim();
+            
             const inputGroup = document.createElement('div');
             inputGroup.className = 'input-group mb-3';
+            
             const iconSpan = document.createElement('span');
             iconSpan.className = 'input-group-text';
             iconSpan.innerHTML = `<i class="bi ${iconClass}"></i>`;
+
             input.placeholder = placeholderText;
             inputGroup.appendChild(iconSpan);
             inputGroup.appendChild(input.cloneNode(true));
+
             const wrapper = document.createElement('div');
             wrapper.className = 'input-wrapper';
             wrapper.appendChild(inputGroup);
+
             group.replaceWith(wrapper);
+            
+            const newPasswordInput = wrapper.querySelector('input');
         });
     }
-
     function stylePagePadding() {
+        // Cari judul halaman "Deposit", "Withdraw", ATAU "Result Togel"
         const depositTitle = Array.from(document.querySelectorAll('h1.text-center')).find(h1 => h1.textContent.trim() === 'Deposit');
         const withdrawTitle = Array.from(document.querySelectorAll('h1.text-center')).find(h1 => h1.textContent.trim() === 'Withdraw');
         const resultTitle = Array.from(document.querySelectorAll('#maincontent h3')).find(h3 => h3.textContent.trim() === 'Result Togel');
+        
         const title = depositTitle || withdrawTitle || resultTitle;
+        
         if (title) {
+            // --- SELEKTOR DIPERBARUI & PADDING DITAMBAH ---
+            // Mencari kolom terluar (col-lg-6, col-lg-6 col-xl-4, dll)
             const mainColumn = title.closest('[class*="col-lg-"]');
-            if (mainColumn && !mainColumn.dataset.colPadded) { mainColumn.style.padding = '0 12px'; mainColumn.dataset.colPadded = 'true'; }
+            
+            if (mainColumn && !mainColumn.dataset.colPadded) {
+                // Beri padding L/R 12px
+                mainColumn.style.padding = '0 12px'; 
+                mainColumn.dataset.colPadded = 'true';
+            }
         }
     }
-
     function styleDepositFormFields(depositForm) {
         if (!depositForm) return;
+
+        // --- REQUEST (LAMA): Menambahkan padding p-3 ke wrapper ---
         const contentWrapper = depositForm.parentElement;
         if (contentWrapper && contentWrapper.classList.contains('border-top-0') && !contentWrapper.dataset.padded) {
-            contentWrapper.classList.remove('p-2'); contentWrapper.classList.add('p-3'); contentWrapper.dataset.padded = 'true';
+            contentWrapper.classList.remove('p-2'); 
+            contentWrapper.classList.add('p-3');    
+            contentWrapper.dataset.padded = 'true';
         }
+
+        // --- REQUEST 1 (DIUBAH): Style "Akun Bank" ---
         const agentBankSelect = depositForm.querySelector('#agentmemberbankid');
         const currentWrapper = agentBankSelect ? agentBankSelect.closest('.form-group, .profile-row') : null;
+
         if (agentBankSelect && currentWrapper && !agentBankSelect.dataset.styledAsInputGroup) {
+            
             const originalLabel = document.querySelector('label[for="agentmemberbankid"]'); 
             const labelIcon = originalLabel ? originalLabel.querySelector('i.bi') : null;
+
             const newInputGroup = document.createElement('div');
             newInputGroup.className = 'input-group mb-3';
             newInputGroup.setAttribute('bis_skin_checked', '1');
+
             const labelSpan = document.createElement('span');
             labelSpan.className = 'input-group-text';
-            if (labelIcon) { labelSpan.appendChild(labelIcon.cloneNode(true)); } else { labelSpan.innerHTML = '<i class="bi bi-wallet2"></i>'; }
+            
+            if (labelIcon) {
+                labelSpan.appendChild(labelIcon.cloneNode(true));
+            } else {
+                labelSpan.innerHTML = '<i class="bi bi-wallet2"></i>'; // Fallback
+            }
+            
+            // --- REQUEST 1 (DIPERBAIKI): Menambahkan spasi label ---
+            // Menggunakan TextNode \u00A0 (non-breaking space) adalah cara paling aman
             labelSpan.appendChild(document.createTextNode('\u00A0Akun Saya')); 
-            agentBankSelect.style.backgroundColor = ''; agentBankSelect.style.border = ''; agentBankSelect.style.color = ''; agentBankSelect.style.marginTop = '';
-            newInputGroup.appendChild(labelSpan); newInputGroup.appendChild(agentBankSelect); 
+
+            agentBankSelect.style.backgroundColor = '';
+            agentBankSelect.style.border = '';
+            agentBankSelect.style.color = '';
+            agentBankSelect.style.marginTop = '';
+            
+            newInputGroup.appendChild(labelSpan);
+            newInputGroup.appendChild(agentBankSelect); 
+
             currentWrapper.replaceWith(newInputGroup); 
             agentBankSelect.dataset.styledAsInputGroup = 'true'; 
             if (agentBankSelect.dataset.styled) delete agentBankSelect.dataset.styled;
         }
+
+        // --- REQUEST 1 (LAMA): Memperpendek teks opsi dropdown ---
         if (agentBankSelect && !agentBankSelect.dataset.optionsShortened) {
             const options = agentBankSelect.querySelectorAll('option');
             options.forEach(option => {
-                const originalText = option.textContent; const parts = originalText.split(' - '); 
-                if (parts.length === 3) { option.textContent = `${parts[0].trim()} - ${parts[2].trim()}`; }
+                const originalText = option.textContent;
+                const parts = originalText.split(' - '); 
+                if (parts.length === 3) {
+                    const bank = parts[0].trim();
+                    const number = parts[2].trim();
+                    option.textContent = `${bank} - ${number}`; 
+                }
             });
             agentBankSelect.dataset.optionsShortened = 'true';
         }
+
+
+        // --- REQUEST 2 (LAMA): Style "Jumlah" (Biarkan, sudah benar) ---
         const amountInput = depositForm.querySelector('#amount');
         if (amountInput && !amountInput.dataset.styled) {
             const amountGroup = amountInput.closest('.form-group');
@@ -671,43 +1120,75 @@
                 const label = amountGroup.querySelector('label.form-label');
                 const labelIcon = label ? label.querySelector('i.bi') : null;
                 const placeholderText = label ? label.textContent.trim() : 'Jumlah';
+
                 const newInputGroup = document.createElement('div');
                 newInputGroup.className = 'input-group mb-3';
                 newInputGroup.setAttribute('bis_skin_checked', '1');
+
                 const iconSpan = document.createElement('span');
                 iconSpan.className = 'input-group-text';
-                if (labelIcon) { iconSpan.appendChild(labelIcon.cloneNode(true)); } else { iconSpan.innerHTML = '<i class="bi bi-cash-coin"></i>'; }
+                if (labelIcon) {
+                    iconSpan.appendChild(labelIcon.cloneNode(true));
+                } else {
+                    iconSpan.innerHTML = '<i class="bi bi-cash-coin"></i>'; // Fallback
+                }
+                
                 amountInput.placeholder = placeholderText; 
-                newInputGroup.appendChild(iconSpan); newInputGroup.appendChild(amountInput); 
+                
+                newInputGroup.appendChild(iconSpan);
+                newInputGroup.appendChild(amountInput); 
+
                 amountGroup.replaceWith(newInputGroup); 
                 amountInput.dataset.styled = 'true'; 
             }
         }
+
+        // --- REQUEST 3 (DIUBAH): Style "Kode Promo" ---
         const promoInput = depositForm.querySelector('#promocode');
         if (promoInput && !promoInput.dataset.styled) {
             const promoGroup = promoInput.closest('.form-group');
             if (promoGroup) {
                 const label = promoGroup.querySelector('label.form-label');
                 const labelIcon = label ? label.querySelector('i.bi') : null;
+
                 const newInputGroup = document.createElement('div');
-                newInputGroup.className = 'input-group'; 
+                newInputGroup.className = 'input-group'; // Hapus mb-3, akan di-handle wrapper
                 newInputGroup.setAttribute('bis_skin_checked', '1');
+                
                 const iconSpan = document.createElement('span');
                 iconSpan.className = 'input-group-text';
-                if (labelIcon) { iconSpan.appendChild(labelIcon.cloneNode(true)); } else { iconSpan.innerHTML = '<i class="bi bi-tag-fill"></i>'; }
+                if (labelIcon) {
+                    iconSpan.appendChild(labelIcon.cloneNode(true));
+                } else {
+                    iconSpan.innerHTML = '<i class="bi bi-tag-fill"></i>'; // Fallback
+                }
+                
+                // (BARU) Buat wrapper untuk clear button
                 const wrapper = document.createElement('div');
-                wrapper.className = 'promo-input-wrapper mb-3'; 
+                wrapper.className = 'promo-input-wrapper mb-3'; // position: relative
+
                 promoInput.placeholder = "Pilih promo yang tersedia";
-                promoInput.dataset.clearable = 'true'; 
-                newInputGroup.appendChild(iconSpan); newInputGroup.appendChild(promoInput);
+                promoInput.dataset.clearable = 'true'; // Tandai input ini
+                
+                newInputGroup.appendChild(iconSpan);
+                newInputGroup.appendChild(promoInput);
+                
+                // (BARU) Buat clear button
                 const clearBtn = document.createElement('i');
                 clearBtn.className = 'bi bi-x-circle-fill promo-clear-btn';
-                clearBtn.id = 'promo-clear-btn-instance'; 
-                wrapper.appendChild(newInputGroup); wrapper.appendChild(clearBtn);
-                promoGroup.replaceWith(wrapper); 
-                promoInput.dataset.styled = 'true'; 
+                clearBtn.id = 'promo-clear-btn-instance'; // Beri ID unik
+                
+                wrapper.appendChild(newInputGroup);
+                // **KESALAHAN TELAH DIHAPUS DARI SINI**
+                wrapper.appendChild(clearBtn);
+
+                promoGroup.replaceWith(wrapper); // Ganti form-group lama
+                promoInput.dataset.styled = 'true'; // Tandai selesai
             }
         }
+
+
+        // --- REQUEST 4 (LAMA): Style "Pilihan Promo" (Biarkan, sudah benar) ---
         const promoButtonContainer = depositForm.querySelector('.row.g-2.mb-3');
         if (promoButtonContainer && !promoButtonContainer.dataset.styled) {
             const purpleButtons = promoButtonContainer.querySelectorAll('button.promo-button.btn-purple-moon');
@@ -717,90 +1198,182 @@
                     newPromoBox.className = 'promo-choice-box';
                     newPromoBox.dataset.code = button.dataset.code; 
                     newPromoBox.innerHTML = button.innerHTML; 
+                    
                     const column = button.closest('.d-grid')?.parentElement;
-                    if (column) { column.innerHTML = ''; column.appendChild(newPromoBox); }
+                    if (column) {
+                        column.innerHTML = ''; 
+                        column.appendChild(newPromoBox); 
+                    }
                 });
                 promoButtonContainer.dataset.styled = 'true'; 
             }
         }
     }
-
     function initializePromoSelection() {
         const promoBoxes = document.querySelectorAll('.promo-choice-box');
         const promoInput = document.getElementById('promocode');
-        const clearBtn = document.getElementById('promo-clear-btn-instance'); 
+        const clearBtn = document.getElementById('promo-clear-btn-instance'); // Ambil tombol X
+
+        // Jika salah satu elemen tidak ada, jangan jalankan
         if (!promoBoxes.length || !promoInput || !clearBtn) return;
-        const updateClearButton = () => { promoInput.value ? clearBtn.classList.add('visible') : clearBtn.classList.remove('visible'); };
-        const clearPromo = () => { promoInput.value = ''; promoBoxes.forEach(box => box.classList.remove('selected')); updateClearButton(); };
-        if (!clearBtn.dataset.promoInitialized) { clearBtn.addEventListener('click', clearPromo); clearBtn.dataset.promoInitialized = 'true'; }
+
+        // Fungsi untuk update status tombol X
+        const updateClearButton = () => {
+            if (promoInput.value) {
+                clearBtn.classList.add('visible');
+            } else {
+                clearBtn.classList.remove('visible');
+            }
+        };
+
+        // Fungsi untuk clear promo
+        const clearPromo = () => {
+            promoInput.value = '';
+            promoBoxes.forEach(box => box.classList.remove('selected'));
+            updateClearButton();
+        };
+
+        // Event listener untuk tombol X (pastikan hanya ditambah sekali)
+        if (!clearBtn.dataset.promoInitialized) {
+            clearBtn.addEventListener('click', clearPromo);
+            clearBtn.dataset.promoInitialized = 'true';
+        }
+
+        // Event listener untuk promo box (pastikan hanya ditambah sekali)
         promoBoxes.forEach(function(box) {
-            if (box.dataset.promoInitialized === 'true') { return; }
+            if (box.dataset.promoInitialized === 'true') {
+                return; 
+            }
             box.dataset.promoInitialized = 'true'; 
+
             box.addEventListener('click', function() {
                 const selectedCode = box.getAttribute('data-code');
-                if (box.classList.contains('selected')) { clearPromo(); } else {
+                
+                if (box.classList.contains('selected')) {
+                    // Jika klik yg aktif, clear
+                    clearPromo(); 
+                } else {
+                    // Jika klik yg baru
                     promoBoxes.forEach(b => b.classList.remove('selected'));
-                    box.classList.add('selected'); promoInput.value = selectedCode; updateClearButton();
+                    box.classList.add('selected');
+                    promoInput.value = selectedCode;
+                    updateClearButton();
                 }
             });
         });
+
+        // Cek status awal saat load (jika halaman refresh & value tersimpan)
         updateClearButton();
     }
-
     function styleWithdrawPage() {
+        // Target form utama
         const withdrawForm = document.querySelector('#withdraw-form');
-        if (!withdrawForm || withdrawForm.dataset.styled === 'true') { return; }
+        if (!withdrawForm || withdrawForm.dataset.styled === 'true') {
+            return; // Berhenti jika tidak ada atau sudah di-style
+        }
+
+        // --- REQ 2 (Inner Spacing) ---
         const card = withdrawForm.closest('.card.p-1');
-        if (card) { card.classList.remove('p-1'); card.classList.add('p-3'); }
+        if (card) {
+            card.classList.remove('p-1');
+            card.classList.add('p-3'); // Ganti padding dalam
+        }
+
+        // --- REQ 3 (Bank Column) ---
         const bankSelect = withdrawForm.querySelector('#agentmemberbankid');
         const bankGroup = bankSelect ? bankSelect.closest('.form-group') : null;
+        
         if (bankSelect && bankGroup) {
             const label = bankGroup.querySelector('label.form-label');
             const labelIcon = label ? label.querySelector('i.bi') : null;
+            const labelText = label ? label.textContent.trim() : 'Bank / e-Wallet';
+
             const newBankGroup = document.createElement('div');
             newBankGroup.className = 'input-group mb-3';
+            
             const newBankSpan = document.createElement('span');
             newBankSpan.className = 'input-group-text';
-            if (labelIcon) { newBankSpan.appendChild(labelIcon.cloneNode(true)); } else { newBankSpan.innerHTML = '<i class="bi bi-wallet2"></i>'; }
-            newBankSpan.appendChild(document.createTextNode('\u00A0Akun Saya')); 
-            newBankGroup.appendChild(newBankSpan); newBankGroup.appendChild(bankSelect); 
-            bankGroup.replaceWith(newBankGroup);  
+            
+            if (labelIcon) {
+                newBankSpan.appendChild(labelIcon.cloneNode(true));
+            } else {
+                newBankSpan.innerHTML = '<i class="bi bi-wallet2"></i>'; // Fallback
+            }
+            newBankSpan.appendChild(document.createTextNode('\u00A0Akun Saya')); // Teks baru: "Akun Saya"
+            
+            newBankGroup.appendChild(newBankSpan);
+            newBankGroup.appendChild(bankSelect); // Pindahkan select
+            bankGroup.replaceWith(newBankGroup);  // Ganti
+
+            // --- REQ 4 (Shorten Options) ---
             const options = bankSelect.querySelectorAll('option');
             options.forEach(option => {
                 const originalText = option.textContent;
+                // Format: "BCA - Sapa Toto - 1440387555"
                 const parts = originalText.split(' - '); 
-                if (parts.length === 3) { option.textContent = `${parts[0].trim()} - ${parts[2].trim()}`; }
+                if (parts.length === 3) {
+                    option.textContent = `${parts[0].trim()} - ${parts[2].trim()}`; 
+                }
             });
         }
+
+        // --- REQ 3 (Jumlah Column) ---
         const amountInput = withdrawForm.querySelector('#amount');
         const amountGroup = amountInput ? amountInput.closest('.form-group') : null;
+        
         if (amountInput && amountGroup) {
             const label = amountGroup.querySelector('label.form-label');
             const labelIcon = label ? label.querySelector('i.bi') : null;
             const placeholderText = label ? label.textContent.trim() : 'Jumlah IDR';
+
             const newAmountGroup = document.createElement('div');
             newAmountGroup.className = 'input-group mb-3';
+            
             const newAmountSpan = document.createElement('span');
             newAmountSpan.className = 'input-group-text';
-            if (labelIcon) { newAmountSpan.appendChild(labelIcon.cloneNode(true)); } else { newAmountSpan.innerHTML = '<i class="bi bi-cash-coin"></i>'; }
-            newAmountGroup.appendChild(newAmountSpan); amountInput.placeholder = placeholderText; 
-            newAmountGroup.appendChild(amountInput); amountGroup.replaceWith(newAmountGroup); 
+            
+            if (labelIcon) {
+                newAmountSpan.appendChild(labelIcon.cloneNode(true));
+            } else {
+                newAmountSpan.innerHTML = '<i class="bi bi-cash-coin"></i>'; // Fallback
+            }
+            
+            newAmountGroup.appendChild(newAmountSpan);
+            amountInput.placeholder = placeholderText; // Set placeholder
+            newAmountGroup.appendChild(amountInput); // Pindahkan input
+            amountGroup.replaceWith(newAmountGroup); // Ganti
         }
-        withdrawForm.dataset.styled = 'true'; 
+        
+        withdrawForm.dataset.styled = 'true'; // Tandai selesai
     }
-
     function styleResultPage() {
+        // Target judul "Result Togel"
         const title = Array.from(document.querySelectorAll('#maincontent h3')).find(h => h.textContent.trim() === 'Result Togel');
-        if (!title) return; 
+        if (!title) return; // Berhenti jika bukan halaman Result
+
+        // Target <div class="mb-5"> yang berisi dropdown, link, dan tombol
         const mainContainer = title.parentElement.nextElementSibling; 
-        if (!mainContainer || !mainContainer.classList.contains('mb-5') || mainContainer.dataset.styled === 'true') { return; }
+        
+        if (!mainContainer || !mainContainer.classList.contains('mb-5') || mainContainer.dataset.styled === 'true') {
+            return; // Berhenti jika tidak ada, atau sudah di-style
+        }
+
         const oldSelect = mainContainer.querySelector('select[name="m"]');
-        if (!oldSelect) return; 
+        if (!oldSelect) return; // Perlu select untuk lanjut
+        
+        // 1. Cek apakah elemen opsional (link dan tombol) ada
         const urlLink = mainContainer.querySelector('a[target="_blank"]');
         const scheduleBtn = mainContainer.querySelector('button[data-bs-target="#scheduleModal"]');
         const modal = document.querySelector('#scheduleModal');
-        mainContainer.classList.remove('mb-5'); mainContainer.classList.add('mb-3');
+
+        // 2. Kurangi margin (ini aman dilakukan di kedua kasus)
+        mainContainer.classList.remove('mb-5');
+        mainContainer.classList.add('mb-3');
+
+        // 3. JIKA KASUS NORMAL (Ada link dan tombol)
         if (urlLink && scheduleBtn && modal) {
+            
+            // Ekstrak info dari modal
             const modalBody = modal.querySelector('.modal-body');
             const allTextNodes = modalBody ? Array.from(modalBody.querySelectorAll('.card-body > *')) : [];
             const tutupEl = allTextNodes.find(el => el.textContent.includes('Tutup:'));
@@ -809,67 +1382,136 @@
             const tutup = tutupEl ? tutupEl.textContent.trim() : 'Tutup: -';
             const hasil = hasilEl ? hasilEl.textContent.trim() : 'Hasil: -';
             const hariText = hariEl ? hariEl.textContent.replace('Hari Aktif:', '').trim() : '-';
+            
+            // Buat Input Group (Dropdown + Tombol)
             const newGroup = document.createElement('div');
             newGroup.className = 'input-group mb-3';
-            oldSelect.className = 'form-select'; oldSelect.style = ''; 
+            oldSelect.className = 'form-select'; 
+            oldSelect.style = ''; 
+
+            // --- BARIS DIPERBAIKI (MENGGUNAKAN !important) ---
             oldSelect.style.setProperty('border-color', '#a855f7', 'important');
+            
             const newBtn = document.createElement('a');
-            newBtn.className = 'btn btn-secondary'; newBtn.target = '_blank'; newBtn.href = urlLink.href; 
+            newBtn.className = 'btn btn-secondary'; 
+            newBtn.target = '_blank';
+            newBtn.href = urlLink.href; 
             newBtn.innerHTML = 'Website <i class="bi bi-arrow-up-right-square"></i>';
+            
+            // Buat kotak info jadwal
             const scheduleBox = document.createElement('div');
             scheduleBox.className = 'alert alert-primary p-2';
             scheduleBox.style.alignItems = 'center';
-            scheduleBox.innerHTML = `<strong style="color: #fff; font-size: 0.9em; display: block; text-align: center; margin-bottom: 5px;">${hariText}</strong><div style="font-size: 0.9em; text-align: center; border-top: 1px solid #34495e; padding-top: 5px;"><span>${tutup}</span> &nbsp;&nbsp;|&nbsp;&nbsp; <span>${hasil}</span></div>`;
-            newGroup.appendChild(oldSelect); newGroup.appendChild(newBtn);    
-            mainContainer.innerHTML = ''; mainContainer.appendChild(newGroup); mainContainer.appendChild(scheduleBox); modal.remove();
+            scheduleBox.innerHTML = `
+                <strong style="color: #fff; font-size: 0.9em; display: block; text-align: center; margin-bottom: 5px;">
+                    ${hariText}
+                </strong>
+                <div style="font-size: 0.9em; text-align: center; border-top: 1px solid #34495e; padding-top: 5px;">
+                    <span>${tutup}</span> &nbsp;&nbsp;|&nbsp;&nbsp; <span>${hasil}</span>
+                </div>
+            `;
+
+            // Susun ulang
+            newGroup.appendChild(oldSelect); 
+            newGroup.appendChild(newBtn);    
+            mainContainer.innerHTML = '';       
+            mainContainer.appendChild(newGroup); 
+            mainContainer.appendChild(scheduleBox); 
+            modal.remove();
+
+        // 4. JIKA KASUS "SEMUA" (Tidak ada link/tombol)
         } else {
+            // Kita hanya perlu men-style dropdown-nya saja
+            
+            // --- BARIS DIPERBAIKI (MENGGUNAKAN !important) ---
             oldSelect.style.setProperty('border-color', '#a855f7', 'important');
-            oldSelect.style.width = '100%'; 
+            oldSelect.style.width = '100%'; // Buat jadi full width
+            
+            // Hapus elemen-elemen kosong yang tidak perlu
             if (urlLink) urlLink.parentElement.remove();
             if (scheduleBtn) scheduleBtn.parentElement.remove();
         }
-        mainContainer.dataset.styled = 'true'; 
+        
+        mainContainer.dataset.styled = 'true'; // Tandai selesai
     }
-
     function styleResultTableHighlight() {
         const resultTitle = Array.from(document.querySelectorAll('#maincontent h3')).find(h => h.textContent.trim() === 'Result Togel');
-        if (!resultTitle) { return; }
+        if (!resultTitle) {
+            return; 
+        }
         const tableBody = document.querySelector('#maincontent .table-bordered tbody');
-        if (!tableBody || !tableBody.firstElementChild) return; 
+        if (!tableBody || !tableBody.firstElementChild) return; // Berhenti jika tabel/baris tidak ada
+
+        // Cek Halaman 1 (untuk sorot kuning/ungu)
         const activePageLink = document.querySelector('.pagination .page-item.active a');
         let isPageOne = false;
-        if (activePageLink) { if (activePageLink.textContent.trim() === '1') isPageOne = true; } else { isPageOne = true; }
+        if (activePageLink) {
+            if (activePageLink.textContent.trim() === '1') isPageOne = true;
+        } else {
+            isPageOne = true; // Anggap halaman 1 jika tidak ada pagination
+        }
+
+        // Ambil SEMUA baris
         const allRows = tableBody.querySelectorAll('tr');
+
+        // Opsi format hari
         const dayOptions = { weekday: 'long' };
-        const locale = 'id-ID'; 
+        const locale = 'id-ID'; // Bahasa Indonesia
+
         allRows.forEach((row, index) => {
             const dateCell = row.querySelector('td:first-child');
             if (!dateCell) return;
+
+            // --- FUNGSI 1: Format Tanggal (REQ BARU) ---
             const originalDateStr = dateCell.textContent.trim();
+            
+            // Cek jika sudah diformat (agar observer tidak menambah "Minggu, Minggu,")
             if (dateCell.dataset.dateFormatted !== 'true') {
+                // Format: "26-10-2025"
                 const parts = originalDateStr.split('-');
                 if (parts.length === 3) {
+                    // parts[2] = YYYY, parts[1] = MM (1-based), parts[0] = DD
+                    // new Date(YYYY, MM-1, DD)
                     try {
                         const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
                         const dayName = dateObj.toLocaleDateString(locale, dayOptions);
+                        
+                        // Gabungkan: "Minggu, 26-10-2025"
                         dateCell.textContent = `${dayName}, ${originalDateStr}`;
-                        dateCell.dataset.dateFormatted = 'true'; 
-                    } catch (e) { console.error("SapatotoTheme Error (Parsing Date):", e); }
+                        dateCell.dataset.dateFormatted = 'true'; // Tandai sudah diformat
+                    } catch (e) {
+                        console.error("SapatotoTheme Error (Parsing Date):", e);
+                        // Jika error, biarkan tanggal aslinya
+                    }
                 }
             }
-            row.style.color = ''; row.style.fontWeight = '';
-            if (index === 0 && isPageOne) { row.style.color = '#a855f7'; row.style.fontWeight = 'bold'; }
+            // --- AKHIR FUNGSI TANGGAL ---
+            
+            // --- FUNGSI 2: Sorot Baris ---
+            // Selalu reset style-nya dulu (penting saat pindah ke Halaman 2, 3, dst.)
+            row.style.color = '';
+            row.style.fontWeight = '';
+
+            // Terapkan style HANYA jika ini baris pertama (index 0) DAN di Halaman 1
+            if (index === 0 && isPageOne) {
+                row.style.color = '#a855f7';
+                row.style.fontWeight = 'bold';
+            }
+            // --- AKHIR FUNGSI SOROT ---
         });
     }
-
     function styleLogoutButton() {
         const profileFormLogout = document.querySelector('form a[href="/logout"]');
         if (profileFormLogout && !profileFormLogout.dataset.styled) {
-             profileFormLogout.classList.remove('btn-outline-primary'); profileFormLogout.classList.add('btn-danger'); profileFormLogout.dataset.styled = 'true';
+             profileFormLogout.classList.remove('btn-outline-primary');
+             profileFormLogout.classList.add('btn-danger');
+             profileFormLogout.dataset.styled = 'true';
         }
         const sidebarLogout = document.querySelector('#sidebar a[href*="logout"]');
         if (sidebarLogout && !sidebarLogout.dataset.styled) {
-            sidebarLogout.classList.remove('nav-link'); sidebarLogout.classList.add('btn', 'btn-danger', 'mx-3', 'my-2'); sidebarLogout.dataset.styled = 'true';
+            sidebarLogout.classList.remove('nav-link');
+            sidebarLogout.classList.add('btn', 'btn-danger', 'mx-3', 'my-2');
+            sidebarLogout.dataset.styled = 'true';
         }
     }
 
@@ -879,21 +1521,10 @@
             modalTitle.innerHTML = `<i class="bi bi-patch-check-fill"></i> ${modalTitle.textContent}`;
         }
     }
-    
-    // [FUNGSI BARU] Memaksa tombol promosi berubah menjadi biru cerah
-    function stylePromosiGamingButton() {
-        const buttons = document.querySelectorAll('a, button');
-        buttons.forEach(btn => {
-            if (btn.textContent.trim().toUpperCase() === 'PROMOSI' || btn.textContent.trim().toUpperCase() === 'PROMO') {
-                btn.classList.add('btn-gaming-promo');
-                // Paksa hapus warna bawaan jika ada
-                btn.classList.remove('btn-danger', 'btn-primary', 'btn-secondary', 'btn-outline-danger');
-            }
-        });
-    }
 
-    // [MODIFIKASI] Ini sekarang adalah fungsi pemindai utama kita
+// [MODIFIKASI] Ini sekarang adalah fungsi pemindai utama kita
     function runDynamicStyling() {
+        // --- JALANKAN SEMUA FUNGSI STYLING ANDA ---
         initializeSwipeableHeaderMenu();
         updateProfileElements();
         addSidebarBalanceToggle();
@@ -914,10 +1545,11 @@
         styleWithdrawPage();
         styleResultPage();
         styleResultTableHighlight();
+        // hidePageOnePagination(); // <-- DIHAPUS
         styleWithdrawForm();
         styleRtpModal();
         styleConfirmationModal(); 
-        initializeBetFormatting(); 
+        initializeBetFormatting(); // Fungsi Anda akan berjalan dengan aman
         
         styleBettingPage(); 
         styleQuickLogin();
@@ -926,20 +1558,19 @@
         styleProfilePage();
         styleLogoutButton();
         styleChangePasswordPage();
-        
-        // Panggil fungsi perubah tombol promosi di sini
-        stylePromosiGamingButton();
     }
     
     // --- INISIALISASI SKRIP ---
     document.addEventListener('DOMContentLoaded', () => {
+        // redirectToPageTwo(); // <-- DIHAPUS
         setupPersistentCountdownIntervals();
         createSidebarToggleButton();
         runAllOtherScripts();
         injectGacorGame();
         
-        setInterval(runDynamicStyling, 250); 
-        runDynamicStyling(); 
+        
+        setInterval(runDynamicStyling, 250); // Pindai halaman setiap 250ms
+        runDynamicStyling(); // Jalankan 1x saat halaman pertama kali dimuat
         
         document.body.addEventListener('change', (event) => {
             if (event.target.id === 'agentmemberbankid') {
@@ -960,3 +1591,8 @@
         }
     });
 })();
+
+
+
+
+
