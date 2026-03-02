@@ -23,7 +23,7 @@
         .togel-countdown-timer.closing-soon { color: #a855f7 !important; text-shadow: 0 0 5px #a855f7; font-weight: bold; }
         #maincontent .nav-tabs .nav-link { border-radius: 8px 8px 0 0 !important; } .copy-btn{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border:1px solid #ec4899!important;padding:2px 10px!important;font-size:.8em!important;transition:all .3s ease}.copy-btn:hover{background-color:rgba(236, 72, 153, .3)!important;color:#fff!important}.copy-btn.copy-btn-success{background-color:rgba(46,204,113,.2)!important;color:#2ecc71!important;border-color:#27ae60!important}#receiver-bank-label i,#receiver-number-label i,#receiver-name-label i{margin-right:8px}#maincontent .nav-tabs{border-bottom:1px solid #ec4899!important}#maincontent .nav-tabs .nav-link{background-color:transparent!important;border:1px solid transparent!important;border-bottom:none!important;color:#bdc3c7!important}#maincontent .nav-tabs .nav-link.active{background-color:#1a252f!important;border-color:#ec4899!important;color:#fff!important}body{background-color:#0c0c1e!important;font-family:'Exo 2',sans-serif!important}.form-label{color:#ecf0f1!important;text-shadow:0 0 5px #ec4899}.form-control,.form-select{background-color:#1a252f!important;border:1px solid #34495e!important;color:#fff!important;border-radius:5px;transition:all .3s ease}.form-control:focus,.form-select:focus{border-color:#bdc3c7!important;box-shadow:0 0 10px rgba(189,195,199,.8)!important}.btn-primary{background:linear-gradient(45deg,#be185d,#ec4899)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #ec4899,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-primary:hover{transform:scale(1.05);box-shadow:0 0 20px #ec4899,0 0 30px #be185d,inset 0 0 5px rgba(255,255,255,.4)}.btn-secondary{background:linear-gradient(45deg,#a855f7,#9333ea)!important;border-color:#a855f7!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #a855f7,inset 0 0 5px rgba(255,255,255,.7);transition:all .3s ease}.btn-secondary:hover{transform:scale(1.05);background:linear-gradient(45deg,#c084fc,#a855f7)!important;box-shadow:0 0 20px #a855f7,0 0 30px #9333ea,inset 0 0 5px rgba(255,255,255,.8)}.btn-danger{background:linear-gradient(45deg,#e74c3c,#c0392b)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #e74c3c,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-danger:hover{transform:scale(1.05);box-shadow:0 0 20px #e74c3c,0 0 30px #c0392b,inset 0 0 5px rgba(255,255,255,.4)}nav#navbar-top.navbar.bg-dark{background-color:#1a252f!important;border-bottom:1px solid #ec4899!important;box-shadow:0 2px 10px rgba(236, 72, 153, .3)!important}button#sidebarCollapse{background:0 0!important;border:none!important}button#sidebarCollapse i{color:#ecf0f1!important;transition:all .3s ease}button#sidebarCollapse:hover i{color:#f472b6!important;text-shadow:0 0 10px #f472b6}nav#sidebar{background-color:#1a252f!important;border-right:1px solid #ec4899!important;box-shadow:2px 0 10px rgba(236, 72, 153, .3)!important}#sidebar .d-flex[style*="background-image"]{background-image:none!important;background-color:#2c3e50!important;border-bottom:2px solid #ec4899;box-shadow:0 2px 5px rgba(236, 72, 153, .2)}#sidebar .nav-link{color:#ecf0f1!important;border-radius:5px;transition:all .3s ease;border-left:3px solid transparent;margin:0;padding:.4rem 1rem!important}#sidebar .nav-link:hover,#sidebar .nav-item.active .nav-link{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border-left-color:#f472b6}#sidebar hr{border-top:1px solid #34495e;margin:.5rem 1rem}#sidebar > .d-flex.justify-content-between.p-3{display:none!important}.sapatoto-profile-icon{width:36px;height:36px}
         
-        /* [DIPERBARUI] CSS Tombol Tutup Sidebar - Menjadi Kotak Rounded */
+        /* CSS Tombol Tutup Sidebar - Kotak Rounded */
         #custom-sidebar-toggle{position:fixed!important;top:20px!important;left:255px!important;width:38px!important;height:38px!important;background:linear-gradient(45deg,#be185d,#ec4899)!important;border-radius:8px!important;box-shadow:0 0 10px rgba(236, 72, 153, 0.6)!important;z-index:99999!important;color:#fff!important;transition:all .4s ease!important;text-decoration:none!important;display:none;align-items:center;justify-content:center}
         #custom-sidebar-toggle i{font-size:1.5rem!important;line-height:0!important}
         #custom-sidebar-toggle.show{display:flex!important;opacity:1!important;visibility:visible!important}
@@ -371,7 +371,7 @@
     function fetchRtpWithIframe() { return new Promise((e,t)=>{const o=document.createElement("iframe");o.src="/rtp",o.style.display="none",o.onload=function(){try{const a=o.contentDocument||o.contentWindow.document,n=a.querySelectorAll('.row.mb-3.g-1 > div[class*="col-"]');if(0===n.length)return t(new Error("No games found"));const l=Array.from(n).filter(e=>{const t=e.querySelector(".progress-bar-rtp");return t&&parseInt(t.textContent)>=75});if(0===l.length)return t(new Error("No games with RTP >= 75%"));const c=l.map(e=>{const t=e.querySelector("a"),o=e.querySelector(".progress-bar-rtp");return{link:t.dataset.playurl,image:t.querySelector("img").src,name:t.dataset.gamename,percentage:parseInt(o.textContent),colorClass:Array.from(o.classList).find(e=>e.startsWith("bg-"))}});e(c)}catch(e){t(e)}finally{document.body.removeChild(o)}},o.onerror=function(){t(new Error("Failed to load RTP iframe")),document.body.removeChild(o)},document.body.appendChild(o)})}
     function displayGacorGames(container, games) { let e="";games.forEach(t=>{const o=new Date;let a=o.getHours();const n=o.getMinutes();let l=5*Math.ceil((n+1)/5),r=[];l>=60&&(a=(a+1)%24,l=0);for(let e=l;e<60;e+=5)r.push(`${String(a).padStart(2,"0")}:${String(e).padStart(2,"0")}`);0===r.length&&(a=(a+1)%24,r.push(`${String(a).padStart(2,"0")}:00`));const c=r[Math.floor(Math.random()*r.length)];e+=`<a href="${t.link}" target="_blank" class="gacor-card"><img src="${t.image}" alt="${t.name}"><div class="gacor-info"><strong title="${t.name}">${t.name}</strong><div class="gacor-time"><i class="bi bi-clock-fill"></i> Pola Berlaku Jam: ${c}</div><div class="progress mt-2"><div class="progress-bar-rtp ${t.colorClass}" role="progressbar" style="width: ${t.percentage}%">${t.percentage}%</div></div></div></a>`}),container.innerHTML=`<h5><i class="bi bi-stars"></i> GAME GACOR SAAT INI</h5><div class="gacor-card-container">${e}</div>`;const t=container.querySelectorAll(".gacor-info strong");t.forEach(e=>{const t=20;e.textContent.length>t&&(e.textContent=e.textContent.substring(0,t-3)+"...")})}
     
-    // [DIPERBARUI] Inject Gacor Game di POSISI ATAS (Sangat Aman & Anti-Crash)
+    // [DIPERBARUI] Logika Injeksi Game Gacor (Lebih Aman dan Anti-Crash)
     async function injectGacorGame() { 
         if(document.getElementById("gacor-game-sidebar")) return;
         const e=document.getElementById("sidebar");
@@ -379,25 +379,25 @@
 
         const t=document.createElement("div");
         t.id="gacor-game-sidebar";
-        t.className="mx-3 mt-3 mb-4"; // Tambah mb-4 untuk jarak ke bawah sebelum menu
+        t.className="mx-3 mt-3 mb-4"; // Jarak margin agar rapi
         t.innerHTML='<h5><i class="bi bi-stars"></i> GAME GACOR SAAT INI</h5><div class="gacor-card-placeholder">Mencari sinyal gacor...</div>';
         
-        // Logika baru yang LEBIH AMAN (tanpa optional chaining yg bikin error)
-        let menuContainer = e.querySelector("ul.list-unstyled") || e.querySelector("ul") || e.querySelector(".nav");
+        // LOGIKA BARU: Cari elemen pembungkus menu dengan aman
+        let menuContainer = e.querySelector("ul") || e.querySelector(".nav");
         
-        // Jika tidak ketemu ul/nav langsung, cari item <li> pertama dan ambil induknya
+        // Jika tidak ada 'ul' atau '.nav', cari item list ('li') dan ambil wadah induknya
         if (!menuContainer) {
-            let tempLi = e.querySelector("li");
+            let tempLi = e.querySelector("li") || e.querySelector(".nav-link");
             if (tempLi) {
                 menuContainer = tempLi.parentNode;
             }
         }
 
-        // Sisipkan kotak gacor tepat di atas menu
-        if (menuContainer) {
-            e.insertBefore(t, menuContainer);
+        // Sisipkan dengan metode yang dijamin tidak akan crash (parentNode.insertBefore)
+        if (menuContainer && menuContainer.parentNode) {
+            menuContainer.parentNode.insertBefore(t, menuContainer);
         } else {
-            // Fallback jika anehnya menu tidak ada, taruh di paling bawah
+            // Jika struktur HTML benar-benar aneh, paksa taruh di bagian bawah (fallback aman)
             e.appendChild(t); 
         }
 
