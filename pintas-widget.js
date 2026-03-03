@@ -15,7 +15,7 @@
                         <div class="sapatoto-pintas-banner">
                             
                             <div class="pintas-icon-container">
-                                <i class="bi bi-rocket-takeoff-fill rocket-move"></i>
+                                <span class="rocket-move">🚀</span>
                             </div>
 
                             <div class="pintas-content">
@@ -53,18 +53,17 @@
                         border-color: #f472b6;
                     }
 
-                    /* 2. Icon Roket (Bootstrap Icon) */
+                    /* 2. Icon Roket (Emoji Bawaan) */
                     .pintas-icon-container {
                         font-size: 2.2rem;
                         margin-right: 18px;
-                        color: #a855f7; /* Purple Sapatoto */
-                        text-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
                         flex-shrink: 0;
                         line-height: 1;
+                        filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3)); /* Sedikit efek glow pada emoji */
                     }
                     .rocket-move {
                         display: inline-block;
-                        animation: sapatotoBlastOff 2s infinite ease-in-out;
+                        animation: blastOff 2s infinite ease-in-out;
                     }
 
                     /* 3. Typography */
@@ -77,13 +76,14 @@
                     }
                     .pintas-sub {
                         font-size: 0.75rem;
-                        color: #bdc3c7; /* Warna teks pudar khas dark mode */
+                        color: #fbbf24; /* Kuning Emas agar hidup */
                         font-weight: 700;
                         letter-spacing: 1px;
                         text-transform: uppercase;
+                        text-shadow: 0 0 5px rgba(251, 191, 36, 0.4);
                     }
                     .pintas-sub i {
-                        color: #f472b6; /* Akses neon pink di icon sub */
+                        color: #fbbf24; /* Warna icon mengikuti kuning */
                         margin-right: 5px;
                     }
                     .pintas-title {
@@ -104,16 +104,10 @@
                         animation: neonGradientFlow 3s ease infinite;
                     }
 
-                    /* ANIMASI ROKET & GLOW */
-                    @keyframes sapatotoBlastOff {
-                        0%, 100% { 
-                            transform: translateY(0) rotate(0deg) scale(1); 
-                        }
-                        50% { 
-                            transform: translateY(-4px) rotate(10deg) scale(1.1); 
-                            color: #f472b6; /* Berubah jadi pink saat naik */
-                            text-shadow: 0 0 15px rgba(244, 114, 182, 0.9); 
-                        }
+                    /* ANIMASI ROKET ASLI */
+                    @keyframes blastOff {
+                        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+                        50% { transform: translate(3px, -3px) rotate(5deg); }
                     }
 
                     /* ANIMASI TEKS GRADIEN */
