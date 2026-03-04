@@ -25,9 +25,11 @@
 
         #announcement.gavan-themed-announcement marquee {
             flex-grow: 1;
-            color: #ecf0f1 !important;
+            color: #ffe600 !important; /* Ubah ke Kuning Terang */
             min-width: 0;
             letter-spacing: 0.5px;
+            font-weight: 700; /* Dibuat tebal agar lebih jelas */
+            text-shadow: 0 0 8px rgba(255, 230, 0, 0.5); /* Tambahan efek cahaya kuning tipis */
         }
 
         @keyframes pulse-glow-sapatoto {
@@ -122,6 +124,7 @@
     }
 
 })();
+
 
 
 
