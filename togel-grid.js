@@ -1,33 +1,33 @@
 (function() {
     // =========================================
-    // BAGIAN 1: CSS TAMPILAN KEREN (FIX WARNA BADGE)
+    // BAGIAN 1: CSS TAMPILAN KEREN & FIX GRID
     // =========================================
     const togelGridStyles = `
-        /* --- 1. Kustomisasi Container Utama --- */
-        #carousel-togel .owl-stage-outer {
+        /* --- 1. Kustomisasi Container Utama (Wadah Baru) --- */
+        #carousel-togel .custom-stage-outer {
             max-height: 520px; 
             overflow: hidden !important; 
             transition: max-height 0.5s ease-in-out;
             border-radius: 0 0 8px 8px;
             padding: 5px; 
         }
-        @media (min-width: 768px) { #carousel-togel .owl-stage-outer { max-height: 335px; } }
-        #carousel-togel.show-all .owl-stage-outer { max-height: 3000px; }
+        @media (min-width: 768px) { #carousel-togel .custom-stage-outer { max-height: 335px; } }
+        #carousel-togel.show-all .custom-stage-outer { max-height: 3000px; }
         
         /* Tombol Show More */
         .show-more-wrapper { display: flex; justify-content: center; margin-top: 15px; margin-bottom: 25px; position: relative; z-index: 10; }
         .show-more-button { background: none !important; border: 1px solid #f472b6 !important; border-radius: 20px; padding: 6px 15px !important; color: #f472b6 !important; text-align: center; cursor: pointer; font-weight: 600; text-transform: uppercase; transition: all .3s ease; font-size: 0.8rem; letter-spacing: 1px;}
         .show-more-button:hover { background: #f472b6 !important; color: #fff !important; box-shadow: 0 0 10px #f472b6; }
 
-        /* Grid Setup */
-        #carousel-togel .owl-stage { 
+        /* Grid Setup (Struktur Kustom Anti-Gagal) */
+        #carousel-togel .custom-stage { 
             display: grid !important; 
             grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); 
             grid-auto-rows: 1fr; 
-            gap: 15px; transform: none !important; width: 100% !important; margin-top: 5px; 
+            gap: 15px; width: 100% !important; margin-top: 5px; 
             align-items: stretch; 
         }
-        #carousel-togel .owl-item { width: auto !important; margin-right: 0 !important; display: flex; height: auto !important; }
+        #carousel-togel .custom-item { display: flex; height: auto !important; width: 100%; }
 
         /* --- 2. Desain BOX Keren --- */
         #carousel-togel .card, .row.g-3 .card {
@@ -77,42 +77,24 @@
         /* Warna Normal: Pink */
         #carousel-togel .card .togel-countdown-timer, .row.g-3 .card .togel-countdown-timer { 
             background: linear-gradient(45deg, #ec4899, #be185d) !important; 
-            color: #ffffff !important; 
-            padding: 4px 15px; 
-            border-radius: 50px; 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center;
-            min-width: 90px;
-            height: 26px; 
+            color: #ffffff !important; padding: 4px 15px; border-radius: 50px; 
+            font-size: 0.8rem; font-weight: 700; display: inline-flex; 
+            align-items: center; justify-content: center; min-width: 90px; height: 26px; 
             box-shadow: 0 3px 8px rgba(236, 72, 153, 0.4) !important;
-            letter-spacing: 0.5px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-            position: relative;
-            margin: 0 auto;
+            letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            position: relative; margin: 0 auto;
         }
 
         /* Mode Kedip Peringatan (Segera Tutup) */
         #carousel-togel .card .togel-countdown-timer.show-warning-text, 
         .row.g-3 .card .togel-countdown-timer.show-warning-text { 
-            color: transparent !important; 
-            text-shadow: none !important;
+            color: transparent !important; text-shadow: none !important;
         }
         #carousel-togel .card .togel-countdown-timer.show-warning-text::before, 
         .row.g-3 .card .togel-countdown-timer.show-warning-text::before { 
-            content: "SEGERA TUTUP"; 
-            position: absolute; 
-            inset: 0; 
-            color: #ffffff !important; 
-            font-size: 0.75rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-shadow: 0px 1px 2px rgba(0,0,0,0.5) !important; 
-            font-weight: 700; 
-            white-space: nowrap; 
+            content: "SEGERA TUTUP"; position: absolute; inset: 0; color: #ffffff !important; 
+            font-size: 0.75rem; display: flex; align-items: center; justify-content: center; 
+            text-shadow: 0px 1px 2px rgba(0,0,0,0.5) !important; font-weight: 700; white-space: nowrap; 
         }
 
         /* Warna Status Segera Tutup: Kuning/Orange Terang */
@@ -139,7 +121,7 @@
     document.head.appendChild(styleElement);
 
     // =========================================
-    // BAGIAN 2: JAVASCRIPT (LOGIKA)
+    // BAGIAN 2: JAVASCRIPT (LOGIKA PENGURUTAN EKSTREM)
     // =========================================
     let intervalsInitialized = false;
 
@@ -215,23 +197,61 @@
         if (!carousel || carousel.dataset.initialized === 'true') return; 
         
         setTimeout(() => { 
-            const stage = carousel.querySelector('.owl-stage'); 
-            if (!stage || carousel.dataset.initialized === 'true') return; 
+            if (carousel.dataset.initialized === 'true') return; 
             
-            const items = Array.from(stage.querySelectorAll('.owl-item:not(.cloned)')); 
-            if (items.length <= 1) return; 
+            // 1. Ambil SEMUA Card tanpa peduli struktur web aslinya
+            const allCards = Array.from(carousel.querySelectorAll('.card'));
             
-            const sortedItems = items.map(item => { 
-                const timer = item.querySelector('.togel-countdown-timer'); 
-                const time = timer ? parseInt(timer.dataset.time, 10) : Infinity; 
-                const status = timer ? parseInt(timer.dataset.status, 10) : -1; 
-                const isClosed = (timer && timer.textContent.trim().toUpperCase() === 'TUTUP') || status !== 1; 
-                return { element: item, time: isClosed ? Infinity : time }; 
+            // Filter card clone (jika carousel sempat berjalan)
+            const validCards = allCards.filter(card => {
+                const parent = card.closest('.owl-item');
+                return !parent || !parent.classList.contains('cloned');
+            });
+
+            if (validCards.length <= 1) return; 
+
+            const now = new Date().getTime();
+            
+            // 2. Sorting Ekstrem Berdasarkan Waktu Terdekat
+            const sortedCards = validCards.map(card => { 
+                const timer = card.querySelector('.togel-countdown-timer'); 
+                let timeObj = Infinity;
+                
+                if (timer) {
+                    const timeData = parseInt(timer.dataset.time, 10);
+                    const statusData = parseInt(timer.dataset.status, 10);
+                    
+                    const isTextClosed = timer.textContent.trim().toUpperCase() === 'TUTUP' || timer.classList.contains('is-closed');
+                    const isLogicClosed = statusData !== 1 || !timeData || isNaN(timeData) || (timeData - now) <= 0;
+                    
+                    // Jika belum tutup, pakai waktunya untuk diurutkan (terkecil di depan)
+                    if (!isTextClosed && !isLogicClosed) {
+                        timeObj = timeData; 
+                    }
+                }
+                return { element: card, time: timeObj }; 
             }).sort((a, b) => a.time - b.time); 
             
-            stage.innerHTML = ''; 
-            sortedItems.forEach(item => stage.appendChild(item.element)); 
+            // 3. Hancurkan struktur lama dan bangun Custom Grid kita sendiri
+            carousel.innerHTML = ''; 
             
+            const customStageOuter = document.createElement('div');
+            customStageOuter.className = 'custom-stage-outer';
+            
+            const customStage = document.createElement('div');
+            customStage.className = 'custom-stage';
+            
+            sortedCards.forEach(item => { 
+                const wrapper = document.createElement('div');
+                wrapper.className = 'custom-item';
+                wrapper.appendChild(item.element);
+                customStage.appendChild(wrapper);
+            }); 
+            
+            customStageOuter.appendChild(customStage);
+            carousel.appendChild(customStageOuter);
+            
+            // 4. Buat Ulang Tombol Show More
             const existingButton = carousel.parentElement.querySelector(".show-more-wrapper"); 
             if (existingButton) existingButton.remove(); 
             
@@ -255,7 +275,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        setInterval(initializeTogelCarousel, 250); 
+        // Cek secara berkala untuk memastikan render berjalan sukses
+        setInterval(initializeTogelCarousel, 500); 
         initializeTogelCarousel();
     });
 
