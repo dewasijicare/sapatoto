@@ -12,19 +12,17 @@
             .btn-digital-promo {
                 position: relative;
                 overflow: hidden;
-                /* Background Kuning Terang yang Mencolok */
                 background: linear-gradient(135deg, #ffe600, #ffb300) !important;
                 border: none !important;
-                color: #1a1a1a !important; /* Teks Warna Gelap / Hampir Hitam */
-                font-weight: 900 !important; 
-                padding: 12px 15px !important; 
+                color: #1a1a1a !important; 
+                font-weight: 700 !important; /* Disamakan dengan ketebalan tombol LOGIN/DAFTAR */
+                padding: 10px 15px !important; /* Padding disamakan dengan standar tombol Bootstrap */
                 border-radius: 8px !important; 
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
                 text-transform: uppercase !important;
                 text-decoration: none;
-                /* Glow Kuning Emas di luar */
                 box-shadow: 0 4px 15px rgba(255, 179, 0, 0.5) !important;
                 transition: all 0.3s ease;
                 z-index: 1;
@@ -36,20 +34,20 @@
                 background: linear-gradient(135deg, #fff04d, #ffc107) !important;
             }
 
-            /* --- TEKS & ICON TENGAH: GELAP & JELAS --- */
+            /* --- TEKS & ICON TENGAH --- */
             .promo-center-text {
                 display: flex;
                 align-items: center;
-                gap: 10px;
-                font-size: 1.15em;
+                gap: 8px; /* Jarak icon dan teks sedikit dirapatkan */
+                font-size: 1rem !important; /* Ukuran font disamakan persis dengan tombol LOGIN */
                 z-index: 10;
-                text-shadow: none; /* Tidak butuh shadow karena background sudah terang */
+                text-shadow: none; 
             }
             .promo-center-text i {
-                font-size: 1.3em; /* Icon sosmed dibesarkan sedikit */
+                font-size: 1.15rem; /* Ukuran icon disesuaikan agar proporsional */
             }
 
-            /* --- PANAH SUPER TEBAL (MENGISI PANEL) --- */
+            /* --- PANAH SAMPING --- */
             .digital-arrow-container {
                 position: absolute;
                 top: 0;
@@ -57,13 +55,12 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                /* Ukuran font sangat besar agar panah membentang dari atas ke bawah */
-                font-size: 2.8rem; 
+                font-size: 2.2rem; /* Ukuran panah diperkecil agar seimbang dengan tombol baru */
                 line-height: 0;
                 z-index: 5;
                 pointer-events: none;
                 font-family: "Arial Black", Impact, sans-serif;
-                letter-spacing: -0.15em; /* Merapatkan panah ganda agar menempel */
+                letter-spacing: -0.15em; 
             }
             .arrow-pos-left { left: 8px; }
             .arrow-pos-right { right: 8px; }
@@ -71,29 +68,24 @@
             /* --- ANIMASI LAMPU BERJALAN: UNGU PIXEL/KOTAK --- */
             .running-light-effect {
                 color: transparent; 
-                /* Gradien Ungu dengan pola patah/kotak-kotak (Hard Stop) */
                 background: repeating-linear-gradient(
                     90deg,
-                    #7e22ce 0px,     /* Ungu Tua (Base) */
-                    #7e22ce 15px,    /* Lebar blok ungu tua */
-                    #d8b4fe 15px,    /* Ungu Terang / Menyala (Lampu) */
-                    #d8b4fe 30px     /* Lebar blok lampu menyala */
+                    #7e22ce 0px,     
+                    #7e22ce 12px,    /* Lebar blok disesuaikan dengan ukuran panah baru */
+                    #d8b4fe 12px,    
+                    #d8b4fe 24px     
                 );
                 background-size: 200% 100%;
                 -webkit-background-clip: text;
                 background-clip: text;
-                
-                /* Kecepatan lampu bergerak */
                 animation: ledScrollPurple 0.9s infinite linear;
-                filter: drop-shadow(0 2px 4px rgba(126, 34, 206, 0.4)); /* Sedikit bayangan di panah */
+                filter: drop-shadow(0 2px 4px rgba(126, 34, 206, 0.4)); 
             }
 
-            /* Balik arah untuk panah sebelah kanan */
             .running-light-reverse {
                 animation-direction: reverse;
             }
 
-            /* Keyframes menggeser background warna ungu */
             @keyframes ledScrollPurple {
                 0%   { background-position: 0% 0%; }
                 100% { background-position: -200% 0%; }
@@ -130,16 +122,13 @@
                 btn.target = "_blank";
                 btn.className = "btn btn-digital-promo";
                 
-                // STRUKTUR HTML BARU: Menggunakan Karakter Segitiga Geometris Padat (▶ & ◀)
                 btn.innerHTML = `
                     <div class="digital-arrow-container arrow-pos-left">
                         <span class="running-light-effect">&#9654;&#9654;</span>
                     </div>
-
                     <span class="promo-center-text">
                         <i class="bi ${data.icon}"></i> ${data.text}
                     </span>
-
                     <div class="digital-arrow-container arrow-pos-right">
                         <span class="running-light-effect running-light-reverse">&#9664;&#9664;</span>
                     </div>
