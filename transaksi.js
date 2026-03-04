@@ -36,26 +36,38 @@
         return amounts[Math.floor(Math.random() * amounts.length)];
     }
 
-    // Generator Nominal Withdraw (Super Natural & Campuran)
+    // Generator Nominal Withdraw (Algoritma Realistis & Organik)
     function getWithdrawAmount() {
-        const type = Math.random();
-        if (type < 0.25) {
-            // WD Kecil (500rb - 900rb)
-            const amounts = [500000, 600000, 750000, 800000];
+        const prob = Math.random();
+
+        if (prob < 0.50) {
+            // 50% Peluang: Nominal Kecil & Menengah (Genap/Bulat) - 100rb s/d 3 Juta
+            // Sangat natural karena ini adalah rentang WD paling sering di situs manapun
+            const amounts = [100000, 150000, 200000, 250000, 300000, 500000, 750000, 1000000, 1500000, 2000000, 3000000];
             return amounts[Math.floor(Math.random() * amounts.length)];
-        } else if (type < 0.50) {
-            // WD Genap/Bulat (1 Juta - 19 Juta)
-            const millions = [1, 2, 5, 10, 15, 19, 20];
-            return millions[Math.floor(Math.random() * millions.length)] * 1000000;
-        } else if (type < 0.75) {
-            // WD Tanggung / Angka Unik (1 Juta - 10 Juta)
-            const millions = Math.floor(Math.random() * 9) + 1; // 1-9
-            const thousands = [150, 250, 340, 500, 750, 850][Math.floor(Math.random() * 6)];
-            return (millions * 1000000) + (thousands * 1000); // cth: 4.250.000
+            
+        } else if (prob < 0.85) {
+            // 35% Peluang: Nominal UNIK & TANGGUNG di bawah 5 Juta
+            // Contoh hasil: 345.000, 1.284.000, 4.755.000 (Terlihat seperti WD kuras saldo)
+            const millions = Math.floor(Math.random() * 5); // 0 sampai 4 Juta
+            const thousands = Math.floor(Math.random() * 999) + 1; // 1 sampai 999 ribu
+            let result = (millions * 1000000) + (thousands * 1000);
+            if (result < 100000) result += 150000; // Pastikan minimal WD tidak terlalu kecil
+            return result;
+            
+        } else if (prob < 0.95) {
+            // 10% Peluang: WD Agak Besar (5 Juta s/d 15 Juta) -> Mulai Langka
+            const millions = Math.floor(Math.random() * 11) + 5; // 5 sampai 15 Juta
+            const isUnique = Math.random() > 0.5; // 50% peluang nominalnya dibuat unik
+            const extra = isUnique ? (Math.floor(Math.random() * 99) + 1) * 10000 : 0; 
+            return (millions * 1000000) + extra;
+            
         } else {
-            // WD Besar / Jackpot (20 Juta - 80 Juta)
-            const amounts = [24000000, 30000000, 38500000, 45000000, 50000000, 68000000, 80000000];
-            return amounts[Math.floor(Math.random() * amounts.length)];
+            // 5% Peluang: WD Jackpot Super Besar (20 Juta s/d 80 Juta) -> Sangat Langka!
+            const millions = Math.floor(Math.random() * 61) + 20; // 20 sampai 80 Juta
+            const isUnique = Math.random() > 0.7; // 30% peluang nominalnya unik
+            const extra = isUnique ? (Math.floor(Math.random() * 99) + 1) * 100000 : 0; 
+            return (millions * 1000000) + extra;
         }
     }
 
@@ -278,3 +290,4 @@
     }, 500);
 
 })();
+
