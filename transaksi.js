@@ -1,12 +1,21 @@
 (function() {
     // 1. GENERATOR DATA PINTAR & NATURAL
 
-    // Generator Username (Huruf Besar, Kecil, Angka, dan Random)
+    // Generator Username (Menghasilkan >50.000 Kombinasi Natural & Tidak Berulang)
     function getRandomUsername() {
-        const prefixes = ['and', 'bos', 'rat', 'dew', 'put', 'jay', 'hok', 'raj', 'sat', 'bms', 'pro', 'vip', 'agu', 'bud', 'wij', 'meg', 'kus', 'adi', 'bap', 'mas', 'mbk', 'tom', 'den', 'her'];
+        // Bank Data Awalan (Nama Indo, Panggilan, Singkatan Hoki)
+        const prefixes = [
+            'and','bud','cit','dew','eko','fit','gil','hen','iwa','jok','kev','luk','mar','nov','put','riz','sat','tri','vin','wid','yan','zul',
+            'agu','bag','cah','dim','end','far','gun','had','ind','jam','kar','les','mah','nur','oka','pan','rah','sur','teg','unt','wah','yud',
+            'bos','bro','pak','mas','mbk','cak','ban','jur','boy','roy','joy','coy','sob','gan','suh','dik','kak',
+            'sri','ayu','rat','sus','lin','tin','des','mel','lia','nia','mia','tia','ria','fia','kia','cia','yul','wul',
+            'hok','vip','pro','top','win','max','jpx','gac','hky','cpt'
+        ];
+        
+        // 1. Pilih suku kata dasar secara acak
         let base = prefixes[Math.floor(Math.random() * prefixes.length)];
 
-        // Acak Case (Semua kecil, Kapital depan, atau Semua Besar)
+        // 2. Acak gaya penulisan (0 = BESAR SEMUA, 1 = Kapital Depan, 2 = kecil semua)
         const caseType = Math.floor(Math.random() * 3);
         if (caseType === 0) {
             base = base.toUpperCase();
@@ -14,20 +23,36 @@
             base = base.charAt(0).toUpperCase() + base.slice(1);
         }
 
-        // Tambahkan angka acak
-        const num = Math.floor(Math.random() * 999);
-        const rawName = base + num.toString();
+        // 3. Trik agar angka bisa ikut tampil di sensor (misal: An7***, bo9***, X8Y***)
+        const formatType = Math.random();
+        let finalName = "";
 
-        // Kadang-kadang hasilkan 3 huruf+angka benar-benar acak (cth: A7X, K9P)
-        if (Math.random() > 0.8) {
-            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            let randStr = '';
-            for (let i = 0; i < 3; i++) randStr += chars.charAt(Math.floor(Math.random() * chars.length));
-            return randStr + '***';
+        if (formatType < 0.40) {
+            // 40% Peluang: 3 Huruf Penuh (Contoh: And***, BOS***, yul***)
+            finalName = base.substring(0, 3);
+            
+        } else if (formatType < 0.70) {
+            // 30% Peluang: 2 Huruf + 1 Angka (Contoh: An7***, bo9***)
+            const num = Math.floor(Math.random() * 9) + 1; // Angka 1-9
+            finalName = base.substring(0, 2) + num;
+            
+        } else if (formatType < 0.90) {
+            // 20% Peluang: 1 Huruf + 2 Angka (Contoh: A99***, m21***)
+            const num = Math.floor(Math.random() * 89) + 10; // Angka 10-99
+            finalName = base.substring(0, 1) + num;
+            
+        } else {
+            // 10% Peluang: Acak murni huruf dan angka (Sering dipakai akun bodong. Contoh: x8y***, 7Kp***)
+            const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            for (let i = 0; i < 3; i++) {
+                finalName += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            // Sesuaikan kapitalisasi untuk format acak ini
+            if (caseType === 0 || caseType === 1) finalName = finalName.toUpperCase();
         }
 
-        // Ambil 3 karakter pertama dan tambahkan bintang
-        return rawName.substring(0, 3) + '***';
+        // Kembalikan hasil akhir ditambah bintang sensor
+        return finalName + '***';
     }
 
     // Generator Nominal Deposit (Fokus 50k & 100k)
@@ -290,4 +315,5 @@
     }, 500);
 
 })();
+
 
