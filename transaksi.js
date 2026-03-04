@@ -55,10 +55,36 @@
         return finalName + '***';
     }
 
-    // Generator Nominal Deposit (Fokus 50k & 100k)
+    // Generator Nominal Deposit (Algoritma Natural, Max 20 Juta)
     function getDepositAmount() {
-        const amounts = [10000, 20000, 25000, 50000, 50000, 50000, 50000, 100000, 100000, 100000, 150000, 200000, 250000, 500000];
-        return amounts[Math.floor(Math.random() * amounts.length)];
+        const prob = Math.random();
+
+        if (prob < 0.60) {
+            // 60% Peluang: Deposit merakyat (10rb - 100rb) - Paling sering muncul
+            const amounts = [10000, 20000, 25000, 50000, 50000, 50000, 100000, 100000];
+            return amounts[Math.floor(Math.random() * amounts.length)];
+            
+        } else if (prob < 0.85) {
+            // 25% Peluang: Deposit menengah (150rb - 1 Juta)
+            const amounts = [150000, 200000, 250000, 300000, 500000, 500000, 750000, 1000000];
+            return amounts[Math.floor(Math.random() * amounts.length)];
+            
+        } else if (prob < 0.95) {
+            // 10% Peluang: Deposit lumayan besar (1.2 Juta - 2 Juta)
+            const amounts = [1200000, 1500000, 1800000, 2000000];
+            return amounts[Math.floor(Math.random() * amounts.length)];
+            
+        } else {
+            // 5% Peluang: Deposit Paus / Sangat Besar (> 2 Juta s/d 20 Juta) - Jarang muncul
+            // Dibuat kelipatan 500rb atau 1 Juta agar terlihat seperti transfer bank asli
+            const millions = Math.floor(Math.random() * 18) + 3; // 3 sampai 20 Juta
+            const isHalf = Math.random() > 0.5 ? 500000 : 0; // 50% peluang ada tambahan 500rb (cth: 5.500.000)
+            
+            let result = (millions * 1000000) + isHalf;
+            if (result > 20000000) result = 20000000; // Dikunci maksimal 20 Juta
+            
+            return result;
+        }
     }
 
     // Generator Nominal Withdraw (Algoritma Realistis & Organik)
@@ -315,5 +341,6 @@
     }, 500);
 
 })();
+
 
 
