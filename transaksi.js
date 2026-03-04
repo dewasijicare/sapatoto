@@ -1,99 +1,159 @@
 (function() {
-    // 1. FUNGSI PEMBUAT DATA FIKTIF YANG TERLIHAT ASLI
-    
-    // Generator Username Acak (Terlihat seperti nama orang Indonesia/Pemain)
+    // 1. GENERATOR DATA PINTAR & NATURAL
+
+    // Generator Username (Huruf Besar, Kecil, Angka, dan Random)
     function getRandomUsername() {
         const prefixes = ['and', 'bos', 'rat', 'dew', 'put', 'jay', 'hok', 'raj', 'sat', 'bms', 'pro', 'vip', 'agu', 'bud', 'wij', 'meg', 'kus', 'adi', 'bap', 'mas', 'mbk', 'tom', 'den', 'her'];
-        const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-        // Tambahkan 1 atau 2 angka acak di belakangnya agar lebih natural (opsional sebelum dipotong)
-        const randomNumber = Math.floor(Math.random() * 99); 
-        const rawName = prefix + randomNumber.toString();
+        let base = prefixes[Math.floor(Math.random() * prefixes.length)];
+
+        // Acak Case (Semua kecil, Kapital depan, atau Semua Besar)
+        const caseType = Math.floor(Math.random() * 3);
+        if (caseType === 0) {
+            base = base.toUpperCase();
+        } else if (caseType === 1) {
+            base = base.charAt(0).toUpperCase() + base.slice(1);
+        }
+
+        // Tambahkan angka acak
+        const num = Math.floor(Math.random() * 999);
+        const rawName = base + num.toString();
+
+        // Kadang-kadang hasilkan 3 huruf+angka benar-benar acak (cth: A7X, K9P)
+        if (Math.random() > 0.8) {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let randStr = '';
+            for (let i = 0; i < 3; i++) randStr += chars.charAt(Math.floor(Math.random() * chars.length));
+            return randStr + '***';
+        }
+
         // Ambil 3 karakter pertama dan tambahkan bintang
         return rawName.substring(0, 3) + '***';
     }
 
-    // Generator Nominal Deposit (Fokus ke 50k dan 100k)
+    // Generator Nominal Deposit (Fokus 50k & 100k)
     function getDepositAmount() {
-        // Kita perbanyak porsi 50k dan 100k di dalam array agar lebih sering muncul
-        const amounts = [20000, 25000, 50000, 50000, 50000, 50000, 100000, 100000, 100000, 150000, 200000, 250000, 500000];
+        const amounts = [10000, 20000, 25000, 50000, 50000, 50000, 50000, 100000, 100000, 100000, 150000, 200000, 250000, 500000];
         return amounts[Math.floor(Math.random() * amounts.length)];
     }
 
-    // Generator Nominal Withdraw (Acak 1 Juta - 80 Juta)
+    // Generator Nominal Withdraw (Super Natural & Campuran)
     function getWithdrawAmount() {
-        const millions = Math.floor(Math.random() * 80) + 1; // 1 sampai 80
-        const thousands = Math.floor(Math.random() * 1000); // 0 sampai 999
-        return (millions * 1000000) + (thousands * 1000); // Contoh: 45.340.000
-    }
-
-    // Format Rupiah standar
-    function formatIDR(angka) {
-        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
-    }
-
-    // 2. FUNGSI PENYUSUN TABEL HTML
-    function buildTableHTML(type) {
-        let html = `
-            <table class="table sapatoto-tx-table">
-                <thead>
-                    <tr>
-                        <th>USER</th>
-                        <th class="text-end">NOMINAL</th>
-                    </tr>
-                </thead>
-                <tbody>
-        `;
-        
-        // Buat 5 baris
-        for(let i = 0; i < 5; i++) {
-            const user = getRandomUsername();
-            const amount = type === 'deposit' ? getDepositAmount() : getWithdrawAmount();
-            const amountClass = type === 'deposit' ? 'tx-deposit' : 'tx-withdraw';
-            
-            html += `
-                <tr>
-                    <td><i class="bi bi-person-circle text-muted me-2"></i><span class="fw-bold text-light">${user}</span></td>
-                    <td class="text-end ${amountClass}">${formatIDR(amount)}</td>
-                </tr>
-            `;
+        const type = Math.random();
+        if (type < 0.25) {
+            // WD Kecil (500rb - 900rb)
+            const amounts = [500000, 600000, 750000, 800000];
+            return amounts[Math.floor(Math.random() * amounts.length)];
+        } else if (type < 0.50) {
+            // WD Genap/Bulat (1 Juta - 19 Juta)
+            const millions = [1, 2, 5, 10, 15, 19, 20];
+            return millions[Math.floor(Math.random() * millions.length)] * 1000000;
+        } else if (type < 0.75) {
+            // WD Tanggung / Angka Unik (1 Juta - 10 Juta)
+            const millions = Math.floor(Math.random() * 9) + 1; // 1-9
+            const thousands = [150, 250, 340, 500, 750, 850][Math.floor(Math.random() * 6)];
+            return (millions * 1000000) + (thousands * 1000); // cth: 4.250.000
+        } else {
+            // WD Besar / Jackpot (20 Juta - 80 Juta)
+            const amounts = [24000000, 30000000, 38500000, 45000000, 50000000, 68000000, 80000000];
+            return amounts[Math.floor(Math.random() * amounts.length)];
         }
-        
-        html += `</tbody></table>`;
-        return html;
+    }
+
+    // Format IDR
+    function formatIDR(angka) {
+        return "Rp " + new Intl.NumberFormat('id-ID').format(angka);
+    }
+
+    // 2. FUNGSI PEMBUAT BARIS & ANIMASI
+    function renderTransactions() {
+        const depList = document.getElementById('sapatoto-dep-list');
+        const wdList = document.getElementById('sapatoto-wd-list');
+        if (!depList || !wdList) return;
+
+        // Siapkan antrean (20 Data)
+        const deps = [];
+        const wds = [];
+        for (let i = 0; i < 20; i++) {
+            deps.push({ user: getRandomUsername(), amount: getDepositAmount() });
+            wds.push({ user: getRandomUsername(), amount: getWithdrawAmount() });
+        }
+
+        const buildRow = (item, type) => {
+            const amountClass = type === 'deposit' ? 'tx-deposit' : 'tx-withdraw';
+            return `
+                <div class="tx-item">
+                    <div class="tx-user"><i class="bi bi-person-circle text-muted me-2"></i><span class="fw-bold text-light">${item.user}</span></div>
+                    <div class="tx-amount ${amountClass}">${formatIDR(item.amount)}</div>
+                </div>
+            `;
+        };
+
+        // Render 20 data asli + 20 data duplikat (untuk ilusi looping tanpa batas)
+        const generateHTML = (arr, type) => {
+            let html = '';
+            arr.forEach(item => html += buildRow(item, type));
+            arr.forEach(item => html += buildRow(item, type)); // Duplikat
+            return html;
+        };
+
+        depList.innerHTML = generateHTML(deps, 'deposit');
+        wdList.innerHTML = generateHTML(wds, 'withdraw');
+    }
+
+    // Fungsi Refresh Halus (Fade Out -> Ganti Data -> Fade In)
+    function refreshTransactions() {
+        const lists = document.querySelectorAll('.tx-marquee');
+        lists.forEach(el => el.style.opacity = '0'); // Hilangkan sejenak
+        setTimeout(() => {
+            renderTransactions(); // Ganti data
+            lists.forEach(el => {
+                // Reset animasi ke awal
+                el.style.animation = 'none';
+                el.offsetHeight; /* trigger reflow */
+                el.style.animation = null; 
+                el.style.opacity = '1'; // Munculkan kembali
+            });
+        }, 500);
     }
 
     // 3. FUNGSI INJEKSI KE HALAMAN
     function injectTransactionsWidget() {
-        // Target: Letakkan di bawah wrapper widget Pintas Domain
         const target = document.querySelector('#pintas-widget-wrapper');
         const existing = document.getElementById('sapatoto-recent-transactions');
 
-        // Jika target ketemu dan tabel belum dibuat
         if (target && !existing) {
-            
-            // Susunan HTML 2 Kolom menggunakan Grid Bootstrap
             const widgetHTML = `
                 <div id="sapatoto-recent-transactions" style="max-width: 1200px; margin: 0 auto 25px auto; padding: 0 14px;">
-                    <div class="row g-3">
+                    <div class="row g-3 d-flex align-items-stretch">
                         
-                        <div class="col-md-6">
-                            <div class="tx-card">
+                        <div class="col-md-6 d-flex">
+                            <div class="tx-card w-100 d-flex flex-column">
                                 <div class="tx-header border-pink">
                                     <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> 5 DEPOSIT TERAKHIR
                                 </div>
-                                <div class="tx-body">
-                                    ${buildTableHTML('deposit')}
+                                <div class="tx-table-header">
+                                    <div>USER</div>
+                                    <div class="text-end">NOMINAL</div>
+                                </div>
+                                <div class="tx-body flex-grow-1">
+                                    <div class="tx-marquee" id="sapatoto-dep-list">
+                                        </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="tx-card">
+                        <div class="col-md-6 d-flex">
+                            <div class="tx-card w-100 d-flex flex-column">
                                 <div class="tx-header border-purple">
                                     <i class="bi bi-cash-coin tx-icon-purple"></i> 5 WITHDRAW TERAKHIR
                                 </div>
-                                <div class="tx-body">
-                                    ${buildTableHTML('withdraw')}
+                                <div class="tx-table-header">
+                                    <div>USER</div>
+                                    <div class="text-end">NOMINAL</div>
+                                </div>
+                                <div class="tx-body flex-grow-1">
+                                    <div class="tx-marquee" id="sapatoto-wd-list">
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -102,13 +162,11 @@
                 </div>
             `;
 
-            // Style CSS khusus untuk tabel transaksi
             const cssHTML = `
                 <style>
-                    #sapatoto-recent-transactions {
-                        font-family: 'Exo 2', sans-serif;
-                    }
-                    /* Kotak Utama */
+                    #sapatoto-recent-transactions { font-family: 'Exo 2', sans-serif; }
+                    
+                    /* Kartu Transaksi: Flexbox agar tingginya dinamis sama */
                     .tx-card {
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
                         border-radius: 12px;
@@ -123,7 +181,7 @@
                         border-color: #ec4899;
                     }
 
-                    /* Header Kotak */
+                    /* Header */
                     .tx-header {
                         padding: 12px 15px;
                         font-weight: 800;
@@ -132,69 +190,91 @@
                         text-transform: uppercase;
                         letter-spacing: 1px;
                         background: rgba(0,0,0,0.3);
+                        flex-shrink: 0; /* Cegah penyusutan */
                     }
                     .tx-header.border-pink { border-bottom: 2px solid #ec4899; text-shadow: 0 0 8px rgba(236, 72, 153, 0.6); }
                     .tx-header.border-purple { border-bottom: 2px solid #a855f7; text-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
                     .tx-icon-pink { color: #f472b6; margin-right: 8px; font-size: 1.2em; }
                     .tx-icon-purple { color: #c084fc; margin-right: 8px; font-size: 1.2em; }
 
-                    /* Desain Tabel */
-                    .sapatoto-tx-table {
-                        margin-bottom: 0;
-                        color: #ecf0f1;
-                        font-size: 0.85rem;
-                    }
-                    .sapatoto-tx-table th {
-                        background-color: rgba(236, 72, 153, 0.05); /* Sedikit hint pink di header tabel */
+                    /* Header Kolom Tabel Buatan */
+                    .tx-table-header {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 8px 15px;
+                        background-color: rgba(236, 72, 153, 0.05);
                         border-bottom: 1px solid #34495e;
                         color: #bdc3c7;
                         font-weight: 700;
-                        padding: 10px 15px;
                         font-size: 0.8rem;
+                        flex-shrink: 0;
                     }
-                    .sapatoto-tx-table td {
-                        background-color: transparent;
+
+                    /* Pembungkus Animasi (Sembunyikan scrollbar) */
+                    .tx-body {
+                        height: 200px; /* Persis 5 baris x 40px */
+                        overflow: hidden;
+                        position: relative;
+                        background: transparent;
+                    }
+
+                    /* Baris Item (Dibuat tetap tingginya) */
+                    .tx-item {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0 15px;
+                        height: 40px; /* Tinggi pasti per baris */
                         border-bottom: 1px solid #34495e;
-                        padding: 10px 15px;
-                        vertical-align: middle;
+                        font-size: 0.85rem;
                     }
-                    .sapatoto-tx-table tr:last-child td {
-                        border-bottom: none; /* Hilangkan garis di baris terbawah */
+                    .tx-item:hover { background-color: rgba(255,255,255,0.05); }
+
+                    /* Animasi Marquee Vertikal Naik */
+                    .tx-marquee {
+                        transition: opacity 0.5s ease; /* Untuk refresh halus */
+                        /* Menggerakkan 20 data ke atas selama 30 detik (looping infinite) */
+                        animation: scrollUp 30s linear infinite;
                     }
-                    .sapatoto-tx-table tbody tr:hover td {
-                        background-color: rgba(255,255,255,0.05); /* Efek nyala saat baris disentuh */
+
+                    /* Menggeser naik sebanyak tinggi 20 baris (20 x 40px = 800px) */
+                    @keyframes scrollUp {
+                        0% { transform: translateY(0); }
+                        100% { transform: translateY(-800px); }
                     }
-                    
-                    /* Warna Nominal Uang */
+
+                    /* Styling Text Uang */
                     .tx-deposit {
-                        color: #2ecc71; /* Hijau Terang khas Deposit sukses */
+                        color: #2ecc71;
                         font-weight: 800;
                         text-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
                     }
                     .tx-withdraw {
-                        color: #fbbf24; /* Kuning Emas khas JP/Withdraw besar */
+                        color: #fbbf24;
                         font-weight: 800;
                         text-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
-                        font-size: 0.95rem; /* Nominal WD dibuat sedikit lebih besar */
+                        font-size: 0.95rem;
                     }
                 </style>
             `;
 
-            // Suntikkan CSS dan HTML
             document.head.insertAdjacentHTML('beforeend', cssHTML);
             target.insertAdjacentHTML('afterend', widgetHTML);
             
+            // Render data pertama kali
+            renderTransactions();
+
+            // Set interval refresh tiap 1 Menit (60000 ms)
+            setInterval(refreshTransactions, 60000);
+
             return true;
         }
         return false;
     }
 
     // 4. JALANKAN SCRIPT
-    // Gunakan interval kecil untuk menunggu widget Pintas Domain dirender terlebih dahulu
     const checkInterval = setInterval(() => {
-        if (injectTransactionsWidget()) {
-            clearInterval(checkInterval); // Berhenti mengecek jika sudah berhasil dimunculkan
-        }
+        if (injectTransactionsWidget()) clearInterval(checkInterval);
     }, 500);
 
 })();
