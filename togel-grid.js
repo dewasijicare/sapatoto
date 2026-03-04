@@ -1,14 +1,14 @@
 (function() {
     // --- BLOK CSS KHUSUS PASARAN TOGEL ---
     const togelGridStyles = `
-        /* Peringatan Waktu Tutup */
+        /* Peringatan Waktu Tutup (Diubah ke Kuning Sapatoto #ffdd00) */
         .togel-countdown-timer.show-warning-text { position: relative; font-size: 0 !important; -webkit-user-select: none; -ms-user-select: none; user-select: none; }
-        .togel-countdown-timer.show-warning-text::before { content: "SEGERA TUTUP"; position: absolute; inset: 0; color: #a855f7 !important; text-shadow: 0 0 5px #a855f7; font-weight: bold; white-space: nowrap; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; transform: translateY(-5px); }
-        .togel-countdown-timer.closing-soon { color: #a855f7 !important; text-shadow: 0 0 5px #a855f7; font-weight: bold; }
+        .togel-countdown-timer.show-warning-text::before { content: "SEGERA TUTUP"; position: absolute; inset: 0; color: #ffdd00 !important; text-shadow: 0 0 5px #ffdd00; font-weight: bold; white-space: nowrap; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; transform: translateY(-5px); }
+        .togel-countdown-timer.closing-soon { color: #ffdd00 !important; text-shadow: 0 0 5px #ffdd00; font-weight: bold; }
         .togel-countdown-timer.is-closed { color: #e74c3c !important; text-shadow: 0 0 5px rgba(192, 57, 43, 0.7); font-weight: bold; }
         
-        /* Container & Tombol Show More */
-        #carousel-togel .owl-stage-outer { max-height: 495px; overflow: hidden; transition: max-height 0.5s ease-in-out; border-radius: 0 0 15px 15px; }
+        /* Container & Tombol Show More (Border Radius stage-outer diubah ke 8px) */
+        #carousel-togel .owl-stage-outer { max-height: 495px; overflow: hidden; transition: max-height 0.5s ease-in-out; border-radius: 0 0 8px 8px; }
         @media (min-width: 768px) { #carousel-togel .owl-stage-outer { max-height: 315px; } }
         #carousel-togel.show-all .owl-stage-outer { max-height: 2500px; }
         .show-more-wrapper { display: flex; justify-content: center; }
@@ -19,8 +19,8 @@
         #carousel-togel .owl-stage{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px;transform:none!important;width:100%!important}
         #carousel-togel .owl-item{width:auto!important;margin-right:0!important}
         
-        /* Desain Card Pasaran */
-        #carousel-togel .card,.row.g-3 .card{background:linear-gradient(160deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:15px!important;box-shadow:0 0 15px rgba(236, 72, 153, .5)!important;transition:transform .3s ease,box-shadow .3s ease;width:100%!important;font-family:'Exo 2',sans-serif!important}
+        /* Desain Card Pasaran (Border Radius diubah ke 8px) */
+        #carousel-togel .card,.row.g-3 .card{background:linear-gradient(160deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:8px!important;box-shadow:0 0 15px rgba(236, 72, 153, .5)!important;transition:transform .3s ease,box-shadow .3s ease;width:100%!important;font-family:'Exo 2',sans-serif!important}
         #carousel-togel .card:hover,.row.g-3 .card:hover{transform:translateY(-5px) scale(1.03);box-shadow:0 5px 25px rgba(236, 72, 153, .7)!important}
         
         /* Animasi Muncul Card */
@@ -135,5 +135,6 @@
         setInterval(initializeTogelCarousel, 250); 
         initializeTogelCarousel();
     });
+
 
 })();
