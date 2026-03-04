@@ -1340,6 +1340,7 @@
         styleLogoutButton();
         styleChangePasswordPage();
         styleTopPromoButton(); // <-- EKSEKUSI FUNGSI TOMBOL PROMO DI SINI
+        fixPasswordToggleIcons(); // <-- TAMBAHKAN PEMANGGILAN INI
     }
     
     // --- INISIALISASI SKRIP ---
@@ -1371,4 +1372,5 @@
         }
     });
 })();
+
 
