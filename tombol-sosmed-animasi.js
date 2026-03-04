@@ -1,53 +1,55 @@
 (function() {
-    // ID unik untuk style ini agar tidak bentrok
+    // ID unik untuk style ini
     const STYLE_ID = 'sapatoto-digital-promo-styles';
 
-    // 1. Injeksi CSS Khusus "Digital Running Light"
+    // 1. Injeksi CSS Khusus
     function injectPromoStyles() {
         if (document.getElementById(STYLE_ID)) return;
         const style = document.createElement('style');
         style.id = STYLE_ID;
         style.innerHTML = `
-            /* --- BASE BUTTON STYLE (Warna Pink Lebih Cerah & Neon) --- */
+            /* --- BASE BUTTON: KUNING TERANG --- */
             .btn-digital-promo {
                 position: relative;
                 overflow: hidden;
-                /* Gradien Neon Fuchsia ke Ungu Terang - Jauh lebih cerah dari sebelumnya */
-                background: linear-gradient(135deg, #ff4081, #d500f9) !important;
+                /* Background Kuning Terang yang Mencolok */
+                background: linear-gradient(135deg, #ffe600, #ffb300) !important;
                 border: none !important;
-                color: #fff !important;
-                font-weight: 800 !important; /* Font lebih tebal */
-                padding: 14px 15px !important; /* Sedikit lebih tinggi */
-                border-radius: 12px !important; /* Sudut lebih tumpul */
+                color: #1a1a1a !important; /* Teks Warna Gelap / Hampir Hitam */
+                font-weight: 900 !important; 
+                padding: 12px 15px !important; 
+                border-radius: 8px !important; 
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
                 text-transform: uppercase !important;
                 text-decoration: none;
-                /* Glow effect yang lebih terang */
-                box-shadow: 0 0 25px rgba(255, 64, 129, 0.6), inset 0 0 10px rgba(255, 255, 255, 0.3) !important;
+                /* Glow Kuning Emas di luar */
+                box-shadow: 0 4px 15px rgba(255, 179, 0, 0.5) !important;
                 transition: all 0.3s ease;
                 z-index: 1;
             }
 
             .btn-digital-promo:hover {
                 transform: translateY(-3px) scale(1.02);
-                /* Saat dihover, glow makin terang dan warnanya bergeser */
-                box-shadow: 0 10px 30px rgba(213, 0, 249, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.6) !important;
-                background: linear-gradient(135deg, #d500f9, #ff4081) !important;
+                box-shadow: 0 8px 25px rgba(255, 179, 0, 0.8) !important;
+                background: linear-gradient(135deg, #fff04d, #ffc107) !important;
             }
 
-            /* Teks & Ikon di tengah */
+            /* --- TEKS & ICON TENGAH: GELAP & JELAS --- */
             .promo-center-text {
                 display: flex;
                 align-items: center;
                 gap: 10px;
-                font-size: 1.1em;
-                z-index: 10; /* Pastikan teks di atas panah */
-                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+                font-size: 1.15em;
+                z-index: 10;
+                text-shadow: none; /* Tidak butuh shadow karena background sudah terang */
+            }
+            .promo-center-text i {
+                font-size: 1.3em; /* Icon sosmed dibesarkan sedikit */
             }
 
-            /* --- CONTAINER PANAH SAMPING (Mengisi Penuh Tinggi) --- */
+            /* --- PANAH SUPER TEBAL (MENGISI PANEL) --- */
             .digital-arrow-container {
                 position: absolute;
                 top: 0;
@@ -55,45 +57,44 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 3.5rem; /* Ukuran ikon SANGAT BESAR */
-                opacity: 0.9;
+                /* Ukuran font sangat besar agar panah membentang dari atas ke bawah */
+                font-size: 2.8rem; 
+                line-height: 0;
                 z-index: 5;
-                pointer-events: none; /* Agar tidak mengganggu klik */
+                pointer-events: none;
+                font-family: "Arial Black", Impact, sans-serif;
+                letter-spacing: -0.15em; /* Merapatkan panah ganda agar menempel */
             }
-            .arrow-pos-left { left: -8px; }
-            .arrow-pos-right { right: -8px; }
+            .arrow-pos-left { left: 8px; }
+            .arrow-pos-right { right: 8px; }
 
-
-            /* --- EFEK ANIMASI "RUNNING LIGHT" DIGITAL --- */
+            /* --- ANIMASI LAMPU BERJALAN: UNGU PIXEL/KOTAK --- */
             .running-light-effect {
-                /* Trik: Warna teks transparan */
                 color: transparent; 
-                /* Membuat background garis-garis kuning & transparan (efek pixel/led) */
+                /* Gradien Ungu dengan pola patah/kotak-kotak (Hard Stop) */
                 background: repeating-linear-gradient(
                     90deg,
-                    #fbbf24 0px,    /* Warna Kuning Emas Menyala */
-                    #fbbf24 5px,    /* Lebar "pixel" lampu */
-                    transparent 5px,
-                    transparent 10px /* Jarak antar lampu */
+                    #7e22ce 0px,     /* Ungu Tua (Base) */
+                    #7e22ce 15px,    /* Lebar blok ungu tua */
+                    #d8b4fe 15px,    /* Ungu Terang / Menyala (Lampu) */
+                    #d8b4fe 30px     /* Lebar blok lampu menyala */
                 );
-                background-size: 200% 100%; /* Ukuran background 2x lipat agar bisa digeser */
-                
-                /* KUNCI: Memotong background agar hanya muncul di dalam bentuk ikon panah */
+                background-size: 200% 100%;
                 -webkit-background-clip: text;
                 background-clip: text;
-
-                /* Menjalankan animasi geser background */
-                animation: digitalLedScroll 1s infinite linear;
-                filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.8)); /* Glow kuning di panahnya */
+                
+                /* Kecepatan lampu bergerak */
+                animation: ledScrollPurple 0.9s infinite linear;
+                filter: drop-shadow(0 2px 4px rgba(126, 34, 206, 0.4)); /* Sedikit bayangan di panah */
             }
 
-            /* Membalik arah animasi untuk panah kanan */
+            /* Balik arah untuk panah sebelah kanan */
             .running-light-reverse {
                 animation-direction: reverse;
             }
 
-            /* Definisi Animasi Geser Background */
-            @keyframes digitalLedScroll {
+            /* Keyframes menggeser background warna ungu */
+            @keyframes ledScrollPurple {
                 0%   { background-position: 0% 0%; }
                 100% { background-position: -200% 0%; }
             }
@@ -103,10 +104,8 @@
 
     // 2. Fungsi Pembuat Tombol
     function createDigitalPromoButtons() {
-        // Target tetap sama: di dalam card-body milik #row-quicklogin
         const targetContainer = document.querySelector("#row-quicklogin .card-body");
         
-        // Cek container dan pastikan tombol belum ada
         if (targetContainer && !document.querySelector(".custom-digital-buttons-wrapper")) {
             
             const buttonsData = [
@@ -123,20 +122,18 @@
             ];
 
             const wrapper = document.createElement("div");
-            wrapper.className = "custom-digital-buttons-wrapper mt-4 d-grid gap-3"; // Gap lebih lebar
+            wrapper.className = "custom-digital-buttons-wrapper mt-4 d-grid gap-3";
 
             buttonsData.forEach(data => {
                 const btn = document.createElement("a");
                 btn.href = data.link;
                 btn.target = "_blank";
-                // Gunakan class baru kita
                 btn.className = "btn btn-digital-promo";
                 
-                // STRUKTUR HTML BARU:
-                // Menggunakan ikon panah besar (bi-chevron-compact) di kiri dan kanan
+                // STRUKTUR HTML BARU: Menggunakan Karakter Segitiga Geometris Padat (▶ & ◀)
                 btn.innerHTML = `
                     <div class="digital-arrow-container arrow-pos-left">
-                        <i class="bi bi-chevron-compact-right running-light-effect"></i>
+                        <span class="running-light-effect">&#9654;&#9654;</span>
                     </div>
 
                     <span class="promo-center-text">
@@ -144,14 +141,13 @@
                     </span>
 
                     <div class="digital-arrow-container arrow-pos-right">
-                        <i class="bi bi-chevron-compact-left running-light-effect running-light-reverse"></i>
+                        <span class="running-light-effect running-light-reverse">&#9664;&#9664;</span>
                     </div>
                 `;
                 
                 wrapper.appendChild(btn);
             });
 
-            // Masukkan ke halaman
             const lastElement = targetContainer.lastElementChild;
             if (lastElement) {
                 lastElement.parentNode.insertBefore(wrapper, lastElement.nextSibling);
@@ -164,23 +160,19 @@
         return false;
     }
 
-    // 3. Eksekutor (Menggunakan Observer untuk memastikan elemen ada)
+    // 3. Eksekutor Utama
     function init() {
         injectPromoStyles();
-        // Coba langsung
         if (!createDigitalPromoButtons()) {
-            // Jika gagal, pantau perubahan DOM (untuk halaman yang loading dinamis)
             const observer = new MutationObserver((mutations, obs) => {
                 if (createDigitalPromoButtons()) {
-                    obs.disconnect(); // Berhenti memantau jika sudah berhasil
+                    obs.disconnect(); 
                 }
             });
-            // Pantau body untuk penambahan child list
             observer.observe(document.body, { childList: true, subtree: true });
         }
     }
 
-    // Jalankan
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
