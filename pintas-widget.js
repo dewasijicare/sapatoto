@@ -38,7 +38,7 @@
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
                         border: 1px solid #ec4899;
                         box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-                        border-radius: 15px; /* Sesuai radius card Sapatoto */
+                        border-radius: 8px; /* Sesuai radius card Sapatoto */
                         padding: 12px 20px;
                         position: relative;
                         overflow: hidden;
@@ -146,3 +146,4 @@
         });
     }
 })();
+
