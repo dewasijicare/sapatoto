@@ -9,7 +9,7 @@
         if (target && !existingWidget) {
             
             var widgetHTML = `
-                <div id="pintas-widget-wrapper" style="margin: 15px auto 25px auto; max-width: 1200px; padding: 0 15px;">
+                <div id="pintas-widget-wrapper" style="margin: 15px auto 25px auto; max-width: 1200px; padding: 0;">
                     <a href="https://pintasdomain.com" target="_blank" style="text-decoration: none; display: block;">
                         
                         <div class="sapatoto-pintas-banner">
@@ -146,4 +146,5 @@
         });
     }
 })();
+
 
