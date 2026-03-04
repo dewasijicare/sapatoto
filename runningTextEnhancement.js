@@ -56,8 +56,8 @@
                 // Pindahkan ke setelah container slider
                 sliderContainer.insertAdjacentElement('afterend', announcement);
                 // Atur margin spesifik homepage
-                announcement.style.marginLeft = '1rem';
-                announcement.style.marginRight = '1rem';
+                announcement.style.marginLeft = '12px';
+                announcement.style.marginRight = '12px';
                 announcement.style.marginTop = '1.5rem';
                 announcement.style.marginBottom = '1rem';
                 moved = true;
@@ -122,6 +122,7 @@
     }
 
 })();
+
 
 
 
