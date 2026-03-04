@@ -69,8 +69,8 @@
             // Pindahkan ke sebelum panel member
             memberPanel.insertAdjacentElement('beforebegin', announcement);
             // Atur margin spesifik member area
-            announcement.style.marginLeft = '10px';
-            announcement.style.marginRight = '10px';
+            announcement.style.marginLeft = '6px';
+            announcement.style.marginRight = '6px';
             announcement.style.marginTop = '1rem';
             announcement.style.marginBottom = '1rem';
             moved = true;
@@ -122,6 +122,7 @@
     }
 
 })();
+
 
 
 
