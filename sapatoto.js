@@ -1264,6 +1264,48 @@
         });
     }
 
+    // [FUNGSI BARU] Memperbaiki logika icon toggle password yang terbalik
+    function fixPasswordToggleIcons() {
+        // Cari semua tombol toggle password (di Quick Login, Halaman Login, dan Register)
+        const toggles = document.querySelectorAll('#togglePass, span[id^="toggle"]');
+        
+        toggles.forEach(toggle => {
+            // Mencegah eksekusi berulang dari setInterval
+            if (toggle.dataset.iconFixed === 'true') return;
+            
+            // Cari input password yang terhubung dan icon-nya
+            const input = toggle.closest('.input-group')?.querySelector('input');
+            const icon = toggle.querySelector('i');
+            
+            if (input && icon) {
+                // Fungsi untuk menyesuaikan icon berdasarkan tipe input
+                const updateIcon = () => {
+                    // Hapus semua class icon bawaan web (FontAwesome atau BootstrapIcon)
+                    icon.classList.remove('fa-eye', 'fa-eye-slash', 'bi-eye', 'bi-eye-slash', 'bi-eye-fill', 'bi-eye-slash-fill');
+                    
+                    if (input.type === 'password') {
+                        // Jika password disembunyikan -> Mata Tercoret
+                        icon.classList.add('bi', 'bi-eye-slash-fill');
+                    } else {
+                        // Jika password diperlihatkan -> Mata Terbuka
+                        icon.classList.add('bi', 'bi-eye-fill');
+                    }
+                    icon.style.color = '#a855f7'; // Pastikan warna tetap ungu
+                };
+
+                // Pantau event click. Gunakan setTimeout agar script asli web 
+                // berjalan lebih dulu, lalu script kita menimpa icon akhirnya.
+                toggle.addEventListener('click', () => {
+                    setTimeout(updateIcon, 50);
+                });
+
+                // Jalankan sekali saat halaman pertama kali dimuat
+                updateIcon();
+            }
+            toggle.dataset.iconFixed = 'true';
+        });
+    }
+    
     // Pemindai utama
     function runDynamicStyling() {
         initializeSwipeableHeaderMenu();
@@ -1329,3 +1371,4 @@
         }
     });
 })();
+
