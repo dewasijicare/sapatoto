@@ -30,27 +30,45 @@
                     
                     // AMBIL LINK GAME UNTUK DIKLIK
                     let link = node.href || node.dataset.playurl || '#';
+                    
                     let linkLower = link.toLowerCase();
+                    let imgLower = imgUrl.toLowerCase();
+                    let nameLower = name.toLowerCase();
 
-                    // DETEKSI PROVIDER OTOMATIS BERDASARKAN LINK / NAMA
+                    // ==========================================
+                    // DETEKSI PROVIDER OTOMATIS (3 LAPIS LOGIKA)
+                    // ==========================================
                     let provider = "SLOT ONLINE";
-                    if(linkLower.includes('pragmatic')) provider = "PRAGMATIC PLAY";
-                    else if(linkLower.includes('pgsoft')) provider = "PG SOFT";
-                    else if(linkLower.includes('habanero')) provider = "HABANERO";
-                    else if(linkLower.includes('microgaming')) provider = "MICROGAMING";
-                    else if(linkLower.includes('joker')) provider = "JOKER GAMING";
-                    else if(linkLower.includes('spade')) provider = "SPADEGAMING";
-                    else if(linkLower.includes('cq9')) provider = "CQ9";
-                    else if(linkLower.includes('playtech')) provider = "PLAYTECH";
-                    else if(linkLower.includes('playn') || linkLower.includes('png')) provider = "PLAY'N GO";
-                    else if(linkLower.includes('top-trend') || linkLower.includes('toptrend')) provider = "TOP TREND";
-                    else if(linkLower.includes('nolimit')) provider = "NOLIMIT CITY";
+                    
+                    // Lapis 1 & 2: Deteksi dari URL Gambar dan URL Link
+                    const combinedUrl = linkLower + " " + imgLower;
+                    if(combinedUrl.includes('pragmatic') || combinedUrl.includes('/pp/') || combinedUrl.includes('vs20') || combinedUrl.includes('vs10')) provider = "PRAGMATIC PLAY";
+                    else if(combinedUrl.includes('pgsoft') || combinedUrl.includes('/pg/')) provider = "PG SOFT";
+                    else if(combinedUrl.includes('habanero') || combinedUrl.includes('/hb/')) provider = "HABANERO";
+                    else if(combinedUrl.includes('microgaming') || combinedUrl.includes('/mg/')) provider = "MICROGAMING";
+                    else if(combinedUrl.includes('joker') || combinedUrl.includes('/jk/')) provider = "JOKER GAMING";
+                    else if(combinedUrl.includes('spade') || combinedUrl.includes('/sg/')) provider = "SPADEGAMING";
+                    else if(combinedUrl.includes('cq9')) provider = "CQ9";
+                    else if(combinedUrl.includes('playtech') || combinedUrl.includes('/pt/')) provider = "PLAYTECH";
+                    else if(combinedUrl.includes('playn') || combinedUrl.includes('png')) provider = "PLAY'N GO";
+                    else if(combinedUrl.includes('top-trend') || combinedUrl.includes('toptrend') || combinedUrl.includes('/ttg/')) provider = "TOP TREND";
+                    else if(combinedUrl.includes('nolimit')) provider = "NOLIMIT CITY";
+
+                    // Lapis 3: Deteksi Paksa dari Nama Game (Sangat Ampuh)
+                    if (provider === "SLOT ONLINE") {
+                        if (nameLower.includes("mahjong") || nameLower.includes("bandito") || nameLower.includes("neko") || nameLower.includes("shaolin") || nameLower.includes("wealth") || nameLower.includes("qilin") || nameLower.includes("dragon hatch") || nameLower.includes("caishen") || nameLower.includes("macau") || nameLower.includes("pg ")) {
+                            provider = "PG SOFT";
+                        } else if (nameLower.includes("olympus") || nameLower.includes("princess") || nameLower.includes("bonanza") || nameLower.includes("sugar") || nameLower.includes("aztec") || nameLower.includes("rhino") || nameLower.includes("wild west") || nameLower.includes("megaways") || nameLower.includes("fruit party") || nameLower.includes("lions") || nameLower.includes("thor") || nameLower.includes("pragmatic")) {
+                            provider = "PRAGMATIC PLAY";
+                        } else if (nameLower.includes("koi gate") || nameLower.includes("fa cai shen") || nameLower.includes("hot hot")) {
+                            provider = "HABANERO";
+                        }
+                    }
 
                     // Atur Persentase Kemunculan (Bobot)
                     let weight = 10;
                     if(provider === "PRAGMATIC PLAY" || provider === "PG SOFT") weight = 30;
-                    let nLower = name.toLowerCase();
-                    if(nLower.includes("mahjong") || nLower.includes("olympus") || nLower.includes("starlight") || nLower.includes("1000")) weight = 60; // Paling sering muncul
+                    if(nameLower.includes("mahjong") || nameLower.includes("olympus") || nameLower.includes("starlight") || nameLower.includes("1000")) weight = 60; // Paling sering muncul
 
                     // Masukkan ke array jika nama belum ada (cegah duplikat)
                     if (!fetchedGames.find(g => g.name === name)) {
@@ -137,7 +155,7 @@
                 gameName: game.name,
                 provider: game.provider,
                 image: game.img,
-                link: game.link, // Ambil Link Game
+                link: game.link, 
                 amount: generateJackpotAmount(),
                 user: generateUsername(),
                 date: generateDate()
@@ -206,7 +224,7 @@
                     background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.95));
                     border: 1px solid #ec4899;
                     border-radius: 12px;
-                    padding: 0; /* Diubah jadi 0 karena header punya warna sendiri */
+                    padding: 0; 
                     box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
                     overflow: hidden;
                 }
@@ -216,7 +234,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    background: linear-gradient(90deg, #ec4899, #a855f7, #3b82f6); /* Gradasi 3 Warna */
+                    background: linear-gradient(90deg, #ec4899, #a855f7, #3b82f6); 
                     padding: 12px 15px;
                     margin-bottom: 15px;
                     border-bottom: 2px solid #fff;
@@ -236,11 +254,9 @@
                     width: 100%;
                     overflow-x: auto;
                     position: relative;
-                    padding-bottom: 15px; /* Spasi bawah */
-                    /* Efek pudar di ujung */
+                    padding-bottom: 15px; 
                     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
                     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-                    /* Sembunyikan scrollbar bawaan */
                     -ms-overflow-style: none;
                     scrollbar-width: none;
                     cursor: grab;
@@ -252,7 +268,7 @@
                     display: inline-flex;
                     gap: 15px;
                     width: max-content;
-                    padding: 0 15px; /* Spasi kiri kanan */
+                    padding: 0 15px; 
                 }
 
                 /* Desain Kotak Game BISA DI KLIK */
@@ -267,7 +283,6 @@
                     position: relative;
                     flex-shrink: 0;
                     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-                    /* Mencegah gambar / text nyangkut saat di drag */
                     user-select: none;
                     -webkit-user-drag: none;
                 }
@@ -291,7 +306,7 @@
                     height: 100%;
                     object-fit: cover;
                     transition: transform 0.4s ease;
-                    pointer-events: none; /* Penting agar gambar tidak ketarik saat drag */
+                    pointer-events: none; 
                 }
                 .jp-card:hover .jp-img-wrapper img {
                     transform: scale(1.1);
@@ -366,25 +381,22 @@
         let scrollLeft;
         let exactScrollLeft = 0;
         let isHovered = false;
-        let isDraggingCard = false; // Membedakan antara mengklik link atau mendrag slider
+        let isDraggingCard = false; 
         
-        // Fungsi Auto Scroll Mulus
         function autoScroll() {
             if (!isDown && !isHovered) {
-                exactScrollLeft += 0.5; // Kecepatan Scroll, bisa diubah (0.5 = lambat, 1 = normal)
-                
-                // Jika sudah menyentuh setengah track (karena diduplikasi), reset ke 0 (Infinite Loop)
+                exactScrollLeft += 0.5; // Kecepatan Scroll Mulus
                 if (exactScrollLeft >= container.scrollWidth / 2) {
                     exactScrollLeft = 0;
                 }
                 container.scrollLeft = exactScrollLeft;
             } else {
-                exactScrollLeft = container.scrollLeft; // Sinkronisasi manual scroll
+                exactScrollLeft = container.scrollLeft; 
             }
             requestAnimationFrame(autoScroll);
         }
 
-        // Mouse Events (Untuk PC)
+        // Mouse Events (PC)
         container.addEventListener('mousedown', (e) => {
             isDown = true;
             isDraggingCard = false;
@@ -392,30 +404,26 @@
             startX = e.pageX - container.offsetLeft;
             scrollLeft = container.scrollLeft;
         });
-
         container.addEventListener('mouseleave', () => {
             isDown = false;
             isHovered = false;
             container.style.cursor = 'grab';
         });
-
         container.addEventListener('mouseup', () => {
             isDown = false;
             container.style.cursor = 'grab';
         });
-
         container.addEventListener('mousemove', (e) => {
             if (!isDown) return;
             e.preventDefault();
             const x = e.pageX - container.offsetLeft;
-            const walk = (x - startX) * 1.5; // Kecepatan Drag
-            if (Math.abs(walk) > 3) isDraggingCard = true; // Deteksi jika sedang drag
+            const walk = (x - startX) * 1.5; 
+            if (Math.abs(walk) > 3) isDraggingCard = true; 
             
-            // Logika Infinite Loop untuk drag manual
             let newScrollLeft = scrollLeft - walk;
             if (newScrollLeft <= 0) {
                 newScrollLeft = (container.scrollWidth / 2) - 10;
-                startX = e.pageX - container.offsetLeft; // Reset start posisi agar tidak loncat
+                startX = e.pageX - container.offsetLeft; 
                 scrollLeft = newScrollLeft;
             } else if (newScrollLeft >= container.scrollWidth / 2) {
                 newScrollLeft = 0;
@@ -425,7 +433,7 @@
             container.scrollLeft = newScrollLeft;
         });
         
-        // Touch Events (Untuk HP)
+        // Touch Events (HP)
         container.addEventListener('touchstart', (e) => {
             isDown = true;
             isDraggingCard = false;
@@ -452,15 +460,11 @@
             container.scrollLeft = newScrollLeft;
         });
 
-        // Hentikan auto-scroll saat kursor berada di atas slider
         container.addEventListener('mouseenter', () => { isHovered = true; });
-        
-        // Mencegah link di-klik jika user berniat untuk men-drag
         container.addEventListener('click', (e) => {
             if (isDraggingCard) e.preventDefault();
         });
 
-        // Jalankan animasi loop
         autoScroll();
 
         // =========================================
@@ -479,7 +483,7 @@
     }
 
     // =========================================
-    // EKSEKUSI (Tunggu data game ditarik dulu)
+    // EKSEKUSI
     // =========================================
     LIVE_GAME_LIBRARY = await fetchGamesFromRTP();
 
