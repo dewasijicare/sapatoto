@@ -1,9 +1,8 @@
 (function() {
     // 1. GENERATOR DATA PINTAR & NATURAL
 
-    // Generator Username (Menghasilkan >50.000 Kombinasi Natural & Tidak Berulang)
+    // Generator Username
     function getRandomUsername() {
-        // Bank Data Awalan (Nama Indo, Panggilan, Singkatan Hoki)
         const prefixes = [
             'and','bud','cit','dew','eko','fit','gil','hen','iwa','jok','kev','luk','mar','nov','put','riz','sat','tri','vin','wid','yan','zul',
             'agu','bag','cah','dim','end','far','gun','had','ind','jam','kar','les','mah','nur','oka','pan','rah','sur','teg','unt','wah','yud',
@@ -11,118 +10,83 @@
             'sri','ayu','rat','sus','lin','tin','des','mel','lia','nia','mia','tia','ria','fia','kia','cia','yul','wul',
             'hok','vip','pro','top','win','max','jpx','gac','hky','cpt'
         ];
-        
-        // 1. Pilih suku kata dasar secara acak
         let base = prefixes[Math.floor(Math.random() * prefixes.length)];
-
-        // 2. Acak gaya penulisan (0 = BESAR SEMUA, 1 = Kapital Depan, 2 = kecil semua)
         const caseType = Math.floor(Math.random() * 3);
-        if (caseType === 0) {
-            base = base.toUpperCase();
-        } else if (caseType === 1) {
-            base = base.charAt(0).toUpperCase() + base.slice(1);
-        }
+        if (caseType === 0) base = base.toUpperCase();
+        else if (caseType === 1) base = base.charAt(0).toUpperCase() + base.slice(1);
 
-        // 3. Trik agar angka bisa ikut tampil di sensor (misal: An7***, bo9***, X8Y***)
         const formatType = Math.random();
         let finalName = "";
-
-        if (formatType < 0.40) {
-            // 40% Peluang: 3 Huruf Penuh (Contoh: And***, BOS***, yul***)
-            finalName = base.substring(0, 3);
-            
-        } else if (formatType < 0.70) {
-            // 30% Peluang: 2 Huruf + 1 Angka (Contoh: An7***, bo9***)
-            const num = Math.floor(Math.random() * 9) + 1; // Angka 1-9
-            finalName = base.substring(0, 2) + num;
-            
-        } else if (formatType < 0.90) {
-            // 20% Peluang: 1 Huruf + 2 Angka (Contoh: A99***, m21***)
-            const num = Math.floor(Math.random() * 89) + 10; // Angka 10-99
-            finalName = base.substring(0, 1) + num;
-            
-        } else {
-            // 10% Peluang: Acak murni huruf dan angka (Sering dipakai akun bodong. Contoh: x8y***, 7Kp***)
+        if (formatType < 0.40) finalName = base.substring(0, 3);
+        else if (formatType < 0.70) finalName = base.substring(0, 2) + (Math.floor(Math.random() * 9) + 1);
+        else if (formatType < 0.90) finalName = base.substring(0, 1) + (Math.floor(Math.random() * 89) + 10);
+        else {
             const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-            for (let i = 0; i < 3; i++) {
-                finalName += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            // Sesuaikan kapitalisasi untuk format acak ini
+            for (let i = 0; i < 3; i++) finalName += chars.charAt(Math.floor(Math.random() * chars.length));
             if (caseType === 0 || caseType === 1) finalName = finalName.toUpperCase();
         }
-
-        // Kembalikan hasil akhir ditambah bintang sensor
         return finalName + '***';
     }
 
-    // Generator Nominal Deposit (Algoritma Natural, Max 20 Juta)
+    // Generator Waktu Natural (Mundur ke belakang)
+    function generateNaturalDate(minutesOffset) {
+        const now = new Date();
+        const pastTime = new Date(now.getTime() - (minutesOffset * 60000) - Math.floor(Math.random() * 60000));
+        const day = String(pastTime.getDate()).padStart(2, '0');
+        const month = String(pastTime.getMonth() + 1).padStart(2, '0');
+        const year = pastTime.getFullYear();
+        const hours = String(pastTime.getHours()).padStart(2, '0');
+        const mins = String(pastTime.getMinutes()).padStart(2, '0');
+        const secs = String(pastTime.getSeconds()).padStart(2, '0');
+        return `${day}/${month}/${year} ${hours}:${mins}:${secs}`;
+    }
+
+    // Generator Nominal Deposit
     function getDepositAmount() {
         const prob = Math.random();
-
         if (prob < 0.60) {
-            // 60% Peluang: Deposit merakyat (10rb - 100rb) - Paling sering muncul
             const amounts = [10000, 20000, 25000, 50000, 50000, 50000, 100000, 100000];
             return amounts[Math.floor(Math.random() * amounts.length)];
-            
         } else if (prob < 0.85) {
-            // 25% Peluang: Deposit menengah (150rb - 1 Juta)
             const amounts = [150000, 200000, 250000, 300000, 500000, 500000, 750000, 1000000];
             return amounts[Math.floor(Math.random() * amounts.length)];
-            
         } else if (prob < 0.95) {
-            // 10% Peluang: Deposit lumayan besar (1.2 Juta - 2 Juta)
             const amounts = [1200000, 1500000, 1800000, 2000000];
             return amounts[Math.floor(Math.random() * amounts.length)];
-            
         } else {
-            // 5% Peluang: Deposit Paus / Sangat Besar (> 2 Juta s/d 20 Juta) - Jarang muncul
-            // Dibuat kelipatan 500rb atau 1 Juta agar terlihat seperti transfer bank asli
-            const millions = Math.floor(Math.random() * 18) + 3; // 3 sampai 20 Juta
-            const isHalf = Math.random() > 0.5 ? 500000 : 0; // 50% peluang ada tambahan 500rb (cth: 5.500.000)
-            
+            const millions = Math.floor(Math.random() * 18) + 3;
+            const isHalf = Math.random() > 0.5 ? 500000 : 0;
             let result = (millions * 1000000) + isHalf;
-            if (result > 20000000) result = 20000000; // Dikunci maksimal 20 Juta
-            
+            if (result > 20000000) result = 20000000;
             return result;
         }
     }
 
-    // Generator Nominal Withdraw (Algoritma Realistis & Organik)
+    // Generator Nominal Withdraw
     function getWithdrawAmount() {
         const prob = Math.random();
-
         if (prob < 0.50) {
-            // 50% Peluang: Nominal Kecil & Menengah (Genap/Bulat) - 100rb s/d 3 Juta
-            // Sangat natural karena ini adalah rentang WD paling sering di situs manapun
             const amounts = [100000, 150000, 200000, 250000, 300000, 500000, 750000, 1000000, 1500000, 2000000, 3000000];
             return amounts[Math.floor(Math.random() * amounts.length)];
-            
         } else if (prob < 0.85) {
-            // 35% Peluang: Nominal UNIK & TANGGUNG di bawah 5 Juta
-            // Contoh hasil: 345.000, 1.284.000, 4.755.000 (Terlihat seperti WD kuras saldo)
-            const millions = Math.floor(Math.random() * 5); // 0 sampai 4 Juta
-            const thousands = Math.floor(Math.random() * 999) + 1; // 1 sampai 999 ribu
+            const millions = Math.floor(Math.random() * 5);
+            const thousands = Math.floor(Math.random() * 999) + 1;
             let result = (millions * 1000000) + (thousands * 1000);
-            if (result < 100000) result += 150000; // Pastikan minimal WD tidak terlalu kecil
+            if (result < 100000) result += 150000;
             return result;
-            
         } else if (prob < 0.95) {
-            // 10% Peluang: WD Agak Besar (5 Juta s/d 15 Juta) -> Mulai Langka
-            const millions = Math.floor(Math.random() * 11) + 5; // 5 sampai 15 Juta
-            const isUnique = Math.random() > 0.5; // 50% peluang nominalnya dibuat unik
+            const millions = Math.floor(Math.random() * 11) + 5;
+            const isUnique = Math.random() > 0.5;
             const extra = isUnique ? (Math.floor(Math.random() * 99) + 1) * 10000 : 0; 
             return (millions * 1000000) + extra;
-            
         } else {
-            // 5% Peluang: WD Jackpot Super Besar (20 Juta s/d 80 Juta) -> Sangat Langka!
-            const millions = Math.floor(Math.random() * 61) + 20; // 20 sampai 80 Juta
-            const isUnique = Math.random() > 0.7; // 30% peluang nominalnya unik
+            const millions = Math.floor(Math.random() * 61) + 20;
+            const isUnique = Math.random() > 0.7;
             const extra = isUnique ? (Math.floor(Math.random() * 99) + 1) * 100000 : 0; 
             return (millions * 1000000) + extra;
         }
     }
 
-    // Format IDR
     function formatIDR(angka) {
         return "Rp " + new Intl.NumberFormat('id-ID').format(angka);
     }
@@ -137,16 +101,17 @@
         const deps = [];
         const wds = [];
         for (let i = 0; i < 20; i++) {
-            deps.push({ user: getRandomUsername(), amount: getDepositAmount() });
-            wds.push({ user: getRandomUsername(), amount: getWithdrawAmount() });
+            deps.push({ user: getRandomUsername(), amount: getDepositAmount(), time: generateNaturalDate(i * 2) });
+            wds.push({ user: getRandomUsername(), amount: getWithdrawAmount(), time: generateNaturalDate(i * 3) });
         }
 
         const buildRow = (item, type) => {
             const amountClass = type === 'deposit' ? 'tx-deposit' : 'tx-withdraw';
             return `
                 <div class="tx-item">
-                    <div class="tx-user"><i class="bi bi-person-circle text-muted me-2"></i><span class="fw-bold text-light">${item.user}</span></div>
-                    <div class="tx-amount ${amountClass}">${formatIDR(item.amount)}</div>
+                    <div class="tx-col-user"><i class="bi bi-person-circle text-muted me-1"></i><span class="fw-bold text-light">${item.user}</span></div>
+                    <div class="tx-col-time"><i class="bi bi-clock"></i> ${item.time}</div>
+                    <div class="tx-col-amount ${amountClass}">${formatIDR(item.amount)}</div>
                 </div>
             `;
         };
@@ -163,18 +128,16 @@
         wdList.innerHTML = generateHTML(wds, 'withdraw');
     }
 
-    // Fungsi Refresh Halus (Fade Out -> Ganti Data -> Fade In)
     function refreshTransactions() {
         const lists = document.querySelectorAll('.tx-marquee');
-        lists.forEach(el => el.style.opacity = '0'); // Hilangkan sejenak
+        lists.forEach(el => el.style.opacity = '0'); 
         setTimeout(() => {
-            renderTransactions(); // Ganti data
+            renderTransactions(); 
             lists.forEach(el => {
-                // Reset animasi ke awal
                 el.style.animation = 'none';
-                el.offsetHeight; /* trigger reflow */
+                el.offsetHeight; 
                 el.style.animation = null; 
-                el.style.opacity = '1'; // Munculkan kembali
+                el.style.opacity = '1'; 
             });
         }, 500);
     }
@@ -186,7 +149,7 @@
 
         if (target && !existing) {
             const widgetHTML = `
-                <div id="sapatoto-recent-transactions" style="max-width: 1200px; margin: 0 auto 25px auto; padding: 0 14px;">
+                <div id="sapatoto-recent-transactions" style="width: 100%; max-width: 100%; margin: 0 0 25px 0; padding: 0 8px; box-sizing: border-box;">
                     <div class="row g-3 d-flex align-items-stretch">
                         
                         <div class="col-md-6 d-flex">
@@ -195,12 +158,12 @@
                                     <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> LIVE DEPOSIT
                                 </div>
                                 <div class="tx-table-header">
-                                    <div>USER</div>
-                                    <div class="text-end">NOMINAL</div>
+                                    <div class="tx-col-user">USER</div>
+                                    <div class="tx-col-time">WAKTU</div>
+                                    <div class="tx-col-amount">NOMINAL</div>
                                 </div>
                                 <div class="tx-body flex-grow-1">
-                                    <div class="tx-marquee" id="sapatoto-dep-list">
-                                        </div>
+                                    <div class="tx-marquee" id="sapatoto-dep-list"></div>
                                 </div>
                             </div>
                         </div>
@@ -211,12 +174,12 @@
                                     <i class="bi bi-cash-coin tx-icon-purple"></i> LIVE WITHDRAW
                                 </div>
                                 <div class="tx-table-header">
-                                    <div>USER</div>
-                                    <div class="text-end">NOMINAL</div>
+                                    <div class="tx-col-user">USER</div>
+                                    <div class="tx-col-time">WAKTU</div>
+                                    <div class="tx-col-amount">NOMINAL</div>
                                 </div>
                                 <div class="tx-body flex-grow-1">
-                                    <div class="tx-marquee" id="sapatoto-wd-list">
-                                        </div>
+                                    <div class="tx-marquee" id="sapatoto-wd-list"></div>
                                 </div>
                             </div>
                         </div>
@@ -229,7 +192,6 @@
                 <style>
                     #sapatoto-recent-transactions { font-family: 'Exo 2', sans-serif; }
                     
-                    /* Kartu Transaksi: Flexbox agar tingginya dinamis sama */
                     .tx-card {
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
                         border-radius: 12px;
@@ -244,7 +206,6 @@
                         border-color: #ec4899;
                     }
 
-                    /* Header */
                     .tx-header {
                         padding: 12px 15px;
                         font-weight: 800;
@@ -253,17 +214,16 @@
                         text-transform: uppercase;
                         letter-spacing: 1px;
                         background: rgba(0,0,0,0.3);
-                        flex-shrink: 0; /* Cegah penyusutan */
+                        flex-shrink: 0; 
                     }
                     .tx-header.border-pink { border-bottom: 2px solid #ec4899; text-shadow: 0 0 8px rgba(236, 72, 153, 0.6); }
                     .tx-header.border-purple { border-bottom: 2px solid #a855f7; text-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
                     .tx-icon-pink { color: #f472b6; margin-right: 8px; font-size: 1.2em; }
                     .tx-icon-purple { color: #c084fc; margin-right: 8px; font-size: 1.2em; }
 
-                    /* Header Kolom Tabel Buatan */
+                    /* DESAIN FLEXBOX UNTUK 3 KOLOM */
                     .tx-table-header {
                         display: flex;
-                        justify-content: space-between;
                         padding: 8px 15px;
                         background-color: rgba(236, 72, 153, 0.05);
                         border-bottom: 1px solid #34495e;
@@ -272,41 +232,37 @@
                         font-size: 0.8rem;
                         flex-shrink: 0;
                     }
+                    .tx-item {
+                        display: flex;
+                        align-items: center;
+                        padding: 0 15px;
+                        height: 40px; /* Tinggi pasti per baris (PENTING UNTUK SCROLLING) */
+                        border-bottom: 1px solid #34495e;
+                        font-size: 0.85rem;
+                    }
+                    .tx-item:hover { background-color: rgba(255,255,255,0.05); }
 
-                    /* Pembungkus Animasi (Sembunyikan scrollbar) */
+                    /* PEMBAGIAN RUANG KOLOM (Kiri, Tengah, Kanan) */
+                    .tx-col-user { flex: 1; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+                    .tx-col-time { flex: 1.2; text-align: center; color: #bdc3c7; font-size: 0.75rem; }
+                    .tx-col-amount { flex: 1; text-align: right; }
+
+                    /* Pembungkus Animasi */
                     .tx-body {
                         height: 200px; /* Persis 5 baris x 40px */
                         overflow: hidden;
                         position: relative;
                         background: transparent;
                     }
-
-                    /* Baris Item (Dibuat tetap tingginya) */
-                    .tx-item {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        padding: 0 15px;
-                        height: 40px; /* Tinggi pasti per baris */
-                        border-bottom: 1px solid #34495e;
-                        font-size: 0.85rem;
-                    }
-                    .tx-item:hover { background-color: rgba(255,255,255,0.05); }
-
-                    /* Animasi Marquee Vertikal Naik */
                     .tx-marquee {
-                        transition: opacity 0.5s ease; /* Untuk refresh halus */
-                        /* Menggerakkan 20 data ke atas selama 30 detik (looping infinite) */
+                        transition: opacity 0.5s ease;
                         animation: scrollUp 30s linear infinite;
                     }
-
-                    /* Menggeser naik sebanyak tinggi 20 baris (20 x 40px = 800px) */
                     @keyframes scrollUp {
                         0% { transform: translateY(0); }
-                        100% { transform: translateY(-800px); }
+                        100% { transform: translateY(-800px); } /* 20 data x 40px = 800px */
                     }
 
-                    /* Styling Text Uang */
                     .tx-deposit {
                         color: #2ecc71;
                         font-weight: 800;
@@ -317,6 +273,15 @@
                         font-weight: 800;
                         text-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
                         font-size: 0.95rem;
+                    }
+
+                    /* RESPONSIVE UNTUK HP */
+                    @media (max-width: 768px) {
+                        .tx-col-time { font-size: 0.65rem; }
+                        .tx-item { font-size: 0.75rem; padding: 0 10px; }
+                        .tx-table-header { padding: 8px 10px; font-size: 0.7rem; }
+                        /* Pertahankan padding 8px di mobile agar sejajar togel */
+                        #sapatoto-recent-transactions { padding: 0 8px !important; }
                     }
                 </style>
             `;
