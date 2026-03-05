@@ -11,17 +11,17 @@
             --dark-bg: #1a252f;
         }
 
-        /* --- PERBAIKAN LEBAR PRESISI 100% --- */
+        /* --- PERBAIKAN LEBAR PRESISI PIXEL-PERFECT (SAMA DENGAN TOGEL) --- */
         .jackpot-container-main {
             font-family: 'Exo 2', sans-serif !important; 
             text-align: center;
             position: relative;
-            margin: 0 auto 25px auto !important; /* Jarak disamakan dengan widget lain */
+            margin: 0 0 25px 0 !important; /* Margin direset agar 100% rata kiri kanan */
             z-index: 50;
-            padding: 0 15px !important; /* Jarak kiri kanan untuk desktop */
+            padding: 0 8px !important; /* KUNCI: 8px adalah ukuran gutter g-3 Togel */
             box-sizing: border-box !important;
             width: 100% !important;
-            max-width: 1200px !important; /* MEMAKSA LEBAR MAKSIMAL 1200px */
+            max-width: 100% !important; /* Membiarkan lebar mengikuti sisa ruang kontainer penuh */
         }
 
         /* Border Animasi (Denyutan Pink & Ungu Sapatoto) */
@@ -45,7 +45,7 @@
             }
             100% { 
                 box-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 30px rgba(168, 85, 247, 0.6);
-                filter: hue-rotate(30deg); /* Menciptakan transisi warna yang dinamis */
+                filter: hue-rotate(30deg); 
             }
         }
 
@@ -56,7 +56,7 @@
             justify-content: center;
             align-items: center;
             background-color: var(--dark-bg); 
-            border-radius: 12px; /* Sedikit lebih kecil dari outer border */
+            border-radius: 12px; 
             min-height: 90px;
             position: relative;
             padding: 20px 15px; 
@@ -146,7 +146,7 @@
         /* Responsive Desktop */
         @media (min-width: 992px) {
             .jackpot-value-final {
-                font-size: 3.5rem; /* Font diperbesar agar tidak melompong di PC */
+                font-size: 3.8rem; /* Font sedikit dibesarkan agar seimbang dengan box yang sangat lebar */
                 letter-spacing: 5px;
             }
             .jackpot-main-title {
@@ -155,16 +155,15 @@
             .jackpot-main-title i {
                 font-size: 1.6rem;
             }
-            /* BATASAN 700PX LAMA TELAH DIHAPUS DARI SINI */
         }
 
-        /* Responsive Mobile: Menghilangkan Double Padding agar Rata Kiri Kanan */
+        /* Responsive Mobile: Tetap mempertahankan 8px padding */
         @media (max-width: 768px) {
             .jackpot-container-main {
-                padding: 0 !important; /* Hapus margin/padding bawaan agar presisi */
+                padding: 0 8px !important; 
             }
             .jackpot-value-final {
-                font-size: 7vw; 
+                font-size: 7.5vw; 
                 letter-spacing: 0.5vw;
             }
             .jackpot-main-title {
@@ -216,7 +215,6 @@
             return;
         }
 
-        // Jika row-togel belum ada, tunggu sebentar lalu coba lagi
         if (!targetElement) {
             setTimeout(injectJackpotHTMLFinal, 200);
             return;
