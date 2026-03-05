@@ -11,17 +11,17 @@
             --dark-bg: #1a252f;
         }
 
-        /* --- PERBAIKAN LEBAR PRESISI (SAMA DENGAN WIDGET LAINNYA) --- */
+        /* --- PERBAIKAN LEBAR PRESISI 100% --- */
         .jackpot-container-main {
             font-family: 'Exo 2', sans-serif !important; 
             text-align: center;
             position: relative;
-            margin: 0 auto 25px auto; /* Jarak disamakan dengan widget lain */
+            margin: 0 auto 25px auto !important; /* Jarak disamakan dengan widget lain */
             z-index: 50;
-            padding: 0 15px; /* Jarak kiri kanan untuk desktop */
-            box-sizing: border-box;
-            width: 100%;
-            max-width: 1200px; /* Lebar maksimal disamakan dengan Pintas & Jackpot Terbesar */
+            padding: 0 15px !important; /* Jarak kiri kanan untuk desktop */
+            box-sizing: border-box !important;
+            width: 100% !important;
+            max-width: 1200px !important; /* MEMAKSA LEBAR MAKSIMAL 1200px */
         }
 
         /* Border Animasi (Denyutan Pink & Ungu Sapatoto) */
@@ -29,12 +29,13 @@
             position: relative;
             border-radius: 15px; /* Lengkungan disamakan dengan widget lain */
             padding: 3px; /* Ketebalan border gradient */
+            width: 100%;
             
             /* Background dasar sebelum di-masking oleh inner box */
             background: linear-gradient(45deg, var(--neon-pink-dark), var(--neon-purple-dark));
             
             animation: borderPulseSapatoto 2s ease-in-out infinite alternate;
-            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); /* Base glow */
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
         }
 
         @keyframes borderPulseSapatoto {
@@ -56,10 +57,11 @@
             align-items: center;
             background-color: var(--dark-bg); 
             border-radius: 12px; /* Sedikit lebih kecil dari outer border */
-            min-height: 90px; /* Diperbesar sedikit agar proporsional dengan lebar PC */
+            min-height: 90px;
             position: relative;
             padding: 20px 15px; 
             z-index: 2;
+            width: 100%;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
 
             /* Background Dot-Matrix dengan hint Pink Gelap (Efek Panel LED Premium) */
@@ -141,18 +143,19 @@
             }
         }
 
-        /* Responsive Desktop: Membesarkan font agar tidak melompong karena kotaknya melebar ke 1200px */
+        /* Responsive Desktop */
         @media (min-width: 992px) {
             .jackpot-value-final {
-                font-size: 3.5rem; 
-                letter-spacing: 4px;
+                font-size: 3.5rem; /* Font diperbesar agar tidak melompong di PC */
+                letter-spacing: 5px;
             }
             .jackpot-main-title {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             .jackpot-main-title i {
-                font-size: 1.7rem;
+                font-size: 1.6rem;
             }
+            /* BATASAN 700PX LAMA TELAH DIHAPUS DARI SINI */
         }
 
         /* Responsive Mobile: Menghilangkan Double Padding agar Rata Kiri Kanan */
