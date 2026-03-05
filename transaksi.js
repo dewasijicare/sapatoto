@@ -192,7 +192,7 @@
                         <div class="col-md-6 d-flex">
                             <div class="tx-card w-100 d-flex flex-column">
                                 <div class="tx-header border-pink">
-                                    <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> 5 DEPOSIT TERAKHIR
+                                    <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> LIVE DEPOSIT
                                 </div>
                                 <div class="tx-table-header">
                                     <div>USER</div>
@@ -208,7 +208,7 @@
                         <div class="col-md-6 d-flex">
                             <div class="tx-card w-100 d-flex flex-column">
                                 <div class="tx-header border-purple">
-                                    <i class="bi bi-cash-coin tx-icon-purple"></i> 5 WITHDRAW TERAKHIR
+                                    <i class="bi bi-cash-coin tx-icon-purple"></i> LIVE WITHDRAW
                                 </div>
                                 <div class="tx-table-header">
                                     <div>USER</div>
@@ -341,6 +341,3 @@
     }, 500);
 
 })();
-
-
-
