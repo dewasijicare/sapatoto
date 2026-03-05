@@ -6,23 +6,23 @@
     const WIDGET_ID = 'sapatoto-jackpot-slider';
     
     // =========================================
-    // DATABASE GAME VIP (GAMBAR CADANGAN RESMI GLOBAL)
+    // DATABASE GAME VIP 
+    // Menggunakan CDN Lokal Web Anda Agar 100% Muncul & Anti-Blokir
     // =========================================
     const VIP_GAMES = [
-        { name: "Mahjong Ways", provider: "PG SOFT", link: "/slots", img: "https://demogamesfree-pgsoft.akamaized.net/images/games/mahjong-ways.png", weight: 150 },
-        { name: "Mahjong Ways 2", provider: "PG SOFT", link: "/slots", img: "https://demogamesfree-pgsoft.akamaized.net/images/games/mahjong-ways-2.png", weight: 150 },
-        { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://www.pragmaticplay.com/wp-content/uploads/2021/02/Gates-of-Olympus-1-200x200.jpg", weight: 120 },
-        { name: "Gates of Olympus 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://www.pragmaticplay.com/wp-content/uploads/2023/10/Gates-of-Olympus-1000-200x200.webp", weight: 100 },
-        { name: "Starlight Princess", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://www.pragmaticplay.com/wp-content/uploads/2021/08/starlight-princess-200x200.png", weight: 90 },
-        { name: "Starlight Princess 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://www.pragmaticplay.com/wp-content/uploads/2023/10/Starlight-Princess-1000-200x200.png", weight: 80 },
-        { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://www.pragmaticplay.com/wp-content/uploads/2019/06/sweet-bonanza-200x200.jpg", weight: 70 }
+        { name: "Mahjong Ways", provider: "PG SOFT", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/mahjong-ways.png", weight: 150 },
+        { name: "Mahjong Ways 2", provider: "PG SOFT", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/mahjong-ways2.png", weight: 150 },
+        { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympgate.png", weight: 120 },
+        { name: "Gates of Olympus 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympx.png", weight: 100 },
+        { name: "Starlight Princess", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlight.png", weight: 90 },
+        { name: "Starlight Princess 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlightx.png", weight: 80 },
+        { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20fruitsw.png", weight: 70 }
     ];
 
     let LIVE_GAME_LIBRARY = [...VIP_GAMES]; 
 
     // =========================================
     // MESIN ACAK SINKRONISASI GLOBAL (PRNG)
-    // Mengunci hasil acakan agar sama untuk semua visitor
     // =========================================
     let globalSeed = 1;
     function prng() {
@@ -31,28 +31,31 @@
     }
 
     // =========================================
-    // DETEKSI PROVIDER SUPER AKURAT (3 LAPIS)
+    // DETEKSI PROVIDER SUPER AKURAT (ANTI "SLOT ONLINE")
     // =========================================
     function detectProvider(name, imgUrl, linkUrl) {
         let text = (name + " " + imgUrl + " " + linkUrl).toLowerCase();
 
-        if (text.includes('pragmatic') || text.includes('/pp/') || text.includes('vs20') || text.includes('vs10') || name.toLowerCase().includes('olympus') || name.toLowerCase().includes('princess') || name.toLowerCase().includes('bonanza') || name.toLowerCase().includes('sugar') || name.toLowerCase().includes('aztec') || name.toLowerCase().includes('rhino') || name.toLowerCase().includes('megaways') || name.toLowerCase().includes('lions') || name.toLowerCase().includes('thor')) {
+        // 1. Cek Pragmatic Play
+        if (text.includes('pragmatic') || text.includes('/pp/') || text.includes('vs20') || text.includes('vs10') || text.includes('olympus') || text.includes('princess') || text.includes('bonanza') || text.includes('sugar') || text.includes('aztec') || text.includes('rhino') || text.includes('megaways') || text.includes('lions') || text.includes('thor') || text.includes('dice') || text.includes('5g') || text.includes('sweet') || text.includes('starlight')) {
             return "PRAGMATIC PLAY";
         }
-        if (text.includes('pgsoft') || text.includes('pg-soft') || text.includes('/pg/') || name.toLowerCase().includes('mahjong') || name.toLowerCase().includes('neko') || name.toLowerCase().includes('bandito') || name.toLowerCase().includes('shaolin') || name.toLowerCase().includes('wealth') || name.toLowerCase().includes('qilin') || name.toLowerCase().includes('hatch') || name.toLowerCase().includes('caishen') || name.toLowerCase().includes('macau')) {
+        // 2. Cek PG Soft
+        if (text.includes('pgsoft') || text.includes('pg-soft') || text.includes('/pg/') || text.includes('mahjong') || text.includes('neko') || text.includes('bandito') || text.includes('shaolin') || text.includes('wealth') || text.includes('qilin') || text.includes('hatch') || text.includes('caishen') || text.includes('macau') || text.includes('journey') || text.includes('treasures') || text.includes('wild')) {
             return "PG SOFT";
         }
-        if (text.includes('habanero') || text.includes('/hb/') || name.toLowerCase().includes('koi gate') || name.toLowerCase().includes('fa cai shen') || name.toLowerCase().includes('hot hot')) {
-            return "HABANERO";
-        }
+        // 3. Cek Provider Lainnya
+        if (text.includes('habanero') || text.includes('koi gate') || text.includes('hot hot')) return "HABANERO";
         if (text.includes('joker') || text.includes('/jk/')) return "JOKER GAMING";
         if (text.includes('microgaming') || text.includes('/mg/')) return "MICROGAMING";
         if (text.includes('spade') || text.includes('/sg/')) return "SPADEGAMING";
-        if (text.includes('playtech') || text.includes('/pt/')) return "PLAYTECH";
-        if (text.includes('cq9')) return "CQ9";
-        if (text.includes('nolimit') || text.includes('no limit')) return "NOLIMIT CITY";
         
-        return "SLOT ONLINE";
+        // 4. JURUS PAMUNGKAS (MENGHAPUS "SLOT ONLINE")
+        // Jika sistem tetap buta, otomatis assign ke Pragmatic/PGSoft berdasarkan huruf awal game
+        const firstLetter = name.trim().charAt(0).toUpperCase();
+        if (['A','B','C','D','E','F','G','H','I','J'].includes(firstLetter)) return "PRAGMATIC PLAY";
+        if (['K','L','M','N','O','P','Q','R','S','T'].includes(firstLetter)) return "PG SOFT";
+        return "JOKER GAMING"; 
     }
 
     // =========================================
@@ -84,8 +87,9 @@
                     let existingVip = LIVE_GAME_LIBRARY.find(g => g.name.toLowerCase() === name.toLowerCase() || name.toLowerCase().includes(g.name.toLowerCase()));
                     
                     if (existingVip) {
-                        existingVip.img = imgUrl; 
-                        existingVip.link = link;
+                        // JANGAN TIMPA GAMBAR VIP KARENA CDN KITA LEBIH AMAN.
+                        // Hanya timpa link menuju permainannya jika link valid.
+                        if (link !== '/slots' && !link.includes('javascript')) existingVip.link = link;
                     } else {
                         if (!fetchedGames.find(g => g.name === name)) {
                             fetchedGames.push({ name, provider, img: imgUrl, link, weight: 15 });
@@ -106,7 +110,7 @@
     // =========================================
     function getRandomItemWeighted(items) {
         let totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
-        let random = prng() * totalWeight; // Menggunakan PRNG Global
+        let random = prng() * totalWeight; 
         for (let i = 0; i < items.length; i++) {
             if (random < items[i].weight) return items[i];
             random -= items[i].weight;
@@ -119,7 +123,7 @@
     }
 
     function generateJackpotAmount() {
-        const rand = prng(); // Menggunakan PRNG Global
+        const rand = prng(); 
         let min, max;
         if (rand < 0.65) { min = 20; max = 45; }
         else if (rand < 0.88) { min = 46; max = 85; }
@@ -141,7 +145,6 @@
     }
 
     function generateDate(baseTime) {
-        // Base time adalah waktu MULAINYA blok 30 menit. Kita kurangi 0-30 menit lagi ke belakang dari waktu itu.
         const pastTime = new Date(baseTime - Math.floor(prng() * 1800000)); 
         const day = String(pastTime.getDate()).padStart(2, '0');
         const month = String(pastTime.getMonth() + 1).padStart(2, '0');
@@ -153,14 +156,8 @@
     }
 
     function generateJackpotData(count = 15) {
-        // 1. KUNCI UTAMA: Dapatkan Waktu Blok 30 Menit Saat Ini
-        // Contoh: 12:00 s/d 12:29 akan menghasilkan angka blok yang SAMA PERSIS
         const timeBlock = Math.floor(Date.now() / (30 * 60 * 1000));
-        
-        // 2. Set Seed Generator menggunakan angka blok tersebut
         globalSeed = timeBlock;
-        
-        // 3. Tentukan batas waktu asli (agar jam mundur stabil)
         const baseTime = timeBlock * 30 * 60 * 1000;
 
         const data = [];
@@ -176,8 +173,6 @@
                 date: generateDate(baseTime)
             });
         }
-        
-        // Acak posisinya menggunakan PRNG juga agar konsisten
         return data.sort(() => prng() - 0.5);
     }
 
@@ -188,7 +183,7 @@
         return `
             <a href="${item.link}" class="jp-card">
                 <div class="jp-img-wrapper">
-                    <img src="${item.image}" alt="${item.gameName}" onerror="this.onerror=null; this.src='https://via.placeholder.com/150/1a252f/f472b6?text=SLOT';">
+                    <img src="${item.image}" alt="${item.gameName}" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200/1a252f/ec4899?text=SLOT+GACOR';">
                     <div class="play-overlay">
                         <i class="bi bi-play-circle-fill"></i> MAIN
                     </div>
@@ -212,7 +207,7 @@
 
         const data = generateJackpotData(15); 
         let cardsHTML = data.map(buildCardHTML).join('');
-        cardsHTML += cardsHTML; // Infinite loop
+        cardsHTML += cardsHTML; 
 
         const widgetHTML = `
             <div id="${WIDGET_ID}">
@@ -305,7 +300,7 @@
         target.insertAdjacentHTML('beforebegin', cssHTML + widgetHTML);
 
         // =========================================
-        // LOGIKA DRAG & SWIPE (VANILLA JS)
+        // LOGIKA DRAG & SWIPE
         // =========================================
         const container = document.getElementById('jp-slider-container');
         let isDown = false; let startX; let scrollLeft; let exactScrollLeft = 0;
@@ -370,14 +365,13 @@
 
         // =========================================
         // LOGIKA AUTO-REFRESH TEPAT WAKTU (SINKRONISASI JAM)
-        // Mengecek setiap 1 Menit, jika blok 30-menitan berubah, render ulang.
         // =========================================
         let currentBlock = Math.floor(Date.now() / (30 * 60 * 1000));
         
         setInterval(() => {
             const newBlock = Math.floor(Date.now() / (30 * 60 * 1000));
             if (newBlock !== currentBlock) {
-                currentBlock = newBlock; // Update blok saat ini
+                currentBlock = newBlock; 
                 const track = document.getElementById('jp-slider-track');
                 if (track) {
                     const newData = generateJackpotData(15);
@@ -385,7 +379,7 @@
                     track.innerHTML = newHTML + newHTML;
                 }
             }
-        }, 60000); // Check tiap 60 detik
+        }, 60000); 
 
         return true;
     }
