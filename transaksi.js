@@ -1,7 +1,6 @@
 (function() {
     // 1. GENERATOR DATA PINTAR & NATURAL
 
-    // Generator Username
     function getRandomUsername() {
         const prefixes = [
             'and','bud','cit','dew','eko','fit','gil','hen','iwa','jok','kev','luk','mar','nov','put','riz','sat','tri','vin','wid','yan','zul',
@@ -28,7 +27,6 @@
         return finalName + '***';
     }
 
-    // Generator Waktu Natural (Mundur ke belakang)
     function generateNaturalDate(minutesOffset) {
         const now = new Date();
         const pastTime = new Date(now.getTime() - (minutesOffset * 60000) - Math.floor(Math.random() * 60000));
@@ -41,7 +39,6 @@
         return `${day}/${month}/${year} ${hours}:${mins}:${secs}`;
     }
 
-    // Generator Nominal Deposit
     function getDepositAmount() {
         const prob = Math.random();
         if (prob < 0.60) {
@@ -62,7 +59,6 @@
         }
     }
 
-    // Generator Nominal Withdraw
     function getWithdrawAmount() {
         const prob = Math.random();
         if (prob < 0.50) {
@@ -188,21 +184,14 @@
 
             const cssHTML = `
                 <style>
-                    /* KUNCI PRESISI 100%: DIBUAT PADDING 0 AGAR MELEBAR MENYENTUH BATAS 1200PX (SEJAJAR PROGRESSIVE) */
+                    /* KUNCI PERBAIKAN: Melepas batasan maksimal (dibuat 100%) dan menghilangkan margin bawaan */
                     #sapatoto-recent-transactions { 
                         width: 100%; 
-                        max-width: 1200px !important; 
-                        margin: 0 auto 25px auto !important; 
-                        padding: 0 !important; /* MENGHILANGKAN JARAK AGAR RATA DENGAN PROGRESSIVE JACKPOT */
+                        max-width: 100% !important; /* MENGUBAH DARI 1200PX MENJADI 100% AGAR BISA LEBAR PENUH */
+                        margin: 0 0 25px 0 !important; /* MENGHILANGKAN MARGIN AUTO */
+                        padding: 0 !important; 
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif; 
-                    }
-
-                    /* PENGAMAN MOBILE: Beri jarak di HP/Tablet agar tidak menabrak dinding layar */
-                    @media (max-width: 1220px) {
-                        #sapatoto-recent-transactions {
-                            padding: 0 15px !important;
-                        }
                     }
 
                     .sapatoto-trx-flex {
