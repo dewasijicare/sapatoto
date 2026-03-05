@@ -1,6 +1,6 @@
 (function() {
     // =========================================
-    // BAGIAN 1: CSS SUPER FORCE (FINAL + SWEEP KIRI KE KANAN)
+    // BAGIAN 1: CSS SUPER FORCE (FINAL + SLIM + READABLE TEXT)
     // =========================================
     const togelGridStyles = `
         /* --- Kustomisasi Container Utama --- */
@@ -19,7 +19,7 @@
         #carousel-togel .custom-stage { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); grid-auto-rows: 1fr; gap: 15px; width: 100% !important; margin-top: 5px; align-items: stretch; }
         #carousel-togel .custom-item { display: flex; height: auto !important; width: 100%; }
 
-        /* FIX 2: BORDER KOTAK LEBIH TEBAL */
+        /* BORDER KOTAK LEBIH TEBAL */
         #carousel-togel .card, .row.g-3 .card {
             background: linear-gradient(145deg, rgba(44, 62, 80, 0.95), rgba(26, 37, 47, 0.98)) !important;
             backdrop-filter: blur(5px); 
@@ -41,7 +41,7 @@
             box-shadow: 0 0 0 1px #f472b6, 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(236, 72, 153, 0.4) !important; 
         }
 
-        /* FIX 1: NAMA PASARAN WARNA KUNING & ANTI-WRAP */
+        /* NAMA PASARAN WARNA KUNING & ANTI-WRAP */
         .title-wrapper-locked {
             display: flex !important; 
             align-items: center !important; 
@@ -84,23 +84,25 @@
         @keyframes pulse-yellow { 0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.6); } 70% { box-shadow: 0 0 0 5px rgba(234, 179, 8, 0); } 100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); } }
 
         /* ========================================================= */
-        /* FIX 4: EFEK UNGU BERGERAK PADA ANGKA RESULT SAAT HOVER    */
+        /* FIX: GLOW ANGKA DIHILANGKAN AGAR JELAS DIBACA             */
         /* ========================================================= */
         #carousel-togel .card h2, .row.g-3 .card h2 { 
             background: 0 0 !important; 
-            margin: 8px 0 !important; 
+            margin: 5px 0 !important; /* Dirapatkan sedikit */
             font-size: 2.1em !important; 
             font-weight: 700; 
-            text-shadow: 0 2px 10px rgba(0,0,0,0.8); 
+            text-shadow: none !important; /* Bersihkan shadow kotor bawaan tema */
         }
         
-        /* Tampilan Angka Normal */
+        /* Tampilan Angka Normal - Tajam & Solid */
         #carousel-togel .card h2 a, .row.g-3 .card h2 a { 
-            background: linear-gradient(to bottom, #ffffff 20%, #c0c0c0 100%); 
+            background: linear-gradient(to bottom, #ffffff 20%, #e0e0e0 100%); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
             letter-spacing: 2px; 
             text-decoration: none; 
+            /* Menggunakan Drop Shadow Hitam tipis agar angka tegas, bukan menyilaukan */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 1px rgba(255,255,255,0.1) !important; 
             transition: all 0.3s ease;
         }
 
@@ -112,31 +114,31 @@
 
         /* Tampilan Angka Saat Box Di-Hover */
         #carousel-togel .card:hover h2 a, .row.g-3 .card:hover h2 a {
-            /* Warna ungu ditebalkan (Neon + Dark Purple) agar sangat kontras dengan putih, menyapu miring sedikit 110deg */
             background: linear-gradient(110deg, #ffffff 35%, #9333ea 46%, #e024ff 50%, #9333ea 54%, #ffffff 65%);
             background-size: 300% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            /* Menggunakan kecepatan konstan (linear) 0.85 detik agar terasa seperti sapuan laser dari KIRI ke KANAN */
             animation: sweepPurpleLeftToRight 0.85s linear forwards; 
         }
 
-        /* --- Badge Segera Tutup --- */
+        /* ========================================================= */
+        /* FIX: KAPSUL COUNTDOWN DIRAMPINGKAN                        */
+        /* ========================================================= */
         #carousel-togel .card .togel-countdown-timer, .row.g-3 .card .togel-countdown-timer { 
             background: linear-gradient(45deg, #ec4899, #be185d) !important; 
             color: #ffffff !important; 
-            padding: 0 10px !important; 
+            padding: 0 12px !important; 
             border-radius: 50px !important; 
-            font-size: 0.8rem !important; 
+            font-size: 0.75rem !important; /* Font dikecilkan sedikit */
             font-weight: 700 !important; 
             display: flex !important; 
             align-items: center !important; 
             justify-content: center !important; 
-            min-width: 125px !important; 
-            height: 28px !important; 
+            min-width: 110px !important; /* Lebar dirampingkan */
+            height: 24px !important; /* Tinggi dirampingkan dari 28px jadi 24px */
             line-height: normal !important; 
             box-sizing: border-box !important;
-            box-shadow: 0 3px 8px rgba(236, 72, 153, 0.4) !important; 
+            box-shadow: 0 2px 6px rgba(236, 72, 153, 0.4) !important; 
             letter-spacing: 0.5px !important; 
             text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important; 
             position: relative !important; 
@@ -158,15 +160,15 @@
             padding: 0 !important; 
             margin: 0 !important;
             color: #ffffff !important; 
-            font-size: 0.75rem !important; 
+            font-size: 0.7rem !important; /* Ukuran font peringatan disesuaikan dengan kapsul */
             text-shadow: 0px 1px 2px rgba(0,0,0,0.5) !important; 
             font-weight: 700 !important; 
             white-space: nowrap !important; 
             line-height: normal !important; 
         }
         
-        #carousel-togel .card .togel-countdown-timer.closing-soon, .row.g-3 .card .togel-countdown-timer.closing-soon { background: linear-gradient(45deg, #eab308, #ca8a04) !important; box-shadow: 0 3px 8px rgba(234, 179, 8, 0.4) !important; }
-        #carousel-togel .card .togel-countdown-timer.is-closed, .row.g-3 .card .togel-countdown-timer.is-closed { background: linear-gradient(45deg, #ef4444, #b91c1c) !important; box-shadow: 0 3px 8px rgba(239, 68, 68, 0.4) !important; }
+        #carousel-togel .card .togel-countdown-timer.closing-soon, .row.g-3 .card .togel-countdown-timer.closing-soon { background: linear-gradient(45deg, #eab308, #ca8a04) !important; box-shadow: 0 2px 6px rgba(234, 179, 8, 0.4) !important; }
+        #carousel-togel .card .togel-countdown-timer.is-closed, .row.g-3 .card .togel-countdown-timer.is-closed { background: linear-gradient(45deg, #ef4444, #b91c1c) !important; box-shadow: 0 2px 6px rgba(239, 68, 68, 0.4) !important; }
     `;
 
     const styleElement = document.createElement('style');
