@@ -1,9 +1,13 @@
 (function() {
     // Fungsi Check & Inject
     function injectPintasWidget() {
-        var target = document.querySelector('#announcement'); 
+        
+        // KUNCI PERBAIKAN POSISI: 
+        // Mengincar elemen di BAWAH tombol (Mencari Progressive Jackpot atau Pasaran Togel)
+        var target = document.querySelector('.jackpot-container-main') || document.querySelector('#row-togel'); 
         var existingWidget = document.getElementById('pintas-widget-wrapper');
 
+        // Jika target area bawah ketemu dan widget belum ada
         if (target && !existingWidget) {
             
             var widgetHTML = `
@@ -24,11 +28,9 @@
                         </a>
                     </div>
                 </div>
-            `;
 
-            var cssHTML = `
                 <style>
-                    /* BUNGKUSAN LUAR: Tidak boleh ada !important di padding agar JS bisa menarik ukuran Container */
+                    /* BUNGKUSAN LUAR */
                     #pintas-widget-wrapper {
                         width: 100%;
                         margin: 15px auto 25px auto; 
@@ -37,7 +39,7 @@
                         transition: max-width 0.3s ease;
                     }
 
-                    /* RUMUS PRESISI: 8px ini yang membuatnya SEJAJAR PERSIS 100% dengan Progressive Jackpot */
+                    /* RUMUS PRESISI 8px SEJAJAR PROGRESSIVE JACKPOT */
                     .pintas-inner-spacing {
                         padding: 0 8px;
                         width: 100%;
@@ -52,7 +54,7 @@
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
                         border: 1px solid #ec4899;
                         box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-                        border-radius: 12px; /* Disamakan dengan lengkungan Progressive Jackpot */
+                        border-radius: 12px; 
                         padding: 12px 20px;
                         position: relative;
                         overflow: hidden;
@@ -126,7 +128,7 @@
                     /* PENYESUAIAN MOBILE / HP */
                     @media (max-width: 768px) {
                         #pintas-widget-wrapper { padding: 0 !important; }
-                        .pintas-inner-spacing { padding: 0 15px !important; } /* Jarak aman di HP */
+                        .pintas-inner-spacing { padding: 0 15px !important; } 
                         .pintas-title { font-size: 1rem; }
                         .pintas-sub { font-size: 0.65rem; }
                         .pintas-icon-container { font-size: 1.8rem; margin-right: 12px; }
@@ -135,8 +137,8 @@
                 </style>
             `;
 
-            target.insertAdjacentHTML('afterend', widgetHTML);
-            document.head.insertAdjacentHTML('beforeend', cssHTML);
+            // INJEKSI BEFOREBEGIN: Meletakkan widget persis di ATAS area Togel/Jackpot (otomatis di BAWAH tombol)
+            target.insertAdjacentHTML('beforebegin', widgetHTML);
 
             // ==========================================================
             // FUNGSI SENSOR PRESISI (Menyalin bingkai dari Progressive)
@@ -144,7 +146,6 @@
             function syncPintasWidth() {
                 var pintasWidget = document.getElementById('pintas-widget-wrapper');
                 
-                // Jika dibuka di HP: Matikan sensor JS, gunakan CSS Mobile.
                 if (window.innerWidth <= 768) {
                     if (pintasWidget) {
                         pintasWidget.style.maxWidth = '100%';
@@ -154,7 +155,6 @@
                     return;
                 }
 
-                // Jika dibuka di PC/Desktop: Sensor kerangka utama website
                 var referenceElement = document.querySelector('#row-togel'); 
                 if (pintasWidget && referenceElement && referenceElement.parentElement) {
                     var mainContainer = referenceElement.parentElement; 
@@ -163,16 +163,13 @@
                     var computedStyle = window.getComputedStyle(mainContainer);
                     
                     if (exactWidth > 0) {
-                        // Kunci kelebaran persis sama dengan kerangka situs
                         pintasWidget.style.maxWidth = exactWidth + 'px';
-                        // Suntikkan jarak bantalan yang sama agar tidak menabrak dinding layar
                         pintasWidget.style.paddingLeft = computedStyle.paddingLeft;
                         pintasWidget.style.paddingRight = computedStyle.paddingRight;
                     }
                 }
             }
 
-            // Jalankan pelacak otomatis
             setTimeout(syncPintasWidth, 50);
             setInterval(syncPintasWidth, 1000); 
             window.addEventListener('resize', syncPintasWidth);
@@ -182,7 +179,7 @@
         return false;
     }
 
-    // Eksekutor yang memantau terus sampai elemen muncul (Anti-Hilang)
+    // Eksekutor yang memantau terus sampai elemen muncul
     var checkInterval = setInterval(function() {
         if (injectPintasWidget()) {
             clearInterval(checkInterval);
