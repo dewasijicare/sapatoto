@@ -6,16 +6,16 @@
     const WIDGET_ID = 'sapatoto-jackpot-slider';
     
     // =========================================
-    // DATABASE GAME VIP (Menjamin game gacor selalu muncul)
+    // DATABASE GAME VIP (Menggunakan CDN ASLI Web Anda)
     // =========================================
     const VIP_GAMES = [
-        { name: "Mahjong Ways", provider: "PG SOFT", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/mahjong-ways.png", weight: 150 },
-        { name: "Mahjong Ways 2", provider: "PG SOFT", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/mahjong-ways2.png", weight: 150 },
-        { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympgate.png", weight: 120 },
-        { name: "Gates of Olympus 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympx.png", weight: 100 },
-        { name: "Starlight Princess", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlight.png", weight: 90 },
-        { name: "Starlight Princess 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlightx.png", weight: 80 },
-        { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20fruitsw.png", weight: 70 }
+        { name: "Mahjong Ways 2", provider: "PG SOFT", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/74.jpg", weight: 150 },
+        { name: "Mahjong Ways", provider: "PG SOFT", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/65.jpg", weight: 140 },
+        { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20olympgate.png", weight: 130 },
+        { name: "Gates of Olympus 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20olympx.png", weight: 120 },
+        { name: "Starlight Princess", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20starlight.png", weight: 110 },
+        { name: "Starlight Princess 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20starlightx.png", weight: 100 },
+        { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20fruitsw.png", weight: 90 }
     ];
 
     let LIVE_GAME_LIBRARY = [...VIP_GAMES]; 
@@ -39,20 +39,25 @@
         if (text.includes('pgsoft') || text.includes('/pg/') || text.includes('mahjong') || text.includes('neko') || text.includes('bandito') || text.includes('shaolin') || text.includes('wealth') || text.includes('qilin') || text.includes('hatch') || text.includes('caishen') || text.includes('macau') || text.includes('journey') || text.includes('treasures') || text.includes('wild') || text.includes('wins')) {
             return "PG SOFT";
         }
-        // 2. Cek Provider Lainnya
+        // 2. Cek Pragmatic Play
+        if (text.includes('pragmatic') || text.includes('/pp/') || text.includes('vs20') || text.includes('vs10') || text.includes('olympus') || text.includes('princess') || text.includes('bonanza') || text.includes('sugar') || text.includes('aztec') || text.includes('rhino') || text.includes('megaways') || text.includes('lions') || text.includes('thor') || text.includes('dice') || text.includes('5g') || text.includes('sweet') || text.includes('starlight')) {
+            return "PRAGMATIC PLAY";
+        }
+        // 3. Cek Provider Lainnya
         if (text.includes('habanero') || text.includes('koi gate') || text.includes('hot hot')) return "HABANERO";
         if (text.includes('joker') || text.includes('/jk/')) return "JOKER GAMING";
         if (text.includes('microgaming') || text.includes('/mg/')) return "MICROGAMING";
         if (text.includes('spade') || text.includes('/sg/')) return "SPADEGAMING";
         
-        // 3. JURUS PAMUNGKAS: Default ke PRAGMATIC PLAY 
-        // Semua game sisanya (termasuk Olympus, Lions, angka 5G, dll) akan otomatis dicap Pragmatic Play.
-        // Dengan ini TIDAK AKAN ADA LAGI tulisan "SLOT ONLINE".
-        return "PRAGMATIC PLAY"; 
+        // 4. JURUS PAMUNGKAS (Memastikan tidak ada kata SLOT ONLINE)
+        const firstLetter = name.trim().charAt(0).toUpperCase();
+        if (['A','B','C','D','E','F','G','H','I','J'].includes(firstLetter)) return "PRAGMATIC PLAY";
+        if (['K','L','M','N','O','P','Q','R','S','T'].includes(firstLetter)) return "PG SOFT";
+        return "JOKER GAMING"; 
     }
 
     // =========================================
-    // FUNGSI 1: AUTO-SCRAPE DARI RTP (ANTI LAZY-LOAD)
+    // FUNGSI 1: AUTO-SCRAPE DARI RTP (FIX NAMA TERTUKAR)
     // =========================================
     async function fetchGamesFromRTP() {
         try {
@@ -69,25 +74,21 @@
                 if (imgEl) {
                     let name = node.dataset.gamename || imgEl.alt || "Slot Game";
                     
-                    // FIX LAZY LOADING: Ambil link asli dari data-src, jika tidak ada baru pakai src
                     let imgUrl = imgEl.getAttribute('data-src') || imgEl.getAttribute('data-original') || imgEl.getAttribute('data-lazy') || imgEl.src;
-                    
                     let link = node.href || node.dataset.playurl || '/slots';
+                    
                     if (link.includes('javascript:') || link.endsWith('#') || link === window.location.href) {
                         link = '/slots'; 
                     }
 
                     let provider = detectProvider(name, imgUrl, link);
 
-                    let existingVip = LIVE_GAME_LIBRARY.find(g => g.name.toLowerCase() === name.toLowerCase() || name.toLowerCase().includes(g.name.toLowerCase()));
+                    // KUNCI PERBAIKAN: Menggunakan pencocokan nama yang SAMA PERSIS, bukan sekadar mirip.
+                    // Ini mencegah "Mahjong Ways" mencuri data "Mahjong Ways 2"
+                    let existingVip = LIVE_GAME_LIBRARY.find(g => g.name.toLowerCase().trim() === name.toLowerCase().trim());
                     
                     if (existingVip) {
-                        // KITA TIMPA GAMBAR VIP DENGAN GAMBAR ASLI DARI RTP (Karena link dari RTP pasti akurat/aktif)
-                        // Namun pastikan bukan gambar transparan base64 bawaan lazy load
-                        if (imgUrl && !imgUrl.startsWith('data:image/gif')) {
-                            existingVip.img = imgUrl; 
-                        }
-                        if (link !== '/slots') existingVip.link = link;
+                        if (link !== '/slots' && !link.includes('javascript')) existingVip.link = link;
                     } else {
                         if (!fetchedGames.find(g => g.name === name) && imgUrl && !imgUrl.startsWith('data:image/gif')) {
                             fetchedGames.push({ name, provider, img: imgUrl, link, weight: 15 });
@@ -99,7 +100,7 @@
             LIVE_GAME_LIBRARY = [...VIP_GAMES, ...fetchedGames];
 
         } catch(err) {
-            console.warn("Gagal scrape /rtp, hanya menggunakan data VIP fallback.", err);
+            console.warn("Gagal scrape /rtp, hanya menggunakan data VIP.", err);
         }
     }
 
@@ -178,7 +179,7 @@
     // FUNGSI 3: RENDER HTML & CSS
     // =========================================
     
-    // GAMBAR CADANGAN SVG (Anti-Error Murni, Akan Merender Kotak Bertuliskan "SLOT")
+    // SVG Cadangan Elegan
     const fallbackImageBase64 = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWEyNTJmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlYzQ4OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNMT1Q8L3RleHQ+PC9zdmc+";
 
     function buildCardHTML(item) {
@@ -228,59 +229,19 @@
 
         const cssHTML = `
             <style>
-                #${WIDGET_ID} {
-                    max-width: 1200px; margin: 0 auto 25px auto; padding: 0 14px; font-family: 'Exo 2', sans-serif;
-                }
-                .sapatoto-jp-wrapper {
-                    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.95));
-                    border: 1px solid #ec4899; border-radius: 12px; padding: 0; 
-                    box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); overflow: hidden;
-                }
-                .jp-header {
-                    display: flex; align-items: center; justify-content: center;
-                    background: linear-gradient(90deg, #ec4899, #a855f7, #3b82f6); 
-                    padding: 12px 15px; margin-bottom: 15px; border-bottom: 2px solid #fff;
-                }
-                .jp-header h4 {
-                    margin: 0; color: #fff; font-weight: 800; text-transform: uppercase;
-                    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); font-size: 1.25rem; letter-spacing: 1px;
-                }
-                .jp-slider-container {
-                    width: 100%; overflow-x: auto; position: relative; padding-bottom: 15px; 
-                    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-                    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-                    -ms-overflow-style: none; scrollbar-width: none; cursor: grab;
-                }
+                #${WIDGET_ID} { max-width: 1200px; margin: 0 auto 25px auto; padding: 0 14px; font-family: 'Exo 2', sans-serif; }
+                .sapatoto-jp-wrapper { background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.95)); border: 1px solid #ec4899; border-radius: 12px; padding: 0; box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); overflow: hidden; }
+                .jp-header { display: flex; align-items: center; justify-content: center; background: linear-gradient(90deg, #ec4899, #a855f7, #3b82f6); padding: 12px 15px; margin-bottom: 15px; border-bottom: 2px solid #fff; }
+                .jp-header h4 { margin: 0; color: #fff; font-weight: 800; text-transform: uppercase; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); font-size: 1.25rem; letter-spacing: 1px; }
+                .jp-slider-container { width: 100%; overflow-x: auto; position: relative; padding-bottom: 15px; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -ms-overflow-style: none; scrollbar-width: none; cursor: grab; }
                 .jp-slider-container::-webkit-scrollbar { display: none; }
-                .jp-slider-track {
-                    display: inline-flex; gap: 15px; width: max-content; padding: 0 15px; 
-                }
-                .jp-card {
-                    display: block; text-decoration: none !important; width: 170px; 
-                    background: linear-gradient(160deg, rgba(30,42,55,1), rgba(15,20,25,1));
-                    border: 1px solid #34495e; border-radius: 10px; overflow: hidden;
-                    position: relative; flex-shrink: 0;
-                    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-                    user-select: none; -webkit-user-drag: none;
-                }
-                .jp-card:hover {
-                    transform: translateY(-5px); border-color: #a855f7;
-                    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.6); z-index: 5;
-                }
-                .jp-img-wrapper {
-                    width: 100%; aspect-ratio: 1 / 1; overflow: hidden;
-                    background-color: #0c0c1e; border-bottom: 2px solid #ec4899; position: relative;
-                }
-                .jp-img-wrapper img {
-                    width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; pointer-events: none; 
-                }
+                .jp-slider-track { display: inline-flex; gap: 15px; width: max-content; padding: 0 15px; }
+                .jp-card { display: block; text-decoration: none !important; width: 170px; background: linear-gradient(160deg, rgba(30,42,55,1), rgba(15,20,25,1)); border: 1px solid #34495e; border-radius: 10px; overflow: hidden; position: relative; flex-shrink: 0; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; user-select: none; -webkit-user-drag: none; }
+                .jp-card:hover { transform: translateY(-5px); border-color: #a855f7; box-shadow: 0 5px 15px rgba(168, 85, 247, 0.6); z-index: 5; }
+                .jp-img-wrapper { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background-color: #0c0c1e; border-bottom: 2px solid #ec4899; position: relative; }
+                .jp-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; pointer-events: none; }
                 .jp-card:hover .jp-img-wrapper img { transform: scale(1.1); }
-                .play-overlay {
-                    position: absolute; inset: 0; background: rgba(236, 72, 153, 0.8);
-                    display: flex; flex-direction: column; align-items: center; justify-content: center;
-                    opacity: 0; transition: opacity 0.3s ease; color: #fff;
-                    font-weight: 900; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-                }
+                .play-overlay { position: absolute; inset: 0; background: rgba(236, 72, 153, 0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; color: #fff; font-weight: 900; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
                 .play-overlay i { font-size: 2.5rem; margin-bottom: 5px; }
                 .jp-card:hover .play-overlay { opacity: 1; }
                 .jp-info { padding: 10px; text-align: center; }
@@ -290,12 +251,7 @@
                 .jp-user-date { display: flex; flex-direction: column; align-items: center; font-size: 0.65rem; color: #bdc3c7; gap: 3px; }
                 .jp-user-date span:first-child { color: #ecf0f1; font-weight: 600; font-size: 0.75rem; }
                 .jp-user-date i { color: #a855f7; margin-right: 2px; }
-
-                @media (max-width: 768px) {
-                    .jp-card { width: 140px; }
-                    .jp-amount { font-size: 0.9rem; }
-                    .jp-header h4 { font-size: 1.05rem; }
-                }
+                @media (max-width: 768px) { .jp-card { width: 140px; } .jp-amount { font-size: 0.9rem; } .jp-header h4 { font-size: 1.05rem; } }
             </style>
         `;
 
@@ -366,7 +322,7 @@
         autoScroll();
 
         // =========================================
-        // LOGIKA AUTO-REFRESH TEPAT WAKTU (SINKRONISASI JAM)
+        // LOGIKA AUTO-REFRESH TEPAT WAKTU
         // =========================================
         let currentBlock = Math.floor(Date.now() / (30 * 60 * 1000));
         
