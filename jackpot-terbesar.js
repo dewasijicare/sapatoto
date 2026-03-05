@@ -221,11 +221,12 @@
 
         const cssHTML = `
             <style>
+                /* PERBAIKAN LEBAR: Sejajar persis dengan Pasaran Togel (mengikuti gutter 8px) */
                 #${WIDGET_ID} { 
                     width: 100%; 
-                    max-width: 1200px; 
-                    margin: 0 auto 25px auto; 
-                    padding: 0 15px; /* Jarak untuk desktop */
+                    max-width: 100%; /* Dibiarkan loss mengikuti lebar kontainer Togel di bawahnya */
+                    margin: 0 0 25px 0; 
+                    padding: 0 8px; /* Gutter g-3 Bootstrap adalah 8px di tiap sisi */
                     box-sizing: border-box;
                     font-family: 'Exo 2', sans-serif; 
                 }
@@ -291,8 +292,7 @@
                 .jp-user-date i { color: #a855f7; margin-right: 2px; }
                 
                 @media (max-width: 768px) { 
-                    /* MENGHAPUS DOUBLE PADDING KHUSUS DI HP */
-                    #${WIDGET_ID} { padding: 0 !important; } 
+                    #${WIDGET_ID} { padding: 0 8px !important; } /* Tetap 8px di HP agar rata dengan kotak togel */
                     .jp-card { width: 140px; } 
                     .jp-amount { font-size: 0.9rem; } 
                     .jp-header h4 { font-size: 1.05rem; } 
