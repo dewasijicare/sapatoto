@@ -188,12 +188,12 @@
 
             const cssHTML = `
                 <style>
-                    /* KUNCI PERBAIKAN: Membatasi lebar maksimal menjadi 1200px dan menengahkan kotak */
+                    /* KUNCI PERBAIKAN: Menghapus Padding menjadi 0 agar loss sejajar persis dengan Progressive Jackpot */
                     #sapatoto-recent-transactions { 
                         width: 100%; 
-                        max-width: 1200px !important; /* Mencegah pelebaran ke ujung layar */
-                        margin: 0 auto 25px auto !important; /* Otomatis ke tengah layar */
-                        padding: 0 15px !important; /* Jarak aman di sisi layar HP/Tablet */
+                        max-width: 100% !important; /* Dibiarkan mengikuti lebar container induk situs */
+                        margin: 0 0 25px 0 !important; 
+                        padding: 0 !important; /* <--- INI KUNCINYA, SEBELUMNYA 15PX, SEKARANG 0 */
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif; 
                     }
@@ -201,7 +201,7 @@
                     .sapatoto-trx-flex {
                         display: flex;
                         flex-wrap: wrap;
-                        gap: 16px; /* Jarak tengah antara dua kotak */
+                        gap: 16px; /* Jarak tengah antara dua kotak Deposit & WD */
                         width: 100%;
                         margin: 0;
                         padding: 0;
@@ -300,7 +300,6 @@
                         .tx-col-time { font-size: 0.65rem; }
                         .tx-item { font-size: 0.75rem; padding: 0 10px; }
                         .tx-table-header { padding: 8px 10px; font-size: 0.7rem; }
-                        #sapatoto-recent-transactions { padding: 0 15px !important; }
                     }
                 </style>
             `;
