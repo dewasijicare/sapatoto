@@ -136,7 +136,7 @@
         }, 500);
     }
 
-    // 3. FUNGSI INJEKSI & SINKRONISASI LEBAR
+    // 3. FUNGSI INJEKSI & SINKRONISASI LEBAR OTOMATIS
     function injectTransactionsWidget() {
         const target = document.querySelector('#pintas-widget-wrapper');
         const existing = document.getElementById('sapatoto-recent-transactions');
@@ -195,7 +195,7 @@
                         transition: max-width 0.3s ease; 
                     }
 
-                    /* BUNGKUSAN DALAM (Untuk PC/Desktop diberikan jarak 8px agar sejajar gutter Togel) */
+                    /* BUNGKUSAN DALAM */
                     .trx-inner-wrapper {
                         padding: 0 8px; 
                         width: 100%;
@@ -305,13 +305,13 @@
                     /* ======================================= */
                     @media (max-width: 768px) {
                         #sapatoto-recent-transactions {
-                            padding: 0 !important; /* Hilangkan padding luar */
+                            padding: 0 15px !important; /* KEMBALIKAN KE 15PX AGAR TIDAK MENABRAK DINDING */
                         }
                         .trx-inner-wrapper {
-                            padding: 0 !important; /* HILANGKAN PADDING DALAM AGAR 100% MENTOK TEPI LAYAR */
+                            padding: 0 !important; 
                         }
                         .sapatoto-trx-flex {
-                            gap: 15px; /* Jarak atas-bawah antar card di HP */
+                            gap: 15px; 
                         }
                         .tx-col-time { font-size: 0.65rem; }
                         .tx-item { font-size: 0.75rem; padding: 0 10px; }
@@ -330,12 +330,12 @@
             function syncExactWidth() {
                 const trxWidget = document.getElementById('sapatoto-recent-transactions');
                 
-                // JIKA DIBUKA DI HP: Biarkan CSS (100% & Padding 0) yang bekerja, matikan auto-sync.
+                // JIKA DIBUKA DI HP: Beri padding 15px agar sejajar dan rapi
                 if (window.innerWidth <= 768) {
                     if (trxWidget) {
                         trxWidget.style.maxWidth = '100%';
-                        trxWidget.style.paddingLeft = '0px';
-                        trxWidget.style.paddingRight = '0px';
+                        trxWidget.style.paddingLeft = '15px';  // PERBAIKAN DI SINI
+                        trxWidget.style.paddingRight = '15px'; // PERBAIKAN DI SINI
                     }
                     return;
                 }
