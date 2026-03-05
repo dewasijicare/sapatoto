@@ -1,16 +1,16 @@
 (function() {
     // CSS untuk styling announcement (TEMA SAPATOTO: DARK & NEON PINK)
     const announcementStyles = `
-        /* BUNGKUSAN LUAR: Akan disinkronkan ukurannya oleh JS mengikuti kerangka web */
+        /* BUNGKUSAN LUAR: Akan disinkronkan ukurannya oleh JS mengikuti kerangka web (Tombol & Pintas) */
         #announcement-outer-wrapper {
             width: 100%;
             margin: 15px auto 15px auto !important;
-            padding: 0;
+            padding: 0; /* KUNCI: Jangan beri !important agar JS bisa mengatur jaraknya */
             box-sizing: border-box;
             transition: max-width 0.3s ease;
         }
 
-        /* BUNGKUSAN DALAM: Menggunakan jarak 8px agar sejajar Togel/Tombol/Pintas */
+        /* BUNGKUSAN DALAM: Menggunakan jarak 8px agar sejajar lurus dengan Tombol & Pintas Widget */
         .announcement-inner-spacing {
             padding: 0 8px;
             width: 100%;
@@ -21,10 +21,10 @@
         #announcement.gavan-themed-announcement {
             background: linear-gradient(145deg, #2c3e50, #1a252f) !important;
             border: 1px solid #ec4899 !important; 
-            border-radius: 12px !important; /* Disamakan dengan lengkungan tombol & pintas */
+            border-radius: 12px !important; /* Disamakan dengan lengkungan tombol */
             box-shadow: 0 0 15px rgba(236, 72, 153, 0.4) !important; 
             color: #ecf0f1 !important;
-            padding: 10px 20px !important; /* Padding ruang dalam teks */
+            padding: 10px 20px !important; 
             display: flex !important;
             align-items: center !important;
             overflow: hidden !important;
@@ -60,7 +60,7 @@
         /* PERLINDUNGAN MOBILE / HP */
         @media (max-width: 768px) {
             #announcement-outer-wrapper { padding: 0 !important; margin: 10px auto 10px auto !important; }
-            .announcement-inner-spacing { padding: 0 15px !important; } /* Sama dengan tombol & pintas */
+            .announcement-inner-spacing { padding: 0 15px !important; } /* Jarak aman tepi HP */
             #announcement.gavan-themed-announcement { border-radius: 8px !important; padding: 8px 15px !important; }
         }
     `;
@@ -70,6 +70,7 @@
         const announcement = document.getElementById('announcement');
         const mainSlider = document.getElementById('main-slider'); 
         const memberPanel = document.getElementById('member-status-panel'); 
+        const actionBtns = document.getElementById('sapatoto-action-buttons-wrapper'); 
 
         // Jika announcement tidak ada atau sudah dipindahkan, hentikan
         if (!announcement || announcement.dataset.moved === 'true') {
@@ -78,20 +79,24 @@
 
         let moved = false; 
 
-        // Membuat pembungkus baru
+        // Membuat pembungkus ganda (seperti tombol dan pintas widget)
         const outerWrapper = document.createElement('div');
         outerWrapper.id = 'announcement-outer-wrapper';
         const innerSpacing = document.createElement('div');
         innerSpacing.className = 'announcement-inner-spacing';
         outerWrapper.appendChild(innerSpacing);
 
-        // === Logika untuk Homepage ===
-        if (mainSlider && mainSlider.parentElement) {
+        // Prioritas utama: Pasang di atas tombol jika tombolnya ada
+        if (actionBtns) {
+            actionBtns.insertAdjacentElement('beforebegin', outerWrapper);
+            innerSpacing.appendChild(announcement);
+            moved = true;
+        }
+        else if (mainSlider && mainSlider.parentElement) {
             mainSlider.parentElement.insertAdjacentElement('afterend', outerWrapper);
             innerSpacing.appendChild(announcement);
             moved = true;
         }
-        // === Logika untuk Member Area ===
         else if (memberPanel) {
             memberPanel.insertAdjacentElement('beforebegin', outerWrapper);
             innerSpacing.appendChild(announcement);
@@ -99,6 +104,7 @@
         }
 
         if (moved) {
+            // Hapus CSS bawaan yang mengganggu
             announcement.style.marginLeft = '';
             announcement.style.marginRight = '';
             announcement.style.marginTop = '';
@@ -111,7 +117,7 @@
     }
 
     // ==========================================================
-    // FUNGSI SENSOR PRESISI (Auto-Sync dengan Lebar Situs)
+    // FUNGSI SENSOR PRESISI (Sama persis dengan sapatoto.js)
     // ==========================================================
     function syncAnnouncementWidth() {
         var outerWrapper = document.getElementById('announcement-outer-wrapper');
@@ -127,23 +133,15 @@
         }
 
         // Di layar PC: Sensor ukuran kerangka utama website
-        var mainContainer = null;
-        var rowTogel = document.querySelector('#row-togel');
+        var referenceElement = document.querySelector('#row-togel');
         
-        if (rowTogel && rowTogel.parentElement) {
-            mainContainer = rowTogel.parentElement;
-        } else {
-            var mainContent = document.querySelector('#maincontent');
-            if (mainContent) {
-                mainContainer = mainContent.querySelector('.container');
-            }
-        }
-
-        if (outerWrapper && mainContainer) {
+        if (outerWrapper && referenceElement && referenceElement.parentElement) {
+            var mainContainer = referenceElement.parentElement;
             var exactWidth = mainContainer.getBoundingClientRect().width;
             var computedStyle = window.getComputedStyle(mainContainer);
             
             if (exactWidth > 0) {
+                // Tarik Running Text agar lebarnya 100% mengikuti batas tombol di bawahnya
                 outerWrapper.style.maxWidth = exactWidth + 'px';
                 outerWrapper.style.paddingLeft = computedStyle.paddingLeft;
                 outerWrapper.style.paddingRight = computedStyle.paddingRight;
@@ -167,19 +165,16 @@
 
         const observer = new MutationObserver((mutations) => {
              const announcement = document.getElementById('announcement');
-             const mainSlider = document.getElementById('main-slider');
-             const memberPanel = document.getElementById('member-status-panel');
-             if (announcement && !announcement.dataset.moved && (mainSlider || memberPanel)) {
+             if (announcement && !announcement.dataset.moved) {
                 moveAndStyleAnnouncementConditional();
              }
         });
 
         observer.observe(document.body, { childList: true, subtree: true });
-        moveAndStyleAnnouncementConditional();
 
-        // Aktifkan Sensor Auto-Sync
+        // Aktifkan Sensor Auto-Sync (Cek setiap setengah detik)
         setTimeout(syncAnnouncementWidth, 50);
-        setInterval(syncAnnouncementWidth, 1000);
+        setInterval(syncAnnouncementWidth, 500);
         window.addEventListener('resize', syncAnnouncementWidth);
     });
 
