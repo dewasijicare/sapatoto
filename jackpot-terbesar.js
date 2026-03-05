@@ -6,8 +6,7 @@
     const WIDGET_ID = 'sapatoto-jackpot-slider';
     
     // =========================================
-    // DATABASE GAME VIP 
-    // Menggunakan CDN Lokal Web Anda Agar 100% Muncul & Anti-Blokir
+    // DATABASE GAME VIP (Menjamin game gacor selalu muncul)
     // =========================================
     const VIP_GAMES = [
         { name: "Mahjong Ways", provider: "PG SOFT", link: "/slots", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/mahjong-ways.png", weight: 150 },
@@ -36,30 +35,24 @@
     function detectProvider(name, imgUrl, linkUrl) {
         let text = (name + " " + imgUrl + " " + linkUrl).toLowerCase();
 
-        // 1. Cek Pragmatic Play
-        if (text.includes('pragmatic') || text.includes('/pp/') || text.includes('vs20') || text.includes('vs10') || text.includes('olympus') || text.includes('princess') || text.includes('bonanza') || text.includes('sugar') || text.includes('aztec') || text.includes('rhino') || text.includes('megaways') || text.includes('lions') || text.includes('thor') || text.includes('dice') || text.includes('5g') || text.includes('sweet') || text.includes('starlight')) {
-            return "PRAGMATIC PLAY";
-        }
-        // 2. Cek PG Soft
-        if (text.includes('pgsoft') || text.includes('pg-soft') || text.includes('/pg/') || text.includes('mahjong') || text.includes('neko') || text.includes('bandito') || text.includes('shaolin') || text.includes('wealth') || text.includes('qilin') || text.includes('hatch') || text.includes('caishen') || text.includes('macau') || text.includes('journey') || text.includes('treasures') || text.includes('wild')) {
+        // 1. Cek PG Soft
+        if (text.includes('pgsoft') || text.includes('/pg/') || text.includes('mahjong') || text.includes('neko') || text.includes('bandito') || text.includes('shaolin') || text.includes('wealth') || text.includes('qilin') || text.includes('hatch') || text.includes('caishen') || text.includes('macau') || text.includes('journey') || text.includes('treasures') || text.includes('wild') || text.includes('wins')) {
             return "PG SOFT";
         }
-        // 3. Cek Provider Lainnya
+        // 2. Cek Provider Lainnya
         if (text.includes('habanero') || text.includes('koi gate') || text.includes('hot hot')) return "HABANERO";
         if (text.includes('joker') || text.includes('/jk/')) return "JOKER GAMING";
         if (text.includes('microgaming') || text.includes('/mg/')) return "MICROGAMING";
         if (text.includes('spade') || text.includes('/sg/')) return "SPADEGAMING";
         
-        // 4. JURUS PAMUNGKAS (MENGHAPUS "SLOT ONLINE")
-        // Jika sistem tetap buta, otomatis assign ke Pragmatic/PGSoft berdasarkan huruf awal game
-        const firstLetter = name.trim().charAt(0).toUpperCase();
-        if (['A','B','C','D','E','F','G','H','I','J'].includes(firstLetter)) return "PRAGMATIC PLAY";
-        if (['K','L','M','N','O','P','Q','R','S','T'].includes(firstLetter)) return "PG SOFT";
-        return "JOKER GAMING"; 
+        // 3. JURUS PAMUNGKAS: Default ke PRAGMATIC PLAY 
+        // Semua game sisanya (termasuk Olympus, Lions, angka 5G, dll) akan otomatis dicap Pragmatic Play.
+        // Dengan ini TIDAK AKAN ADA LAGI tulisan "SLOT ONLINE".
+        return "PRAGMATIC PLAY"; 
     }
 
     // =========================================
-    // FUNGSI 1: AUTO-SCRAPE DARI RTP 
+    // FUNGSI 1: AUTO-SCRAPE DARI RTP (ANTI LAZY-LOAD)
     // =========================================
     async function fetchGamesFromRTP() {
         try {
@@ -73,9 +66,11 @@
 
             gameNodes.forEach(node => {
                 const imgEl = node.querySelector('img');
-                if (imgEl && imgEl.src) {
+                if (imgEl) {
                     let name = node.dataset.gamename || imgEl.alt || "Slot Game";
-                    let imgUrl = imgEl.src;
+                    
+                    // FIX LAZY LOADING: Ambil link asli dari data-src, jika tidak ada baru pakai src
+                    let imgUrl = imgEl.getAttribute('data-src') || imgEl.getAttribute('data-original') || imgEl.getAttribute('data-lazy') || imgEl.src;
                     
                     let link = node.href || node.dataset.playurl || '/slots';
                     if (link.includes('javascript:') || link.endsWith('#') || link === window.location.href) {
@@ -87,11 +82,14 @@
                     let existingVip = LIVE_GAME_LIBRARY.find(g => g.name.toLowerCase() === name.toLowerCase() || name.toLowerCase().includes(g.name.toLowerCase()));
                     
                     if (existingVip) {
-                        // JANGAN TIMPA GAMBAR VIP KARENA CDN KITA LEBIH AMAN.
-                        // Hanya timpa link menuju permainannya jika link valid.
-                        if (link !== '/slots' && !link.includes('javascript')) existingVip.link = link;
+                        // KITA TIMPA GAMBAR VIP DENGAN GAMBAR ASLI DARI RTP (Karena link dari RTP pasti akurat/aktif)
+                        // Namun pastikan bukan gambar transparan base64 bawaan lazy load
+                        if (imgUrl && !imgUrl.startsWith('data:image/gif')) {
+                            existingVip.img = imgUrl; 
+                        }
+                        if (link !== '/slots') existingVip.link = link;
                     } else {
-                        if (!fetchedGames.find(g => g.name === name)) {
+                        if (!fetchedGames.find(g => g.name === name) && imgUrl && !imgUrl.startsWith('data:image/gif')) {
                             fetchedGames.push({ name, provider, img: imgUrl, link, weight: 15 });
                         }
                     }
@@ -179,11 +177,15 @@
     // =========================================
     // FUNGSI 3: RENDER HTML & CSS
     // =========================================
+    
+    // GAMBAR CADANGAN SVG (Anti-Error Murni, Akan Merender Kotak Bertuliskan "SLOT")
+    const fallbackImageBase64 = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWEyNTJmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlYzQ4OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNMT1Q8L3RleHQ+PC9zdmc+";
+
     function buildCardHTML(item) {
         return `
             <a href="${item.link}" class="jp-card">
                 <div class="jp-img-wrapper">
-                    <img src="${item.image}" alt="${item.gameName}" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200/1a252f/ec4899?text=SLOT+GACOR';">
+                    <img src="${item.image}" alt="${item.gameName}" onerror="this.onerror=null; this.src='${fallbackImageBase64}';">
                     <div class="play-overlay">
                         <i class="bi bi-play-circle-fill"></i> MAIN
                     </div>
