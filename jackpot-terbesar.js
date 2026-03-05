@@ -221,12 +221,11 @@
 
         const cssHTML = `
             <style>
-                /* PENYESUAIAN LAYOUT PRESISI SEPERTI PINTAS WIDGET */
+                /* PERBAIKAN PADDING: Dihapus agar mengembang 100% menyesuaikan elemen lain */
                 #${WIDGET_ID} { 
-                    width: 100%;
-                    max-width: 1200px; 
-                    margin: 0 auto 25px auto; 
-                    padding: 0 15px; /* SAMA DENGAN PINTAS WIDGET */
+                    width: 100%; 
+                    margin: 0 0 25px 0; 
+                    padding: 0; 
                     box-sizing: border-box;
                     font-family: 'Exo 2', sans-serif; 
                 }
@@ -234,9 +233,9 @@
                     width: 100%;
                     background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.95)); 
                     border: 1px solid #ec4899; 
-                    border-radius: 15px; /* DIBUAT 15PX SAMA DENGAN PINTAS WIDGET */
+                    border-radius: 15px; 
                     padding: 0; 
-                    box-shadow: 0 0 15px rgba(236, 72, 153, 0.5); /* SAMA DENGAN PINTAS WIDGET */
+                    box-shadow: 0 0 15px rgba(236, 72, 153, 0.5); 
                     overflow: hidden; 
                     box-sizing: border-box;
                 }
@@ -292,7 +291,6 @@
                 .jp-user-date i { color: #a855f7; margin-right: 2px; }
                 
                 @media (max-width: 768px) { 
-                    #${WIDGET_ID} { padding: 0 15px; } /* PASTIKAN MOBILE JUGA 15PX */
                     .jp-card { width: 140px; } 
                     .jp-amount { font-size: 0.9rem; } 
                     .jp-header h4 { font-size: 1.05rem; } 
