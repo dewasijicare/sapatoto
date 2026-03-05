@@ -1,12 +1,16 @@
 (function() {
     // =========================================
-    // BAGIAN 1: CSS SUPER FORCE
+    // BAGIAN 1: CSS SUPER FORCE (UPDATED)
     // =========================================
     const togelGridStyles = `
         /* --- Kustomisasi Container Utama --- */
         #carousel-togel .custom-stage-outer { max-height: 520px; overflow: hidden !important; transition: max-height 0.5s ease-in-out; border-radius: 0 0 8px 8px; padding: 5px; }
         @media (min-width: 768px) { #carousel-togel .custom-stage-outer { max-height: 335px; } }
-        #carousel-togel.show-all .custom-stage-outer { max-height: 3000px; }
+        
+        /* FIX 3: TAMPILKAN SEMUA DI MOBILE AGAR TIDAK TERPOTONG */
+        #carousel-togel.show-all .custom-stage-outer, 
+        #carousel-togel.show-all .owl-stage-outer { max-height: 15000px !important; }
+        
         .show-more-wrapper { display: flex; justify-content: center; margin-top: 15px; margin-bottom: 25px; position: relative; z-index: 10; }
         .show-more-button { background: none !important; border: 1px solid #f472b6 !important; border-radius: 20px; padding: 6px 15px !important; color: #f472b6 !important; text-align: center; cursor: pointer; font-weight: 600; text-transform: uppercase; transition: all .3s ease; font-size: 0.8rem; letter-spacing: 1px;}
         .show-more-button:hover { background: #f472b6 !important; color: #fff !important; box-shadow: 0 0 10px #f472b6; }
@@ -15,24 +19,30 @@
         #carousel-togel .custom-stage { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); grid-auto-rows: 1fr; gap: 15px; width: 100% !important; margin-top: 5px; align-items: stretch; }
         #carousel-togel .custom-item { display: flex; height: auto !important; width: 100%; }
 
-        /* --- Desain BOX --- */
+        /* FIX 2: BORDER KOTAK LEBIH TEBAL */
         #carousel-togel .card, .row.g-3 .card {
             background: linear-gradient(145deg, rgba(44, 62, 80, 0.95), rgba(26, 37, 47, 0.98)) !important;
-            backdrop-filter: blur(5px); border: 1px solid rgba(236, 72, 153, 0.4) !important;
+            backdrop-filter: blur(5px); 
+            border: 2px solid #ec4899 !important; /* Border normal dipertebal jadi 2px */
             border-radius: 8px !important; box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
             transition: all 0.3s ease; width: 100%!important; font-family: 'Exo 2', sans-serif !important;
             position: relative; overflow: hidden; flex: 1; display: flex; flex-direction: column; justify-content: space-between; 
         }
         #carousel-togel .card-body { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px 8px !important; position: relative; z-index: 2; width: 100% !important; box-sizing: border-box !important;}
 
-        /* --- Animasi Shimmer --- */
+        /* Animasi Shimmer */
         #carousel-togel .card::after { content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%); transform: skewX(-25deg); transition: none; pointer-events: none; z-index: 3; }
         #carousel-togel .card:hover::after { left: 150%; transition: all 0.7s ease-in-out; }
-        #carousel-togel .card:hover, .row.g-3 .card:hover { transform: translateY(-4px) scale(1.01); border-color: #ec4899 !important; box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(236, 72, 153, 0.4) !important; }
+        
+        /* FIX 2 (HOVER): BORDER MAKIN TEBAL TANPA BIKIN GOYANG */
+        #carousel-togel .card:hover, .row.g-3 .card:hover { 
+            transform: translateY(-4px) scale(1.01); 
+            border-color: #f472b6 !important; 
+            /* Menggunakan trik bayangan 1px di luar border agar tebalnya bertambah tanpa merusak dimensi kotak */
+            box-shadow: 0 0 0 1px #f472b6, 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(236, 72, 153, 0.4) !important; 
+        }
 
-        /* ========================================================= */
-        /* FIX 1: LAMPU STATUS & ANTI-WRAP PASARAN (FORCE)           */
-        /* ========================================================= */
+        /* FIX 1: NAMA PASARAN WARNA KUNING & ANTI-WRAP */
         .title-wrapper-locked {
             display: flex !important; 
             align-items: center !important; 
@@ -45,14 +55,14 @@
             gap: 6px !important; 
         }
         .market-name-text { 
-            color: #bdc3c7 !important; 
-            font-size: 0.7rem !important; /* Diperkecil sedikit agar muat */
+            color: #f1c40f !important; /* Warna Kuning Khas Sapatoto */
+            font-size: 0.7rem !important; 
             text-transform: uppercase !important; 
             letter-spacing: 0px !important; 
             font-weight: 700 !important; 
             overflow: hidden !important; 
             text-overflow: ellipsis !important; 
-            white-space: nowrap !important; /* MEMAKSA 1 BARIS */
+            white-space: nowrap !important; 
             min-width: 0 !important; 
             flex: 0 1 auto !important; 
             text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important;
@@ -78,9 +88,7 @@
         #carousel-togel .card h2, .row.g-3 .card h2 { background: 0 0 !important; margin: 8px 0 !important; font-size: 2.1em !important; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
         #carousel-togel .card h2 a, .row.g-3 .card h2 a { background: linear-gradient(to bottom, #ffffff 20%, #c0c0c0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 2px; text-decoration: none; }
 
-        /* ========================================================= */
-        /* FIX 2: BADGE SEGERA TUTUP CENTER VERTICAL                 */
-        /* ========================================================= */
+        /* Badge Segera Tutup */
         #carousel-togel .card .togel-countdown-timer, .row.g-3 .card .togel-countdown-timer { 
             background: linear-gradient(45deg, #ec4899, #be185d) !important; 
             color: #ffffff !important; 
@@ -133,59 +141,44 @@
     document.head.appendChild(styleElement);
 
     // =========================================
-    // BAGIAN 2: JAVASCRIPT LOGIC (BULLETPROOF PENCARI ELEMEN)
+    // BAGIAN 2: JAVASCRIPT LOGIC
     // =========================================
     let intervalsInitialized = false;
 
     function lockAndFormatMarketTitle(card) {
-        // Cari container judul pasaran dengan cara membabi-buta (apapun tag-nya)
-        // Biasanya letaknya sebelum angka result (h2)
         const resultElement = card.querySelector('h2');
         if (!resultElement) return null;
 
-        // Ambil elemen tepat di atas angka result
         let titleElement = resultElement.previousElementSibling;
-        
         if (!titleElement) {
-            // Jika gagal, cari div pertama di dalam card-body
             titleElement = card.querySelector('.card-body > div:first-child');
         }
-
         if (!titleElement) return null;
 
-        // Cek apakah sudah kita modifikasi
         if (!titleElement.classList.contains('title-wrapper-locked')) {
             const originalText = titleElement.textContent.trim();
-            
-            // Bersihkan isi asli dan jadikan flexbox wrapper
             titleElement.innerHTML = '';
             titleElement.className = 'title-wrapper-locked'; 
             
-            // 1. Buat Titik Lampu
             const dot = document.createElement('span');
             dot.className = 'status-dot active'; 
             
-            // 2. Buat Teks Pasaran (Anti Wrap)
             const textSpan = document.createElement('span');
             textSpan.className = 'market-name-text';
             textSpan.textContent = originalText;
-            textSpan.title = originalText; // Munculkan nama lengkap saat kursor di-hover
+            textSpan.title = originalText; 
             
-            // Gabungkan
             titleElement.appendChild(dot);
             titleElement.appendChild(textSpan);
         }
-        
-        // Kembalikan elemen lampu titik terbaru
         return titleElement.querySelector('.status-dot');
     }
 
     function setupPersistentCountdownIntervals() { 
         if (intervalsInitialized) return; 
         setInterval(() => { 
-            // Cari di semua kemungkinan container grid
             document.querySelectorAll('#carousel-togel .card, .row.g-3 .card, .card-body').forEach(element => {
-                const card = element.closest('.card') || element; // Pastikan targetnya adalah .card
+                const card = element.closest('.card') || element; 
                 const timer = card.querySelector('.togel-countdown-timer');
                 if (!timer) return;
 
@@ -193,12 +186,9 @@
                 const closingTime = parseInt(timer.dataset.time, 10); 
                 const status = parseInt(timer.dataset.status, 10); 
                 
-                // Panggil fungsi pembuat struktur judul
                 let dot = lockAndFormatMarketTitle(card);
 
-                // --- LOGIKA STATUS TIMER & LAMPU TITIK ---
                 if (status !== 1 || !closingTime || isNaN(closingTime) || (closingTime - now) <= 0) { 
-                    // TUTUP (MERAH)
                     timer.classList.remove('show-warning-text', 'closing-soon'); 
                     if (!timer.classList.contains('is-closed')) { timer.textContent = "TUTUP"; timer.classList.add('is-closed'); }
                     if (dot) { dot.className = 'status-dot closed'; } 
@@ -206,7 +196,7 @@
                 } 
                 
                 const diff = closingTime - now; 
-                if (diff < 1800000) { // KURANG 30 MENIT (KUNING)
+                if (diff < 1800000) { 
                     timer.classList.add('closing-soon'); 
                     if (dot) { dot.className = 'status-dot closing'; } 
                     
@@ -214,7 +204,7 @@
                     if (blinkCounter < 5) { timer.classList.add('show-warning-text'); } 
                     else { timer.classList.remove('show-warning-text'); } 
                     timer.dataset.blinkCounter = (blinkCounter + 1) % 10; 
-                } else { // NORMAL (HIJAU)
+                } else { 
                     timer.classList.remove('closing-soon', 'show-warning-text', 'is-closed'); 
                     if (dot) { dot.className = 'status-dot active'; } 
                     if (timer.dataset.blinkCounter) { delete timer.dataset.blinkCounter; } 
@@ -294,9 +284,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Tembak lebih cepat
         setInterval(initializeTogelCarousel, 200); 
-        setTimeout(setupPersistentCountdownIntervals, 1000); // Paksa jalankan timer meskipun grid belum ke-sort
+        setTimeout(setupPersistentCountdownIntervals, 1000); 
         initializeTogelCarousel();
     });
 
