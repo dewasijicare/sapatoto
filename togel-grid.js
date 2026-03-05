@@ -1,6 +1,6 @@
 (function() {
     // =========================================
-    // BAGIAN 1: CSS SUPER FORCE (UPDATED)
+    // BAGIAN 1: CSS SUPER FORCE (FINAL + EFEK UNGU)
     // =========================================
     const togelGridStyles = `
         /* --- Kustomisasi Container Utama --- */
@@ -23,22 +23,21 @@
         #carousel-togel .card, .row.g-3 .card {
             background: linear-gradient(145deg, rgba(44, 62, 80, 0.95), rgba(26, 37, 47, 0.98)) !important;
             backdrop-filter: blur(5px); 
-            border: 2px solid #ec4899 !important; /* Border normal dipertebal jadi 2px */
+            border: 2px solid #ec4899 !important; 
             border-radius: 8px !important; box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
             transition: all 0.3s ease; width: 100%!important; font-family: 'Exo 2', sans-serif !important;
             position: relative; overflow: hidden; flex: 1; display: flex; flex-direction: column; justify-content: space-between; 
         }
         #carousel-togel .card-body { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px 8px !important; position: relative; z-index: 2; width: 100% !important; box-sizing: border-box !important;}
 
-        /* Animasi Shimmer */
+        /* Animasi Shimmer (Garis Cahaya Putih Miring) */
         #carousel-togel .card::after { content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%); transform: skewX(-25deg); transition: none; pointer-events: none; z-index: 3; }
         #carousel-togel .card:hover::after { left: 150%; transition: all 0.7s ease-in-out; }
         
-        /* FIX 2 (HOVER): BORDER MAKIN TEBAL TANPA BIKIN GOYANG */
+        /* HOVER CARD: BORDER MAKIN TEBAL TANPA BIKIN GOYANG */
         #carousel-togel .card:hover, .row.g-3 .card:hover { 
             transform: translateY(-4px) scale(1.01); 
             border-color: #f472b6 !important; 
-            /* Menggunakan trik bayangan 1px di luar border agar tebalnya bertambah tanpa merusak dimensi kotak */
             box-shadow: 0 0 0 1px #f472b6, 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(236, 72, 153, 0.4) !important; 
         }
 
@@ -84,11 +83,43 @@
         .status-dot.closed { background: #ef4444 !important; opacity: 0.8 !important; } 
         @keyframes pulse-yellow { 0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.6); } 70% { box-shadow: 0 0 0 5px rgba(234, 179, 8, 0); } 100% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); } }
 
-        /* --- Angka Result --- */
-        #carousel-togel .card h2, .row.g-3 .card h2 { background: 0 0 !important; margin: 8px 0 !important; font-size: 2.1em !important; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
-        #carousel-togel .card h2 a, .row.g-3 .card h2 a { background: linear-gradient(to bottom, #ffffff 20%, #c0c0c0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 2px; text-decoration: none; }
+        /* ========================================================= */
+        /* FIX 4: EFEK UNGU BERGERAK PADA ANGKA RESULT SAAT HOVER    */
+        /* ========================================================= */
+        #carousel-togel .card h2, .row.g-3 .card h2 { 
+            background: 0 0 !important; 
+            margin: 8px 0 !important; 
+            font-size: 2.1em !important; 
+            font-weight: 700; 
+            text-shadow: 0 2px 10px rgba(0,0,0,0.8); 
+        }
+        
+        /* Tampilan Angka Normal */
+        #carousel-togel .card h2 a, .row.g-3 .card h2 a { 
+            background: linear-gradient(to bottom, #ffffff 20%, #c0c0c0 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            letter-spacing: 2px; 
+            text-decoration: none; 
+            transition: all 0.3s ease;
+        }
 
-        /* Badge Segera Tutup */
+        /* Animasi Kilau Ungu */
+        @keyframes purpleTextShine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Tampilan Angka Saat Box Di-Hover */
+        #carousel-togel .card:hover h2 a, .row.g-3 .card:hover h2 a {
+            background: linear-gradient(120deg, #ffffff 30%, #a855f7 50%, #ffffff 70%); /* Gradasi Putih - Ungu - Putih */
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: purpleTextShine 1s ease-in-out forwards; /* Bergerak 1 detik sekali jalan */
+        }
+
+        /* --- Badge Segera Tutup --- */
         #carousel-togel .card .togel-countdown-timer, .row.g-3 .card .togel-countdown-timer { 
             background: linear-gradient(45deg, #ec4899, #be185d) !important; 
             color: #ffffff !important; 
