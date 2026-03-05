@@ -1,6 +1,6 @@
 (function() {
     // =========================================
-    // BAGIAN 1: CSS SUPER FORCE (SILVER BRIGHT)
+    // BAGIAN 1: CSS SUPER FORCE (SILVER BRIGHT + CENTER BADGE FIX)
     // =========================================
     const togelGridStyles = `
         /* --- Kustomisasi Container Utama --- */
@@ -101,7 +101,6 @@
             -webkit-text-fill-color: transparent; 
             letter-spacing: 2px; 
             text-decoration: none; 
-            /* Shadow hitam ditipiskan (0.9 -> 0.5) agar angka perak-nya lebih keluar/terang */
             text-shadow: 0 2px 3px rgba(0,0,0,0.5), 0 0 1px rgba(255,255,255,0.2) !important; 
             transition: all 0.3s ease;
         }
@@ -122,7 +121,7 @@
         }
 
         /* ========================================================= */
-        /* FIX: KAPSUL COUNTDOWN SLIM                                */
+        /* FIX: KAPSUL COUNTDOWN SLIM & TEKS CENTER                  */
         /* ========================================================= */
         #carousel-togel .card .togel-countdown-timer, .row.g-3 .card .togel-countdown-timer { 
             background: linear-gradient(45deg, #ec4899, #be185d) !important; 
@@ -165,6 +164,8 @@
             font-weight: 700 !important; 
             white-space: nowrap !important; 
             line-height: normal !important; 
+            /* MEMBUNUH BUG TRANSLATE-Y BAWAAN TEMA SAPATOTO */
+            transform: translateY(1px) !important; 
         }
         
         #carousel-togel .card .togel-countdown-timer.closing-soon, .row.g-3 .card .togel-countdown-timer.closing-soon { background: linear-gradient(45deg, #eab308, #ca8a04) !important; box-shadow: 0 2px 6px rgba(234, 179, 8, 0.4) !important; }
