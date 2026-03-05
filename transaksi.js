@@ -97,7 +97,6 @@
         const wdList = document.getElementById('sapatoto-wd-list');
         if (!depList || !wdList) return;
 
-        // Siapkan antrean (20 Data)
         const deps = [];
         const wds = [];
         for (let i = 0; i < 20; i++) {
@@ -109,18 +108,17 @@
             const amountClass = type === 'deposit' ? 'tx-deposit' : 'tx-withdraw';
             return `
                 <div class="tx-item">
-                    <div class="tx-col-user"><i class="bi bi-person-circle text-muted me-1"></i><span class="fw-bold text-light">${item.user}</span></div>
+                    <div class="tx-col-user"><i class="bi bi-person-circle text-muted me-1" style="color:#a855f7 !important;"></i><span class="fw-bold text-light">${item.user}</span></div>
                     <div class="tx-col-time"><i class="bi bi-clock"></i> ${item.time}</div>
                     <div class="tx-col-amount ${amountClass}">${formatIDR(item.amount)}</div>
                 </div>
             `;
         };
 
-        // Render 20 data asli + 20 data duplikat (untuk ilusi looping tanpa batas)
         const generateHTML = (arr, type) => {
             let html = '';
             arr.forEach(item => html += buildRow(item, type));
-            arr.forEach(item => html += buildRow(item, type)); // Duplikat
+            arr.forEach(item => html += buildRow(item, type)); // Duplikat agar animasi tidak putus
             return html;
         };
 
@@ -149,18 +147,18 @@
 
         if (target && !existing) {
             const widgetHTML = `
-                <div id="sapatoto-recent-transactions" style="width: 100%; max-width: 100%; margin: 0 0 25px 0; padding: 0 8px; box-sizing: border-box;">
-                    <div class="row g-3 d-flex align-items-stretch">
+                <div id="sapatoto-recent-transactions">
+                    <div class="sapatoto-trx-flex">
                         
-                        <div class="col-md-6 d-flex">
-                            <div class="tx-card w-100 d-flex flex-column">
+                        <div class="trx-column">
+                            <div class="tx-card d-flex flex-column">
                                 <div class="tx-header border-pink">
                                     <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> LIVE DEPOSIT
                                 </div>
                                 <div class="tx-table-header">
                                     <div class="tx-col-user">USER</div>
-                                    <div class="tx-col-time">WAKTU</div>
-                                    <div class="tx-col-amount">NOMINAL</div>
+                                    <div class="tx-col-time" style="text-align:center;">WAKTU</div>
+                                    <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
                                 </div>
                                 <div class="tx-body flex-grow-1">
                                     <div class="tx-marquee" id="sapatoto-dep-list"></div>
@@ -168,15 +166,15 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 d-flex">
-                            <div class="tx-card w-100 d-flex flex-column">
+                        <div class="trx-column">
+                            <div class="tx-card d-flex flex-column">
                                 <div class="tx-header border-purple">
                                     <i class="bi bi-cash-coin tx-icon-purple"></i> LIVE WITHDRAW
                                 </div>
                                 <div class="tx-table-header">
                                     <div class="tx-col-user">USER</div>
-                                    <div class="tx-col-time">WAKTU</div>
-                                    <div class="tx-col-amount">NOMINAL</div>
+                                    <div class="tx-col-time" style="text-align:center;">WAKTU</div>
+                                    <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
                                 </div>
                                 <div class="tx-body flex-grow-1">
                                     <div class="tx-marquee" id="sapatoto-wd-list"></div>
@@ -190,9 +188,35 @@
 
             const cssHTML = `
                 <style>
-                    #sapatoto-recent-transactions { font-family: 'Exo 2', sans-serif; }
-                    
+                    /* FIX 100% PRESISI - MATCH JACKPOT TERBESAR / PROGRESSIVE */
+                    #sapatoto-recent-transactions { 
+                        width: 100%; 
+                        max-width: 100%; 
+                        margin: 0 0 25px 0 !important; 
+                        padding: 0 !important; /* DIBUAT 0 AGAR MELEBAR PENUH SEJAJAR WIDGET BAWAHNYA */
+                        box-sizing: border-box;
+                        font-family: 'Exo 2', sans-serif; 
+                    }
+
+                    /* CUSTOM FLEXBOX - MENGGANTIKAN BOOTSTRAP .ROW AGAR TIDAK ADA NEGATIVE MARGIN */
+                    .sapatoto-trx-flex {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 16px; /* Jarak tengah antara dua kotak */
+                        width: 100%;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    .trx-column {
+                        flex: 1;
+                        min-width: 320px; /* Memaksa turun ke bawah sejajar vertikal di layar HP */
+                        display: flex;
+                        flex-direction: column;
+                    }
+
                     .tx-card {
+                        width: 100%;
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
                         border-radius: 12px;
                         overflow: hidden;
@@ -221,7 +245,7 @@
                     .tx-icon-pink { color: #f472b6; margin-right: 8px; font-size: 1.2em; }
                     .tx-icon-purple { color: #c084fc; margin-right: 8px; font-size: 1.2em; }
 
-                    /* DESAIN FLEXBOX UNTUK 3 KOLOM */
+                    /* HEADER TABEL CUSTOM */
                     .tx-table-header {
                         display: flex;
                         padding: 8px 15px;
@@ -232,11 +256,12 @@
                         font-size: 0.8rem;
                         flex-shrink: 0;
                     }
+
                     .tx-item {
                         display: flex;
                         align-items: center;
                         padding: 0 15px;
-                        height: 40px; /* Tinggi pasti per baris (PENTING UNTUK SCROLLING) */
+                        height: 40px; 
                         border-bottom: 1px solid #34495e;
                         font-size: 0.85rem;
                     }
@@ -260,7 +285,7 @@
                     }
                     @keyframes scrollUp {
                         0% { transform: translateY(0); }
-                        100% { transform: translateY(-800px); } /* 20 data x 40px = 800px */
+                        100% { transform: translateY(-800px); } 
                     }
 
                     .tx-deposit {
@@ -280,8 +305,7 @@
                         .tx-col-time { font-size: 0.65rem; }
                         .tx-item { font-size: 0.75rem; padding: 0 10px; }
                         .tx-table-header { padding: 8px 10px; font-size: 0.7rem; }
-                        /* Pertahankan padding 8px di mobile agar sejajar togel */
-                        #sapatoto-recent-transactions { padding: 0 8px !important; }
+                        #sapatoto-recent-transactions { padding: 0 !important; }
                     }
                 </style>
             `;
@@ -289,10 +313,7 @@
             document.head.insertAdjacentHTML('beforeend', cssHTML);
             target.insertAdjacentHTML('afterend', widgetHTML);
             
-            // Render data pertama kali
             renderTransactions();
-
-            // Set interval refresh tiap 1 Menit (60000 ms)
             setInterval(refreshTransactions, 60000);
 
             return true;
