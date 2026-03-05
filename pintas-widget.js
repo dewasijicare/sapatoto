@@ -4,7 +4,6 @@
         var target = document.querySelector('#announcement'); 
         var existingWidget = document.getElementById('pintas-widget-wrapper');
 
-        // Jika running text ketemu dan widget belum ada
         if (target && !existingWidget) {
             
             var widgetHTML = `
@@ -25,19 +24,20 @@
                         </a>
                     </div>
                 </div>
+            `;
 
+            var cssHTML = `
                 <style>
-                    /* BUNGKUSAN LUAR: Akan disinkronkan otomatis oleh JS menyesuaikan Container Utama situs */
+                    /* BUNGKUSAN LUAR: Tidak boleh ada !important di padding agar JS bisa menarik ukuran Container */
                     #pintas-widget-wrapper {
                         width: 100%;
-                        margin: 15px auto 25px auto !important;
-                        padding: 0 !important; 
+                        margin: 15px auto 25px auto; 
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif;
                         transition: max-width 0.3s ease;
                     }
 
-                    /* BUNGKUSAN DALAM: Menyamakan jarak gutter 8px milik Progressive Jackpot */
+                    /* RUMUS PRESISI: 8px ini yang membuatnya SEJAJAR PERSIS 100% dengan Progressive Jackpot */
                     .pintas-inner-spacing {
                         padding: 0 8px;
                         width: 100%;
@@ -52,7 +52,7 @@
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
                         border: 1px solid #ec4899;
                         box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-                        border-radius: 12px; /* Disamakan dengan radius Progressive Jackpot */
+                        border-radius: 12px; /* Disamakan dengan lengkungan Progressive Jackpot */
                         padding: 12px 20px;
                         position: relative;
                         overflow: hidden;
@@ -123,10 +123,10 @@
                         100% { background-position: 0% 50%; }
                     }
                     
-                    /* PERLINDUNGAN MOBILE */
+                    /* PENYESUAIAN MOBILE / HP */
                     @media (max-width: 768px) {
                         #pintas-widget-wrapper { padding: 0 !important; }
-                        .pintas-inner-spacing { padding: 0 8px !important; }
+                        .pintas-inner-spacing { padding: 0 15px !important; } /* Jarak aman di HP */
                         .pintas-title { font-size: 1rem; }
                         .pintas-sub { font-size: 0.65rem; }
                         .pintas-icon-container { font-size: 1.8rem; margin-right: 12px; }
@@ -136,14 +136,15 @@
             `;
 
             target.insertAdjacentHTML('afterend', widgetHTML);
+            document.head.insertAdjacentHTML('beforeend', cssHTML);
 
             // ==========================================================
-            // FUNGSI SENSOR LEBAR PRESISI (Auto-Sync)
+            // FUNGSI SENSOR PRESISI (Menyalin bingkai dari Progressive)
             // ==========================================================
             function syncPintasWidth() {
                 var pintasWidget = document.getElementById('pintas-widget-wrapper');
                 
-                // JIKA DIBUKA DI HP: Biarkan CSS Mobile yang bekerja
+                // Jika dibuka di HP: Matikan sensor JS, gunakan CSS Mobile.
                 if (window.innerWidth <= 768) {
                     if (pintasWidget) {
                         pintasWidget.style.maxWidth = '100%';
@@ -153,7 +154,7 @@
                     return;
                 }
 
-                // JIKA DIBUKA DI DESKTOP: Ukur dan ikuti lebar Container Utama
+                // Jika dibuka di PC/Desktop: Sensor kerangka utama website
                 var referenceElement = document.querySelector('#row-togel'); 
                 if (pintasWidget && referenceElement && referenceElement.parentElement) {
                     var mainContainer = referenceElement.parentElement; 
@@ -162,16 +163,18 @@
                     var computedStyle = window.getComputedStyle(mainContainer);
                     
                     if (exactWidth > 0) {
+                        // Kunci kelebaran persis sama dengan kerangka situs
                         pintasWidget.style.maxWidth = exactWidth + 'px';
+                        // Suntikkan jarak bantalan yang sama agar tidak menabrak dinding layar
                         pintasWidget.style.paddingLeft = computedStyle.paddingLeft;
                         pintasWidget.style.paddingRight = computedStyle.paddingRight;
                     }
                 }
             }
 
-            // Jalankan deteksi
+            // Jalankan pelacak otomatis
             setTimeout(syncPintasWidth, 50);
-            setInterval(syncPintasWidth, 1000); // Lakukan pengecekan stabil setiap detik
+            setInterval(syncPintasWidth, 1000); 
             window.addEventListener('resize', syncPintasWidth);
 
             return true;
@@ -179,7 +182,7 @@
         return false;
     }
 
-    // LOOP KUAT: Tidak akan berhenti sampai widget berhasil dimunculkan
+    // Eksekutor yang memantau terus sampai elemen muncul (Anti-Hilang)
     var checkInterval = setInterval(function() {
         if (injectPintasWidget()) {
             clearInterval(checkInterval);
