@@ -1,31 +1,72 @@
-(function() {
+(async function() {
     // =========================================
     // KONFIGURASI WIDGET JACKPOT TERBESAR
     // =========================================
-    const TARGET_SELECTOR = '#row-togel'; // Target elemen (akan diletakkan tepat di atas kotak pasaran togel)
+    const TARGET_SELECTOR = '#row-togel'; // Target elemen (di atas kotak pasaran togel)
     const WIDGET_ID = 'sapatoto-jackpot-slider';
-
-    // DATABASE GAME POPULER (Bobot menentukan seberapa sering game ini muncul)
-    // Semakin besar nilai 'weight', semakin sering muncul.
-    const GAME_LIBRARY = [
-        { name: "Mahjong Ways", provider: "PG SOFT", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/mahjong-ways.png", weight: 20 },
-        { name: "Mahjong Ways 2", provider: "PG SOFT", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/mahjong-ways2.png", weight: 20 },
-        { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympgate.png", weight: 18 },
-        { name: "Gates of Olympus 1000", provider: "PRAGMATIC PLAY", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympx.png", weight: 15 },
-        { name: "Gates of Olympus Super Scatter", provider: "PRAGMATIC PLAY", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympssc.png", weight: 12 },
-        { name: "Starlight Princess", provider: "PRAGMATIC PLAY", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlight.png", weight: 12 },
-        { name: "Starlight Princess 1000", provider: "PRAGMATIC PLAY", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlightx.png", weight: 10 },
-        { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20fruitsw.png", weight: 8 },
-        { name: "Sugar Rush 1000", provider: "PRAGMATIC PLAY", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20sugarrushx.png", weight: 6 },
-        { name: "Wild Bandito", provider: "PG SOFT", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/wild-bandito.png", weight: 5 },
-        { name: "Koi Gate", provider: "HABANERO", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/koigate.png", weight: 4 }
-    ];
+    
+    // Variabel penyimpan data game dari halaman /rtp
+    let LIVE_GAME_LIBRARY = [];
 
     // =========================================
-    // FUNGSI GENERATOR NATURAL
+    // FUNGSI 1: AUTO-SCRAPE GAMBAR DARI /RTP
+    // =========================================
+    async function fetchGamesFromRTP() {
+        try {
+            // Diam-diam mengambil data HTML dari halaman RTP situs Anda sendiri
+            const response = await fetch('/rtp');
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            // Mencari elemen game slot (sesuai struktur umum Sapatoto/Nexus)
+            const gameNodes = doc.querySelectorAll('.row.mb-3.g-1 > div[class*="col-"] a, .game-item a');
+            let fetchedGames = [];
+
+            gameNodes.forEach(node => {
+                const imgEl = node.querySelector('img');
+                if (imgEl && imgEl.src) {
+                    let name = node.dataset.gamename || imgEl.alt || "Slot Game";
+                    let imgUrl = imgEl.src;
+
+                    // Deteksi Otomatis Provider berdasarkan nama game
+                    let provider = "SLOT ONLINE";
+                    let n = name.toLowerCase();
+                    if(n.includes("mahjong") || n.includes("bandito") || n.includes("neko") || n.includes("shaolin")) provider = "PG SOFT";
+                    else if(n.includes("olympus") || n.includes("princess") || n.includes("bonanza") || n.includes("sugar") || n.includes("starlight")) provider = "PRAGMATIC PLAY";
+
+                    // Atur Persentase Kemunculan (Bobot)
+                    let weight = 10;
+                    if(provider === "PRAGMATIC PLAY" || provider === "PG SOFT") weight = 30; // Prioritas Menengah
+                    if(n.includes("mahjong") || n.includes("olympus") || n.includes("starlight") || n.includes("1000")) weight = 60; // Sangat Sering Muncul!
+
+                    // Masukkan ke array jika nama belum ada (cegah duplikat)
+                    if (!fetchedGames.find(g => g.name === name)) {
+                        fetchedGames.push({ name, provider, img: imgUrl, weight });
+                    }
+                }
+            });
+
+            if(fetchedGames.length >= 5) return fetchedGames;
+            throw new Error("Game yang ditemukan kurang dari 5");
+
+        } catch(err) {
+            console.warn("Gagal scrape /rtp, menggunakan gambar cadangan server pusat.", err);
+            // Gambar Cadangan jika halaman RTP gagal diakses
+            return [
+                { name: "Mahjong Ways 2", provider: "PG SOFT", img: "https://demogamesfree-pgsoft.akamaized.net/images/games/mahjong-ways-2.png", weight: 50 },
+                { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", img: "https://www.pragmaticplay.com/wp-content/uploads/2021/02/Gates-of-Olympus-1-200x200.jpg", weight: 50 },
+                { name: "Starlight Princess", provider: "PRAGMATIC PLAY", img: "https://www.pragmaticplay.com/wp-content/uploads/2021/08/starlight-princess-200x200.png", weight: 40 },
+                { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", img: "https://www.pragmaticplay.com/wp-content/uploads/2019/06/sweet-bonanza-200x200.jpg", weight: 30 }
+            ];
+        }
+    }
+
+    // =========================================
+    // FUNGSI 2: GENERATOR NATURAL
     // =========================================
     
-    // Pilih game berdasarkan bobot
+    // Pilih game berdasarkan persentase (bobot)
     function getRandomItemWeighted(items) {
         let totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
         let random = Math.random() * totalWeight;
@@ -49,11 +90,11 @@
         if (rand < 0.65) { min = 20; max = 45; }        // 65% Peluang: 20 JT - 45 JT
         else if (rand < 0.88) { min = 46; max = 85; }   // 23% Peluang: 46 JT - 85 JT
         else if (rand < 0.97) { min = 86; max = 130; }  // 9% Peluang: 86 JT - 130 JT
-        else { min = 131; max = 200; }                  // 3% Peluang: 131 JT - 200 JT (Super Langka)
+        else { min = 131; max = 200; }                  // 3% Peluang: 131 JT - 200 JT
         
         const millions = Math.floor(Math.random() * (max - min + 1)) + min;
         const thousands = Math.floor(Math.random() * 999);
-        const hundreds = Math.floor(Math.random() * 9) * 100; // Ratusan perak acak
+        const hundreds = Math.floor(Math.random() * 9) * 100;
         return (millions * 1000000) + (thousands * 1000) + hundreds;
     }
 
@@ -66,23 +107,28 @@
         return pre + '****' + post;
     }
 
-    // Generator Tanggal & Jam Acak (Diambil mundur dari 12 jam terakhir)
+    // Generator Tanggal & Jam (Hanya mundur 0 - 30 Menit yang lalu)
     function generateDate() {
         const now = new Date();
-        const pastTime = new Date(now.getTime() - Math.floor(Math.random() * 12 * 60 * 60 * 1000));
+        // Kurangi waktu acak dari 0 sampai maksimal 30 menit (1.800.000 millisecond)
+        const pastTime = new Date(now.getTime() - Math.floor(Math.random() * 1800000));
+        
         const day = String(pastTime.getDate()).padStart(2, '0');
         const month = String(pastTime.getMonth() + 1).padStart(2, '0');
+        const year = pastTime.getFullYear(); // Tampilkan Tahun Lengkap
+        
         const hours = String(pastTime.getHours()).padStart(2, '0');
         const mins = String(pastTime.getMinutes()).padStart(2, '0');
         const secs = String(pastTime.getSeconds()).padStart(2, '0');
-        return `${day}/${month} ${hours}:${mins}:${secs}`;
+        
+        return `${day}/${month}/${year} ${hours}:${mins}:${secs}`;
     }
 
     // Buat Kumpulan Data Jackpot
     function generateJackpotData(count = 15) {
         const data = [];
         for (let i = 0; i < count; i++) {
-            const game = getRandomItemWeighted(GAME_LIBRARY);
+            const game = getRandomItemWeighted(LIVE_GAME_LIBRARY);
             data.push({
                 gameName: game.name,
                 provider: game.provider,
@@ -92,29 +138,19 @@
                 date: generateDate()
             });
         }
-        // Urutkan dari Terbesar ke Terkecil agar Rank 1 selalu yang paling fantastis
-        data.sort((a, b) => b.amount - a.amount);
-        data.forEach((item, index) => item.rank = index + 1);
-        return data;
+        // Acak letaknya
+        return data.sort(() => Math.random() - 0.5);
     }
 
     // =========================================
-    // FUNGSI RENDER HTML & CSS
+    // FUNGSI 3: RENDER HTML & CSS
     // =========================================
     
     function buildCardHTML(item) {
-        // Logika Warna Badge Peringkat (1: Gold, 2: Silver, 3: Bronze, Sisanya Pink Sapatoto)
-        let rankBadge = '';
-        if(item.rank === 1) rankBadge = 'background: linear-gradient(45deg, #ffd700, #d4af37); color: #000; box-shadow: 0 0 10px #ffd700;';
-        else if(item.rank === 2) rankBadge = 'background: linear-gradient(45deg, #e0e0e0, #9e9e9e); color: #000; box-shadow: 0 0 10px #e0e0e0;';
-        else if(item.rank === 3) rankBadge = 'background: linear-gradient(45deg, #cd7f32, #8b4513); color: #fff; box-shadow: 0 0 10px #cd7f32;';
-        else rankBadge = 'background: linear-gradient(45deg, #ec4899, #be185d); color: #fff; box-shadow: 0 0 5px #ec4899;';
-
         return `
             <div class="jp-card">
-                <div class="jp-rank" style="${rankBadge}">${item.rank}</div>
                 <div class="jp-img-wrapper">
-                    <img src="${item.image}" alt="${item.gameName}" onerror="this.src='https://via.placeholder.com/150/1a252f/f472b6?text=SLOT'">
+                    <img src="${item.image}" alt="${item.gameName}">
                 </div>
                 <div class="jp-info">
                     <div class="jp-provider">${item.provider}</div>
@@ -131,13 +167,12 @@
 
     function injectWidget() {
         const target = document.querySelector(TARGET_SELECTOR);
-        // Pastikan target ada dan widget belum pernah dibuat
         if (!target || document.getElementById(WIDGET_ID)) return false;
 
-        const data = generateJackpotData(15); // Ambil Top 15 Data
+        const data = generateJackpotData(15); 
         let cardsHTML = data.map(buildCardHTML).join('');
         
-        // Gandakan isi card agar animasi scrolling looping tidak pernah putus (Seamless Infinite Scroll)
+        // Gandakan isi card agar animasi tidak pernah putus (Seamless Infinite Scroll)
         cardsHTML += cardsHTML;
 
         const widgetHTML = `
@@ -194,7 +229,6 @@
                     width: 100%;
                     overflow: hidden;
                     position: relative;
-                    /* Menambahkan efek pudar (blur/fade) di ujung kiri dan kanan agar elegan */
                     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
                     -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
                 }
@@ -202,17 +236,16 @@
                     display: flex;
                     gap: 15px;
                     width: max-content;
-                    /* Durasi 40 detik untuk 15 kotak, kecepatan pas untuk dibaca */
-                    animation: jpScroll 40s linear infinite;
+                    /* Kecepatan diperlambat (75 Detik) */
+                    animation: jpScroll 75s linear infinite;
                 }
-                /* Berhenti jalan saat disentuh/hover */
                 .jp-slider-track:hover {
                     animation-play-state: paused;
                 }
 
                 /* Desain Kotak Game */
                 .jp-card {
-                    width: 190px;
+                    width: 170px; /* Dipersempit sedikit agar lebih presisi */
                     background: linear-gradient(160deg, rgba(30,42,55,1), rgba(15,20,25,1));
                     border: 1px solid #34495e;
                     border-radius: 10px;
@@ -228,22 +261,10 @@
                     z-index: 5;
                 }
                 
-                /* Pita Peringkat (Pojok Kiri Atas) */
-                .jp-rank {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    padding: 4px 12px;
-                    font-weight: 900;
-                    font-size: 0.9rem;
-                    border-bottom-right-radius: 8px;
-                    z-index: 2;
-                }
-                
-                /* Pembungkus Gambar Mulus */
+                /* Pembungkus Gambar Persegi 1:1 */
                 .jp-img-wrapper {
                     width: 100%;
-                    height: 125px;
+                    aspect-ratio: 1 / 1; /* PERSEGI MURNI */
                     overflow: hidden;
                     background-color: #0c0c1e;
                     border-bottom: 2px solid #ec4899;
@@ -255,7 +276,7 @@
                     transition: transform 0.4s ease;
                 }
                 .jp-card:hover .jp-img-wrapper img {
-                    transform: scale(1.1); /* Zoom gambar saat disentuh */
+                    transform: scale(1.1);
                 }
                 
                 /* Bagian Teks */
@@ -292,14 +313,16 @@
                 }
                 .jp-user-date {
                     display: flex;
-                    justify-content: space-between;
+                    flex-direction: column;
                     align-items: center;
                     font-size: 0.65rem;
                     color: #bdc3c7;
+                    gap: 3px;
                 }
                 .jp-user-date span:first-child {
                     color: #ecf0f1;
                     font-weight: 600;
+                    font-size: 0.75rem;
                 }
                 .jp-user-date i {
                     color: #a855f7;
@@ -309,21 +332,18 @@
                 /* Keyframe untuk Slider */
                 @keyframes jpScroll {
                     0% { transform: translateX(0); }
-                    /* Shift persis setengah dari total panjang track (karena diduplikasi) */
                     100% { transform: translateX(calc(-50% - 7.5px)); } 
                 }
 
                 /* Tampilan Mobile */
                 @media (max-width: 768px) {
-                    .jp-card { width: 155px; }
-                    .jp-img-wrapper { height: 105px; }
+                    .jp-card { width: 140px; }
                     .jp-amount { font-size: 0.9rem; }
                     .jp-header h4 { font-size: 1.05rem; }
                 }
             </style>
         `;
 
-        // Suntikkan ke HTML
         target.insertAdjacentHTML('beforebegin', cssHTML + widgetHTML);
 
         // =========================================
@@ -332,24 +352,24 @@
         setInterval(() => {
             const track = document.getElementById('jp-slider-track');
             if (track) {
-                // Hasilkan data baru yang 100% acak
                 const newData = generateJackpotData(15);
                 let newHTML = newData.map(buildCardHTML).join('');
-                
-                // Tempel ulang dengan duplikasi
                 track.innerHTML = newHTML + newHTML;
                 
-                // Restart animasi CSS agar tidak bentrok posisi
                 track.style.animation = 'none';
-                track.offsetHeight; // trigger reflow
+                track.offsetHeight; 
                 track.style.animation = null; 
             }
-        }, 30 * 60 * 1000); // 30 Menit (dalam millisecond)
+        }, 30 * 60 * 1000); 
 
         return true;
     }
 
-    // Eksekutor Kuat
+    // =========================================
+    // EKSEKUSI (Tunggu gambar dari RTP ditarik dulu)
+    // =========================================
+    LIVE_GAME_LIBRARY = await fetchGamesFromRTP();
+
     const checkInterval = setInterval(() => {
         if (injectWidget()) clearInterval(checkInterval);
     }, 500);
