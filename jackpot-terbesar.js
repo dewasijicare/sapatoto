@@ -221,12 +221,11 @@
 
         const cssHTML = `
             <style>
-                /* PERBAIKAN LEBAR DESKTOP: Menggunakan max-width persis seperti Pintas Widget */
                 #${WIDGET_ID} { 
                     width: 100%; 
-                    max-width: 1200px; /* Batas maksimal untuk Desktop */
-                    margin: 0 auto 25px auto; /* Margin auto menempatkan widget tepat di tengah */
-                    padding: 0 15px;
+                    max-width: 1200px; 
+                    margin: 0 auto 25px auto; 
+                    padding: 0 15px; /* Jarak untuk desktop */
                     box-sizing: border-box;
                     font-family: 'Exo 2', sans-serif; 
                 }
@@ -292,6 +291,8 @@
                 .jp-user-date i { color: #a855f7; margin-right: 2px; }
                 
                 @media (max-width: 768px) { 
+                    /* MENGHAPUS DOUBLE PADDING KHUSUS DI HP */
+                    #${WIDGET_ID} { padding: 0 !important; } 
                     .jp-card { width: 140px; } 
                     .jp-amount { font-size: 0.9rem; } 
                     .jp-header h4 { font-size: 1.05rem; } 
@@ -396,4 +397,3 @@
     });
 
 })();
-
