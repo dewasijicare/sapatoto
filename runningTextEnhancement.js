@@ -21,7 +21,7 @@
         #announcement.gavan-themed-announcement {
             background: linear-gradient(145deg, #2c3e50, #1a252f) !important;
             border: 1px solid #ec4899 !important; 
-            border-radius: 12px !important; /* Disamakan dengan lengkungan tombol */
+            border-radius: 4px !important; /* <--- SUDAH DIUBAH MENJADI 4PX */
             box-shadow: 0 0 15px rgba(236, 72, 153, 0.4) !important; 
             color: #ecf0f1 !important;
             padding: 10px 20px !important; 
@@ -61,7 +61,7 @@
         @media (max-width: 768px) {
             #announcement-outer-wrapper { padding: 0 !important; margin: 10px auto 10px auto !important; }
             .announcement-inner-spacing { padding: 0 15px !important; } /* Jarak aman tepi HP */
-            #announcement.gavan-themed-announcement { border-radius: 8px !important; padding: 8px 15px !important; }
+            #announcement.gavan-themed-announcement { border-radius: 4px !important; padding: 8px 15px !important; } /* <--- MOBILE JUGA DIUBAH MENJADI 4PX */
         }
     `;
 
