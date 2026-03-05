@@ -221,10 +221,11 @@
 
         const cssHTML = `
             <style>
-                /* PERBAIKAN PADDING: Dihapus agar mengembang 100% menyesuaikan elemen lain */
+                /* PERBAIKAN LEBAR DESKTOP: Menggunakan max-width persis seperti Pintas Widget */
                 #${WIDGET_ID} { 
                     width: 100%; 
-                    margin: 0 0 25px 0; 
+                    max-width: 1200px; /* Batas maksimal untuk Desktop */
+                    margin: 0 auto 25px auto; /* Margin auto menempatkan widget tepat di tengah */
                     padding: 0; 
                     box-sizing: border-box;
                     font-family: 'Exo 2', sans-serif; 
