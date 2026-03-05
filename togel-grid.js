@@ -1,28 +1,21 @@
 (function() {
     // =========================================
-    // BAGIAN 1: CSS TAMPILAN KEREN & FIX ALIGNMENT
+    // BAGIAN 1: CSS (FORCE ALIGNMENT & ANTI-WRAP)
     // =========================================
     const togelGridStyles = `
-        /* --- 1. Kustomisasi Container Utama --- */
-        #carousel-togel .custom-stage-outer {
-            max-height: 520px; overflow: hidden !important; 
-            transition: max-height 0.5s ease-in-out; border-radius: 0 0 8px 8px; padding: 5px; 
-        }
+        /* --- Kustomisasi Container Utama --- */
+        #carousel-togel .custom-stage-outer { max-height: 520px; overflow: hidden !important; transition: max-height 0.5s ease-in-out; border-radius: 0 0 8px 8px; padding: 5px; }
         @media (min-width: 768px) { #carousel-togel .custom-stage-outer { max-height: 335px; } }
         #carousel-togel.show-all .custom-stage-outer { max-height: 3000px; }
-        
         .show-more-wrapper { display: flex; justify-content: center; margin-top: 15px; margin-bottom: 25px; position: relative; z-index: 10; }
         .show-more-button { background: none !important; border: 1px solid #f472b6 !important; border-radius: 20px; padding: 6px 15px !important; color: #f472b6 !important; text-align: center; cursor: pointer; font-weight: 600; text-transform: uppercase; transition: all .3s ease; font-size: 0.8rem; letter-spacing: 1px;}
         .show-more-button:hover { background: #f472b6 !important; color: #fff !important; box-shadow: 0 0 10px #f472b6; }
 
-        /* Grid Setup */
-        #carousel-togel .custom-stage { 
-            display: grid !important; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); 
-            grid-auto-rows: 1fr; gap: 15px; width: 100% !important; margin-top: 5px; align-items: stretch; 
-        }
+        /* --- Grid Setup --- */
+        #carousel-togel .custom-stage { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); grid-auto-rows: 1fr; gap: 15px; width: 100% !important; margin-top: 5px; align-items: stretch; }
         #carousel-togel .custom-item { display: flex; height: auto !important; width: 100%; }
 
-        /* --- 2. Desain BOX Keren --- */
+        /* --- Desain BOX Keren --- */
         #carousel-togel .card, .row.g-3 .card {
             background: linear-gradient(145deg, rgba(44, 62, 80, 0.95), rgba(26, 37, 47, 0.98)) !important;
             backdrop-filter: blur(5px); border: 1px solid rgba(236, 72, 153, 0.4) !important;
@@ -30,98 +23,100 @@
             transition: all 0.3s ease; width: 100%!important; font-family: 'Exo 2', sans-serif !important;
             position: relative; overflow: hidden; flex: 1; display: flex; flex-direction: column; justify-content: space-between; 
         }
-        
-        #carousel-togel .card-body { 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            padding: 15px 8px !important; position: relative; z-index: 2; 
-        }
+        #carousel-togel .card-body { display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 15px 8px !important; position: relative; z-index: 2; }
 
-        /* --- 3. GAMBAR BACKGROUND (WATERMARK) --- */
-        .market-bg-image {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            opacity: 0.15; mix-blend-mode: overlay; filter: grayscale(30%);
-            z-index: 0; pointer-events: none; transition: all 0.5s ease;
-        }
+        /* --- Animasi Shimmer --- */
+        #carousel-togel .card::after { content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%); transform: skewX(-25deg); transition: none; pointer-events: none; z-index: 3; }
+        #carousel-togel .card:hover::after { left: 150%; transition: all 0.7s ease-in-out; }
+        #carousel-togel .card:hover, .row.g-3 .card:hover { transform: translateY(-4px) scale(1.01); border-color: #ec4899 !important; box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(236, 72, 153, 0.4) !important; }
+
+        /* --- Background Watermark --- */
+        .market-bg-image { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0.15; mix-blend-mode: overlay; filter: grayscale(30%); z-index: 0; pointer-events: none; transition: all 0.5s ease; }
         #carousel-togel .card:hover .market-bg-image { opacity: 0.35; transform: scale(1.1); }
 
-        /* --- 4. Animasi Hover "Shimmer" --- */
-        #carousel-togel .card::after {
-            content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%;
-            background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-            transform: skewX(-25deg); transition: none; pointer-events: none; z-index: 3;
+        /* ========================================================= */
+        /* FIX 1: NAMA PASARAN WRAPPING & LAMPU TITIK                */
+        /* ========================================================= */
+        .title-wrapper-locked {
+            display: flex !important; 
+            align-items: center !important; 
+            justify-content: center !important; 
+            width: 100% !important; 
+            overflow: hidden !important; 
+            white-space: nowrap !important;
+            margin-bottom: 5px;
         }
-        #carousel-togel .card:hover::after { left: 150%; transition: all 0.7s ease-in-out; }
-        #carousel-togel .card:hover, .row.g-3 .card:hover {
-            transform: translateY(-4px) scale(1.01); border-color: #ec4899 !important; 
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(236, 72, 153, 0.4) !important;
-        }
-
-        /* --- 5. Tipografi & Detail (FIX TEXT WRAPPING & TITIK STATUS) --- */
-        /* Kontainer Utama Nama Pasaran */
-        #carousel-togel .card-body > .text-center > div:first-child, .row.g-3 .card-body > .text-center > div:first-child {
-            color: #bdc3c7; font-size: 0.75em !important; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; 
-            display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 5px;
-            flex-wrap: nowrap; /* Mencegah turun baris */
-            overflow: hidden;
-        }
-        
-        /* Nama Pasaran (Otomatis dipotong ... jika kepanjangan) */
         .market-name-text { 
-            white-space: nowrap; 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
-            display: inline-block; 
-            max-width: calc(100% - 14px); /* Sisa ruang untuk titik status */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8); 
-            vertical-align: middle;
+            color: #bdc3c7; 
+            font-size: 0.75em !important; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+            font-weight: 600; 
+            overflow: hidden !important; 
+            text-overflow: ellipsis !important; 
+            white-space: nowrap !important; 
+            min-width: 0 !important; /* KUNCI ANTI-WRAP! */
+            flex-shrink: 1 !important; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
-
-        /* Indikator Titik Lampu Status */
         .status-dot { 
-            display: inline-block; 
-            width: 7px; height: 7px; 
-            border-radius: 50%; 
-            margin-right: 6px; 
-            flex-shrink: 0; 
+            display: inline-block !important; 
+            width: 7px !important; 
+            height: 7px !important; 
+            border-radius: 50% !important; 
+            margin-right: 6px !important; 
+            flex-shrink: 0 !important; /* Jangan biarkan dot mengecil */
         }
-        .status-dot.active { background: #2ecc71; box-shadow: 0 0 6px #2ecc71; } 
-        .status-dot.closing { background: #ffdd00; animation: pulse-yellow 1.5s infinite; } 
-        .status-dot.closed { background: #e74c3c; opacity: 0.7; } 
+        .status-dot.active { background: #2ecc71 !important; box-shadow: 0 0 6px #2ecc71 !important; } 
+        .status-dot.closing { background: #ffdd00 !important; animation: pulse-yellow 1.5s infinite !important; } 
+        .status-dot.closed { background: #e74c3c !important; opacity: 0.7 !important; } 
         @keyframes pulse-yellow { 0% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.6); } 70% { box-shadow: 0 0 0 5px rgba(255, 221, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0); } }
 
-        /* Angka Result */
+        /* --- Angka Result --- */
         #carousel-togel .card h2, .row.g-3 .card h2 { background: 0 0 !important; margin: 8px 0 !important; font-size: 2.1em !important; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
-        #carousel-togel .card h2 a, .row.g-3 .card h2 a {
-            background: linear-gradient(to bottom, #ffffff 20%, #c0c0c0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            letter-spacing: 2px; text-decoration: none;
-        }
+        #carousel-togel .card h2 a, .row.g-3 .card h2 a { background: linear-gradient(to bottom, #ffffff 20%, #c0c0c0 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 2px; text-decoration: none; }
 
-        /* --- 6. TIMER BADGE (FIX VERTICAL CENTERING) --- */
+        /* ========================================================= */
+        /* FIX 2: BADGE SEGERA TUTUP CENTER VERTICAL                 */
+        /* ========================================================= */
         #carousel-togel .card .togel-countdown-timer, .row.g-3 .card .togel-countdown-timer { 
-            background: linear-gradient(45deg, #ec4899, #be185d) !important; color: #ffffff !important; 
-            padding: 0 15px; /* Hilangkan padding vertikal untuk center sempurna */
-            border-radius: 50px; 
-            font-size: 0.8rem; font-weight: 700; 
-            display: inline-flex; align-items: center; justify-content: center; 
-            min-width: 125px; height: 28px; 
-            box-shadow: 0 3px 8px rgba(236, 72, 153, 0.4) !important; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
-            position: relative; margin: 0 auto;
+            background: linear-gradient(45deg, #ec4899, #be185d) !important; 
+            color: #ffffff !important; 
+            padding: 0 10px !important; /* Hapus padding vertikal */
+            border-radius: 50px !important; 
+            font-size: 0.8rem !important; 
+            font-weight: 700 !important; 
+            display: flex !important; /* Gunakan flex murni */
+            align-items: center !important; 
+            justify-content: center !important; 
+            min-width: 125px !important; 
+            height: 28px !important; /* Tinggi Fix */
+            line-height: 1 !important; /* Reset tinggi tulisan */
+            box-shadow: 0 3px 8px rgba(236, 72, 153, 0.4) !important; 
+            letter-spacing: 0.5px !important; 
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important; 
+            position: relative !important; 
+            margin: 0 auto !important;
+            overflow: hidden !important;
         }
         
         #carousel-togel .card .togel-countdown-timer.show-warning-text, .row.g-3 .card .togel-countdown-timer.show-warning-text { 
             color: transparent !important; text-shadow: none !important; 
         }
         
-        /* Teks "Segera Tutup" */
         #carousel-togel .card .togel-countdown-timer.show-warning-text::before, .row.g-3 .card .togel-countdown-timer.show-warning-text::before { 
             content: "SEGERA TUTUP"; 
-            position: absolute; 
-            top: 0; left: 0; width: 100%; height: 100%; /* Penuhi wadah */
-            display: flex; align-items: center; justify-content: center; /* Center absolut */
-            line-height: 1; margin: 0; padding: 0;
-            color: #ffffff !important; font-size: 0.75rem; 
-            text-shadow: 0px 1px 2px rgba(0,0,0,0.5) !important; font-weight: 700; white-space: nowrap; 
+            position: absolute !important; 
+            top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+            display: flex !important; 
+            align-items: center !important; 
+            justify-content: center !important; 
+            padding: 0 !important; margin: 0 !important;
+            color: #ffffff !important; 
+            font-size: 0.75rem !important; 
+            text-shadow: 0px 1px 2px rgba(0,0,0,0.5) !important; 
+            font-weight: 700 !important; 
+            white-space: nowrap !important; 
         }
         
         #carousel-togel .card .togel-countdown-timer.closing-soon, .row.g-3 .card .togel-countdown-timer.closing-soon { background: linear-gradient(45deg, #f59e0b, #d97706) !important; box-shadow: 0 3px 8px rgba(245, 158, 11, 0.4) !important; }
@@ -147,46 +142,54 @@
     // =========================================
     let intervalsInitialized = false;
 
-    // FUNGSI INJEKSI TEKS DAN DOT (Dipanggil terus untuk memastikan tidak terhapus)
-    function applyMarketNameFormatting(card) {
-        const titleContainer = card.querySelector('.card-body > .text-center > div:first-child');
-        if (!titleContainer) return null;
+    // FUNGSI INJEKSI KUAT: Mencegah elemen hilang karena ter-refresh
+    function lockAndFormatMarketTitle(card) {
+        // Ambil elemen div pertama di dalam text-center (biasanya ini teks judul aslinya)
+        const textCenterBox = card.querySelector('.card-body > .text-center');
+        if (!textCenterBox) return null;
+        
+        const firstDiv = textCenterBox.querySelector('div:first-child');
+        if (!firstDiv) return null;
 
-        // Jika belum ada dot, kita buat ulang susunannya
-        if (!titleContainer.querySelector('.status-dot')) {
-            const originalText = titleContainer.textContent.trim();
-            titleContainer.innerHTML = ''; 
+        // Cek apakah sudah kita modifikasi
+        if (!firstDiv.classList.contains('title-wrapper-locked')) {
+            const originalText = firstDiv.textContent.trim();
             
+            // Bersihkan div asli dan ubah jadi Flexbox Wrapper
+            firstDiv.innerHTML = '';
+            firstDiv.className = 'title-wrapper-locked'; // Kunci class-nya
+            
+            // 1. Buat Titik Lampu
             const dot = document.createElement('span');
             dot.className = 'status-dot active';
             
+            // 2. Buat Teks Pasaran (Anti Wrap)
             const textSpan = document.createElement('span');
             textSpan.className = 'market-name-text';
             textSpan.textContent = originalText;
             textSpan.title = originalText; 
             
-            titleContainer.appendChild(dot);
-            titleContainer.appendChild(textSpan);
+            // Gabungkan
+            firstDiv.appendChild(dot);
+            firstDiv.appendChild(textSpan);
 
-            // --- INJECT BACKGROUND IMAGE ---
+            // 3. Masukkan Background Image sekalian
             if (!card.querySelector('.market-bg-image')) {
                 const bgDiv = document.createElement('div');
                 bgDiv.className = 'market-bg-image';
                 
                 let bgUrl = marketBackgrounds['DEFAULT'];
                 const nameUpper = originalText.toUpperCase();
-                
                 for (const key in marketBackgrounds) {
-                    if (key !== 'DEFAULT' && nameUpper.includes(key)) {
-                        bgUrl = marketBackgrounds[key];
-                        break;
-                    }
+                    if (key !== 'DEFAULT' && nameUpper.includes(key)) { bgUrl = marketBackgrounds[key]; break; }
                 }
                 bgDiv.style.backgroundImage = `url('${bgUrl}')`;
                 card.insertBefore(bgDiv, card.firstChild);
             }
         }
-        return titleContainer.querySelector('.status-dot');
+        
+        // Selalu kembalikan elemen lampu titik terbaru
+        return firstDiv.querySelector('.status-dot');
     }
 
     function setupPersistentCountdownIntervals() { 
@@ -200,27 +203,28 @@
                 const closingTime = parseInt(timer.dataset.time, 10); 
                 const status = parseInt(timer.dataset.status, 10); 
                 
-                // Panggil fungsi injeksi untuk memastikan dot dan wrapper ada
-                let dot = applyMarketNameFormatting(card);
+                // Pastikan format judul dan titik selalu terkunci
+                let dot = lockAndFormatMarketTitle(card);
 
+                // --- LOGIKA STATUS TIMER & LAMPU TITIK ---
                 if (status !== 1 || !closingTime || isNaN(closingTime) || (closingTime - now) <= 0) { 
                     timer.classList.remove('show-warning-text', 'closing-soon'); 
                     if (!timer.classList.contains('is-closed')) { timer.textContent = "TUTUP"; timer.classList.add('is-closed'); }
-                    if(dot) dot.className = 'status-dot closed'; 
+                    if (dot) { dot.className = 'status-dot closed'; } 
                     return; 
                 } 
                 
                 const diff = closingTime - now; 
-                if (diff < 1800000) { 
+                if (diff < 1800000) { // Kurang dari 30 Menit
                     timer.classList.add('closing-soon'); 
-                    if(dot) dot.className = 'status-dot closing'; 
+                    if (dot) { dot.className = 'status-dot closing'; } 
                     let blinkCounter = parseInt(timer.dataset.blinkCounter || '0', 10); 
                     if (blinkCounter < 5) { timer.classList.add('show-warning-text'); } 
                     else { timer.classList.remove('show-warning-text'); } 
                     timer.dataset.blinkCounter = (blinkCounter + 1) % 10; 
-                } else { 
+                } else { // Waktu Normal Aktif
                     timer.classList.remove('closing-soon', 'show-warning-text', 'is-closed'); 
-                    if(dot) dot.className = 'status-dot active'; 
+                    if (dot) { dot.className = 'status-dot active'; } 
                     if (timer.dataset.blinkCounter) { delete timer.dataset.blinkCounter; } 
                 } 
             }); 
@@ -245,6 +249,7 @@
 
             const now = new Date().getTime();
             
+            // Pengurutan Pasaran
             const sortedCards = validCards.map(card => { 
                 const timer = card.querySelector('.togel-countdown-timer'); 
                 let timeObj = Infinity;
@@ -268,8 +273,8 @@
             customStage.className = 'custom-stage';
             
             sortedCards.forEach(item => { 
-                // Terapkan formating (Dot & Ellipsis) sebelum dimasukkan ke layout baru
-                applyMarketNameFormatting(item.element);
+                // Terapkan formating (Lampu & Ellipsis) SEBELUM merender
+                lockAndFormatMarketTitle(item.element);
                 
                 const wrapper = document.createElement('div');
                 wrapper.className = 'custom-item';
@@ -303,7 +308,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        setInterval(initializeTogelCarousel, 500); 
+        // Interval yang lebih cepat untuk memastikan fungsi terpanggil sebelum di-overwrite web asli
+        setInterval(initializeTogelCarousel, 300); 
         initializeTogelCarousel();
     });
 
