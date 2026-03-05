@@ -1,6 +1,6 @@
 (function() {
     // =========================================
-    // BAGIAN 1: CSS SUPER FORCE (SILVER BRIGHT + CENTER BADGE FIX)
+    // BAGIAN 1: CSS SUPER FORCE (SILVER BRIGHT + CENTER BADGE + DARKER HOVER)
     // =========================================
     const togelGridStyles = `
         /* --- Kustomisasi Container Utama --- */
@@ -19,7 +19,7 @@
         #carousel-togel .custom-stage { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); grid-auto-rows: 1fr; gap: 15px; width: 100% !important; margin-top: 5px; align-items: stretch; }
         #carousel-togel .custom-item { display: flex; height: auto !important; width: 100%; }
 
-        /* BORDER KOTAK LEBIH TEBAL */
+        /* BORDER KOTAK LEBIH TEBAL & BACKGROUND NORMAL */
         #carousel-togel .card, .row.g-3 .card {
             background: linear-gradient(145deg, rgba(44, 62, 80, 0.95), rgba(26, 37, 47, 0.98)) !important;
             backdrop-filter: blur(5px); 
@@ -34,11 +34,13 @@
         #carousel-togel .card::after { content: ''; position: absolute; top: 0; left: -150%; width: 100%; height: 100%; background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%); transform: skewX(-25deg); transition: none; pointer-events: none; z-index: 3; }
         #carousel-togel .card:hover::after { left: 150%; transition: all 0.7s ease-in-out; }
         
-        /* HOVER CARD: BORDER MAKIN TEBAL TANPA BIKIN GOYANG */
+        /* HOVER CARD: BORDER MAKIN TEBAL & BACKGROUND SEDIKIT LEBIH GELAP */
         #carousel-togel .card:hover, .row.g-3 .card:hover { 
             transform: translateY(-4px) scale(1.01); 
             border-color: #f472b6 !important; 
             box-shadow: 0 0 0 1px #f472b6, 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(236, 72, 153, 0.4) !important; 
+            /* BACKGROUND DIUBAH LEBIH GELAP SAAT HOVER */
+            background: linear-gradient(145deg, rgba(30, 42, 55, 0.98), rgba(15, 20, 25, 1)) !important;
         }
 
         /* NAMA PASARAN WARNA KUNING & ANTI-WRAP */
@@ -164,7 +166,6 @@
             font-weight: 700 !important; 
             white-space: nowrap !important; 
             line-height: normal !important; 
-            /* MEMBUNUH BUG TRANSLATE-Y BAWAAN TEMA SAPATOTO */
             transform: translateY(1px) !important; 
         }
         
