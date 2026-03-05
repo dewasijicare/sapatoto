@@ -8,10 +8,15 @@
             box-shadow: 0 0 15px rgba(236, 72, 153, 0.4) !important; /* Glow Pink */
             color: #ecf0f1 !important;
             padding: 10px 15px !important;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            /* Margin spesifik posisi akan ditambahkan oleh JS */
+            display: flex !important;
+            align-items: center !important;
+            overflow: hidden !important;
+
+            /* PERBAIKAN PRESISI LEBAR 100% SAMA DENGAN WIDGET LAIN */
+            width: calc(100% - 30px) !important; /* 100% layar dikurangi jarak kiri-kanan 15px */
+            max-width: 1170px !important; /* Batas maksimal di PC (1200px - 30px padding) */
+            margin: 15px auto 20px auto !important; /* Posisi di tengah layar */
+            box-sizing: border-box !important;
         }
 
         #announcement.gavan-themed-announcement i.fa-solid.fa-bullhorn {
@@ -57,35 +62,27 @@
             if (sliderContainer) {
                 // Pindahkan ke setelah container slider
                 sliderContainer.insertAdjacentElement('afterend', announcement);
-                // Atur margin spesifik homepage
-                announcement.style.marginLeft = '12px';
-                announcement.style.marginRight = '12px';
-                announcement.style.marginTop = '1.5rem';
-                announcement.style.marginBottom = '1rem';
                 moved = true;
-                console.log("Announcement moved for homepage (Sapatoto Theme).");
             }
         }
         // === Logika untuk Member Area (ada #member-status-panel) ===
         else if (memberPanel) {
             // Pindahkan ke sebelum panel member
             memberPanel.insertAdjacentElement('beforebegin', announcement);
-            // Atur margin spesifik member area
-            announcement.style.marginLeft = '6px';
-            announcement.style.marginRight = '6px';
-            announcement.style.marginTop = '1rem';
-            announcement.style.marginBottom = '1rem';
             moved = true;
-            console.log("Announcement moved for member area (Sapatoto Theme).");
         }
 
         // Jika berhasil dipindahkan, terapkan styling dasar
         if (moved) {
+            // HAPUS SEMUA INLINE STYLES YANG BIKIN BENTROK (Margin kiri-kanan manual)
+            announcement.style.marginLeft = '';
+            announcement.style.marginRight = '';
+            announcement.style.marginTop = '';
+            announcement.style.marginBottom = '';
+
             announcement.classList.remove('bg-primary', 'p-1', 'my-3');
             announcement.classList.add('gavan-themed-announcement');
             announcement.dataset.moved = 'true'; // Tandai sudah dipindahkan
-        } else {
-             console.log("Could not find appropriate anchor point for announcement.");
         }
     }
 
@@ -124,9 +121,3 @@
     }
 
 })();
-
-
-
-
-
-
