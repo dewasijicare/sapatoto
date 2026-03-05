@@ -4,6 +4,7 @@
         var target = document.querySelector('#announcement'); 
         var existingWidget = document.getElementById('pintas-widget-wrapper');
 
+        // Jika running text ketemu dan widget belum ada
         if (target && !existingWidget) {
             
             var widgetHTML = `
@@ -30,7 +31,7 @@
                     #pintas-widget-wrapper {
                         width: 100%;
                         margin: 15px auto 25px auto !important;
-                        padding: 0 !important; /* Dibiarkan 0, JS yang akan mengatur agar tidak nabrak dinding */
+                        padding: 0 !important; 
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif;
                         transition: max-width 0.3s ease;
@@ -124,12 +125,8 @@
                     
                     /* PERLINDUNGAN MOBILE */
                     @media (max-width: 768px) {
-                        #pintas-widget-wrapper {
-                            padding: 0 !important; 
-                        }
-                        .pintas-inner-spacing {
-                            padding: 0 8px !important; /* Pastikan di HP tetap 8px agar rapi */
-                        }
+                        #pintas-widget-wrapper { padding: 0 !important; }
+                        .pintas-inner-spacing { padding: 0 8px !important; }
                         .pintas-title { font-size: 1rem; }
                         .pintas-sub { font-size: 0.65rem; }
                         .pintas-icon-container { font-size: 1.8rem; margin-right: 12px; }
@@ -141,7 +138,7 @@
             target.insertAdjacentHTML('afterend', widgetHTML);
 
             // ==========================================================
-            // FUNGSI SENSOR LEBAR PRESISI (Sama seperti Live Deposit)
+            // FUNGSI SENSOR LEBAR PRESISI (Auto-Sync)
             // ==========================================================
             function syncPintasWidth() {
                 var pintasWidget = document.getElementById('pintas-widget-wrapper');
@@ -174,7 +171,7 @@
 
             // Jalankan deteksi
             setTimeout(syncPintasWidth, 50);
-            setTimeout(syncPintasWidth, 500); 
+            setInterval(syncPintasWidth, 1000); // Lakukan pengecekan stabil setiap detik
             window.addEventListener('resize', syncPintasWidth);
 
             return true;
@@ -182,16 +179,11 @@
         return false;
     }
 
-    // Eksekusi
-    if (!injectPintasWidget()) {
-        document.addEventListener('DOMContentLoaded', function() {
-            if (!injectPintasWidget()) {
-                var attempts = 0;
-                var interval = setInterval(function() {
-                    attempts++;
-                    if (injectPintasWidget() || attempts >= 5) clearInterval(interval);
-                }, 1000);
-            }
-        });
-    }
+    // LOOP KUAT: Tidak akan berhenti sampai widget berhasil dimunculkan
+    var checkInterval = setInterval(function() {
+        if (injectPintasWidget()) {
+            clearInterval(checkInterval);
+        }
+    }, 500);
+
 })();
