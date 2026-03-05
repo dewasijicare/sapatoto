@@ -136,7 +136,7 @@
         }, 500);
     }
 
-    // 3. FUNGSI INJEKSI & SINKRONISASI LEBAR OTOMATIS
+    // 3. FUNGSI INJEKSI & SINKRONISASI LEBAR
     function injectTransactionsWidget() {
         const target = document.querySelector('#pintas-widget-wrapper');
         const existing = document.getElementById('sapatoto-recent-transactions');
@@ -186,16 +186,16 @@
 
             const cssHTML = `
                 <style>
-                    /* BUNGKUSAN LUAR (Ukuran akan diatur otomatis oleh Javascript agar presisi) */
+                    /* BUNGKUSAN LUAR */
                     #sapatoto-recent-transactions { 
                         width: 100%; 
                         margin: 0 auto 25px auto !important; 
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif; 
-                        transition: max-width 0.3s ease; /* Transisi halus saat ukuran disinkronkan */
+                        transition: max-width 0.3s ease; 
                     }
 
-                    /* BUNGKUSAN DALAM (Menyamakan jarak 8px milik Progressive Jackpot) */
+                    /* BUNGKUSAN DALAM (Untuk PC/Desktop diberikan jarak 8px agar sejajar gutter Togel) */
                     .trx-inner-wrapper {
                         padding: 0 8px; 
                         width: 100%;
@@ -300,7 +300,19 @@
                         font-size: 0.95rem;
                     }
 
+                    /* ======================================= */
+                    /* PERBAIKAN KHUSUS UNTUK TAMPILAN HP/MOBILE */
+                    /* ======================================= */
                     @media (max-width: 768px) {
+                        #sapatoto-recent-transactions {
+                            padding: 0 !important; /* Hilangkan padding luar */
+                        }
+                        .trx-inner-wrapper {
+                            padding: 0 !important; /* HILANGKAN PADDING DALAM AGAR 100% MENTOK TEPI LAYAR */
+                        }
+                        .sapatoto-trx-flex {
+                            gap: 15px; /* Jarak atas-bawah antar card di HP */
+                        }
                         .tx-col-time { font-size: 0.65rem; }
                         .tx-item { font-size: 0.75rem; padding: 0 10px; }
                         .tx-table-header { padding: 8px 10px; font-size: 0.7rem; }
@@ -317,19 +329,26 @@
             // --- FUNGSI SENSOR LEBAR PRESISI (AUTO-SYNC) ---
             function syncExactWidth() {
                 const trxWidget = document.getElementById('sapatoto-recent-transactions');
-                const referenceElement = document.querySelector('#row-togel'); // Jadikan Togel sebagai acuan
                 
+                // JIKA DIBUKA DI HP: Biarkan CSS (100% & Padding 0) yang bekerja, matikan auto-sync.
+                if (window.innerWidth <= 768) {
+                    if (trxWidget) {
+                        trxWidget.style.maxWidth = '100%';
+                        trxWidget.style.paddingLeft = '0px';
+                        trxWidget.style.paddingRight = '0px';
+                    }
+                    return;
+                }
+
+                // JIKA DIBUKA DI DESKTOP: Sinkronisasi dengan Lebar Kotak Togel
+                const referenceElement = document.querySelector('#row-togel'); 
                 if (trxWidget && referenceElement && referenceElement.parentElement) {
-                    const mainContainer = referenceElement.parentElement; // Ambil container utama situs
+                    const mainContainer = referenceElement.parentElement; 
                     
-                    // 1. Ambil ukuran piksel aslinya secara real-time
                     const exactWidth = mainContainer.getBoundingClientRect().width;
-                    
-                    // 2. Ambil padding aslinya
                     const computedStyle = window.getComputedStyle(mainContainer);
                     
                     if (exactWidth > 0) {
-                        // Terapkan ukuran yang persis sama ke widget Live Deposit
                         trxWidget.style.maxWidth = exactWidth + 'px';
                         trxWidget.style.paddingLeft = computedStyle.paddingLeft;
                         trxWidget.style.paddingRight = computedStyle.paddingRight;
@@ -337,7 +356,7 @@
                 }
             }
 
-            // Jalankan deteksi ukuran sesaat setelah dimuat dan jika layar dibesarkan/dikecilkan
+            // Jalankan deteksi
             setTimeout(syncExactWidth, 50);
             setTimeout(syncExactWidth, 500); 
             window.addEventListener('resize', syncExactWidth);
