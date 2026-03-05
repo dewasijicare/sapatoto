@@ -188,17 +188,16 @@
 
             const cssHTML = `
                 <style>
-                    /* FIX 100% PRESISI - MATCH JACKPOT TERBESAR / PROGRESSIVE */
+                    /* KUNCI PERBAIKAN: Membatasi lebar maksimal menjadi 1200px dan menengahkan kotak */
                     #sapatoto-recent-transactions { 
                         width: 100%; 
-                        max-width: 100%; 
-                        margin: 0 0 25px 0 !important; 
-                        padding: 0 !important; /* DIBUAT 0 AGAR MELEBAR PENUH SEJAJAR WIDGET BAWAHNYA */
+                        max-width: 1200px !important; /* Mencegah pelebaran ke ujung layar */
+                        margin: 0 auto 25px auto !important; /* Otomatis ke tengah layar */
+                        padding: 0 15px !important; /* Jarak aman di sisi layar HP/Tablet */
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif; 
                     }
 
-                    /* CUSTOM FLEXBOX - MENGGANTIKAN BOOTSTRAP .ROW AGAR TIDAK ADA NEGATIVE MARGIN */
                     .sapatoto-trx-flex {
                         display: flex;
                         flex-wrap: wrap;
@@ -210,7 +209,7 @@
 
                     .trx-column {
                         flex: 1;
-                        min-width: 320px; /* Memaksa turun ke bawah sejajar vertikal di layar HP */
+                        min-width: 320px; 
                         display: flex;
                         flex-direction: column;
                     }
@@ -245,7 +244,6 @@
                     .tx-icon-pink { color: #f472b6; margin-right: 8px; font-size: 1.2em; }
                     .tx-icon-purple { color: #c084fc; margin-right: 8px; font-size: 1.2em; }
 
-                    /* HEADER TABEL CUSTOM */
                     .tx-table-header {
                         display: flex;
                         padding: 8px 15px;
@@ -267,14 +265,12 @@
                     }
                     .tx-item:hover { background-color: rgba(255,255,255,0.05); }
 
-                    /* PEMBAGIAN RUANG KOLOM (Kiri, Tengah, Kanan) */
                     .tx-col-user { flex: 1; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
                     .tx-col-time { flex: 1.2; text-align: center; color: #bdc3c7; font-size: 0.75rem; }
                     .tx-col-amount { flex: 1; text-align: right; }
 
-                    /* Pembungkus Animasi */
                     .tx-body {
-                        height: 200px; /* Persis 5 baris x 40px */
+                        height: 200px; 
                         overflow: hidden;
                         position: relative;
                         background: transparent;
@@ -300,12 +296,11 @@
                         font-size: 0.95rem;
                     }
 
-                    /* RESPONSIVE UNTUK HP */
                     @media (max-width: 768px) {
                         .tx-col-time { font-size: 0.65rem; }
                         .tx-item { font-size: 0.75rem; padding: 0 10px; }
                         .tx-table-header { padding: 8px 10px; font-size: 0.7rem; }
-                        #sapatoto-recent-transactions { padding: 0 !important; }
+                        #sapatoto-recent-transactions { padding: 0 15px !important; }
                     }
                 </style>
             `;
