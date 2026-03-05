@@ -11,30 +11,30 @@
             --dark-bg: #1a252f;
         }
 
+        /* --- PERBAIKAN LEBAR PRESISI (SAMA DENGAN WIDGET LAINNYA) --- */
         .jackpot-container-main {
             font-family: 'Exo 2', sans-serif !important; 
             text-align: center;
             position: relative;
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
+            margin: 0 auto 25px auto; /* Jarak disamakan dengan widget lain */
             z-index: 50;
-            padding: 0; 
+            padding: 0 15px; /* Jarak kiri kanan untuk desktop */
             box-sizing: border-box;
-            max-width: 650px; 
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
+            max-width: 1200px; /* Lebar maksimal disamakan dengan Pintas & Jackpot Terbesar */
         }
 
         /* Border Animasi (Denyutan Pink & Ungu Sapatoto) */
         .jackpot-animated-border {
             position: relative;
-            border-radius: 12px;
+            border-radius: 15px; /* Lengkungan disamakan dengan widget lain */
             padding: 3px; /* Ketebalan border gradient */
             
             /* Background dasar sebelum di-masking oleh inner box */
             background: linear-gradient(45deg, var(--neon-pink-dark), var(--neon-purple-dark));
             
             animation: borderPulseSapatoto 2s ease-in-out infinite alternate;
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); /* Base glow */
         }
 
         @keyframes borderPulseSapatoto {
@@ -55,10 +55,10 @@
             justify-content: center;
             align-items: center;
             background-color: var(--dark-bg); 
-            border-radius: 9px; /* Sedikit lebih kecil dari outer border */
-            min-height: 80px;
+            border-radius: 12px; /* Sedikit lebih kecil dari outer border */
+            min-height: 90px; /* Diperbesar sedikit agar proporsional dengan lebar PC */
             position: relative;
-            padding: 15px 15px; 
+            padding: 20px 15px; 
             z-index: 2;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
 
@@ -70,7 +70,7 @@
         /* Judul Jackpot */
         .jackpot-main-title {
             color: #fff; 
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 900;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -83,7 +83,7 @@
 
         /* Ikon Trophy (Warna Pink/Ungu Neon) */
         .jackpot-main-title i {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-right: 10px;
             color: var(--neon-pink); 
             text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-purple);
@@ -141,28 +141,34 @@
             }
         }
 
-        /* Responsive Desktop */
+        /* Responsive Desktop: Membesarkan font agar tidak melompong karena kotaknya melebar ke 1200px */
         @media (min-width: 992px) {
             .jackpot-value-final {
-                font-size: 2.8rem; 
-                letter-spacing: 3px;
+                font-size: 3.5rem; 
+                letter-spacing: 4px;
             }
-            .jackpot-container-main {
-                max-width: 700px; 
+            .jackpot-main-title {
+                font-size: 1.5rem;
+            }
+            .jackpot-main-title i {
+                font-size: 1.7rem;
             }
         }
 
-        /* Responsive Mobile */
+        /* Responsive Mobile: Menghilangkan Double Padding agar Rata Kiri Kanan */
         @media (max-width: 768px) {
+            .jackpot-container-main {
+                padding: 0 !important; /* Hapus margin/padding bawaan agar presisi */
+            }
             .jackpot-value-final {
-                font-size: 6.5vw; 
+                font-size: 7vw; 
                 letter-spacing: 0.5vw;
             }
             .jackpot-main-title {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             .jackpot-main-title i {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
         }
     `;
