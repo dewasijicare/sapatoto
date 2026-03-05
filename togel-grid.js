@@ -1,6 +1,6 @@
 (function() {
     // =========================================
-    // BAGIAN 1: CSS TAMPILAN KEREN (FIX GRID & BACKGROUND IMAGE)
+    // BAGIAN 1: CSS TAMPILAN KEREN & FIX ALIGNMENT
     // =========================================
     const togelGridStyles = `
         /* --- 1. Kustomisasi Container Utama --- */
@@ -11,7 +11,6 @@
         @media (min-width: 768px) { #carousel-togel .custom-stage-outer { max-height: 335px; } }
         #carousel-togel.show-all .custom-stage-outer { max-height: 3000px; }
         
-        /* Tombol Show More */
         .show-more-wrapper { display: flex; justify-content: center; margin-top: 15px; margin-bottom: 25px; position: relative; z-index: 10; }
         .show-more-button { background: none !important; border: 1px solid #f472b6 !important; border-radius: 20px; padding: 6px 15px !important; color: #f472b6 !important; text-align: center; cursor: pointer; font-weight: 600; text-transform: uppercase; transition: all .3s ease; font-size: 0.8rem; letter-spacing: 1px;}
         .show-more-button:hover { background: #f472b6 !important; color: #fff !important; box-shadow: 0 0 10px #f472b6; }
@@ -32,25 +31,19 @@
             position: relative; overflow: hidden; flex: 1; display: flex; flex-direction: column; justify-content: space-between; 
         }
         
-        /* Z-Index ditinggikan agar tulisan selalu di atas gambar */
         #carousel-togel .card-body { 
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
             padding: 15px 8px !important; position: relative; z-index: 2; 
         }
 
-        /* --- 3. GAMBAR BACKGROUND (WATERMARK TIPIS) --- */
+        /* --- 3. GAMBAR BACKGROUND (WATERMARK) --- */
         .market-bg-image {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
-            opacity: 0.15; /* SANGAT TIPIS, ubah ke 0.2 atau 0.3 jika kurang jelas */
-            mix-blend-mode: overlay; /* Membaur secara elegan dengan warna background card */
-            filter: grayscale(30%); /* Sedikit diredam warnanya */
+            opacity: 0.15; mix-blend-mode: overlay; filter: grayscale(30%);
             z-index: 0; pointer-events: none; transition: all 0.5s ease;
         }
-        #carousel-togel .card:hover .market-bg-image {
-            opacity: 0.35; /* Gambar sedikit lebih jelas saat kursor diarahkan ke kotak */
-            transform: scale(1.1); /* Efek zoom in pelan */
-        }
+        #carousel-togel .card:hover .market-bg-image { opacity: 0.35; transform: scale(1.1); }
 
         /* --- 4. Animasi Hover "Shimmer" --- */
         #carousel-togel .card::after {
@@ -64,19 +57,38 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 15px rgba(236, 72, 153, 0.4) !important;
         }
 
-        /* --- 5. Tipografi & Detail --- */
+        /* --- 5. Tipografi & Detail (FIX TEXT WRAPPING & TITIK STATUS) --- */
+        /* Kontainer Utama Nama Pasaran */
         #carousel-togel .card-body > .text-center > div:first-child, .row.g-3 .card-body > .text-center > div:first-child {
             color: #bdc3c7; font-size: 0.75em !important; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; 
             display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 5px;
+            flex-wrap: nowrap; /* Mencegah turun baris */
+            overflow: hidden;
         }
-        .market-name-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 85%; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        
+        /* Nama Pasaran (Otomatis dipotong ... jika kepanjangan) */
+        .market-name-text { 
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+            display: inline-block; 
+            max-width: calc(100% - 14px); /* Sisa ruang untuk titik status */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8); 
+            vertical-align: middle;
+        }
 
-        /* Indikator Dot */
-        .status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; flex-shrink: 0; }
-        .status-dot.active { background: #2ecc71; box-shadow: 0 0 5px #2ecc71; } 
+        /* Indikator Titik Lampu Status */
+        .status-dot { 
+            display: inline-block; 
+            width: 7px; height: 7px; 
+            border-radius: 50%; 
+            margin-right: 6px; 
+            flex-shrink: 0; 
+        }
+        .status-dot.active { background: #2ecc71; box-shadow: 0 0 6px #2ecc71; } 
         .status-dot.closing { background: #ffdd00; animation: pulse-yellow 1.5s infinite; } 
         .status-dot.closed { background: #e74c3c; opacity: 0.7; } 
-        @keyframes pulse-yellow { 0% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.5); } 70% { box-shadow: 0 0 0 4px rgba(255, 221, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0); } }
+        @keyframes pulse-yellow { 0% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0.6); } 70% { box-shadow: 0 0 0 5px rgba(255, 221, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 221, 0, 0); } }
 
         /* Angka Result */
         #carousel-togel .card h2, .row.g-3 .card h2 { background: 0 0 !important; margin: 8px 0 !important; font-size: 2.1em !important; font-weight: 700; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
@@ -85,56 +97,35 @@
             letter-spacing: 2px; text-decoration: none;
         }
 
-        /* --- 6. TIMER BADGE (KAPSUL WARNA WARNI FIX OVERFLOW) --- */
+        /* --- 6. TIMER BADGE (FIX VERTICAL CENTERING) --- */
         #carousel-togel .card .togel-countdown-timer, .row.g-3 .card .togel-countdown-timer { 
-            background: linear-gradient(45deg, #ec4899, #be185d) !important; 
-            color: #ffffff !important; 
-            padding: 4px 15px; 
+            background: linear-gradient(45deg, #ec4899, #be185d) !important; color: #ffffff !important; 
+            padding: 0 15px; /* Hilangkan padding vertikal untuk center sempurna */
             border-radius: 50px; 
-            font-size: 0.8rem; 
-            font-weight: 700; 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            min-width: 125px; /* DARI 90px DIPERLEBAR JADI 125px AGAR MUAT */
-            height: 28px;     /* DITINGGIKAN SEDIKIT DARI 26px */
-            box-shadow: 0 3px 8px rgba(236, 72, 153, 0.4) !important; 
-            letter-spacing: 0.5px; 
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
-            position: relative; 
-            margin: 0 auto;
+            font-size: 0.8rem; font-weight: 700; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            min-width: 125px; height: 28px; 
+            box-shadow: 0 3px 8px rgba(236, 72, 153, 0.4) !important; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
+            position: relative; margin: 0 auto;
         }
         
         #carousel-togel .card .togel-countdown-timer.show-warning-text, .row.g-3 .card .togel-countdown-timer.show-warning-text { 
-            color: transparent !important; 
-            text-shadow: none !important; 
+            color: transparent !important; text-shadow: none !important; 
         }
         
+        /* Teks "Segera Tutup" */
         #carousel-togel .card .togel-countdown-timer.show-warning-text::before, .row.g-3 .card .togel-countdown-timer.show-warning-text::before { 
             content: "SEGERA TUTUP"; 
             position: absolute; 
-            inset: 0; 
-            width: 100%; /* MEMASTIKAN TEKS FULL DI DALAM BADGE */
-            height: 100%;
-            color: #ffffff !important; 
-            font-size: 0.75rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-shadow: 0px 1px 2px rgba(0,0,0,0.5) !important; 
-            font-weight: 700; 
-            white-space: nowrap; 
+            top: 0; left: 0; width: 100%; height: 100%; /* Penuhi wadah */
+            display: flex; align-items: center; justify-content: center; /* Center absolut */
+            line-height: 1; margin: 0; padding: 0;
+            color: #ffffff !important; font-size: 0.75rem; 
+            text-shadow: 0px 1px 2px rgba(0,0,0,0.5) !important; font-weight: 700; white-space: nowrap; 
         }
         
-        #carousel-togel .card .togel-countdown-timer.closing-soon, .row.g-3 .card .togel-countdown-timer.closing-soon { 
-            background: linear-gradient(45deg, #f59e0b, #d97706) !important; 
-            box-shadow: 0 3px 8px rgba(245, 158, 11, 0.4) !important; 
-        }
-        
-        #carousel-togel .card .togel-countdown-timer.is-closed, .row.g-3 .card .togel-countdown-timer.is-closed { 
-            background: linear-gradient(45deg, #e74c3c, #c0392b) !important; 
-            box-shadow: 0 3px 8px rgba(231, 76, 60, 0.4) !important; 
-        }
+        #carousel-togel .card .togel-countdown-timer.closing-soon, .row.g-3 .card .togel-countdown-timer.closing-soon { background: linear-gradient(45deg, #f59e0b, #d97706) !important; box-shadow: 0 3px 8px rgba(245, 158, 11, 0.4) !important; }
+        #carousel-togel .card .togel-countdown-timer.is-closed, .row.g-3 .card .togel-countdown-timer.is-closed { background: linear-gradient(45deg, #e74c3c, #c0392b) !important; box-shadow: 0 3px 8px rgba(231, 76, 60, 0.4) !important; }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         #carousel-togel .card, .row.g-3 .card { animation: fadeInUp 0.5s ease-out forwards; }
@@ -145,27 +136,58 @@
     document.head.appendChild(styleElement);
 
     // =========================================
-    // KAMUS GAMBAR BACKGROUND KOTA/PASARAN
+    // KAMUS GAMBAR BACKGROUND POLA GARIS
     // =========================================
-    // Anda bisa mengganti URL gambar (link https://...) di bawah ini dengan gambar dari website Anda sendiri.
     const marketBackgrounds = {
-        'MACAU': 'https://images.unsplash.com/photo-1555899434-94d1368aa7af?q=80&w=400&auto=format&fit=crop', // Macau Casino/City
-        'HONGKONG': 'https://images.unsplash.com/photo-1529686342540-1b43aec0df75?q=80&w=400&auto=format&fit=crop', // HK Skyline
-        'SYDNEY': 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?q=80&w=400&auto=format&fit=crop', // Opera House
-        'SINGAPORE': 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?q=80&w=400&auto=format&fit=crop', // Marina Bay
-        'TEXAS': 'https://images.unsplash.com/photo-1531218150217-5afc4b182d33?q=80&w=400&auto=format&fit=crop', // Texas
-        'CALIFORNIA': 'https://images.unsplash.com/photo-1449034446853-66c86144b0ad?q=80&w=400&auto=format&fit=crop', // Golden Gate Bridge
-        'JAPAN': 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?q=80&w=400&auto=format&fit=crop', // Tokyo Night
-        'TAIWAN': 'https://images.unsplash.com/photo-1558005530-cb61e21b0b55?q=80&w=400&auto=format&fit=crop', // Taipei 101
-        'CHINA': 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?q=80&w=400&auto=format&fit=crop', // Great Wall / City
-        'NEW YORK': 'https://images.unsplash.com/photo-1496442226666-8d4d0e2815cb?q=80&w=400&auto=format&fit=crop', // NYC Skyline
-        'DEFAULT': 'https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=400&auto=format&fit=crop' // Pola Lampu Malam Abstrak (jika kota tidak ada)
+        'DEFAULT': 'http://googleusercontent.com/image_generation_content/1' 
     };
 
     // =========================================
     // BAGIAN 2: JAVASCRIPT (LOGIKA)
     // =========================================
     let intervalsInitialized = false;
+
+    // FUNGSI INJEKSI TEKS DAN DOT (Dipanggil terus untuk memastikan tidak terhapus)
+    function applyMarketNameFormatting(card) {
+        const titleContainer = card.querySelector('.card-body > .text-center > div:first-child');
+        if (!titleContainer) return null;
+
+        // Jika belum ada dot, kita buat ulang susunannya
+        if (!titleContainer.querySelector('.status-dot')) {
+            const originalText = titleContainer.textContent.trim();
+            titleContainer.innerHTML = ''; 
+            
+            const dot = document.createElement('span');
+            dot.className = 'status-dot active';
+            
+            const textSpan = document.createElement('span');
+            textSpan.className = 'market-name-text';
+            textSpan.textContent = originalText;
+            textSpan.title = originalText; 
+            
+            titleContainer.appendChild(dot);
+            titleContainer.appendChild(textSpan);
+
+            // --- INJECT BACKGROUND IMAGE ---
+            if (!card.querySelector('.market-bg-image')) {
+                const bgDiv = document.createElement('div');
+                bgDiv.className = 'market-bg-image';
+                
+                let bgUrl = marketBackgrounds['DEFAULT'];
+                const nameUpper = originalText.toUpperCase();
+                
+                for (const key in marketBackgrounds) {
+                    if (key !== 'DEFAULT' && nameUpper.includes(key)) {
+                        bgUrl = marketBackgrounds[key];
+                        break;
+                    }
+                }
+                bgDiv.style.backgroundImage = `url('${bgUrl}')`;
+                card.insertBefore(bgDiv, card.firstChild);
+            }
+        }
+        return titleContainer.querySelector('.status-dot');
+    }
 
     function setupPersistentCountdownIntervals() { 
         if (intervalsInitialized) return; 
@@ -178,45 +200,8 @@
                 const closingTime = parseInt(timer.dataset.time, 10); 
                 const status = parseInt(timer.dataset.status, 10); 
                 
-                const titleContainer = card.querySelector('.card-body > .text-center > div:first-child');
-                let dot = card.querySelector('.status-dot');
-                
-                if (titleContainer && !titleContainer.dataset.wrapped) {
-                    const originalText = titleContainer.textContent.trim();
-                    titleContainer.innerHTML = ''; 
-                    
-                    dot = document.createElement('span');
-                    dot.className = 'status-dot active';
-                    
-                    const textSpan = document.createElement('span');
-                    textSpan.className = 'market-name-text';
-                    textSpan.textContent = originalText;
-                    textSpan.title = originalText; 
-                    
-                    titleContainer.appendChild(dot);
-                    titleContainer.appendChild(textSpan);
-                    titleContainer.dataset.wrapped = 'true';
-
-                    // --- INJECT BACKGROUND IMAGE ---
-                    if (!card.querySelector('.market-bg-image')) {
-                        const bgDiv = document.createElement('div');
-                        bgDiv.className = 'market-bg-image';
-                        
-                        // Menentukan gambar mana yang akan dipakai
-                        let bgUrl = marketBackgrounds['DEFAULT'];
-                        const nameUpper = originalText.toUpperCase();
-                        
-                        for (const key in marketBackgrounds) {
-                            if (key !== 'DEFAULT' && nameUpper.includes(key)) {
-                                bgUrl = marketBackgrounds[key];
-                                break;
-                            }
-                        }
-                        
-                        bgDiv.style.backgroundImage = `url('${bgUrl}')`;
-                        card.insertBefore(bgDiv, card.firstChild);
-                    }
-                }
+                // Panggil fungsi injeksi untuk memastikan dot dan wrapper ada
+                let dot = applyMarketNameFormatting(card);
 
                 if (status !== 1 || !closingTime || isNaN(closingTime) || (closingTime - now) <= 0) { 
                     timer.classList.remove('show-warning-text', 'closing-soon'); 
@@ -283,6 +268,9 @@
             customStage.className = 'custom-stage';
             
             sortedCards.forEach(item => { 
+                // Terapkan formating (Dot & Ellipsis) sebelum dimasukkan ke layout baru
+                applyMarketNameFormatting(item.element);
+                
                 const wrapper = document.createElement('div');
                 wrapper.className = 'custom-item';
                 wrapper.appendChild(item.element);
@@ -320,4 +308,3 @@
     });
 
 })();
-
