@@ -13,29 +13,25 @@
         #maincontent h1.text-center { color: #a855f7 !important; text-transform: uppercase !important; margin-top: 1.5rem !important; margin-bottom: 1rem !important; text-shadow: 0 0 10px rgba(168, 85, 247, 0.6); }
         #maincontent .nav-tabs .nav-link { border-radius: 8px 8px 0 0 !important; } .copy-btn{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border:1px solid #ec4899!important;padding:2px 10px!important;font-size:.8em!important;transition:all .3s ease}.copy-btn:hover{background-color:rgba(236, 72, 153, .3)!important;color:#fff!important}.copy-btn.copy-btn-success{background-color:rgba(46,204,113,.2)!important;color:#2ecc71!important;border-color:#27ae60!important}#receiver-bank-label i,#receiver-number-label i,#receiver-name-label i{margin-right:8px}#maincontent .nav-tabs{border-bottom:1px solid #ec4899!important}#maincontent .nav-tabs .nav-link{background-color:transparent!important;border:1px solid transparent!important;border-bottom:none!important;color:#bdc3c7!important}#maincontent .nav-tabs .nav-link.active{background-color:#1a252f!important;border-color:#ec4899!important;color:#fff!important}body{background-color:#0c0c1e!important;font-family:'Exo 2',sans-serif!important}.form-label{color:#ecf0f1!important;text-shadow:0 0 5px #ec4899}.form-control,.form-select{background-color:#1a252f!important;border:1px solid #34495e!important;color:#fff!important;border-radius:5px;transition:all .3s ease}.form-control:focus,.form-select:focus{border-color:#bdc3c7!important;box-shadow:0 0 10px rgba(189,195,199,.8)!important}.btn-primary{background:linear-gradient(45deg,#be185d,#ec4899)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #ec4899,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-primary:hover{transform:scale(1.05);box-shadow:0 0 20px #ec4899,0 0 30px #be185d,inset 0 0 5px rgba(255,255,255,.4)}.btn-secondary{background:linear-gradient(45deg,#a855f7,#9333ea)!important;border-color:#a855f7!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #a855f7,inset 0 0 5px rgba(255,255,255,.7);transition:all .3s ease}.btn-secondary:hover{transform:scale(1.05);background:linear-gradient(45deg,#c084fc,#a855f7)!important;box-shadow:0 0 20px #a855f7,0 0 30px #9333ea,inset 0 0 5px rgba(255,255,255,.8)}.btn-danger{background:linear-gradient(45deg,#e74c3c,#c0392b)!important;border:none!important;color:#fff!important;font-weight:700;text-transform:uppercase;box-shadow:0 0 10px #e74c3c,inset 0 0 5px rgba(255,255,255,.4);transition:all .3s ease}.btn-danger:hover{transform:scale(1.05);box-shadow:0 0 20px #e74c3c,0 0 30px #c0392b,inset 0 0 5px rgba(255,255,255,.4)}nav#navbar-top.navbar.bg-dark{background-color:#1a252f!important;border-bottom:1px solid #ec4899!important;box-shadow:0 2px 10px rgba(236, 72, 153, .3)!important}button#sidebarCollapse{background:0 0!important;border:none!important}button#sidebarCollapse i{color:#ecf0f1!important;transition:all .3s ease}button#sidebarCollapse:hover i{color:#f472b6!important;text-shadow:0 0 10px #f472b6}nav#sidebar{background-color:#1a252f!important;border-right:1px solid #ec4899!important;box-shadow:2px 0 10px rgba(236, 72, 153, .3)!important}#sidebar .d-flex[style*="background-image"]{background-image:none!important;background-color:#2c3e50!important;border-bottom:2px solid #ec4899;box-shadow:0 2px 5px rgba(236, 72, 153, .2)}#sidebar .nav-link{color:#ecf0f1!important;border-radius:5px;transition:all .3s ease;border-left:3px solid transparent;margin:0;padding:.4rem 1rem!important}#sidebar .nav-link:hover,#sidebar .nav-item.active .nav-link{background-color:rgba(236, 72, 153, .1)!important;color:#f472b6!important;border-left-color:#f472b6}#sidebar hr{border-top:1px solid #34495e;margin:.5rem 1rem}#sidebar > .d-flex.justify-content-between.p-3{display:none!important}.sapatoto-profile-icon{width:36px;height:36px}
         
-        /* [MODIFIKASI] TAMPILAN BARU TOMBOL TUTUP SIDEBAR YANG MENEMPEL KE GARIS */
         #custom-sidebar-toggle{position:fixed!important;top:75px!important;left:300px!important;transform:none!important;z-index:99999!important;font-size:1.2rem!important;color:#ecf0f1!important;background-color:#1a252f!important;border:1px solid #ec4899!important;border-left:none!important;border-radius:0 8px 8px 0!important;padding:10px 8px!important;box-shadow:3px 0 10px rgba(236,72,153,.3)!important;transition:all .3s ease!important;text-decoration:none!important;display:none}
         #custom-sidebar-toggle.show{display:block!important;opacity:1!important;visibility:visible!important}
         #custom-sidebar-toggle:hover{color:#fff!important;background-color:#ec4899!important}
         
-        /* [TAMBAHAN BARU] CSS WARNA BIRU GAMING UNTUK TOMBOL PROMO */
-        .btn-gaming-blue {
-            background: linear-gradient(45deg, #00f2fe, #4facfe) !important;
-            border: none !important;
-            color: #fff !important;
-            font-weight: 700;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.6), inset 0 0 5px rgba(255,255,255,.4) !important;
-            transition: all .3s ease;
-        }
-        .btn-gaming-blue:hover {
-            transform: scale(1.05);
-            background: linear-gradient(45deg, #4facfe, #00f2fe) !important;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.8), 0 0 30px rgba(79, 172, 254, 0.6), inset 0 0 5px rgba(255,255,255,.8) !important;
-            color: #fff !important;
+        .btn-gaming-blue { background: linear-gradient(45deg, #00f2fe, #4facfe) !important; border: none !important; color: #fff !important; font-weight: 700; text-transform: uppercase; box-shadow: 0 0 15px rgba(0, 242, 254, 0.6), inset 0 0 5px rgba(255,255,255,.4) !important; transition: all .3s ease; }
+        .btn-gaming-blue:hover { transform: scale(1.05); background: linear-gradient(45deg, #4facfe, #00f2fe) !important; box-shadow: 0 0 20px rgba(0, 242, 254, 0.8), 0 0 30px rgba(79, 172, 254, 0.6), inset 0 0 5px rgba(255,255,255,.8) !important; color: #fff !important; }
+
+        /* [CSS BARU] PRESISI TOMBOL LOGIN DAFTAR PROMO SEJAJAR PINTAS WIDGET */
+        #sapatoto-action-buttons-wrapper { width: 100%; margin: 0 auto 15px auto !important; padding: 0 !important; box-sizing: border-box; transition: max-width 0.3s ease; }
+        .action-btns-inner-spacing { display: flex; flex-wrap: wrap; gap: 16px; padding: 0 8px; width: 100%; box-sizing: border-box; }
+        .action-btn-col { flex: 1; min-width: 30%; margin: 0 !important; padding: 0 !important; display: flex; }
+        .action-btn-col .btn { font-size: 1.1rem !important; font-weight: 800 !important; letter-spacing: 1px; text-transform: uppercase; padding: 12px 10px !important; border-radius: 12px !important; }
+        @media (max-width: 768px) {
+            #sapatoto-action-buttons-wrapper { padding: 0 !important; margin: 0 auto 10px auto !important; }
+            .action-btns-inner-spacing { padding: 0 15px !important; gap: 10px; }
+            .action-btn-col .btn { font-size: 0.85rem !important; padding: 10px 5px !important; }
         }
 
-        #gacor-game-sidebar h5{color:#ecf0f1;text-transform:uppercase;font-weight:700;text-shadow:0 0 8px rgba(236, 72, 153, .7);border-bottom:1px solid #34495e;padding-bottom:10px;margin-bottom:15px;font-size:1rem}#gacor-game-sidebar h5 i{color:#f472b6;margin-right:8px}.gacor-card-container{display:grid;gap:10px}.gacor-card{display:flex;align-items:center;text-decoration:none;background:linear-gradient(145deg,#2c3e50,#1a252f);border:1px solid #ec4899;border-radius:10px;padding:10px;transition:all .3s ease}.gacor-card:hover{transform:translateY(-3px);box-shadow:0 3px 15px rgba(236, 72, 153, .5)}.gacor-card img{width:70px;height:70px;border-radius:8px;margin-right:10px;flex-shrink:0}.gacor-info{flex:1;min-width:0}.gacor-info strong{color:#fff;font-size:.9em;display:block}.gacor-time{font-size:.75em;color:#bdc3c7;opacity:.8}.gacor-time i{color:#f472b6}.gacor-card-placeholder{text-align:center;padding:20px;color:#bdc3c7;background:rgba(0,0,0,.2);border-radius:10px;border:1px dashed #34495e}#row-quicklogin.card,#maincontent .card.shadow{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;box-shadow:0 0 20px rgba(236, 72, 153, .6)!important;border-radius:8px!important}#maincontent .card.shadow h1,#maincontent .card.shadow h3,#maincontent .card.shadow h4{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7)!important;text-transform:uppercase;font-weight:700}#maincontent .card.shadow h3{border-bottom:1px solid #34495e;padding-bottom:15px;margin-bottom:25px}#maincontent .card.shadow a{color:#f472b6!important;text-decoration:none;transition:all .3s ease}#maincontent .card.shadow a:hover{color:#fff!important;text-shadow:0 0 10px #f472b6}.form-label i.bi{margin-right:8px;vertical-align:-2px}.btn-custom-promo{display:flex!important;align-items:center!important;justify-content:center!important;padding:10px 15px!important;font-size:1em!important;font-weight:700!important;text-transform:uppercase!important;color:#fff!important;border:none!important;border-radius:8px!important;background:linear-gradient(90deg,#be185d,#9d174d)!important;box-shadow:0 0 15px rgba(190, 24, 93, .5),inset 0 0 5px rgba(255,255,255,.3);transition:all .3s ease;text-decoration:none}.btn-custom-promo:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 5px 25px rgba(190, 24, 93, .7),0 0 30px rgba(244, 114, 182, .5),inset 0 0 8px rgba(255,255,255,.5);color:#fef3c7!important;background:linear-gradient(90deg,#ec4899,#be185d)!important}.btn-custom-promo i.bi{margin-right:10px;font-size:1.1em}#row-togel > .d-flex,.d-flex.justify-content-between{justify-content:center!important}#row-togel h3,h3.my-2,.my_5 > h3.text-center{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7);text-transform:uppercase}#row-togel h3 a,h3.my-2 a{color:inherit!important;text-decoration:none!important;transition:color .3s ease}#row-togel h3 a:hover,h3.my-2 a:hover{color:#f472b6!important}.d-flex.justify-content-between > a{display:none!important}h3.my-2 i.bi,.my_5 > h3.text-center i.bi{margin-right:10px;vertical-align:-1px}#maincontent .alert.alert-primary,.modal-body .alert.alert-warning{background:linear-gradient(160deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:10px!important;color:#ecf0f1!important;box-shadow:0 0 15px rgba(236, 72, 153, .5)}#maincontent .alert.alert-primary h4,#maincontent .alert.alert-primary span,.modal-body .alert.alert-warning small,.modal-body .alert.alert-warning strong{color:#ecf0f1!important}#maincontent .alert.alert-primary .fw-bold{color:#fff!important}.table{color:#ecf0f1!important;border-color:#34495e!important}.table th,.table td{background-color:transparent!important;border-color:#34495e!important}.table thead{border-color:inherit}.table thead th{background-color:rgba(236, 72, 153, .1)!important;border-bottom:2px solid #ec4899!important}.table a{color:#f472b6!important;text-decoration:none!important}.table a:hover{color:#fff!important}.owl-nav,.owl-dots{display:none!important}.glassmorphism{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;box-shadow:0 0 10px rgba(236, 72, 153, .4)!important;backdrop-filter:none!important;transition:all .3s ease}.glassmorphism:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(236, 72, 153, .6)!important}.glassmorphism a img{max-height:25px!important;width:auto!important;max-width:80%!important}#selectProvider .btn-outline-primary{display:flex!important;align-items:center!important;justify-content:center!important;background-color:transparent;border:1px solid #ec4899;color:#f472b6;transition:all .3s ease;border-radius:8px}#selectProvider .btn-outline-primary:hover{background-color:rgba(236, 72, 153, .2);color:#fff;box-shadow:0 0 10px rgba(236, 72, 153, .5)}#selectProvider .btn-outline-primary.active{background:linear-gradient(45deg,#be185d,#ec4899)!important;border-color:#ec4899!important;color:#fff!important;box-shadow:0 0 15px #ec4899}.row.g-1 [class*=col-] > a,.row.g-1 [class*=col-] > div > a{display:block;border-radius:8px!important;overflow:hidden;border:1px solid transparent;transition:all .3s ease;line-height:0}.row.g-1 [class*=col-] > a:hover,.row.g-1 [class*=col-] > div > a:hover{border-color:#ec4899;box-shadow:0 0 15px rgba(236, 72, 153, .6);transform:scale(1.05);z-index:10;position:relative}.row.mb-3.g-1 [class*=col-] > a:hover,.row.mb-3.g-1 [class*=col-] > a:focus{border-color:transparent!important;box-shadow:none!important;outline:0!important}.glassmorphism a:hover,.glassmorphism a:focus{border-color:transparent!important;box-shadow:none!important;outline:0!important;transform:none!important;z-index:auto!important}.modal-content{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:15px!important}.modal-header,.modal-header.bg-danger{background-color:#1a252f!important;border-bottom:1px solid #ec4899!important;border-top-left-radius:15px;border-top-right-radius:15px}.modal-title{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7)!important;font-size:1rem!important;padding-right:1rem;text-transform:uppercase}.modal-title i.bi{margin-right:8px;vertical-align:-2px;color:#f472b6;text-shadow:0 0 5px #f472b6}.modal-header .btn-close{background:transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f472b6'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat!important;opacity:.8!important;transition:all .3s ease}.modal-header .btn-close:hover{opacity:1!important;transform:scale(1.2) rotate(90deg)}.modal-body .row,.modal-body .text-muted{color:#bdc3c7!important}.modal-body .col-12.text-center > strong{color:#a855f7!important;text-shadow:0 0 8px #9333ea;font-size:1.1rem;line-height:1.2;display:block}.modal-body .col-12.text-center:first-of-type{padding-bottom:0!important}.modal-body .col-12.text-center:nth-of-type(2){padding-top:0!important;margin-bottom:1rem}.modal-footer{border-top:1px solid #34495e!important;background-color:#1a252f!important;border-bottom-left-radius:15px;border-bottom-right-radius:15px;padding-top:15px}.list-group{border-radius:8px;overflow:hidden}.list-group-item{background-color:rgba(0,0,0,.2)!important;border-color:#34495e!important}.list-group-item .d-flex{align-items:center!important}.list-group-item h6{font-size:2.8rem!important;line-height:1!important;font-weight:700!important;margin-right:.75rem!important;color:#f472b6!important;text-shadow:0 0 5px #f472b6}.list-group-item strong.text-danger{color:#ecf0f1!important;text-shadow:none!important}@keyframes flowAnimation{0%{background-position:200% 0}100%{background-position:-200% 0}}.progress{background-color:#1a252f!important;border:1px solid #34495e;border-radius:8px!important;height:22px!important;padding:2px}.progress-bar-rtp{border-radius:6px!important;animation:flowAnimation 2s linear infinite;background-size:200% 100%!important;color:#fff!important;font-weight:700;font-size:.8em;text-shadow:0 0 3px rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center}.progress-bar-rtp.bg-success{background-image:linear-gradient(90deg,#2ecc71 25%,#27ae60 50%,#2ecc71 75%)!important;box-shadow:0 0 10px #2ecc71}.progress-bar-rtp.bg-warning{background-image:linear-gradient(90deg,#f1c40f 25%,#f39c12 50%,#f1c40f 75%)!important;box-shadow:0 0 10px #f1c40f}.progress-bar-rtp.bg-danger{background-image:linear-gradient(90deg,#e74c3c 25%,#c0392b 50%,#e74c3c 75%)!important;box-shadow:0 0 10px #e74c3c}.progress-bar-rtp.bg-primary{background-image:linear-gradient(90deg,#3498db 25%,#2980b9 50%,#3498db 75%)!important;box-shadow:0 0 10px #3498db}.pagination{justify-content:center}.pagination .page-link{background-color:transparent;border:1px solid #ec4899;color:#f472b6;margin:0 3px;border-radius:5px}.pagination .page-item:not(.disabled) .page-link:hover{background-color:rgba(236, 72, 153, .2);color:#fff}.pagination .page-item.active .page-link{background:linear-gradient(45deg,#be185d,#ec4899);border-color:#ec4899;color:#fff}.pagination .page-item.disabled .page-link{background-color:#2c3e50;border-color:#34495e;color:#566573}
+        #gacor-game-sidebar h5{color:#ecf0f1;text-transform:uppercase;font-weight:700;text-shadow:0 0 8px rgba(236, 72, 153, .7);border-bottom:1px solid #34495e;padding-bottom:10px;margin-bottom:15px;font-size:1rem}#gacor-game-sidebar h5 i{color:#f472b6;margin-right:8px}.gacor-card-container{display:grid;gap:10px}.gacor-card{display:flex;align-items:center;text-decoration:none;background:linear-gradient(145deg,#2c3e50,#1a252f);border:1px solid #ec4899;border-radius:10px;padding:10px;transition:all .3s ease}.gacor-card:hover{transform:translateY(-3px);box-shadow:0 3px 15px rgba(236, 72, 153, .5)}.gacor-card img{width:70px;height:70px;border-radius:8px;margin-right:10px;flex-shrink:0}.gacor-info{flex:1;min-width:0}.gacor-info strong{color:#fff;font-size:.9em;display:block}.gacor-time{font-size:.75em;color:#bdc3c7;opacity:.8}.gacor-time i{color:#f472b6}.gacor-card-placeholder{text-align:center;padding:20px;color:#bdc3c7;background:rgba(0,0,0,.2);border-radius:10px;border:1px dashed #34495e}#row-quicklogin.card,#maincontent .card.shadow{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;box-shadow:0 0 20px rgba(236, 72, 153, .6)!important;border-radius:8px!important}#maincontent .card.shadow h1,#maincontent .card.shadow h3,#maincontent .card.shadow h4{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7)!important;text-transform:uppercase;font-weight:700}#maincontent .card.shadow h3{border-bottom:1px solid #34495e;padding-bottom:15px;margin-bottom:25px}#maincontent .card.shadow a{color:#f472b6!important;text-decoration:none;transition:all .3s ease}#maincontent .card.shadow a:hover{color:#fff!important;text-shadow:0 0 10px #f472b6}.form-label i.bi{margin-right:8px;vertical-align:-2px}.btn-custom-promo{display:flex!important;align-items:center!important;justify-content:center!important;padding:10px 15px!important;font-size:1em!important;font-weight:700!important;text-transform:uppercase!important;color:#fff!important;border:none!important;border-radius:8px!important;background:linear-gradient(90deg,#be185d,#9d174d)!important;box-shadow:0 0 15px rgba(190, 24, 93, .5),inset 0 0 5px rgba(255,255,255,.3);transition:all .3s ease;text-decoration:none}.btn-custom-promo:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 5px 25px rgba(190, 24, 93, .7),0 0 30px rgba(244, 114, 182, .5),inset 0 0 8px rgba(255,255,255,.5);color:#fef3c7!important;background:linear-gradient(90deg,#ec4899,#be185d)!important}.btn-custom-promo i.bi{margin-right:10px;font-size:1.1em}#row-togel > .d-flex,.d-flex.justify-content-between{justify-content:center!important}#row-togel h3,h3.my-2,.my_5 > h3.text-center{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7);text-transform:uppercase}#row-togel h3 a,h3.my-2 a{color:inherit!important;text-decoration:none!important;transition:color .3s ease}#row-togel h3 a:hover,h3.my-2 a:hover{color:#f472b6!important}.d-flex.justify-content-between > a{display:none!important}h3.my-2 i.bi,.my_5 > h3.text-center i.bi{margin-right:10px;vertical-align:-1px}#maincontent .alert.alert-primary,.modal-body .alert.alert-warning{background:linear-gradient(160deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:10px!important;color:#ecf0f1!important;box-shadow:0 0 15px rgba(236, 72, 153, .5)}#maincontent .alert.alert-primary h4,#maincontent .alert.alert-primary span,.modal-body .alert.alert-warning small,.modal-body .alert.alert-warning strong{color:#ecf0f1!important}#maincontent .alert.alert-primary .fw-bold{color:#fff!important}.table{color:#ecf0f1!important;border-color:#34495e!important}.table th,.table td{background-color:transparent!important;border-color:#34495e!important}.table thead{border-color:inherit}.table thead th{background-color:rgba(236, 72, 153, .1)!important;border-bottom:2px solid #ec4899!important}.table a{color:#f472b6!important;text-decoration:none!important}.table a:hover{color:#fff!important}.owl-nav,.owl-dots{display:none!important}.glassmorphism{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;box-shadow:0 0 10px rgba(236, 72, 153, .4)!important;backdrop-filter:none!important;transition:all .3s ease}.glassmorphism:hover{transform:translateY(-5px);box-shadow:0 5px 20px rgba(236, 72, 153, .6)!important}.glassmorphism a img{max-height:25px!important;width:auto!important;max-width:80%!important}#selectProvider .btn-outline-primary{display:flex!important;align-items:center!important;justify-content:center!important;background-color:transparent;border:1px solid #ec4899;color:#f472b6;transition:all .3s ease;border-radius:8px}#selectProvider .btn-outline-primary:hover{background-color:rgba(236, 72, 153, .2);color:#fff;box-shadow:0 0 10px rgba(236, 72, 153, .5)}#selectProvider .btn-outline-primary.active{background:linear-gradient(45deg,#be185d,#ec4899)!important;border-color:#ec4899!important;color:#fff!important;box-shadow:0 0 15px #ec4899}.row.g-1 [class*=col-] > a,.row.g-1 [class*=col-] > div > a{display:block;border-radius:8px!important;overflow:hidden;border:1px solid transparent;transition:all .3s ease;line-height:0}.row.g-1 [class*=col-] > a:hover,.row.g-1 [class*=col-] > div > a:hover{border-color:#ec4899;box-shadow:0 0 15px rgba(236, 72, 153, .6);transform:scale(1.05);z-index:10;position:relative}.row.mb-3.g-1 [class*=col-] > a:hover,.row.mb-3.g-1 [class*=col-] > a:focus{border-color:transparent!important;box-shadow:none!important;outline:0!important}.glassmorphism a:hover,.glassmorphism a:focus{border-color:transparent!important;box-shadow:none!important;outline:0!important;transform:none!important;z-index:auto!important}.modal-content{background:linear-gradient(145deg,#2c3e50,#1a252f)!important;border:1px solid #ec4899!important;border-radius:15px!important}.modal-header,.modal-header.bg-danger{background-color:#1a252f!important;border-bottom:1px solid #ec4899!important;border-top-left-radius:15px;border-top-right-radius:15px}.modal-title{color:#ecf0f1!important;text-shadow:0 0 8px rgba(236, 72, 153, .7)!important;font-size:1rem!important;padding-right:1rem;text-transform:uppercase}.modal-title i.bi{margin-right:8px;vertical-align:-2px;color:#f472b6;text-shadow:0 0 5px #f472b6}.modal-header .btn-close{background:transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f472b6'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414-1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat!important;opacity:.8!important;transition:all .3s ease}.modal-header .btn-close:hover{opacity:1!important;transform:scale(1.2) rotate(90deg)}.modal-body .row,.modal-body .text-muted{color:#bdc3c7!important}.modal-body .col-12.text-center > strong{color:#a855f7!important;text-shadow:0 0 8px #9333ea;font-size:1.1rem;line-height:1.2;display:block}.modal-body .col-12.text-center:first-of-type{padding-bottom:0!important}.modal-body .col-12.text-center:nth-of-type(2){padding-top:0!important;margin-bottom:1rem}.modal-footer{border-top:1px solid #34495e!important;background-color:#1a252f!important;border-bottom-left-radius:15px;border-bottom-right-radius:15px;padding-top:15px}.list-group{border-radius:8px;overflow:hidden}.list-group-item{background-color:rgba(0,0,0,.2)!important;border-color:#34495e!important}.list-group-item .d-flex{align-items:center!important}.list-group-item h6{font-size:2.8rem!important;line-height:1!important;font-weight:700!important;margin-right:.75rem!important;color:#f472b6!important;text-shadow:0 0 5px #f472b6}.list-group-item strong.text-danger{color:#ecf0f1!important;text-shadow:none!important}@keyframes flowAnimation{0%{background-position:200% 0}100%{background-position:-200% 0}}.progress{background-color:#1a252f!important;border:1px solid #34495e;border-radius:8px!important;height:22px!important;padding:2px}.progress-bar-rtp{border-radius:6px!important;animation:flowAnimation 2s linear infinite;background-size:200% 100%!important;color:#fff!important;font-weight:700;font-size:.8em;text-shadow:0 0 3px rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center}.progress-bar-rtp.bg-success{background-image:linear-gradient(90deg,#2ecc71 25%,#27ae60 50%,#2ecc71 75%)!important;box-shadow:0 0 10px #2ecc71}.progress-bar-rtp.bg-warning{background-image:linear-gradient(90deg,#f1c40f 25%,#f39c12 50%,#f1c40f 75%)!important;box-shadow:0 0 10px #f1c40f}.progress-bar-rtp.bg-danger{background-image:linear-gradient(90deg,#e74c3c 25%,#c0392b 50%,#e74c3c 75%)!important;box-shadow:0 0 10px #e74c3c}.progress-bar-rtp.bg-primary{background-image:linear-gradient(90deg,#3498db 25%,#2980b9 50%,#3498db 75%)!important;box-shadow:0 0 10px #3498db}.pagination{justify-content:center}.pagination .page-link{background-color:transparent;border:1px solid #ec4899;color:#f472b6;margin:0 3px;border-radius:5px}.pagination .page-item:not(.disabled) .page-link:hover{background-color:rgba(236, 72, 153, .2);color:#fff}.pagination .page-item.active .page-link{background:linear-gradient(45deg,#be185d,#ec4899);border-color:#ec4899;color:#fff}.pagination .page-item.disabled .page-link{background-color:#2c3e50;border-color:#34495e;color:#566573}
         #deposit-form .alert .my-3, #deposit-form .alert .d-grid { margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; }
         #maincontent .border.border-top-0 { border-color: #ec4899 !important; }
         #maincontent #withdraw-form h4 { text-align: center !important; color: #a855f7 !important; text-shadow: 0 0 8px rgba(168, 85, 247, 0.5); margin-bottom: 1.5rem !important; }
@@ -70,7 +66,6 @@
         #panel-closed.panel-closed-themed { background: linear-gradient(45deg, #c0392b, #e74c3c) !important; border: 1px solid #e74c3c !important; box-shadow: 0 0 20px rgba(231, 76, 60, 0.6) !important; border-radius: 15px !important; padding: 5rem 1rem !important; }
         #panel-closed.panel-closed-themed strong { font-size: 1.5rem; text-shadow: 0 0 10px rgba(0,0,0,0.5); }
         
-        /* CSS KHUSUS UNTUK TABEL BETTING */
         #betting-page-container .card-body { padding: 1.25rem; padding-top: 0 !important; }
         #betting-page-container .info-description, #betting-page-container .bet-type-toggle { margin-bottom: 0 !important; }
         #betting-page-container .table-input { margin-left: -1.25rem !important; margin-right: -1.25rem !important; width: calc(100% + 2.5rem) !important; margin-bottom: 1rem !important; }
@@ -82,7 +77,6 @@
         #betting-page-container select#select-market { border-color: #a855f7 !important; }
         #betting-page-container select#select-market:focus { border-color: #a855f7 !important; box-shadow: 0 0 10px rgba(168, 85, 247, 0.6) !important; }
 
-        /* CSS KHUSUS UNTUK HALAMAN PROFIL */
         #profile-page-container .profile-row { display: flex; align-items: center; background-color: #1a252f; padding: 12px 15px; border-radius: 8px; margin-bottom: 10px; border: 1px solid #34495e; }
         #profile-page-container .profile-row-stacked { flex-direction: column; align-items: flex-start; }
         #profile-page-container .profile-label { display: flex; align-items: center; color: #bdc3c7; flex-basis: 35%; flex-shrink: 0; font-weight: 500; }
@@ -91,7 +85,6 @@
         #profile-page-container .profile-value { color: #fff; font-weight: 700; word-break: break-all; text-align: right; flex-grow: 1; }
         #profile-page-container .profile-row-stacked .profile-value { text-align: left; background-color: rgba(0,0,0,0.2); padding: 8px 12px; border-radius: 5px; width: 100%; }
 
-        /* STYLE UNTUK MODAL KONFIRMASI */
         #confirmModal .modal-header .modal-title { color: #f472b6 !important; text-shadow: 0 0 5px #f472b6; }
         #confirmModal #invoice-content .text-center .display-6,
         #confirmModal #invoice-content .text-center small { color: #a855f7 !important; }
@@ -118,191 +111,42 @@
              box-shadow: 0 0 20px #ec4899, 0 0 30px #be185d, inset 0 0 5px rgba(255,255,255,.4) !important;
              transform: scale(1.05);
         }
-        /* CSS UNTUK TOMBOL CLEAR PROMO */
-        .promo-input-wrapper {
-            position: relative;
-        }
-        .promo-clear-btn {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #e74c3c; 
-            display: none; 
-            font-size: 1.1rem;
-            z-index: 5;
-            line-height: 1;
-            transition: color 0.2s ease;
-        }
-        .promo-clear-btn:hover {
-            color: #f5b7b1; 
-        }
-        /* Kelas 'visible' akan ditambah/dihapus oleh JavaScript */
-        .promo-clear-btn.visible {
-            display: block;
-        }
-        /* Beri padding di input agar teks tidak tertutup tombol */
-        #promocode[data-clearable="true"] {
-            padding-right: 35px !important;
-        }
-        /* CSS KHUSUS UNTUK PROMO BOX (IDE #1) */
-        .promo-choice-box {
-            background-color: #1a252f; 
-            border: 2px solid #34495e; 
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            transition: border-color 0.2s ease-in-out;
-            color: #ecf0f1; 
-        }
-        .promo-choice-box:hover {
-            border-color: #bdc3c7; 
-        }
-        .promo-choice-box.selected {
-            border-color: #a855f7; 
-            box-shadow: 0 0 10px rgba(168, 85, 247, 0.6); 
-        }
-        .promo-choice-box h5 {
-            color: #a855f7; 
-            margin-bottom: 0.5rem;
-        }
-        .promo-choice-box small {
-            color: #ecf0f1; 
-            font-size: 0.85em;
-        }
-        /* CSS UNTUK JUDUL HALAMAN STATIS (RESULT, DLL) */
-        #maincontent .container .text-center h3 {
-            color: #a855f7 !important;
-            text-transform: uppercase !important;
-            margin-top: 1.5rem !important;
-            margin-bottom: 1rem !important;
-            text-shadow: 0 0 10px rgba(168, 85, 247, 0.6);
-        }
-        /* CSS UNTUK MENGECILKAN FONT TABEL RESULT */
-        #maincontent .table-bordered tbody td {
-            font-size: 0.85em; 
-        }
-        /* CSS UNTUK HILANGKAN BULLET POINT WITHDRAW */
-        #withdraw-form div[style*="font-size:0.8em"] ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        /* CSS UNTUK HILANGKAN BULLET POINT KETENTUAN */
-        #deposit-form div[style*="font-size:0.8em"] ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        /* [CSS BARU] Perbaikan warna teks deskripsi permainan */
+        .promo-input-wrapper { position: relative; }
+        .promo-clear-btn { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #e74c3c; display: none; font-size: 1.1rem; z-index: 5; line-height: 1; transition: color 0.2s ease; }
+        .promo-clear-btn:hover { color: #f5b7b1; }
+        .promo-clear-btn.visible { display: block; }
+        #promocode[data-clearable="true"] { padding-right: 35px !important; }
+        .promo-choice-box { background-color: #1a252f; border: 2px solid #34495e; border-radius: 8px; padding: 1rem; margin-bottom: 0.5rem; cursor: pointer; transition: border-color 0.2s ease-in-out; color: #ecf0f1; }
+        .promo-choice-box:hover { border-color: #bdc3c7; }
+        .promo-choice-box.selected { border-color: #a855f7; box-shadow: 0 0 10px rgba(168, 85, 247, 0.6); }
+        .promo-choice-box h5 { color: #a855f7; margin-bottom: 0.5rem; }
+        .promo-choice-box small { color: #ecf0f1; font-size: 0.85em; }
+        #maincontent .container .text-center h3 { color: #a855f7 !important; text-transform: uppercase !important; margin-top: 1.5rem !important; margin-bottom: 1rem !important; text-shadow: 0 0 10px rgba(168, 85, 247, 0.6); }
+        #maincontent .table-bordered tbody td { font-size: 0.85em; }
+        #withdraw-form div[style*="font-size:0.8em"] ul { list-style-type: none; padding-left: 0; }
+        #deposit-form div[style*="font-size:0.8em"] ul { list-style-type: none; padding-left: 0; }
         #betting-page-container div[id^="panel-"] .card-body small,
-        #betting-page-container div[id^="panel-"] .card-body small p {
-            color: #bdc3c7 !important;
-        }
-        /* [CSS BARU] Style untuk Box Countdown Pembayaran (Deposit) */
-        #maincontent .card.text-center.border-danger {
-            background: linear-gradient(145deg, #a73c2e, #c0392b) !important;
-            border: 1px solid #e74c3c !important;
-            color: #fff !important;
-            box-shadow: 0 0 15px rgba(231, 76, 60, 0.6);
-            border-radius: 15px !important;
-        }
-        
-        #maincontent .card.text-center.border-danger .card-title.text-danger {
-            color: #fff !important;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
-            margin-bottom: 0.5rem !important;
-        }
-        
-        #maincontent .card.text-center.border-danger .card-title i {
-            color: #a855f7 !important; 
-            text-shadow: 0 0 5px #a855f7;
-        }
-        
-        #maincontent .card.text-center.border-danger span.countdown.badge.bg-danger {
-            background: none !important;
-            color: #a855f7 !important;
-            text-shadow: 0 0 8px rgba(168, 85, 247, 0.7);
-            font-size: 1.5rem !important; 
-            font-weight: 700;
-            padding: 0 !important;
-            line-height: 1.2;
-        }
-        /* [FIX] Sembunyikan kontainer logo bank default yang duplikat */
-        #maincontent .alert.alert-primary > div.mb-2 {
-            display: none !important;
-        }
-        /* [CSS BARU] Mengatur tombol QRIS di info deposit */
-        #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] {
-            margin-top: 1rem !important; 
-        }
-        
+        #betting-page-container div[id^="panel-"] .card-body small p { color: #bdc3c7 !important; }
+        #maincontent .card.text-center.border-danger { background: linear-gradient(145deg, #a73c2e, #c0392b) !important; border: 1px solid #e74c3c !important; color: #fff !important; box-shadow: 0 0 15px rgba(231, 76, 60, 0.6); border-radius: 15px !important; }
+        #maincontent .card.text-center.border-danger .card-title.text-danger { color: #fff !important; text-shadow: 0 1px 3px rgba(0,0,0,0.4); margin-bottom: 0.5rem !important; }
+        #maincontent .card.text-center.border-danger .card-title i { color: #a855f7 !important; text-shadow: 0 0 5px #a855f7; }
+        #maincontent .card.text-center.border-danger span.countdown.badge.bg-danger { background: none !important; color: #a855f7 !important; text-shadow: 0 0 8px rgba(168, 85, 247, 0.7); font-size: 1.5rem !important; font-weight: 700; padding: 0 !important; line-height: 1.2; }
+        #maincontent .alert.alert-primary > div.mb-2 { display: none !important; }
+        #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] { margin-top: 1rem !important; }
         #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] span,
-        #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] strong {
-            color: #fff !important;
-        }
-        /* [CSS BARU] Mengatur Status Badge (Ditolak, Sukses, dll) */
-        #maincontent .badge.bg-danger {
-            background: linear-gradient(45deg, #e74c3c, #c0392b) !important;
-            color: #fff !important;
-            box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
-            border: 1px solid #e74c3c;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-            font-weight: 600;
-        }
-
-        #maincontent .badge.bg-success {
-            background: linear-gradient(45deg, #2ecc71, #27ae60) !important;
-            color: #fff !important;
-            box-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
-            border: 1px solid #2ecc71;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-            font-weight: 600;
-        }
-        
-        #maincontent .badge.bg-warning {
-            background: linear-gradient(45deg, #a855f7, #9333ea) !important;
-            color: #fff !important; 
-            box-shadow: 0 0 5px rgba(168, 85, 247, 0.5);
-            border: 1px solid #a855f7;
-            text-shadow: 0 1px 1px rgba(255,255,255,0.2);
-            font-weight: 600;
-        }
-        
-        #maincontent .badge.bg-primary {
-            background: linear-gradient(45deg, #be185d, #ec4899) !important;
-            color: #fff !important;
-            box-shadow: 0 0 5px rgba(236, 72, 153, 0.5);
-            border: 1px solid #ec4899;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-            font-weight: 600;
-        }
-        /* [CSS BARU] Mengatur style untuk header "Input" di tabel bet multi-line */
-        #maincontent tbody tr.table-warning th {
-            color: #fff !important; 
-            background-color: #2c3e50 !important; 
-            border-color: #34495e !important; 
-        }
-        
-        /* Mengatur style untuk textarea input bet */
-        #maincontent .td-input textarea.form-control {
-            background-color: #2c3e50 !important; 
-            color: #ecf0f1 !important; 
-            border: 1px solid #34495e !important; 
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
-            resize: vertical; 
-        }
-        
-        /* Placeholder styling */
-        #maincontent .td-input textarea.form-control::placeholder {
-            color: rgba(236, 240, 241, 0.5) !important; 
-        }
+        #maincontent .alert.alert-primary a.btn-secondary[href="/deposit-qris"] strong { color: #fff !important; }
+        #maincontent .badge.bg-danger { background: linear-gradient(45deg, #e74c3c, #c0392b) !important; color: #fff !important; box-shadow: 0 0 5px rgba(231, 76, 60, 0.5); border: 1px solid #e74c3c; text-shadow: 0 1px 2px rgba(0,0,0,0.3); font-weight: 600; }
+        #maincontent .badge.bg-success { background: linear-gradient(45deg, #2ecc71, #27ae60) !important; color: #fff !important; box-shadow: 0 0 5px rgba(46, 204, 113, 0.5); border: 1px solid #2ecc71; text-shadow: 0 1px 2px rgba(0,0,0,0.3); font-weight: 600; }
+        #maincontent .badge.bg-warning { background: linear-gradient(45deg, #a855f7, #9333ea) !important; color: #fff !important; box-shadow: 0 0 5px rgba(168, 85, 247, 0.5); border: 1px solid #a855f7; text-shadow: 0 1px 1px rgba(255,255,255,0.2); font-weight: 600; }
+        #maincontent .badge.bg-primary { background: linear-gradient(45deg, #be185d, #ec4899) !important; color: #fff !important; box-shadow: 0 0 5px rgba(236, 72, 153, 0.5); border: 1px solid #ec4899; text-shadow: 0 1px 2px rgba(0,0,0,0.3); font-weight: 600; }
+        #maincontent tbody tr.table-warning th { color: #fff !important; background-color: #2c3e50 !important; border-color: #34495e !important; }
+        #maincontent .td-input textarea.form-control { background-color: #2c3e50 !important; color: #ecf0f1 !important; border: 1px solid #34495e !important; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); resize: vertical; }
+        #maincontent .td-input textarea.form-control::placeholder { color: rgba(236, 240, 241, 0.5) !important; }
     `;
     const styleElement = document.createElement('style');
     document.head.appendChild(styleElement);
     styleElement.innerHTML = sapatotoThemeStyles;
 
-    // [FUNGSI BARU] Untuk format angka dengan koma
     function formatNumberWithCommas(val) {
         if (val === null || val === undefined) return '';
         let stringVal = val.toString().replace(/,/g, '');
@@ -314,7 +158,6 @@
         }
     }
     
-    // [FUNGSI DIPERBARUI] Untuk inisialisasi input bet agar memiliki format
     function initializeBetFormatting() {
         document.querySelectorAll('#betting-page-container td.td-input > input.form-control[name^="bet"]:not(.display-input), #betting-page-container td.td-input > input.form-control[id^="bet-"]:not(.display-input)').forEach(originalInput => {
             if (originalInput.dataset.betFormatted === 'true' || originalInput.offsetParent === null || originalInput.type === 'hidden') return;
@@ -372,7 +215,6 @@
     function styleRtpModal() { const rtpModalLabel = document.querySelector('#rtpModalLabel'); if (!rtpModalLabel || rtpModalLabel.closest('.modal-content').dataset.styled === 'true') return; const modalContent = rtpModalLabel.closest('.modal-content'); modalContent.querySelectorAll(".list-group-item small > strong").forEach(title => { if (title.textContent.includes("Step")) title.textContent = title.textContent.replace(/Step \d+:\s*/, "").trim(); }); ["Provider Name", "Slot Game"].forEach(labelText => { const labelDiv = Array.from(modalContent.querySelectorAll(".modal-body .row .col-6")).find(el => el.textContent.trim() === labelText); if (labelDiv) { const row = labelDiv.closest(".row"); if (row) { const valueDiv = row.querySelector(".col-6.text-end"); if (valueDiv) { valueDiv.classList.remove("col-6", "text-end"); valueDiv.classList.add("col-12", "text-center"); if (labelText === "Provider Name") valueDiv.style.paddingBottom = "0rem"; if (labelText === "Slot Game") valueDiv.style.marginBottom = "1rem"; } labelDiv.remove(); } } }); const modalTitle = modalContent.querySelector(".modal-title"); if (modalTitle && !modalTitle.querySelector("i")) modalTitle.innerHTML = `<i class="bi bi-controller"></i> TIPS BERMAIN`; const noteElement = modalContent.querySelector(".text-muted.text-center"); if (noteElement && noteElement.textContent.includes("Lakukan Pola diatas Sebanyak 2x")) noteElement.innerHTML = "<small><strong>Note : </strong> Jika Tersedia / Ingin Membeli Fitur Spin, Lakukan Pola diatas Sebanyak 2x Terlebih Dahulu</small>"; modalContent.dataset.styled = "true"; }
     function runAllOtherScripts() { [{selector:"h3.my-2:not(#row-togel h3)",oldText:"Terbaru",newText:"GAME TERBARU",icon:"bi-stars"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"100 RP",newText:"GAME RP 100",icon:"bi-coin"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"Populer",newText:"GAME POPULER",icon:"bi-fire"},{selector:"h3.my-2:not(#row-togel h3)",oldText:"Terakhir Dimainkan",newText:"TERAKHIR DIMAINKAN",icon:"bi-clock-history"},{selector:"h3.text-center",oldText:"Provider Kami",newText:"PROVIDER KAMI",icon:"bi-puzzle-fill"},{selector:"h3.text-center",oldText:"Cara Pembayaran",newText:"CARA PEMBAYARAN",icon:"bi-wallet-fill"},{selector:"h3.text-center",oldText:"Temui Kami",newText:"TEMUI KAMI",icon:"bi-people-fill"}].forEach(e=>{document.querySelectorAll(e.selector).forEach(t=>{if(t.textContent.trim().includes(e.oldText)&&!t.querySelector("i"))t.innerHTML=`<i class="bi ${e.icon}"></i> ${e.newText}`})}); const e=document.querySelector("#row-togel h3"),t=document.querySelector("#row-togel > .d-flex > a");if(e&&t&&!e.querySelector("a")){var o=t.href,l="PASARAN TOGEL";const n=document.createElement("a");n.href=o;const c=document.createElement("i");c.className="bi bi-bullseye",n.appendChild(c),n.appendChild(document.createTextNode(` ${l}`)),e.innerHTML="",e.appendChild(n)} document.querySelectorAll(".progress-bar-rtp").forEach(e=>{let t=e.textContent.trim();t.includes("[RTP]")&&(e.textContent=t.replace(/\s*\[RTP\]\s*/,""))}); const i={username:"bi-person-fill",password:"bi-key-fill",confirmpassword:"bi-shield-lock-fill",email:"bi-envelope-fill",phone:"bi-phone-fill",agentbankid:"bi-bank",bankAccountNumber:"bi-credit-card-2-front-fill",bankaccountname:"bi-person-vcard-fill"};for(const[e,t]of Object.entries(i)){const o=document.querySelector(`label[for="${e}"]`);o&&!o.querySelector("i")&&(o.innerHTML=`<i class="bi ${t}"></i> ${o.innerText}`)} }
     
-    // [MODIFIKASI] MENGGANTI ICON DARI LINGKARAN MENJADI CHEVRON-LEFT
     function createSidebarToggleButton(){if(document.getElementById("custom-sidebar-toggle"))return;const e=document.createElement("a");e.id="custom-sidebar-toggle",e.href="#",e.innerHTML='<i class="bi bi-chevron-left"></i>',document.body.appendChild(e),e.addEventListener("click",function(e){e.preventDefault(),document.getElementById("sidebar").classList.remove("active"),document.querySelector(".overlay").classList.remove("active")})}
     
     function updateProfileElements(){const e=document.querySelector("#sidebar .bi-person-circle");if(e){const t=document.createElement("img");t.src="https://raw.githubusercontent.com/dewasijicare/images/main/icon_gaban_36x36.png",t.className="sapatoto-profile-icon",e.parentNode.replaceChild(t,e)}const t=Array.from(document.querySelectorAll("#sidebar span")).find(e=>e.textContent.includes("CREDIT:"));t&&(t.style.color="#a855f7")}
@@ -866,8 +708,6 @@
             wrapper.appendChild(inputGroup);
 
             group.replaceWith(wrapper);
-            
-            const newPasswordInput = wrapper.querySelector('input');
         });
     }
     function stylePagePadding() {
@@ -1227,71 +1067,127 @@
         }
     }
     
-    // [FUNGSI BARU] Mengubah warna tombol Promosi di menu atas (menjadi biru cerah)
     function styleTopPromoButton() {
-        // Cari semua elemen dengan kelas btn
         const buttons = document.querySelectorAll('.btn');
         buttons.forEach(btn => {
-            // Ambil teks tombolnya
             const text = btn.textContent.trim().toUpperCase();
-            
-            // Jika teksnya PROMOSI atau PROMO, dan belum pernah diedit
             if ((text === 'PROMOSI' || text === 'PROMO') && !btn.dataset.styledPromo) {
-                // Hapus background merah (.btn-danger) dan warna-warna standar lainnya
                 btn.classList.remove('btn-danger', 'btn-primary', 'btn-secondary', 'btn-warning', 'btn-info');
-                
-                // Tambahkan kelas CSS baru kita: .btn-gaming-blue
                 btn.classList.add('btn-gaming-blue');
-                
-                // Tandai sudah diedit
                 btn.dataset.styledPromo = 'true';
             }
         });
     }
 
-    // [FUNGSI BARU] Memperbaiki logika icon toggle password yang terbalik
     function fixPasswordToggleIcons() {
-        // Cari semua tombol toggle password (di Quick Login, Halaman Login, dan Register)
         const toggles = document.querySelectorAll('#togglePass, span[id^="toggle"]');
-        
         toggles.forEach(toggle => {
-            // Mencegah eksekusi berulang dari setInterval
             if (toggle.dataset.iconFixed === 'true') return;
-            
-            // Cari input password yang terhubung dan icon-nya
             const input = toggle.closest('.input-group')?.querySelector('input');
             const icon = toggle.querySelector('i');
-            
             if (input && icon) {
-                // Fungsi untuk menyesuaikan icon berdasarkan tipe input
                 const updateIcon = () => {
-                    // Hapus semua class icon bawaan web (FontAwesome atau BootstrapIcon)
                     icon.classList.remove('fa-eye', 'fa-eye-slash', 'bi-eye', 'bi-eye-slash', 'bi-eye-fill', 'bi-eye-slash-fill');
-                    
                     if (input.type === 'password') {
-                        // Jika password disembunyikan -> Mata Tercoret
                         icon.classList.add('bi', 'bi-eye-slash-fill');
                     } else {
-                        // Jika password diperlihatkan -> Mata Terbuka
                         icon.classList.add('bi', 'bi-eye-fill');
                     }
-                    icon.style.color = '#a855f7'; // Pastikan warna tetap ungu
+                    icon.style.color = '#a855f7'; 
                 };
-
-                // Pantau event click. Gunakan setTimeout agar script asli web 
-                // berjalan lebih dulu, lalu script kita menimpa icon akhirnya.
                 toggle.addEventListener('click', () => {
                     setTimeout(updateIcon, 50);
                 });
-
-                // Jalankan sekali saat halaman pertama kali dimuat
                 updateIcon();
             }
             toggle.dataset.iconFixed = 'true';
         });
     }
+
+    // ==============================================================
+    // [FUNGSI BARU] MENYAMAKAN PRESISI TOMBOL LOGIN DAFTAR PROMOSI
+    // ==============================================================
+    function styleDesktopActionButtons() {
+        // Cari tombol login di area utama layar (Bukan di Sidebar atau menu HP)
+        const loginBtns = Array.from(document.querySelectorAll('a[href="/login"], a[href="/Login"], a[href*="login"]')).filter(el => !el.closest('nav') && !el.closest('.navbar') && !el.closest('.fixed-bottom') && !el.closest('#sidebar') && el.classList.contains('btn'));
+        
+        if (loginBtns.length === 0) return;
+        
+        const loginBtn = loginBtns[0];
+        // Temukan pembungkus baris aslinya (Biasanya <div class="row">)
+        const rowParent = loginBtn.closest('.row') || loginBtn.closest('.d-flex'); 
+        
+        if (rowParent && !rowParent.dataset.styledDesktopBtns) {
+            rowParent.id = 'sapatoto-action-buttons-wrapper';
+            
+            // Buat bungkus bagian dalam (Untuk meniru sistem bantalan 8px Togel/Pintas)
+            const innerWrapper = document.createElement('div');
+            innerWrapper.className = 'action-btns-inner-spacing';
+            
+            // Pindahkan isi baris asli ke dalam bungkus baru
+            while (rowParent.firstChild) {
+                innerWrapper.appendChild(rowParent.firstChild);
+            }
+            rowParent.appendChild(innerWrapper);
+
+            // Bersihkan kolom bawaan agar tidak ada margin/padding liar
+            const items = Array.from(innerWrapper.children);
+            items.forEach(child => {
+                if (child.tagName === 'A' || child.tagName === 'BUTTON') {
+                    // Jika elemennya berupa tombol secara langsung
+                    const col = document.createElement('div');
+                    col.className = 'action-btn-col';
+                    innerWrapper.replaceChild(col, child);
+                    col.appendChild(child);
+                    applyBtnStyle(child);
+                } else if (child.className && child.className.includes('col')) {
+                    // Jika elemennya dibungkus col-md-4, dll
+                    child.className = 'action-btn-col'; 
+                    const btn = child.querySelector('.btn');
+                    if (btn) applyBtnStyle(btn);
+                }
+            });
+
+            function applyBtnStyle(btn) {
+                btn.style.width = '100%';
+                btn.style.height = '100%';
+                btn.style.display = 'flex';
+                btn.style.alignItems = 'center';
+                btn.style.justifyContent = 'center';
+            }
+            
+            rowParent.dataset.styledDesktopBtns = 'true';
+        }
+
+        // =======================================================
+        // SISTEM AUTO-SYNC LEBAR (Persis seperti Pintas Widget)
+        // =======================================================
+        var btnWidget = document.getElementById('sapatoto-action-buttons-wrapper');
+        if (btnWidget) {
+            // Mode Mobile HP (Biarkan CSS yang menahan paddingnya)
+            if (window.innerWidth <= 768) {
+                btnWidget.style.maxWidth = '100%';
+                btnWidget.style.paddingLeft = '0px';
+                btnWidget.style.paddingRight = '0px';
+            } else {
+                // Mode PC Desktop: Membaca lebar asli kerangka situs (Togel)
+                var referenceElement = document.querySelector('#row-togel'); 
+                if (referenceElement && referenceElement.parentElement) {
+                    var mainContainer = referenceElement.parentElement; 
+                    var exactWidth = mainContainer.getBoundingClientRect().width;
+                    var computedStyle = window.getComputedStyle(mainContainer);
+                    
+                    if (exactWidth > 0) {
+                        btnWidget.style.maxWidth = exactWidth + 'px';
+                        btnWidget.style.paddingLeft = computedStyle.paddingLeft;
+                        btnWidget.style.paddingRight = computedStyle.paddingRight;
+                    }
+                }
+            }
+        }
+    }
     
-    // Pemindai utama
+    // Pemindai utama (Menjalankan semua fungsi pembaruan)
     function runDynamicStyling() {
         initializeSwipeableHeaderMenu();
         updateProfileElements();
@@ -1323,8 +1219,10 @@
         styleProfilePage();
         styleLogoutButton();
         styleChangePasswordPage();
-        styleTopPromoButton(); // <-- EKSEKUSI FUNGSI TOMBOL PROMO DI SINI
-        fixPasswordToggleIcons(); // <-- TAMBAHKAN PEMANGGILAN INI
+        styleTopPromoButton(); 
+        fixPasswordToggleIcons(); 
+
+        styleDesktopActionButtons(); // <-- MENGAKTIFKAN SINKRONISASI TOMBOL 
     }
     
     // --- INISIALISASI SKRIP ---
@@ -1336,6 +1234,13 @@
         setInterval(runDynamicStyling, 250); 
         runDynamicStyling(); 
         
+        // Pasang pendeteksi pelebaran layar untuk tombol utama
+        window.addEventListener('resize', () => {
+            if(typeof styleDesktopActionButtons === 'function') {
+                styleDesktopActionButtons();
+            }
+        });
+
         document.body.addEventListener('change', (event) => {
             if (event.target.id === 'agentmemberbankid') {
                 const receiverBankSpan = document.getElementById('receiver-bank');
@@ -1355,7 +1260,3 @@
         }
     });
 })();
-
-
-
-
