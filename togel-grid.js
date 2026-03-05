@@ -85,18 +85,56 @@
             letter-spacing: 2px; text-decoration: none;
         }
 
-        /* --- 6. TIMER BADGE (KAPSUL WARNA WARNI) --- */
+        /* --- 6. TIMER BADGE (KAPSUL WARNA WARNI FIX OVERFLOW) --- */
         #carousel-togel .card .togel-countdown-timer, .row.g-3 .card .togel-countdown-timer { 
-            background: linear-gradient(45deg, #ec4899, #be185d) !important; color: #ffffff !important; padding: 4px 15px; border-radius: 50px; 
-            font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; min-width: 90px; height: 26px; 
-            box-shadow: 0 3px 8px rgba(236, 72, 153, 0.4) !important; letter-spacing: 0.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.3); position: relative; margin: 0 auto;
+            background: linear-gradient(45deg, #ec4899, #be185d) !important; 
+            color: #ffffff !important; 
+            padding: 4px 15px; 
+            border-radius: 50px; 
+            font-size: 0.8rem; 
+            font-weight: 700; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            min-width: 125px; /* DARI 90px DIPERLEBAR JADI 125px AGAR MUAT */
+            height: 28px;     /* DITINGGIKAN SEDIKIT DARI 26px */
+            box-shadow: 0 3px 8px rgba(236, 72, 153, 0.4) !important; 
+            letter-spacing: 0.5px; 
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3); 
+            position: relative; 
+            margin: 0 auto;
         }
-        #carousel-togel .card .togel-countdown-timer.show-warning-text, .row.g-3 .card .togel-countdown-timer.show-warning-text { color: transparent !important; text-shadow: none !important; }
+        
+        #carousel-togel .card .togel-countdown-timer.show-warning-text, .row.g-3 .card .togel-countdown-timer.show-warning-text { 
+            color: transparent !important; 
+            text-shadow: none !important; 
+        }
+        
         #carousel-togel .card .togel-countdown-timer.show-warning-text::before, .row.g-3 .card .togel-countdown-timer.show-warning-text::before { 
-            content: "SEGERA TUTUP"; position: absolute; inset: 0; color: #ffffff !important; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; text-shadow: 0px 1px 2px rgba(0,0,0,0.5) !important; font-weight: 700; white-space: nowrap; 
+            content: "SEGERA TUTUP"; 
+            position: absolute; 
+            inset: 0; 
+            width: 100%; /* MEMASTIKAN TEKS FULL DI DALAM BADGE */
+            height: 100%;
+            color: #ffffff !important; 
+            font-size: 0.75rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-shadow: 0px 1px 2px rgba(0,0,0,0.5) !important; 
+            font-weight: 700; 
+            white-space: nowrap; 
         }
-        #carousel-togel .card .togel-countdown-timer.closing-soon, .row.g-3 .card .togel-countdown-timer.closing-soon { background: linear-gradient(45deg, #f59e0b, #d97706) !important; box-shadow: 0 3px 8px rgba(245, 158, 11, 0.4) !important; }
-        #carousel-togel .card .togel-countdown-timer.is-closed, .row.g-3 .card .togel-countdown-timer.is-closed { background: linear-gradient(45deg, #e74c3c, #c0392b) !important; box-shadow: 0 3px 8px rgba(231, 76, 60, 0.4) !important; }
+        
+        #carousel-togel .card .togel-countdown-timer.closing-soon, .row.g-3 .card .togel-countdown-timer.closing-soon { 
+            background: linear-gradient(45deg, #f59e0b, #d97706) !important; 
+            box-shadow: 0 3px 8px rgba(245, 158, 11, 0.4) !important; 
+        }
+        
+        #carousel-togel .card .togel-countdown-timer.is-closed, .row.g-3 .card .togel-countdown-timer.is-closed { 
+            background: linear-gradient(45deg, #e74c3c, #c0392b) !important; 
+            box-shadow: 0 3px 8px rgba(231, 76, 60, 0.4) !important; 
+        }
 
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
         #carousel-togel .card, .row.g-3 .card { animation: fadeInUp 0.5s ease-out forwards; }
@@ -282,3 +320,4 @@
     });
 
 })();
+
