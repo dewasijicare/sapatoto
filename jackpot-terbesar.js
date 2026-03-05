@@ -6,16 +6,16 @@
     const WIDGET_ID = 'sapatoto-jackpot-slider';
     
     // =========================================
-    // DATABASE GAME VIP (Menggunakan CDN ASLI Web Anda)
+    // DATABASE GAME VIP (MENGGUNAKAN CDN ASLI WEB ANDA)
     // =========================================
     const VIP_GAMES = [
-        { name: "Mahjong Ways 2", provider: "PG SOFT", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/74.jpg", weight: 150 },
-        { name: "Mahjong Ways", provider: "PG SOFT", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/65.jpg", weight: 140 },
-        { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20olympgate.png", weight: 130 },
-        { name: "Gates of Olympus 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20olympx.png", weight: 120 },
-        { name: "Starlight Princess", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20starlight.png", weight: 110 },
-        { name: "Starlight Princess 1000", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20starlightx.png", weight: 100 },
-        { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", link: "/slots", img: "https://fffiiillleee.com/open-img-pub/games/pragmatic/vs20fruitsw.png", weight: 90 }
+        { name: "Mahjong Ways 2", provider: "PG SOFT", link: "/game?category=101", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/74.jpg", weight: 150 },
+        { name: "Mahjong Ways", provider: "PG SOFT", link: "/game?category=101", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/65.jpg", weight: 140 },
+        { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympgate.png", weight: 130 },
+        { name: "Gates of Olympus 1000", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympx.png", weight: 120 },
+        { name: "Starlight Princess", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlight.png", weight: 110 },
+        { name: "Starlight Princess 1000", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlightx.png", weight: 100 },
+        { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20fruitsw.png", weight: 90 }
     ];
 
     let LIVE_GAME_LIBRARY = [...VIP_GAMES]; 
@@ -30,26 +30,23 @@
     }
 
     // =========================================
-    // DETEKSI PROVIDER SUPER AKURAT (ANTI "SLOT ONLINE")
+    // DETEKSI PROVIDER SUPER AKURAT 
     // =========================================
     function detectProvider(name, imgUrl, linkUrl) {
         let text = (name + " " + imgUrl + " " + linkUrl).toLowerCase();
-
-        // 1. Cek PG Soft
+        
         if (text.includes('pgsoft') || text.includes('/pg/') || text.includes('mahjong') || text.includes('neko') || text.includes('bandito') || text.includes('shaolin') || text.includes('wealth') || text.includes('qilin') || text.includes('hatch') || text.includes('caishen') || text.includes('macau') || text.includes('journey') || text.includes('treasures') || text.includes('wild') || text.includes('wins')) {
             return "PG SOFT";
         }
-        // 2. Cek Pragmatic Play
         if (text.includes('pragmatic') || text.includes('/pp/') || text.includes('vs20') || text.includes('vs10') || text.includes('olympus') || text.includes('princess') || text.includes('bonanza') || text.includes('sugar') || text.includes('aztec') || text.includes('rhino') || text.includes('megaways') || text.includes('lions') || text.includes('thor') || text.includes('dice') || text.includes('5g') || text.includes('sweet') || text.includes('starlight')) {
             return "PRAGMATIC PLAY";
         }
-        // 3. Cek Provider Lainnya
         if (text.includes('habanero') || text.includes('koi gate') || text.includes('hot hot')) return "HABANERO";
         if (text.includes('joker') || text.includes('/jk/')) return "JOKER GAMING";
         if (text.includes('microgaming') || text.includes('/mg/')) return "MICROGAMING";
         if (text.includes('spade') || text.includes('/sg/')) return "SPADEGAMING";
         
-        // 4. JURUS PAMUNGKAS (Memastikan tidak ada kata SLOT ONLINE)
+        // JURUS PAMUNGKAS (Mencegah "SLOT ONLINE")
         const firstLetter = name.trim().charAt(0).toUpperCase();
         if (['A','B','C','D','E','F','G','H','I','J'].includes(firstLetter)) return "PRAGMATIC PLAY";
         if (['K','L','M','N','O','P','Q','R','S','T'].includes(firstLetter)) return "PG SOFT";
@@ -57,7 +54,7 @@
     }
 
     // =========================================
-    // FUNGSI 1: AUTO-SCRAPE DARI RTP (FIX NAMA TERTUKAR)
+    // FUNGSI 1: AUTO-SCRAPE DARI RTP 
     // =========================================
     async function fetchGamesFromRTP() {
         try {
@@ -73,22 +70,21 @@
                 const imgEl = node.querySelector('img');
                 if (imgEl) {
                     let name = node.dataset.gamename || imgEl.alt || "Slot Game";
-                    
                     let imgUrl = imgEl.getAttribute('data-src') || imgEl.getAttribute('data-original') || imgEl.getAttribute('data-lazy') || imgEl.src;
-                    let link = node.href || node.dataset.playurl || '/slots';
                     
-                    if (link.includes('javascript:') || link.endsWith('#') || link === window.location.href) {
-                        link = '/slots'; 
+                    // PERBAIKAN LINK KE /game?category=101
+                    let link = node.href || node.dataset.playurl || '/game?category=101';
+                    if (link.includes('javascript:') || link.endsWith('#') || link === window.location.href || link.includes('/slots')) {
+                        link = '/game?category=101'; 
                     }
 
                     let provider = detectProvider(name, imgUrl, link);
-
-                    // KUNCI PERBAIKAN: Menggunakan pencocokan nama yang SAMA PERSIS, bukan sekadar mirip.
-                    // Ini mencegah "Mahjong Ways" mencuri data "Mahjong Ways 2"
                     let existingVip = LIVE_GAME_LIBRARY.find(g => g.name.toLowerCase().trim() === name.toLowerCase().trim());
                     
                     if (existingVip) {
-                        if (link !== '/slots' && !link.includes('javascript')) existingVip.link = link;
+                        // JANGAN MENIMPA GAMBAR VIP karena gambar CDN kita sudah 100% akurat.
+                        // Hanya timpa link jika dari RTP punya link spesifik (selain default).
+                        if (link !== '/game?category=101' && !link.includes('javascript')) existingVip.link = link;
                     } else {
                         if (!fetchedGames.find(g => g.name === name) && imgUrl && !imgUrl.startsWith('data:image/gif')) {
                             fetchedGames.push({ name, provider, img: imgUrl, link, weight: 15 });
@@ -179,7 +175,6 @@
     // FUNGSI 3: RENDER HTML & CSS
     // =========================================
     
-    // SVG Cadangan Elegan
     const fallbackImageBase64 = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWEyNTJmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlYzQ4OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNMT1Q8L3RleHQ+PC9zdmc+";
 
     function buildCardHTML(item) {
