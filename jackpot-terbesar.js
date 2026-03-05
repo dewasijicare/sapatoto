@@ -46,7 +46,7 @@
         if (text.includes('microgaming') || text.includes('/mg/')) return "MICROGAMING";
         if (text.includes('spade') || text.includes('/sg/')) return "SPADEGAMING";
         
-        // JURUS PAMUNGKAS (Mencegah "SLOT ONLINE")
+        // JURUS PAMUNGKAS
         const firstLetter = name.trim().charAt(0).toUpperCase();
         if (['A','B','C','D','E','F','G','H','I','J'].includes(firstLetter)) return "PRAGMATIC PLAY";
         if (['K','L','M','N','O','P','Q','R','S','T'].includes(firstLetter)) return "PG SOFT";
@@ -72,7 +72,6 @@
                     let name = node.dataset.gamename || imgEl.alt || "Slot Game";
                     let imgUrl = imgEl.getAttribute('data-src') || imgEl.getAttribute('data-original') || imgEl.getAttribute('data-lazy') || imgEl.src;
                     
-                    // PERBAIKAN LINK KE /game?category=101
                     let link = node.href || node.dataset.playurl || '/game?category=101';
                     if (link.includes('javascript:') || link.endsWith('#') || link === window.location.href || link.includes('/slots')) {
                         link = '/game?category=101'; 
@@ -82,8 +81,6 @@
                     let existingVip = LIVE_GAME_LIBRARY.find(g => g.name.toLowerCase().trim() === name.toLowerCase().trim());
                     
                     if (existingVip) {
-                        // JANGAN MENIMPA GAMBAR VIP karena gambar CDN kita sudah 100% akurat.
-                        // Hanya timpa link jika dari RTP punya link spesifik (selain default).
                         if (link !== '/game?category=101' && !link.includes('javascript')) existingVip.link = link;
                     } else {
                         if (!fetchedGames.find(g => g.name === name) && imgUrl && !imgUrl.startsWith('data:image/gif')) {
@@ -101,7 +98,7 @@
     }
 
     // =========================================
-    // FUNGSI 2: GENERATOR NATURAL (GLOBAL SEED)
+    // FUNGSI 2: GENERATOR NATURAL
     // =========================================
     function getRandomItemWeighted(items) {
         let totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
@@ -224,19 +221,66 @@
 
         const cssHTML = `
             <style>
-                #${WIDGET_ID} { max-width: 1200px; margin: 0 auto 25px auto; padding: 0 14px; font-family: 'Exo 2', sans-serif; }
-                .sapatoto-jp-wrapper { background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.95)); border: 1px solid #ec4899; border-radius: 12px; padding: 0; box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); overflow: hidden; }
-                .jp-header { display: flex; align-items: center; justify-content: center; background: linear-gradient(90deg, #ec4899, #a855f7, #3b82f6); padding: 12px 15px; margin-bottom: 15px; border-bottom: 2px solid #fff; }
-                .jp-header h4 { margin: 0; color: #fff; font-weight: 800; text-transform: uppercase; text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); font-size: 1.25rem; letter-spacing: 1px; }
-                .jp-slider-container { width: 100%; overflow-x: auto; position: relative; padding-bottom: 15px; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -ms-overflow-style: none; scrollbar-width: none; cursor: grab; }
+                /* PENYESUAIAN LAYOUT PRESISI SEPERTI PINTAS WIDGET */
+                #${WIDGET_ID} { 
+                    width: 100%;
+                    max-width: 1200px; 
+                    margin: 0 auto 25px auto; 
+                    padding: 0 15px; /* SAMA DENGAN PINTAS WIDGET */
+                    box-sizing: border-box;
+                    font-family: 'Exo 2', sans-serif; 
+                }
+                .sapatoto-jp-wrapper { 
+                    width: 100%;
+                    background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.95)); 
+                    border: 1px solid #ec4899; 
+                    border-radius: 15px; /* DIBUAT 15PX SAMA DENGAN PINTAS WIDGET */
+                    padding: 0; 
+                    box-shadow: 0 0 15px rgba(236, 72, 153, 0.5); /* SAMA DENGAN PINTAS WIDGET */
+                    overflow: hidden; 
+                    box-sizing: border-box;
+                }
+                .jp-header { 
+                    display: flex; align-items: center; justify-content: center; 
+                    background: linear-gradient(90deg, #ec4899, #a855f7, #3b82f6); 
+                    padding: 12px 15px; margin-bottom: 15px; border-bottom: 2px solid #fff; 
+                }
+                .jp-header h4 { 
+                    margin: 0; color: #fff; font-weight: 800; text-transform: uppercase; 
+                    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); font-size: 1.25rem; letter-spacing: 1px; 
+                }
+                .jp-slider-container { 
+                    width: 100%; overflow-x: auto; position: relative; padding-bottom: 15px; 
+                    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); 
+                    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); 
+                    -ms-overflow-style: none; scrollbar-width: none; cursor: grab; 
+                }
                 .jp-slider-container::-webkit-scrollbar { display: none; }
                 .jp-slider-track { display: inline-flex; gap: 15px; width: max-content; padding: 0 15px; }
-                .jp-card { display: block; text-decoration: none !important; width: 170px; background: linear-gradient(160deg, rgba(30,42,55,1), rgba(15,20,25,1)); border: 1px solid #34495e; border-radius: 10px; overflow: hidden; position: relative; flex-shrink: 0; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; user-select: none; -webkit-user-drag: none; }
-                .jp-card:hover { transform: translateY(-5px); border-color: #a855f7; box-shadow: 0 5px 15px rgba(168, 85, 247, 0.6); z-index: 5; }
-                .jp-img-wrapper { width: 100%; aspect-ratio: 1 / 1; overflow: hidden; background-color: #0c0c1e; border-bottom: 2px solid #ec4899; position: relative; }
+                .jp-card { 
+                    display: block; text-decoration: none !important; width: 170px; 
+                    background: linear-gradient(160deg, rgba(30,42,55,1), rgba(15,20,25,1)); 
+                    border: 1px solid #34495e; border-radius: 10px; overflow: hidden; 
+                    position: relative; flex-shrink: 0; 
+                    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
+                    user-select: none; -webkit-user-drag: none; 
+                }
+                .jp-card:hover { 
+                    transform: translateY(-5px); border-color: #a855f7; 
+                    box-shadow: 0 5px 15px rgba(168, 85, 247, 0.6); z-index: 5; 
+                }
+                .jp-img-wrapper { 
+                    width: 100%; aspect-ratio: 1 / 1; overflow: hidden; 
+                    background-color: #0c0c1e; border-bottom: 2px solid #ec4899; position: relative; 
+                }
                 .jp-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; pointer-events: none; }
                 .jp-card:hover .jp-img-wrapper img { transform: scale(1.1); }
-                .play-overlay { position: absolute; inset: 0; background: rgba(236, 72, 153, 0.8); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; color: #fff; font-weight: 900; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+                .play-overlay { 
+                    position: absolute; inset: 0; background: rgba(236, 72, 153, 0.8); 
+                    display: flex; flex-direction: column; align-items: center; justify-content: center; 
+                    opacity: 0; transition: opacity 0.3s ease; color: #fff; 
+                    font-weight: 900; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
+                }
                 .play-overlay i { font-size: 2.5rem; margin-bottom: 5px; }
                 .jp-card:hover .play-overlay { opacity: 1; }
                 .jp-info { padding: 10px; text-align: center; }
@@ -246,7 +290,13 @@
                 .jp-user-date { display: flex; flex-direction: column; align-items: center; font-size: 0.65rem; color: #bdc3c7; gap: 3px; }
                 .jp-user-date span:first-child { color: #ecf0f1; font-weight: 600; font-size: 0.75rem; }
                 .jp-user-date i { color: #a855f7; margin-right: 2px; }
-                @media (max-width: 768px) { .jp-card { width: 140px; } .jp-amount { font-size: 0.9rem; } .jp-header h4 { font-size: 1.05rem; } }
+                
+                @media (max-width: 768px) { 
+                    #${WIDGET_ID} { padding: 0 15px; } /* PASTIKAN MOBILE JUGA 15PX */
+                    .jp-card { width: 140px; } 
+                    .jp-amount { font-size: 0.9rem; } 
+                    .jp-header h4 { font-size: 1.05rem; } 
+                }
             </style>
         `;
 
