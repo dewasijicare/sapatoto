@@ -114,7 +114,7 @@
         const generateHTML = (arr, type) => {
             let html = '';
             arr.forEach(item => html += buildRow(item, type));
-            arr.forEach(item => html += buildRow(item, type)); // Duplikat agar animasi tidak putus
+            arr.forEach(item => html += buildRow(item, type)); 
             return html;
         };
 
@@ -136,7 +136,7 @@
         }, 500);
     }
 
-    // 3. FUNGSI INJEKSI KE HALAMAN
+    // 3. FUNGSI INJEKSI & SINKRONISASI LEBAR OTOMATIS
     function injectTransactionsWidget() {
         const target = document.querySelector('#pintas-widget-wrapper');
         const existing = document.getElementById('sapatoto-recent-transactions');
@@ -144,54 +144,62 @@
         if (target && !existing) {
             const widgetHTML = `
                 <div id="sapatoto-recent-transactions">
-                    <div class="sapatoto-trx-flex">
-                        
-                        <div class="trx-column">
-                            <div class="tx-card d-flex flex-column">
-                                <div class="tx-header border-pink">
-                                    <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> LIVE DEPOSIT
-                                </div>
-                                <div class="tx-table-header">
-                                    <div class="tx-col-user">USER</div>
-                                    <div class="tx-col-time" style="text-align:center;">WAKTU</div>
-                                    <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
-                                </div>
-                                <div class="tx-body flex-grow-1">
-                                    <div class="tx-marquee" id="sapatoto-dep-list"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="trx-column">
-                            <div class="tx-card d-flex flex-column">
-                                <div class="tx-header border-purple">
-                                    <i class="bi bi-cash-coin tx-icon-purple"></i> LIVE WITHDRAW
-                                </div>
-                                <div class="tx-table-header">
-                                    <div class="tx-col-user">USER</div>
-                                    <div class="tx-col-time" style="text-align:center;">WAKTU</div>
-                                    <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
-                                </div>
-                                <div class="tx-body flex-grow-1">
-                                    <div class="tx-marquee" id="sapatoto-wd-list"></div>
+                    <div class="trx-inner-wrapper">
+                        <div class="sapatoto-trx-flex">
+                            
+                            <div class="trx-column">
+                                <div class="tx-card d-flex flex-column">
+                                    <div class="tx-header border-pink">
+                                        <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> LIVE DEPOSIT
+                                    </div>
+                                    <div class="tx-table-header">
+                                        <div class="tx-col-user">USER</div>
+                                        <div class="tx-col-time" style="text-align:center;">WAKTU</div>
+                                        <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
+                                    </div>
+                                    <div class="tx-body flex-grow-1">
+                                        <div class="tx-marquee" id="sapatoto-dep-list"></div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                            <div class="trx-column">
+                                <div class="tx-card d-flex flex-column">
+                                    <div class="tx-header border-purple">
+                                        <i class="bi bi-cash-coin tx-icon-purple"></i> LIVE WITHDRAW
+                                    </div>
+                                    <div class="tx-table-header">
+                                        <div class="tx-col-user">USER</div>
+                                        <div class="tx-col-time" style="text-align:center;">WAKTU</div>
+                                        <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
+                                    </div>
+                                    <div class="tx-body flex-grow-1">
+                                        <div class="tx-marquee" id="sapatoto-wd-list"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             `;
 
             const cssHTML = `
                 <style>
-                    /* KUNCI PERBAIKAN: Melepas batasan maksimal (dibuat 100%) dan menghilangkan margin bawaan */
+                    /* BUNGKUSAN LUAR (Ukuran akan diatur otomatis oleh Javascript agar presisi) */
                     #sapatoto-recent-transactions { 
                         width: 100%; 
-                        max-width: 100% !important; /* MENGUBAH DARI 1200PX MENJADI 100% AGAR BISA LEBAR PENUH */
-                        margin: 0 0 25px 0 !important; /* MENGHILANGKAN MARGIN AUTO */
-                        padding: 0 !important; 
+                        margin: 0 auto 25px auto !important; 
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif; 
+                        transition: max-width 0.3s ease; /* Transisi halus saat ukuran disinkronkan */
+                    }
+
+                    /* BUNGKUSAN DALAM (Menyamakan jarak 8px milik Progressive Jackpot) */
+                    .trx-inner-wrapper {
+                        padding: 0 8px; 
+                        width: 100%;
+                        box-sizing: border-box;
                     }
 
                     .sapatoto-trx-flex {
@@ -305,6 +313,34 @@
             
             renderTransactions();
             setInterval(refreshTransactions, 60000);
+
+            // --- FUNGSI SENSOR LEBAR PRESISI (AUTO-SYNC) ---
+            function syncExactWidth() {
+                const trxWidget = document.getElementById('sapatoto-recent-transactions');
+                const referenceElement = document.querySelector('#row-togel'); // Jadikan Togel sebagai acuan
+                
+                if (trxWidget && referenceElement && referenceElement.parentElement) {
+                    const mainContainer = referenceElement.parentElement; // Ambil container utama situs
+                    
+                    // 1. Ambil ukuran piksel aslinya secara real-time
+                    const exactWidth = mainContainer.getBoundingClientRect().width;
+                    
+                    // 2. Ambil padding aslinya
+                    const computedStyle = window.getComputedStyle(mainContainer);
+                    
+                    if (exactWidth > 0) {
+                        // Terapkan ukuran yang persis sama ke widget Live Deposit
+                        trxWidget.style.maxWidth = exactWidth + 'px';
+                        trxWidget.style.paddingLeft = computedStyle.paddingLeft;
+                        trxWidget.style.paddingRight = computedStyle.paddingRight;
+                    }
+                }
+            }
+
+            // Jalankan deteksi ukuran sesaat setelah dimuat dan jika layar dibesarkan/dikecilkan
+            setTimeout(syncExactWidth, 50);
+            setTimeout(syncExactWidth, 500); 
+            window.addEventListener('resize', syncExactWidth);
 
             return true;
         }
