@@ -21,6 +21,16 @@
     let LIVE_GAME_LIBRARY = [...VIP_GAMES]; 
 
     // =========================================
+    // MESIN ACAK SINKRONISASI GLOBAL (PRNG)
+    // Mengunci hasil acakan agar sama untuk semua visitor
+    // =========================================
+    let globalSeed = 1;
+    function prng() {
+        globalSeed = (globalSeed * 9301 + 49297) % 233280;
+        return globalSeed / 233280;
+    }
+
+    // =========================================
     // DETEKSI PROVIDER SUPER AKURAT (3 LAPIS)
     // =========================================
     function detectProvider(name, imgUrl, linkUrl) {
@@ -42,7 +52,7 @@
         if (text.includes('cq9')) return "CQ9";
         if (text.includes('nolimit') || text.includes('no limit')) return "NOLIMIT CITY";
         
-        return "SLOT ONLINE"; // Jika benar-benar tidak dikenali
+        return "SLOT ONLINE";
     }
 
     // =========================================
@@ -64,24 +74,19 @@
                     let name = node.dataset.gamename || imgEl.alt || "Slot Game";
                     let imgUrl = imgEl.src;
                     
-                    // AMBIL LINK, JIKA HANYA "#", UBAH JADI "/slots"
                     let link = node.href || node.dataset.playurl || '/slots';
                     if (link.includes('javascript:') || link.endsWith('#') || link === window.location.href) {
                         link = '/slots'; 
                     }
 
-                    // DETEKSI PROVIDER MENGGUNAKAN FUNGSI SUPER AKURAT
                     let provider = detectProvider(name, imgUrl, link);
 
-                    // Cek apakah game ini ada di daftar VIP
                     let existingVip = LIVE_GAME_LIBRARY.find(g => g.name.toLowerCase() === name.toLowerCase() || name.toLowerCase().includes(g.name.toLowerCase()));
                     
                     if (existingVip) {
-                        // KUNCI: TIMPA GAMBAR BAWAAN DENGAN GAMBAR LOKAL DARI WEB ANDA
                         existingVip.img = imgUrl; 
                         existingVip.link = link;
                     } else {
-                        // Jika bukan VIP, tambahkan dengan bobot kemunculan standar (15)
                         if (!fetchedGames.find(g => g.name === name)) {
                             fetchedGames.push({ name, provider, img: imgUrl, link, weight: 15 });
                         }
@@ -97,11 +102,11 @@
     }
 
     // =========================================
-    // FUNGSI 2: GENERATOR NATURAL
+    // FUNGSI 2: GENERATOR NATURAL (GLOBAL SEED)
     // =========================================
     function getRandomItemWeighted(items) {
         let totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
-        let random = Math.random() * totalWeight;
+        let random = prng() * totalWeight; // Menggunakan PRNG Global
         for (let i = 0; i < items.length; i++) {
             if (random < items[i].weight) return items[i];
             random -= items[i].weight;
@@ -114,30 +119,30 @@
     }
 
     function generateJackpotAmount() {
-        const rand = Math.random();
+        const rand = prng(); // Menggunakan PRNG Global
         let min, max;
         if (rand < 0.65) { min = 20; max = 45; }
         else if (rand < 0.88) { min = 46; max = 85; }
         else if (rand < 0.97) { min = 86; max = 130; }
         else { min = 131; max = 200; }
         
-        const millions = Math.floor(Math.random() * (max - min + 1)) + min;
-        const thousands = Math.floor(Math.random() * 999);
-        const hundreds = Math.floor(Math.random() * 9) * 100;
+        const millions = Math.floor(prng() * (max - min + 1)) + min;
+        const thousands = Math.floor(prng() * 999);
+        const hundreds = Math.floor(prng() * 9) * 100;
         return (millions * 1000000) + (thousands * 1000) + hundreds;
     }
 
     function generateUsername() {
         const prefixes = ['An','Bo','Ci','De','Ed','Fa','Ga','He','In','Je','Ke','Li','Ma','No','Pu','Ri','Sa','Ti','Vi','Wi','Yo','Za'];
         const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
-        let pre = prefixes[Math.floor(Math.random() * prefixes.length)];
-        let post = chars.charAt(Math.floor(Math.random() * chars.length));
+        let pre = prefixes[Math.floor(prng() * prefixes.length)];
+        let post = chars.charAt(Math.floor(prng() * chars.length));
         return pre + '****' + post;
     }
 
-    function generateDate() {
-        const now = new Date();
-        const pastTime = new Date(now.getTime() - Math.floor(Math.random() * 1800000)); // 0-30 Menit mundur
+    function generateDate(baseTime) {
+        // Base time adalah waktu MULAINYA blok 30 menit. Kita kurangi 0-30 menit lagi ke belakang dari waktu itu.
+        const pastTime = new Date(baseTime - Math.floor(prng() * 1800000)); 
         const day = String(pastTime.getDate()).padStart(2, '0');
         const month = String(pastTime.getMonth() + 1).padStart(2, '0');
         const year = pastTime.getFullYear();
@@ -148,6 +153,16 @@
     }
 
     function generateJackpotData(count = 15) {
+        // 1. KUNCI UTAMA: Dapatkan Waktu Blok 30 Menit Saat Ini
+        // Contoh: 12:00 s/d 12:29 akan menghasilkan angka blok yang SAMA PERSIS
+        const timeBlock = Math.floor(Date.now() / (30 * 60 * 1000));
+        
+        // 2. Set Seed Generator menggunakan angka blok tersebut
+        globalSeed = timeBlock;
+        
+        // 3. Tentukan batas waktu asli (agar jam mundur stabil)
+        const baseTime = timeBlock * 30 * 60 * 1000;
+
         const data = [];
         for (let i = 0; i < count; i++) {
             const game = getRandomItemWeighted(LIVE_GAME_LIBRARY);
@@ -158,10 +173,12 @@
                 link: game.link, 
                 amount: generateJackpotAmount(),
                 user: generateUsername(),
-                date: generateDate()
+                date: generateDate(baseTime)
             });
         }
-        return data.sort(() => Math.random() - 0.5);
+        
+        // Acak posisinya menggunakan PRNG juga agar konsisten
+        return data.sort(() => prng() - 0.5);
     }
 
     // =========================================
@@ -352,16 +369,23 @@
         autoScroll();
 
         // =========================================
-        // LOGIKA AUTO-REFRESH (30 MENIT)
+        // LOGIKA AUTO-REFRESH TEPAT WAKTU (SINKRONISASI JAM)
+        // Mengecek setiap 1 Menit, jika blok 30-menitan berubah, render ulang.
         // =========================================
+        let currentBlock = Math.floor(Date.now() / (30 * 60 * 1000));
+        
         setInterval(() => {
-            const track = document.getElementById('jp-slider-track');
-            if (track) {
-                const newData = generateJackpotData(15);
-                let newHTML = newData.map(buildCardHTML).join('');
-                track.innerHTML = newHTML + newHTML;
+            const newBlock = Math.floor(Date.now() / (30 * 60 * 1000));
+            if (newBlock !== currentBlock) {
+                currentBlock = newBlock; // Update blok saat ini
+                const track = document.getElementById('jp-slider-track');
+                if (track) {
+                    const newData = generateJackpotData(15);
+                    let newHTML = newData.map(buildCardHTML).join('');
+                    track.innerHTML = newHTML + newHTML;
+                }
             }
-        }, 30 * 60 * 1000); 
+        }, 60000); // Check tiap 60 detik
 
         return true;
     }
