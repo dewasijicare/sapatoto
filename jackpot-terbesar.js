@@ -226,7 +226,7 @@
                     width: 100%; 
                     max-width: 1200px; /* Batas maksimal untuk Desktop */
                     margin: 0 auto 25px auto; /* Margin auto menempatkan widget tepat di tengah */
-                    padding: 0; 
+                    padding: 0 15px;
                     box-sizing: border-box;
                     font-family: 'Exo 2', sans-serif; 
                 }
@@ -396,3 +396,4 @@
     });
 
 })();
+
