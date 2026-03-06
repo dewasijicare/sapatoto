@@ -138,7 +138,7 @@
         }, 500);
     }
 
-    // 3. FUNGSI INJEKSI & SINKRONISASI LEBAR OTOMATIS
+    // 3. FUNGSI INJEKSI
     function injectTransactionsWidget() {
         const target = document.querySelector('#pintas-widget-wrapper');
         const existing = document.getElementById('sapatoto-recent-transactions');
@@ -188,18 +188,19 @@
 
             const cssHTML = `
                 <style>
-                    /* BUNGKUSAN LUAR: Jarak 15px Presisi */
+                    /* BUNGKUSAN LUAR: Lebar Pasti 1296px & Jarak Presisi */
                     #sapatoto-recent-transactions { 
                         width: 100%; 
-                        margin: -10px auto 15px auto !important; 
+                        max-width: 1296px !important; /* LEBAR DIKUNCI 1296PX */
+                        margin: 0 auto 15px auto !important; /* DIBUAT 0 AGAR TIDAK LEBIH/KURANG */
+                        padding: 0;
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif; 
-                        transition: max-width 0.3s ease; 
                     }
 
                     /* BUNGKUSAN DALAM */
                     .trx-inner-wrapper {
-                        padding: 0 8px; 
+                        padding: 0 8px; /* Memberi ruang agar sejajar dengan kolom */
                         width: 100%;
                         box-sizing: border-box;
                     }
@@ -274,11 +275,11 @@
                     .tx-table-header {
                         display: flex;
                         padding: 8px 15px;
-                        color: #ffffff !important; /* Tulisan putih terang */
+                        color: #ffffff !important;
                         font-weight: 900;
                         font-size: 0.8rem;
                         flex-shrink: 0;
-                        text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Supaya teks lebih jelas terbaca */
+                        text-shadow: 0 1px 2px rgba(0,0,0,0.5); 
                     }
 
                     /* Header Khusus Deposit */
@@ -339,10 +340,11 @@
                     /* ======================================= */
                     @media (max-width: 768px) {
                         #sapatoto-recent-transactions {
-                            padding: 0 15px !important; 
+                            max-width: 100% !important; /* LAYAR PENUH DI HP */
+                            padding: 0 !important; 
                         }
                         .trx-inner-wrapper {
-                            padding: 0 !important; 
+                            padding: 0 15px !important; /* PADDING AMAN HP */
                         }
                         .sapatoto-trx-flex {
                             gap: 15px; 
@@ -359,41 +361,6 @@
             
             renderTransactions();
             setInterval(refreshTransactions, 60000);
-
-            // --- FUNGSI SENSOR LEBAR PRESISI (AUTO-SYNC) ---
-            function syncExactWidth() {
-                const trxWidget = document.getElementById('sapatoto-recent-transactions');
-                
-                // JIKA DIBUKA DI HP: Beri padding 15px agar sejajar dan rapi
-                if (window.innerWidth <= 768) {
-                    if (trxWidget) {
-                        trxWidget.style.maxWidth = '100%';
-                        trxWidget.style.paddingLeft = '15px'; 
-                        trxWidget.style.paddingRight = '15px'; 
-                    }
-                    return;
-                }
-
-                // JIKA DIBUKA DI DESKTOP: Sinkronisasi dengan Lebar Kotak Togel
-                const referenceElement = document.querySelector('#row-togel'); 
-                if (trxWidget && referenceElement && referenceElement.parentElement) {
-                    const mainContainer = referenceElement.parentElement; 
-                    
-                    const exactWidth = mainContainer.getBoundingClientRect().width;
-                    const computedStyle = window.getComputedStyle(mainContainer);
-                    
-                    if (exactWidth > 0) {
-                        trxWidget.style.maxWidth = exactWidth + 'px';
-                        trxWidget.style.paddingLeft = computedStyle.paddingLeft;
-                        trxWidget.style.paddingRight = computedStyle.paddingRight;
-                    }
-                }
-            }
-
-            // Jalankan deteksi
-            setTimeout(syncExactWidth, 50);
-            setTimeout(syncExactWidth, 500); 
-            window.addEventListener('resize', syncExactWidth);
 
             return true;
         }
