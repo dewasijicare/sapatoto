@@ -30,12 +30,12 @@
 
                 <style>
                     /* ==============================================================
-                       BUNGKUSAN LUAR: LEBAR PASTI 1296PX DI TENGAH
+                       BUNGKUSAN LUAR: LEBAR 1296PX DENGAN JARAK PRESISI 15PX
                        ============================================================== */
                     #pintas-widget-wrapper {
                         width: 100%;
-                        max-width: 1296px !important; /* LEBAR DIKUNCI 1296PX */
-                        margin: 15px auto 25px auto !important; /* OTOMATIS DI TENGAH */
+                        max-width: 1296px !important; 
+                        margin: 0 auto 15px auto !important; /* KUNCI PERBAIKAN: Jarak bawah pas 15px, atas 0px */
                         padding: 0;
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif;
@@ -88,7 +88,7 @@
                        ======================================================= */
                     .pintas-content {
                         display: flex;
-                        flex-direction: row; /* Teks berjejer lurus menyamping di PC */
+                        flex-direction: row; 
                         flex-wrap: wrap; 
                         align-items: center;
                         justify-content: center;
@@ -165,8 +165,6 @@
 
             // INJEKSI: Meletakkan widget persis di ATAS area Togel/Jackpot 
             target.insertAdjacentHTML('beforebegin', widgetHTML);
-
-            // [HAPUS FUNGSI JS AUTO-SYNC KARENA SUDAH MENGGUNAKAN LEBAR PASTI 1296PX]
 
             return true;
         }
