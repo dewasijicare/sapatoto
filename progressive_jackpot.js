@@ -11,62 +11,104 @@
             --dark-bg: #1a252f;
         }
 
-        /* --- PERBAIKAN LEBAR PRESISI PIXEL-PERFECT (SAMA DENGAN TOGEL) --- */
-        .jackpot-container-main {
-            font-family: 'Exo 2', sans-serif !important; 
-            text-align: center;
-            position: relative;
-            margin: 0 0 25px 0 !important; /* Margin direset agar 100% rata kiri kanan */
+        /* ==============================================================
+           BUNGKUSAN LUAR & DALAM UNTUK PRESISI LEBAR AUTO-SYNC
+           ============================================================== */
+        #jackpot-outer-wrapper {
+            width: 100%;
+            margin: 0 auto 25px auto !important;
+            padding: 0 !important; /* Dibiarkan 0 agar disuntik JS */
+            box-sizing: border-box;
+            transition: max-width 0.3s ease;
+            font-family: 'Exo 2', sans-serif !important;
             z-index: 50;
-            padding: 0 8px !important; /* KUNCI: 8px adalah ukuran gutter g-3 Togel */
-            box-sizing: border-box !important;
-            width: 100% !important;
-            max-width: 100% !important; /* Membiarkan lebar mengikuti sisa ruang kontainer penuh */
+            position: relative;
         }
 
-        /* Border Animasi (Denyutan Pink & Ungu Sapatoto) */
+        .jackpot-inner-spacing {
+            padding: 0 8px; /* Rumus sejajar 8px untuk PC */
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* ==============================================================
+           BORDER KOTAK JACKPOT: DITIPISKAN (1px) & SIKU TAJAM (4px)
+           ============================================================== */
         .jackpot-animated-border {
             position: relative;
-            border-radius: 15px; /* Lengkungan disamakan dengan widget lain */
-            padding: 3px; /* Ketebalan border gradient */
+            border-radius: 4px !important; /* SIKU 4PX */
+            padding: 1px; /* KETEBALAN BORDER DIKURANGI MENJADI 1PX */
             width: 100%;
-            
-            /* Background dasar sebelum di-masking oleh inner box */
             background: linear-gradient(45deg, var(--neon-pink-dark), var(--neon-purple-dark));
-            
             animation: borderPulseSapatoto 2s ease-in-out infinite alternate;
             box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
         }
 
         @keyframes borderPulseSapatoto {
-            0% { 
-                box-shadow: 0 0 10px rgba(236, 72, 153, 0.6), 0 0 20px rgba(236, 72, 153, 0.4);
-                filter: hue-rotate(0deg);
-            }
-            100% { 
-                box-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 30px rgba(168, 85, 247, 0.6);
-                filter: hue-rotate(30deg); 
-            }
+            0% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); filter: hue-rotate(0deg); }
+            100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); filter: hue-rotate(30deg); }
         }
 
-        /* Kotak konten utama Jackpot (Panel LED Gelap) */
+        /* Kotak konten utama Jackpot */
         .jackpot-display-box-content {
             display: flex;
             flex-direction: column; 
             justify-content: center;
             align-items: center;
             background-color: var(--dark-bg); 
-            border-radius: 12px; 
+            border-radius: 3px !important; /* Sedikit lebih kecil dari border luar */
             min-height: 90px;
             position: relative;
             padding: 20px 15px; 
             z-index: 2;
             width: 100%;
             box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
-
-            /* Background Dot-Matrix dengan hint Pink Gelap (Efek Panel LED Premium) */
             background-image: radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.15) 1px, transparent 0);
             background-size: 4px 4px;
+            overflow: hidden; /* Mencegah efek cahaya keluar batas */
+        }
+
+        /* ==============================================================
+           ✨ EFEK PREMIUM 1: SAPUAN CAHAYA MENGKILAP (GLASS SHINE)
+           ============================================================== */
+        .jackpot-shine {
+            position: absolute;
+            top: 0; left: -150%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg);
+            animation: shineSweeper 5s infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes shineSweeper {
+            0% { left: -150%; }
+            15% { left: 200%; } /* Lewat cepat di awal */
+            100% { left: 200%; } /* Jeda lama sebelum mengulang */
+        }
+
+        /* ==============================================================
+           ✨ EFEK PREMIUM 2: PARTIKEL API NEON (SPARKS) MELAYANG
+           ============================================================== */
+        .jackpot-spark {
+            position: absolute;
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            opacity: 0;
+            z-index: 1;
+            animation: floatUp 4s infinite linear;
+        }
+        .spark-1 { left: 15%; animation-delay: 0s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+        .spark-2 { left: 35%; animation-delay: 1.5s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+        .spark-3 { left: 65%; animation-delay: 2.2s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+        .spark-4 { left: 85%; animation-delay: 0.8s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+
+        @keyframes floatUp {
+            0% { bottom: -10px; opacity: 0; transform: scale(0.5); }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { bottom: 100%; opacity: 0; transform: scale(1.2); }
         }
         
         /* Judul Jackpot */
@@ -81,9 +123,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 5;
+            position: relative;
         }
 
-        /* Ikon Trophy (Warna Pink/Ungu Neon) */
+        /* Ikon Trophy */
         .jackpot-main-title i {
             font-size: 1.3rem;
             margin-right: 10px;
@@ -97,7 +141,7 @@
             100% { opacity: 1; transform: scale(1.05); text-shadow: 0 0 15px var(--neon-purple), 0 0 25px var(--neon-pink); }
         }
 
-        /* Teks Judul yang Berjalan (Gradient Pink - Putih - Ungu) */
+        /* Teks Judul yang Berjalan */
         .jackpot-animated-text {
             background: linear-gradient(90deg, #fff, var(--neon-pink), var(--neon-purple), #fff);
             background-size: 300% 100%;
@@ -112,7 +156,7 @@
             100% { background-position: 300% 50%; }
         }
 
-        /* Angka Jackpot dengan Font Digital Aldrich & Glow Sapatoto */
+        /* Angka Jackpot */
         .jackpot-value-final {
             font-family: 'Aldrich', sans-serif !important;
             color: #fff; 
@@ -120,58 +164,32 @@
             font-weight: 400; 
             line-height: 1.1;
             letter-spacing: 2px; 
-            
-            /* Efek Glow Pink & Ungu yang Tajam */
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px var(--neon-pink), 
-                0 0 20px var(--neon-pink-dark),
-                0 0 40px var(--neon-purple); 
-            
+            text-shadow: 0 0 5px #fff, 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink-dark), 0 0 40px var(--neon-purple); 
             white-space: nowrap;
             animation: textGlowSapatoto 1.5s ease-in-out infinite alternate;
+            z-index: 5;
+            position: relative;
         }
 
         @keyframes textGlowSapatoto {
-            0% { 
-                opacity: 0.9; 
-                text-shadow: 0 0 5px #fff, 0 0 10px var(--neon-purple), 0 0 20px var(--neon-pink-dark);
-            }
-            100% { 
-                opacity: 1; 
-                text-shadow: 0 0 8px #fff, 0 0 15px var(--neon-pink), 0 0 30px var(--neon-purple), 0 0 50px var(--neon-pink-dark);
-            }
+            0% { opacity: 0.9; text-shadow: 0 0 5px #fff, 0 0 10px var(--neon-purple), 0 0 20px var(--neon-pink-dark); }
+            100% { opacity: 1; text-shadow: 0 0 8px #fff, 0 0 15px var(--neon-pink), 0 0 30px var(--neon-purple), 0 0 50px var(--neon-pink-dark); }
         }
 
         /* Responsive Desktop */
         @media (min-width: 992px) {
-            .jackpot-value-final {
-                font-size: 3.8rem; /* Font sedikit dibesarkan agar seimbang dengan box yang sangat lebar */
-                letter-spacing: 5px;
-            }
-            .jackpot-main-title {
-                font-size: 1.4rem;
-            }
-            .jackpot-main-title i {
-                font-size: 1.6rem;
-            }
+            .jackpot-value-final { font-size: 3.8rem; letter-spacing: 5px; }
+            .jackpot-main-title { font-size: 1.4rem; }
+            .jackpot-main-title i { font-size: 1.6rem; }
         }
 
-        /* Responsive Mobile: Tetap mempertahankan 8px padding */
+        /* Responsive Mobile / HP */
         @media (max-width: 768px) {
-            .jackpot-container-main {
-                padding: 0 8px !important; 
-            }
-            .jackpot-value-final {
-                font-size: 7.5vw; 
-                letter-spacing: 0.5vw;
-            }
-            .jackpot-main-title {
-                font-size: 1rem;
-            }
-            .jackpot-main-title i {
-                font-size: 1.1rem;
-            }
+            #jackpot-outer-wrapper { padding: 0 !important; }
+            .jackpot-inner-spacing { padding: 0 15px !important; } 
+            .jackpot-value-final { font-size: 7.5vw; letter-spacing: 0.5vw; }
+            .jackpot-main-title { font-size: 1rem; }
+            .jackpot-main-title i { font-size: 1.1rem; }
         }
     `;
 
@@ -207,11 +225,11 @@
         setInterval(updateJackpotValue, updateInterval);
     }
 
-    // --- 3. FUNGSI UNTUK MENYISIPKAN HTML ---
+    // --- 3. FUNGSI UNTUK MENYISIPKAN HTML & AUTO-SYNC ---
     function injectJackpotHTMLFinal() {
         const targetElement = document.getElementById('row-togel');
         
-        if (document.querySelector('.jackpot-container-main')) {
+        if (document.getElementById('jackpot-outer-wrapper')) {
             return;
         }
 
@@ -221,14 +239,22 @@
         }
 
         const jackpotHTMLFinal = `
-            <div class="jackpot-container-main">
-                <div class="jackpot-animated-border">
-                    <div class="jackpot-display-box-content">
-                        <div class="jackpot-main-title">
-                            <i class="bi bi-trophy-fill"></i>
-                            <span class="jackpot-animated-text">PROGRESSIVE JACKPOTS</span>
+            <div id="jackpot-outer-wrapper">
+                <div class="jackpot-inner-spacing">
+                    <div class="jackpot-animated-border">
+                        <div class="jackpot-display-box-content">
+                            <div class="jackpot-shine"></div>
+                            <div class="jackpot-spark spark-1"></div>
+                            <div class="jackpot-spark spark-2"></div>
+                            <div class="jackpot-spark spark-3"></div>
+                            <div class="jackpot-spark spark-4"></div>
+                            
+                            <div class="jackpot-main-title">
+                                <i class="bi bi-trophy-fill"></i>
+                                <span class="jackpot-animated-text">PROGRESSIVE JACKPOTS</span>
+                            </div>
+                            <div id="dynamic-jackpot-value-final" class="jackpot-value-final">IDR 32.462.646.763</div>
                         </div>
-                        <div id="dynamic-jackpot-value-final" class="jackpot-value-final">IDR 32.462.646.763</div>
                     </div>
                 </div>
             </div>
@@ -236,6 +262,40 @@
 
         targetElement.insertAdjacentHTML('beforebegin', jackpotHTMLFinal);
         startDynamicJackpotCounterFinal();
+
+        // ==========================================================
+        // FUNGSI SENSOR PRESISI (Sama persis dengan Transaksi & Pintas)
+        // ==========================================================
+        function syncJackpotWidth() {
+            var jackpotWidget = document.getElementById('jackpot-outer-wrapper');
+            
+            if (window.innerWidth <= 768) {
+                if (jackpotWidget) {
+                    jackpotWidget.style.maxWidth = '100%';
+                    jackpotWidget.style.paddingLeft = '0px';
+                    jackpotWidget.style.paddingRight = '0px';
+                }
+                return;
+            }
+
+            var referenceElement = document.querySelector('#row-togel'); 
+            if (jackpotWidget && referenceElement && referenceElement.parentElement) {
+                var mainContainer = referenceElement.parentElement; 
+                var exactWidth = mainContainer.getBoundingClientRect().width;
+                var computedStyle = window.getComputedStyle(mainContainer);
+                
+                if (exactWidth > 0) {
+                    jackpotWidget.style.maxWidth = exactWidth + 'px';
+                    jackpotWidget.style.paddingLeft = computedStyle.paddingLeft;
+                    jackpotWidget.style.paddingRight = computedStyle.paddingRight;
+                }
+            }
+        }
+
+        // Jalankan sinkronisasi lebar
+        setTimeout(syncJackpotWidth, 50);
+        setInterval(syncJackpotWidth, 1000); 
+        window.addEventListener('resize', syncJackpotWidth);
     }
 
     // --- 4. EKSEKUSI ---
