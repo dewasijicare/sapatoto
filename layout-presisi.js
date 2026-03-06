@@ -1,17 +1,7 @@
 (function() {
     const layoutPresisiStyles = `
         /* ==============================================================
-           1. KUNCI RAHASIA: MEMAKSA SEMUA FOLDER MENJADI 1214PX
-           ============================================================== */
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1214px !important;
-                width: 1214px !important;
-            }
-        }
-
-        /* ==============================================================
-           2. HEADER MENU: TEKNIK GHOST WRAPPER (ANTI PANJANG)
+           1. HEADER MENU: TEKNIK GHOST WRAPPER (PRESISI 1174PX)
            ============================================================== */
         /* Membuat bungkus luar menjadi transparan & tidak memblokir klik */
         #navbar-top-wrapper.fixed-top {
@@ -21,13 +11,13 @@
             pointer-events: none !important; 
         }
 
-        /* Memotong Menu Dalam persis di 1214px dan ditaruh di tengah */
+        /* Memotong Menu Dalam persis di 1174px (Menyesuaikan potong 40px padding) */
         #navbar-top {
-            max-width: 1214px !important;
+            max-width: 1174px !important; /* UKURAN SUPER AKURAT */
             width: 100% !important;
             margin: 0 auto !important;
-            pointer-events: auto !important; /* Kembalikan fungsi klik di area ini */
-            border-radius: 0 0 4px 4px !important; /* Tambahkan sedikit siku bawah agar manis */
+            pointer-events: auto !important; /* Kembalikan fungsi klik */
+            border-radius: 0 0 4px 4px !important; /* Sedikit siku bawah */
         }
 
         /* Melindungi Menu Bawah (Mobile) agar tidak error */
@@ -36,11 +26,11 @@
         }
 
         /* ==============================================================
-           3. BANNER SLIDER: TEKNIK BUNGKUS KOTAK (BOXED) TINGGI 600PX
+           2. BANNER SLIDER: KOTAK PRESISI (1174PX)
            ============================================================== */
-        /* Ini adalah class pembungkus baru yang disuntikkan via JS */
+        /* Bungkus baru untuk Banner Slider mengikuti lebar 1174px */
         .sapatoto-banner-wrapper {
-            max-width: 1214px !important;
+            max-width: 1174px !important; /* UKURAN SUPER AKURAT */
             margin: 0 auto 15px auto !important; /* Posisi tengah, jarak bawah 15px */
             padding: 0 !important;
             display: block !important;
@@ -71,7 +61,7 @@
         }
 
         /* ==============================================================
-           4. RESPONSIVE MOBILE / HP (KEMBALI 100%)
+           3. RESPONSIVE MOBILE / HP (KEMBALI 100%)
            ============================================================== */
         @media (max-width: 768px) {
             #navbar-top-wrapper.fixed-top { pointer-events: auto !important; }
@@ -87,7 +77,7 @@
     `;
 
     function injectCSS() {
-        const id = 'sapatoto-layout-presisi-vFINAL';
+        const id = 'sapatoto-layout-presisi-v1174';
         if (document.getElementById(id)) return;
         const styleElement = document.createElement('style');
         styleElement.id = id;
@@ -97,19 +87,19 @@
     injectCSS();
 
     // ==============================================================
-    // 5. DOM MANIPULATION: MEMBUNGKUS BANNER KE DALAM KOTAK PRESISI
+    // 4. DOM MANIPULATION: MEMBUNGKUS BANNER
     // ==============================================================
     function applyBoxedStructure() {
         if (window.innerWidth <= 768) return; 
 
-        // Bungkus Banner Slider agar patuh pada 1214px
+        // Bungkus Banner Slider agar patuh pada 1174px
         const slider = document.getElementById('main-slider') || document.querySelector('.carousel');
         if (slider && slider.parentNode) {
-            // Cek apakah banner sudah kita bungkus sebelumnya
             if (!slider.parentNode.classList.contains('sapatoto-banner-wrapper')) {
                 const wrapper = document.createElement('div');
-                // Beri class 'container' agar ukurannya otomatis dikunci oleh Bootstrap & CSS kita di atas
-                wrapper.className = 'container sapatoto-banner-wrapper p-0'; 
+                
+                // Gunakan class wrapper buatan kita sendiri (tanpa bawaan container website)
+                wrapper.className = 'sapatoto-banner-wrapper'; 
                 
                 // Pindahkan slider ke dalam kotak pelindung ini
                 slider.parentNode.insertBefore(wrapper, slider);
