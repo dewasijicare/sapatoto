@@ -1,14 +1,7 @@
 (function() {
     // 1. GENERATOR DATA PINTAR & NATURAL
-
     function getRandomUsername() {
-        const prefixes = [
-            'and','bud','cit','dew','eko','fit','gil','hen','iwa','jok','kev','luk','mar','nov','put','riz','sat','tri','vin','wid','yan','zul',
-            'agu','bag','cah','dim','end','far','gun','had','ind','jam','kar','les','mah','nur','oka','pan','rah','sur','teg','unt','wah','yud',
-            'bos','bro','pak','mas','mbk','cak','ban','jur','boy','roy','joy','coy','sob','gan','suh','dik','kak',
-            'sri','ayu','rat','sus','lin','tin','des','mel','lia','nia','mia','tia','ria','fia','kia','cia','yul','wul',
-            'hok','vip','pro','top','win','max','jpx','gac','hky','cpt'
-        ];
+        const prefixes = ['and','bud','cit','dew','eko','fit','gil','hen','iwa','jok','kev','luk','mar','nov','put','riz','sat','tri','vin','wid','yan','zul','agu','bag','cah','dim','end','far','gun','had','ind','jam','kar','les','mah','nur','oka','pan','rah','sur','teg','unt','wah','yud','bos','bro','pak','mas','mbk','cak','ban','jur','boy','roy','joy','coy','sob','gan','suh','dik','kak','sri','ayu','rat','sus','lin','tin','des','mel','lia','nia','mia','tia','ria','fia','kia','cia','yul','wul','hok','vip','pro','top','win','max','jpx','gac','hky','cpt'];
         let base = prefixes[Math.floor(Math.random() * prefixes.length)];
         const caseType = Math.floor(Math.random() * 3);
         if (caseType === 0) base = base.toUpperCase();
@@ -41,51 +34,21 @@
 
     function getDepositAmount() {
         const prob = Math.random();
-        if (prob < 0.60) {
-            const amounts = [10000, 20000, 25000, 50000, 50000, 50000, 100000, 100000];
-            return amounts[Math.floor(Math.random() * amounts.length)];
-        } else if (prob < 0.85) {
-            const amounts = [150000, 200000, 250000, 300000, 500000, 500000, 750000, 1000000];
-            return amounts[Math.floor(Math.random() * amounts.length)];
-        } else if (prob < 0.95) {
-            const amounts = [1200000, 1500000, 1800000, 2000000];
-            return amounts[Math.floor(Math.random() * amounts.length)];
-        } else {
-            const millions = Math.floor(Math.random() * 18) + 3;
-            const isHalf = Math.random() > 0.5 ? 500000 : 0;
-            let result = (millions * 1000000) + isHalf;
-            if (result > 20000000) result = 20000000;
-            return result;
-        }
+        if (prob < 0.60) { const amounts = [10000, 20000, 25000, 50000, 50000, 50000, 100000, 100000]; return amounts[Math.floor(Math.random() * amounts.length)]; } 
+        else if (prob < 0.85) { const amounts = [150000, 200000, 250000, 300000, 500000, 500000, 750000, 1000000]; return amounts[Math.floor(Math.random() * amounts.length)]; } 
+        else if (prob < 0.95) { const amounts = [1200000, 1500000, 1800000, 2000000]; return amounts[Math.floor(Math.random() * amounts.length)]; } 
+        else { const millions = Math.floor(Math.random() * 18) + 3; const isHalf = Math.random() > 0.5 ? 500000 : 0; let result = (millions * 1000000) + isHalf; if (result > 20000000) result = 20000000; return result; }
     }
 
     function getWithdrawAmount() {
         const prob = Math.random();
-        if (prob < 0.50) {
-            const amounts = [100000, 150000, 200000, 250000, 300000, 500000, 750000, 1000000, 1500000, 2000000, 3000000];
-            return amounts[Math.floor(Math.random() * amounts.length)];
-        } else if (prob < 0.85) {
-            const millions = Math.floor(Math.random() * 5);
-            const thousands = Math.floor(Math.random() * 999) + 1;
-            let result = (millions * 1000000) + (thousands * 1000);
-            if (result < 100000) result += 150000;
-            return result;
-        } else if (prob < 0.95) {
-            const millions = Math.floor(Math.random() * 11) + 5;
-            const isUnique = Math.random() > 0.5;
-            const extra = isUnique ? (Math.floor(Math.random() * 99) + 1) * 10000 : 0; 
-            return (millions * 1000000) + extra;
-        } else {
-            const millions = Math.floor(Math.random() * 61) + 20;
-            const isUnique = Math.random() > 0.7;
-            const extra = isUnique ? (Math.floor(Math.random() * 99) + 1) * 100000 : 0; 
-            return (millions * 1000000) + extra;
-        }
+        if (prob < 0.50) { const amounts = [100000, 150000, 200000, 250000, 300000, 500000, 750000, 1000000, 1500000, 2000000, 3000000]; return amounts[Math.floor(Math.random() * amounts.length)]; } 
+        else if (prob < 0.85) { const millions = Math.floor(Math.random() * 5); const thousands = Math.floor(Math.random() * 999) + 1; let result = (millions * 1000000) + (thousands * 1000); if (result < 100000) result += 150000; return result; } 
+        else if (prob < 0.95) { const millions = Math.floor(Math.random() * 11) + 5; const isUnique = Math.random() > 0.5; const extra = isUnique ? (Math.floor(Math.random() * 99) + 1) * 10000 : 0; return (millions * 1000000) + extra; } 
+        else { const millions = Math.floor(Math.random() * 61) + 20; const isUnique = Math.random() > 0.7; const extra = isUnique ? (Math.floor(Math.random() * 99) + 1) * 100000 : 0; return (millions * 1000000) + extra; }
     }
 
-    function formatIDR(angka) {
-        return "Rp " + new Intl.NumberFormat('id-ID').format(angka);
-    }
+    function formatIDR(angka) { return "Rp " + new Intl.NumberFormat('id-ID').format(angka); }
 
     // 2. FUNGSI PEMBUAT BARIS & ANIMASI
     function renderTransactions() {
@@ -93,8 +56,7 @@
         const wdList = document.getElementById('sapatoto-wd-list');
         if (!depList || !wdList) return;
 
-        const deps = [];
-        const wds = [];
+        const deps = []; const wds = [];
         for (let i = 0; i < 20; i++) {
             deps.push({ user: getRandomUsername(), amount: getDepositAmount(), time: generateNaturalDate(i * 2) });
             wds.push({ user: getRandomUsername(), amount: getWithdrawAmount(), time: generateNaturalDate(i * 3) });
@@ -103,25 +65,11 @@
         const buildRow = (item, type) => {
             const amountClass = type === 'deposit' ? 'tx-deposit' : 'tx-withdraw';
             const iconColor = type === 'deposit' ? '#ec4899' : '#a855f7'; 
-            
-            return `
-                <div class="tx-item">
-                    <div class="tx-col-user"><i class="bi bi-person-circle me-1" style="color:${iconColor} !important;"></i><span class="fw-bold text-light">${item.user}</span></div>
-                    <div class="tx-col-time"><i class="bi bi-clock"></i> ${item.time}</div>
-                    <div class="tx-col-amount ${amountClass}">${formatIDR(item.amount)}</div>
-                </div>
-            `;
+            return `<div class="tx-item"><div class="tx-col-user"><i class="bi bi-person-circle me-1" style="color:${iconColor} !important;"></i><span class="fw-bold text-light">${item.user}</span></div><div class="tx-col-time"><i class="bi bi-clock"></i> ${item.time}</div><div class="tx-col-amount ${amountClass}">${formatIDR(item.amount)}</div></div>`;
         };
 
-        const generateHTML = (arr, type) => {
-            let html = '';
-            arr.forEach(item => html += buildRow(item, type));
-            arr.forEach(item => html += buildRow(item, type)); 
-            return html;
-        };
-
-        depList.innerHTML = generateHTML(deps, 'deposit');
-        wdList.innerHTML = generateHTML(wds, 'withdraw');
+        const generateHTML = (arr, type) => { let html = ''; arr.forEach(item => html += buildRow(item, type)); arr.forEach(item => html += buildRow(item, type)); return html; };
+        depList.innerHTML = generateHTML(deps, 'deposit'); wdList.innerHTML = generateHTML(wds, 'withdraw');
     }
 
     function refreshTransactions() {
@@ -129,16 +77,11 @@
         lists.forEach(el => el.style.opacity = '0'); 
         setTimeout(() => {
             renderTransactions(); 
-            lists.forEach(el => {
-                el.style.animation = 'none';
-                el.offsetHeight; 
-                el.style.animation = null; 
-                el.style.opacity = '1'; 
-            });
+            lists.forEach(el => { el.style.animation = 'none'; el.offsetHeight; el.style.animation = null; el.style.opacity = '1'; });
         }, 500);
     }
 
-    // 3. FUNGSI INJEKSI
+    // 3. FUNGSI INJEKSI DENGAN PONDASI BETON
     function injectTransactionsWidget() {
         const target = document.querySelector('#pintas-widget-wrapper');
         const existing = document.getElementById('sapatoto-recent-transactions');
@@ -148,39 +91,20 @@
                 <div id="sapatoto-recent-transactions">
                     <div class="trx-inner-wrapper">
                         <div class="sapatoto-trx-flex">
-                            
                             <div class="trx-column">
                                 <div class="tx-card tx-card-deposit d-flex flex-column">
-                                    <div class="tx-header border-pink">
-                                        <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> LIVE DEPOSIT
-                                    </div>
-                                    <div class="tx-table-header header-pink">
-                                        <div class="tx-col-user">USER</div>
-                                        <div class="tx-col-time" style="text-align:center;">WAKTU</div>
-                                        <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
-                                    </div>
-                                    <div class="tx-body flex-grow-1">
-                                        <div class="tx-marquee" id="sapatoto-dep-list"></div>
-                                    </div>
+                                    <div class="tx-header border-pink"><i class="bi bi-box-arrow-in-down tx-icon-pink"></i> LIVE DEPOSIT</div>
+                                    <div class="tx-table-header header-pink"><div class="tx-col-user">USER</div><div class="tx-col-time" style="text-align:center;">WAKTU</div><div class="tx-col-amount" style="text-align:right;">NOMINAL</div></div>
+                                    <div class="tx-body flex-grow-1"><div class="tx-marquee" id="sapatoto-dep-list"></div></div>
                                 </div>
                             </div>
-
                             <div class="trx-column">
                                 <div class="tx-card tx-card-withdraw d-flex flex-column">
-                                    <div class="tx-header border-purple">
-                                        <i class="bi bi-cash-coin tx-icon-purple"></i> LIVE WITHDRAW
-                                    </div>
-                                    <div class="tx-table-header header-purple">
-                                        <div class="tx-col-user">USER</div>
-                                        <div class="tx-col-time" style="text-align:center;">WAKTU</div>
-                                        <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
-                                    </div>
-                                    <div class="tx-body flex-grow-1">
-                                        <div class="tx-marquee" id="sapatoto-wd-list"></div>
-                                    </div>
+                                    <div class="tx-header border-purple"><i class="bi bi-cash-coin tx-icon-purple"></i> LIVE WITHDRAW</div>
+                                    <div class="tx-table-header header-purple"><div class="tx-col-user">USER</div><div class="tx-col-time" style="text-align:center;">WAKTU</div><div class="tx-col-amount" style="text-align:right;">NOMINAL</div></div>
+                                    <div class="tx-body flex-grow-1"><div class="tx-marquee" id="sapatoto-wd-list"></div></div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -188,23 +112,18 @@
 
             const cssHTML = `
                 <style>
-                    /* ==============================================================
-                       BUNGKUSAN LUAR: PONDASI ANTI-TERTIMPA
-                       ============================================================== */
+                    /* PONDASI BETON ANTI-TERTIMPA */
                     #sapatoto-recent-transactions { 
-                        width: 100%; 
+                        width: 100% !important; 
                         max-width: 1296px !important; 
                         margin: 0 auto 15px auto !important; 
-                        padding: 0;
-                        box-sizing: border-box;
-                        font-family: 'Exo 2', sans-serif; 
-                        
-                        /* PONDASI BETON ANTI-OVERLAP */
-                        display: block !important;
-                        clear: both !important;
-                        position: relative;
-                        z-index: 20;
-                        overflow: hidden;
+                        padding: 0 !important;
+                        box-sizing: border-box !important;
+                        display: block !important;    /* WAJIB BLOCK */
+                        clear: both !important;       /* MENCEGAH FLOAT MENYUSUP */
+                        overflow: hidden !important;  /* MEMOTONG TUMPANGAN DARI BAWAH */
+                        min-height: 250px !important; /* MEMAKSA RUANG MINIMAL TERSEDIA */
+                        position: relative !important;
                     }
 
                     .trx-inner-wrapper { padding: 0 8px; width: 100%; box-sizing: border-box; }
@@ -256,7 +175,6 @@
             
             renderTransactions();
             setInterval(refreshTransactions, 60000);
-
             return true;
         }
         return false;
@@ -265,5 +183,4 @@
     const checkInterval = setInterval(() => {
         if (injectTransactionsWidget()) clearInterval(checkInterval);
     }, 500);
-
 })();
