@@ -1,10 +1,13 @@
 (function() {
     // CSS untuk styling announcement (TEMA SAPATOTO: DARK, NEON PINK & PURPLE)
     const announcementStyles = `
-        /* BUNGKUSAN LUAR: Akan disinkronkan ukurannya oleh JS mengikuti kerangka web (Tombol & Pintas) */
+        /* ==============================================================
+           BUNGKUSAN LUAR: LEBAR PASTI 1296PX & POSISI TENGAH
+           ============================================================== */
         #announcement-outer-wrapper {
             width: 100%;
-            margin: 15px auto 15px auto !important;
+            max-width: 1296px !important; /* LEBAR DIKUNCI 1296PX */
+            margin: 15px auto 15px auto !important; /* OTOMATIS DI TENGAH */
             padding: 0; 
             box-sizing: border-box;
             transition: max-width 0.3s ease;
@@ -34,16 +37,14 @@
             box-sizing: border-box !important;
         }
 
-        /* ==========================================================
-           [UBAHAN BARU] ICON NOTICE BERWARNA UNGU NEON & GLOW UNGU
-           ========================================================== */
+        /* ICON NOTICE BERWARNA UNGU NEON & GLOW UNGU */
         #announcement.gavan-themed-announcement i.fa-solid.fa-bullhorn,
         #announcement.gavan-themed-announcement i.bi-megaphone {
             color: #a855f7 !important; /* Ungu Sapatoto */
             text-shadow: 0 0 8px #a855f7;
             margin-right: 12px;
             font-size: 1.2em;
-            animation: pulse-glow-purple 2s infinite ease-in-out; /* Menggunakan animasi glow ungu */
+            animation: pulse-glow-purple 2s infinite ease-in-out; 
             flex-shrink: 0;
         }
 
@@ -62,9 +63,9 @@
             50% { transform: scale(1.1); text-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 25px rgba(147, 51, 234, 0.6); }
         }
 
-        /* PERLINDUNGAN MOBILE / HP */
+        /* PERLINDUNGAN MOBILE / HP: KEMBALI 100% LEBAR LAYAR */
         @media (max-width: 768px) {
-            #announcement-outer-wrapper { padding: 0 !important; margin: 10px auto 10px auto !important; }
+            #announcement-outer-wrapper { max-width: 100% !important; margin: 10px auto 10px auto !important; padding: 0 !important; }
             .announcement-inner-spacing { padding: 0 15px !important; } /* Jarak aman tepi HP */
             #announcement.gavan-themed-announcement { border-radius: 4px !important; padding: 8px 15px !important; }
         }
@@ -84,7 +85,7 @@
 
         let moved = false; 
 
-        // Membuat pembungkus ganda (seperti tombol dan pintas widget)
+        // Membuat pembungkus ganda 
         const outerWrapper = document.createElement('div');
         outerWrapper.id = 'announcement-outer-wrapper';
         const innerSpacing = document.createElement('div');
@@ -121,39 +122,6 @@
         }
     }
 
-    // ==========================================================
-    // FUNGSI SENSOR PRESISI (Sama persis dengan sapatoto.js)
-    // ==========================================================
-    function syncAnnouncementWidth() {
-        var outerWrapper = document.getElementById('announcement-outer-wrapper');
-        
-        // Di layar HP: Biarkan CSS yang mengatur agar terlindungi
-        if (window.innerWidth <= 768) {
-            if (outerWrapper) {
-                outerWrapper.style.maxWidth = '100%';
-                outerWrapper.style.paddingLeft = '0px';
-                outerWrapper.style.paddingRight = '0px';
-            }
-            return;
-        }
-
-        // Di layar PC: Sensor ukuran kerangka utama website
-        var referenceElement = document.querySelector('#row-togel');
-        
-        if (outerWrapper && referenceElement && referenceElement.parentElement) {
-            var mainContainer = referenceElement.parentElement;
-            var exactWidth = mainContainer.getBoundingClientRect().width;
-            var computedStyle = window.getComputedStyle(mainContainer);
-            
-            if (exactWidth > 0) {
-                // Tarik Running Text agar lebarnya 100% mengikuti batas tombol di bawahnya
-                outerWrapper.style.maxWidth = exactWidth + 'px';
-                outerWrapper.style.paddingLeft = computedStyle.paddingLeft;
-                outerWrapper.style.paddingRight = computedStyle.paddingRight;
-            }
-        }
-    }
-
     // Fungsi untuk inject CSS ke head
     function injectStyles() {
         if (document.getElementById('gavan-announcement-styles')) return;
@@ -176,17 +144,13 @@
         });
 
         observer.observe(document.body, { childList: true, subtree: true });
-
-        // Aktifkan Sensor Auto-Sync (Cek setiap setengah detik)
-        setTimeout(syncAnnouncementWidth, 50);
-        setInterval(syncAnnouncementWidth, 500);
-        window.addEventListener('resize', syncAnnouncementWidth);
+        
+        // FUNGSI SENSOR AUTO-SYNC DIHAPUS KARENA SUDAH MENGGUNAKAN LEBAR PASTI 1296PX
     });
 
     if (document.readyState === 'complete') {
          injectStyles();
          moveAndStyleAnnouncementConditional();
-         setTimeout(syncAnnouncementWidth, 50);
     }
 
 })();
