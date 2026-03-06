@@ -53,7 +53,7 @@
     }
 
     // =========================================
-    // FUNGSI 1: AUTO-SCRAPE DARI RTP 
+    // FUNGSI 1: AUTO-SCRAPE DENGAN FILTER ANTI-LOGO
     // =========================================
     async function fetchGamesFromRTP() {
         try {
@@ -75,6 +75,17 @@
                     if (link.includes('javascript:') || link.endsWith('#') || link === window.location.href || link.includes('/slots')) {
                         link = '/game?category=101'; 
                     }
+
+                    // --- FILTER LOGIKA ANTI-LOGO PROVIDER ---
+                    let checkText = (name + " " + imgUrl).toLowerCase();
+                    let isProviderLogo = false;
+                    
+                    // Jika nama atau URL mengandung indikasi kuat bahwa ini adalah gambar banner/logo provider
+                    if (checkText.includes('logo') || checkText.includes('provider') || checkText.includes('banner')) isProviderLogo = true;
+                    if (name.toLowerCase().trim() === 'pragmatic play' || name.toLowerCase().trim() === 'pg soft' || name.toLowerCase().trim() === 'habanero' || name.toLowerCase().trim() === 'joker') isProviderLogo = true;
+                    
+                    // Buang jika ini terdeteksi sebagai logo provider
+                    if (isProviderLogo) return;
 
                     let provider = detectProvider(name, imgUrl, link);
                     let existingVip = LIVE_GAME_LIBRARY.find(g => g.name.toLowerCase().trim() === name.toLowerCase().trim());
@@ -168,7 +179,7 @@
     }
 
     // =========================================
-    // FUNGSI 3: RENDER HTML & CSS
+    // FUNGSI 3: RENDER HTML & CSS (DENGAN AUTO-SYNC)
     // =========================================
     
     const fallbackImageBase64 = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWEyNTJmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlYzQ4OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNMT1Q8L3RleHQ+PC9zdmc+";
@@ -197,21 +208,26 @@
 
     function injectWidget() {
         const target = document.querySelector(TARGET_SELECTOR);
-        if (!target || document.getElementById(WIDGET_ID)) return false;
+        if (!target || document.getElementById(`${WIDGET_ID}-wrapper`)) return false;
 
         const data = generateJackpotData(15); 
         let cardsHTML = data.map(buildCardHTML).join('');
         cardsHTML += cardsHTML; 
 
+        // Penambahan Wrapper Khusus untuk Auto-Sync Lebar Presisi
         const widgetHTML = `
-            <div id="${WIDGET_ID}">
-                <div class="sapatoto-jp-wrapper">
-                    <div class="jp-header">
-                        <h4><i class="bi bi-trophy-fill" style="color: #f1c40f;"></i> JACKPOT TERBESAR HARI INI</h4>
-                    </div>
-                    <div class="jp-slider-container" id="jp-slider-container">
-                        <div class="jp-slider-track" id="jp-slider-track">
-                            ${cardsHTML}
+            <div id="${WIDGET_ID}-wrapper">
+                <div class="jp-inner-spacing">
+                    <div id="${WIDGET_ID}">
+                        <div class="sapatoto-jp-wrapper">
+                            <div class="jp-header">
+                                <h4><i class="bi bi-trophy-fill"></i> JACKPOT TERBESAR HARI INI</h4>
+                            </div>
+                            <div class="jp-slider-container" id="jp-slider-container">
+                                <div class="jp-slider-track" id="jp-slider-track">
+                                    ${cardsHTML}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -220,34 +236,66 @@
 
         const cssHTML = `
             <style>
-                /* KUNCI PERBAIKAN: Menghapus semua padding menjadi 0 agar loss 100% */
-                #${WIDGET_ID} { 
+                /* ==============================================================
+                   BUNGKUSAN LUAR: LEBAR OTOMATIS & JARAK 15PX
+                   ============================================================== */
+                #${WIDGET_ID}-wrapper { 
                     width: 100%; 
-                    max-width: 100%; 
-                    margin: 0 0 25px 0 !important; 
-                    padding: 0 !important; /* DIBUAT 0 AGAR MELEBAR PENUH */
+                    margin: 0 auto 15px auto !important; /* Disesuaikan 15px */
+                    padding: 0; 
                     box-sizing: border-box;
-                    font-family: 'Exo 2', sans-serif; 
+                    transition: max-width 0.3s ease;
+                    font-family: 'Exo 2', sans-serif;
                 }
+
+                .jp-inner-spacing {
+                    padding: 0 8px; /* Rumus presisi sejajar */
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+
+                #${WIDGET_ID} {
+                    width: 100%;
+                }
+
+                /* ==============================================================
+                   STYLING KOTAK: SIKU 4PX
+                   ============================================================== */
                 .sapatoto-jp-wrapper { 
                     width: 100%;
                     background: linear-gradient(145deg, rgba(44, 62, 80, 0.9), rgba(26, 37, 47, 0.95)); 
                     border: 1px solid #ec4899; 
-                    border-radius: 15px; 
+                    border-radius: 4px !important; /* LENGKUNGAN 4PX */
                     padding: 0; 
                     box-shadow: 0 0 15px rgba(236, 72, 153, 0.5); 
                     overflow: hidden; 
                     box-sizing: border-box;
                 }
+
+                /* ==============================================================
+                   HEADER: KUNING TERANG DENGAN TEKS GELAP
+                   ============================================================== */
                 .jp-header { 
                     display: flex; align-items: center; justify-content: center; 
-                    background: linear-gradient(90deg, #ec4899, #a855f7, #3b82f6); 
-                    padding: 12px 15px; margin-bottom: 15px; border-bottom: 2px solid #fff; 
+                    background: linear-gradient(90deg, #fcd34d, #f59e0b); /* Kuning Promosi */
+                    padding: 12px 15px; 
+                    margin-bottom: 15px; 
+                    border-bottom: 2px solid #d97706; /* Kuning Gelap */
                 }
                 .jp-header h4 { 
-                    margin: 0; color: #fff; font-weight: 800; text-transform: uppercase; 
-                    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); font-size: 1.25rem; letter-spacing: 1px; 
+                    margin: 0; 
+                    color: #1a252f !important; /* Teks Hitam/Biru Gelap */
+                    font-weight: 900; 
+                    text-transform: uppercase; 
+                    text-shadow: none !important; /* Hilangkan shadow agar bersih */
+                    font-size: 1.25rem; 
+                    letter-spacing: 1px; 
                 }
+                .jp-header h4 i {
+                    color: #1a252f !important; /* Ikon juga gelap */
+                    margin-right: 8px;
+                }
+
                 .jp-slider-container { 
                     width: 100%; overflow-x: auto; position: relative; padding-bottom: 15px; 
                     mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); 
@@ -256,10 +304,11 @@
                 }
                 .jp-slider-container::-webkit-scrollbar { display: none; }
                 .jp-slider-track { display: inline-flex; gap: 15px; width: max-content; padding: 0 15px; }
+                
                 .jp-card { 
                     display: block; text-decoration: none !important; width: 170px; 
                     background: linear-gradient(160deg, rgba(30,42,55,1), rgba(15,20,25,1)); 
-                    border: 1px solid #34495e; border-radius: 10px; overflow: hidden; 
+                    border: 1px solid #34495e; border-radius: 8px; overflow: hidden; 
                     position: relative; flex-shrink: 0; 
                     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; 
                     user-select: none; -webkit-user-drag: none; 
@@ -291,7 +340,8 @@
                 .jp-user-date i { color: #a855f7; margin-right: 2px; }
                 
                 @media (max-width: 768px) { 
-                    #${WIDGET_ID} { padding: 0 !important; } 
+                    #${WIDGET_ID}-wrapper { padding: 0 !important; }
+                    .jp-inner-spacing { padding: 0 15px !important; } 
                     .jp-card { width: 140px; } 
                     .jp-amount { font-size: 0.9rem; } 
                     .jp-header h4 { font-size: 1.05rem; } 
@@ -300,6 +350,39 @@
         `;
 
         target.insertAdjacentHTML('beforebegin', cssHTML + widgetHTML);
+
+        // =========================================
+        // FUNGSI SENSOR PRESISI AUTO-SYNC LEBAR
+        // =========================================
+        function syncSliderWidth() {
+            var sliderWidget = document.getElementById(WIDGET_ID + '-wrapper');
+            if (!sliderWidget) return;
+            
+            if (window.innerWidth <= 768) {
+                sliderWidget.style.maxWidth = '100%';
+                sliderWidget.style.paddingLeft = '0px';
+                sliderWidget.style.paddingRight = '0px';
+                return;
+            }
+
+            var referenceElement = document.querySelector('#row-togel'); 
+            if (referenceElement && referenceElement.parentElement) {
+                var mainContainer = referenceElement.parentElement; 
+                var exactWidth = mainContainer.getBoundingClientRect().width;
+                var computedStyle = window.getComputedStyle(mainContainer);
+                
+                if (exactWidth > 0) {
+                    sliderWidget.style.maxWidth = exactWidth + 'px';
+                    sliderWidget.style.paddingLeft = computedStyle.paddingLeft;
+                    sliderWidget.style.paddingRight = computedStyle.paddingRight;
+                }
+            }
+        }
+
+        setTimeout(syncSliderWidth, 50);
+        setInterval(syncSliderWidth, 500); 
+        window.addEventListener('resize', syncSliderWidth);
+
 
         // =========================================
         // LOGIKA DRAG & SWIPE
