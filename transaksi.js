@@ -188,167 +188,62 @@
 
             const cssHTML = `
                 <style>
-                    /* BUNGKUSAN LUAR: Lebar Pasti 1296px & Jarak Presisi */
+                    /* ==============================================================
+                       BUNGKUSAN LUAR: PONDASI ANTI-TERTIMPA
+                       ============================================================== */
                     #sapatoto-recent-transactions { 
                         width: 100%; 
-                        max-width: 1296px !important; /* LEBAR DIKUNCI 1296PX */
-                        margin: 0 auto 15px auto !important; /* DIBUAT 0 AGAR TIDAK LEBIH/KURANG */
+                        max-width: 1296px !important; 
+                        margin: 0 auto 15px auto !important; 
                         padding: 0;
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif; 
-                    }
-
-                    /* BUNGKUSAN DALAM */
-                    .trx-inner-wrapper {
-                        padding: 0 8px; /* Memberi ruang agar sejajar dengan kolom */
-                        width: 100%;
-                        box-sizing: border-box;
-                    }
-
-                    .sapatoto-trx-flex {
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 16px; 
-                        width: 100%;
-                        margin: 0;
-                        padding: 0;
-                    }
-
-                    .trx-column {
-                        flex: 1;
-                        min-width: 320px; 
-                        display: flex;
-                        flex-direction: column;
-                    }
-
-                    /* =========================================================
-                       BASE CARD STYLING
-                       ========================================================= */
-                    .tx-card {
-                        width: 100%;
-                        background: linear-gradient(145deg, #2c3e50, #1a252f);
-                        border-radius: 4px !important; 
+                        
+                        /* PONDASI BETON ANTI-OVERLAP */
+                        display: block !important;
+                        clear: both !important;
+                        position: relative;
+                        z-index: 20;
                         overflow: hidden;
-                        transition: transform 0.3s ease, box-shadow 0.3s ease;
                     }
 
-                    /* TEMA BOX DEPOSIT: BORDER PINK & GLOW PINK */
-                    .tx-card-deposit {
-                        box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
-                        border: 1px solid #ec4899;
-                    }
-                    .tx-card-deposit:hover {
-                        transform: translateY(-3px);
-                        box-shadow: 0 5px 25px rgba(236, 72, 153, 0.8);
-                        border-color: #f472b6;
-                    }
+                    .trx-inner-wrapper { padding: 0 8px; width: 100%; box-sizing: border-box; }
+                    .sapatoto-trx-flex { display: flex; flex-wrap: wrap; gap: 16px; width: 100%; margin: 0; padding: 0; }
+                    .trx-column { flex: 1; min-width: 320px; display: flex; flex-direction: column; }
 
-                    /* TEMA BOX WITHDRAW: BORDER UNGU & GLOW UNGU */
-                    .tx-card-withdraw {
-                        box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
-                        border: 1px solid #a855f7;
-                    }
-                    .tx-card-withdraw:hover {
-                        transform: translateY(-3px);
-                        box-shadow: 0 5px 25px rgba(168, 85, 247, 0.8);
-                        border-color: #c084fc;
-                    }
+                    .tx-card { width: 100%; background: linear-gradient(145deg, #2c3e50, #1a252f); border-radius: 4px !important; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+                    .tx-card-deposit { box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); border: 1px solid #ec4899; }
+                    .tx-card-deposit:hover { transform: translateY(-3px); box-shadow: 0 5px 25px rgba(236, 72, 153, 0.8); border-color: #f472b6; }
+                    .tx-card-withdraw { box-shadow: 0 0 15px rgba(168, 85, 247, 0.4); border: 1px solid #a855f7; }
+                    .tx-card-withdraw:hover { transform: translateY(-3px); box-shadow: 0 5px 25px rgba(168, 85, 247, 0.8); border-color: #c084fc; }
 
-                    .tx-header {
-                        padding: 12px 15px;
-                        font-weight: 800;
-                        color: #fff;
-                        text-align: center;
-                        text-transform: uppercase;
-                        letter-spacing: 1px;
-                        background: rgba(0,0,0,0.3);
-                        flex-shrink: 0; 
-                    }
+                    .tx-header { padding: 12px 15px; font-weight: 800; color: #fff; text-align: center; text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.3); flex-shrink: 0; }
                     .tx-header.border-pink { border-bottom: 2px solid #ec4899; text-shadow: 0 0 8px rgba(236, 72, 153, 0.6); }
                     .tx-header.border-purple { border-bottom: 2px solid #a855f7; text-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
                     .tx-icon-pink { color: #f472b6; margin-right: 8px; font-size: 1.2em; }
                     .tx-icon-purple { color: #c084fc; margin-right: 8px; font-size: 1.2em; }
 
-                    /* =========================================================
-                       HEADER TABEL: WARNA PINK & UNGU DENGAN TEKS TERANG
-                       ========================================================= */
-                    .tx-table-header {
-                        display: flex;
-                        padding: 8px 15px;
-                        color: #ffffff !important;
-                        font-weight: 900;
-                        font-size: 0.8rem;
-                        flex-shrink: 0;
-                        text-shadow: 0 1px 2px rgba(0,0,0,0.5); 
-                    }
+                    .tx-table-header { display: flex; padding: 8px 15px; color: #ffffff !important; font-weight: 900; font-size: 0.8rem; flex-shrink: 0; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+                    .header-pink { background: linear-gradient(90deg, #be185d, #ec4899); border-bottom: 2px solid #9d174d; }
+                    .header-purple { background: linear-gradient(90deg, #7e22ce, #a855f7); border-bottom: 2px solid #581c87; }
 
-                    /* Header Khusus Deposit */
-                    .header-pink {
-                        background: linear-gradient(90deg, #be185d, #ec4899);
-                        border-bottom: 2px solid #9d174d;
-                    }
-
-                    /* Header Khusus Withdraw */
-                    .header-purple {
-                        background: linear-gradient(90deg, #7e22ce, #a855f7);
-                        border-bottom: 2px solid #581c87;
-                    }
-
-                    .tx-item {
-                        display: flex;
-                        align-items: center;
-                        padding: 0 15px;
-                        height: 40px; 
-                        border-bottom: 1px solid #34495e;
-                        font-size: 0.85rem;
-                    }
+                    .tx-item { display: flex; align-items: center; padding: 0 15px; height: 40px; border-bottom: 1px solid #34495e; font-size: 0.85rem; }
                     .tx-item:hover { background-color: rgba(255,255,255,0.05); }
-
                     .tx-col-user { flex: 1; text-align: left; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
                     .tx-col-time { flex: 1.2; text-align: center; color: #bdc3c7; font-size: 0.75rem; }
                     .tx-col-amount { flex: 1; text-align: right; }
 
-                    .tx-body {
-                        height: 200px; 
-                        overflow: hidden;
-                        position: relative;
-                        background: transparent;
-                    }
-                    .tx-marquee {
-                        transition: opacity 0.5s ease;
-                        animation: scrollUp 30s linear infinite;
-                    }
-                    @keyframes scrollUp {
-                        0% { transform: translateY(0); }
-                        100% { transform: translateY(-800px); } 
-                    }
+                    .tx-body { height: 200px; overflow: hidden; position: relative; background: transparent; }
+                    .tx-marquee { transition: opacity 0.5s ease; animation: scrollUp 30s linear infinite; }
+                    @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-800px); } }
 
-                    .tx-deposit {
-                        color: #2ecc71;
-                        font-weight: 800;
-                        text-shadow: 0 0 5px rgba(46, 204, 113, 0.5);
-                    }
-                    .tx-withdraw {
-                        color: #fbbf24;
-                        font-weight: 800;
-                        text-shadow: 0 0 5px rgba(251, 191, 36, 0.5);
-                        font-size: 0.95rem;
-                    }
+                    .tx-deposit { color: #2ecc71; font-weight: 800; text-shadow: 0 0 5px rgba(46, 204, 113, 0.5); }
+                    .tx-withdraw { color: #fbbf24; font-weight: 800; text-shadow: 0 0 5px rgba(251, 191, 36, 0.5); font-size: 0.95rem; }
 
-                    /* ======================================= */
-                    /* PERBAIKAN KHUSUS UNTUK TAMPILAN HP/MOBILE */
-                    /* ======================================= */
                     @media (max-width: 768px) {
-                        #sapatoto-recent-transactions {
-                            max-width: 100% !important; /* LAYAR PENUH DI HP */
-                            padding: 0 !important; 
-                        }
-                        .trx-inner-wrapper {
-                            padding: 0 15px !important; /* PADDING AMAN HP */
-                        }
-                        .sapatoto-trx-flex {
-                            gap: 15px; 
-                        }
+                        #sapatoto-recent-transactions { max-width: 100% !important; padding: 0 !important; }
+                        .trx-inner-wrapper { padding: 0 15px !important; }
+                        .sapatoto-trx-flex { gap: 15px; }
                         .tx-col-time { font-size: 0.65rem; }
                         .tx-item { font-size: 0.75rem; padding: 0 10px; }
                         .tx-table-header { padding: 8px 10px; font-size: 0.7rem; }
@@ -367,7 +262,6 @@
         return false;
     }
 
-    // 4. JALANKAN SCRIPT
     const checkInterval = setInterval(() => {
         if (injectTransactionsWidget()) clearInterval(checkInterval);
     }, 500);
