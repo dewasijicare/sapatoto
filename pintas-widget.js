@@ -2,8 +2,7 @@
     // Fungsi Check & Inject
     function injectPintasWidget() {
         
-        // KUNCI PERBAIKAN POSISI: 
-        // Mengincar elemen di BAWAH tombol (Mencari Progressive Jackpot atau Pasaran Togel)
+        // Target Injeksi di Bawah Tombol Aksi (Diatas Togel / Jackpot)
         var target = document.querySelector('.jackpot-container-main') || document.querySelector('#row-togel'); 
         var existingWidget = document.getElementById('pintas-widget-wrapper');
 
@@ -39,14 +38,14 @@
                         transition: max-width 0.3s ease;
                     }
 
-                    /* RUMUS PRESISI 8px SEJAJAR PROGRESSIVE JACKPOT */
+                    /* RUMUS PRESISI 8px SEJAJAR FITUR LAIN */
                     .pintas-inner-spacing {
                         padding: 0 8px;
                         width: 100%;
                         box-sizing: border-box;
                     }
 
-                    /* Container Style */
+                    /* Container Style Widget Pintas */
                     .sapatoto-pintas-banner {
                         display: flex;
                         align-items: center;
@@ -54,7 +53,7 @@
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
                         border: 1px solid #ec4899;
                         box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-                        border-radius: 12px; 
+                        border-radius: 4px !important; /* <--- SUDAH DIUBAH MENJADI 4PX */
                         padding: 12px 20px;
                         position: relative;
                         overflow: hidden;
@@ -132,16 +131,16 @@
                         .pintas-title { font-size: 1rem; }
                         .pintas-sub { font-size: 0.65rem; }
                         .pintas-icon-container { font-size: 1.8rem; margin-right: 12px; }
-                        .sapatoto-pintas-banner { padding: 10px 15px; }
+                        .sapatoto-pintas-banner { padding: 10px 15px; border-radius: 4px !important; } /* <--- HP JUGA 4PX */
                     }
                 </style>
             `;
 
-            // INJEKSI BEFOREBEGIN: Meletakkan widget persis di ATAS area Togel/Jackpot (otomatis di BAWAH tombol)
+            // INJEKSI: Meletakkan widget persis di ATAS area Togel/Jackpot 
             target.insertAdjacentHTML('beforebegin', widgetHTML);
 
             // ==========================================================
-            // FUNGSI SENSOR PRESISI (Menyalin bingkai dari Progressive)
+            // FUNGSI SENSOR PRESISI AUTO-SYNC LEBAR KE TENGAH
             // ==========================================================
             function syncPintasWidth() {
                 var pintasWidget = document.getElementById('pintas-widget-wrapper');
