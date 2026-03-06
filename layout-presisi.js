@@ -11,8 +11,9 @@
         }
 
         /* ==============================================================
-           2. HEADER MENU: GHOST WRAPPER + BANTALAN 15PX
+           2. HEADER PALING ATAS: PRESISI 1209PX (POTONG 2.5PX KIRI-KANAN)
            ============================================================== */
+        /* Bungkus luar dibiarkan tembus pandang */
         #navbar-top-wrapper.fixed-top {
             background: transparent !important;
             border: none !important;
@@ -20,33 +21,35 @@
             pointer-events: none !important; 
         }
 
+        /* Navigasi dalam dipotong menjadi 1209px agar pas dengan fitur bawah */
         #navbar-top {
-            max-width: 1214px !important;
+            max-width: 1209px !important; /* UKURAN SUPER AKURAT */
             width: 100% !important;
             margin: 0 auto !important;
-            
-            /* KUNCI PRESISI: Menekan isi menu ke dalam agar sejajar dengan bawahnya */
             padding-left: 15px !important;  
             padding-right: 15px !important; 
-            
             pointer-events: auto !important; 
-            border-radius: 0 !important; 
+            
+            /* Tampilan Premium Header */
+            background-color: #1a252f !important; /* Warna Gelap Sapatoto */
+            border-left: 1px solid #ec4899 !important;
+            border-right: 1px solid #ec4899 !important;
+            border-bottom: 1px solid #ec4899 !important;
+            border-radius: 0 0 4px 4px !important; /* Sedikit siku manis di bawah */
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3) !important;
         }
 
         .fixed-bottom { pointer-events: auto !important; }
 
         /* ==============================================================
-           3. BANNER SLIDER: LEBAR 1214PX + BANTALAN 15PX
+           3. BANNER SLIDER: PRESISI 1209PX (POTONG 2.5PX KIRI-KANAN)
            ============================================================== */
         .sapatoto-banner-wrapper {
-            max-width: 1214px !important;
+            max-width: 1209px !important; /* UKURAN SUPER AKURAT */
             width: 100% !important;
             margin: 0 auto 15px auto !important; 
-            
-            /* KUNCI PRESISI: Menekan gambar ke dalam agar sejajar sempurna */
             padding-left: 15px !important;  
             padding-right: 15px !important; 
-            
             display: block !important;
             clear: both !important;
             box-sizing: border-box !important;
@@ -80,11 +83,16 @@
            ============================================================== */
         @media (max-width: 768px) {
             #navbar-top-wrapper.fixed-top { pointer-events: auto !important; }
-            #navbar-top, .sapatoto-banner-wrapper {
+            #navbar-top {
                 max-width: 100% !important;
                 width: 100% !important;
-                padding-left: 15px !important;
-                padding-right: 15px !important;
+                border-radius: 0 !important;
+                border-left: none !important;
+                border-right: none !important;
+            }
+            .sapatoto-banner-wrapper {
+                max-width: 100% !important;
+                width: 100% !important;
             }
             #main-slider .carousel-item img, .carousel .carousel-item img {
                 height: 250px !important; 
@@ -93,7 +101,7 @@
     `;
 
     function injectCSS() {
-        const id = 'sapatoto-layout-presisi-vPadding';
+        const id = 'sapatoto-layout-presisi-v1209';
         if (document.getElementById(id)) return;
         const styleElement = document.createElement('style');
         styleElement.id = id;
