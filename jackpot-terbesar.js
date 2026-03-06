@@ -80,11 +80,9 @@
                     let checkText = (name + " " + imgUrl).toLowerCase();
                     let isProviderLogo = false;
                     
-                    // Jika nama atau URL mengandung indikasi kuat bahwa ini adalah gambar banner/logo provider
                     if (checkText.includes('logo') || checkText.includes('provider') || checkText.includes('banner')) isProviderLogo = true;
                     if (name.toLowerCase().trim() === 'pragmatic play' || name.toLowerCase().trim() === 'pg soft' || name.toLowerCase().trim() === 'habanero' || name.toLowerCase().trim() === 'joker') isProviderLogo = true;
                     
-                    // Buang jika ini terdeteksi sebagai logo provider
                     if (isProviderLogo) return;
 
                     let provider = detectProvider(name, imgUrl, link);
@@ -179,7 +177,7 @@
     }
 
     // =========================================
-    // FUNGSI 3: RENDER HTML & CSS (DENGAN AUTO-SYNC)
+    // FUNGSI 3: RENDER HTML & CSS (UKURAN 1296PX)
     // =========================================
     
     const fallbackImageBase64 = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMWEyNTJmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZvbnQtc2l6ZT0iMjIiIGZpbGw9IiNlYzQ4OTkiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNMT1Q8L3RleHQ+PC9zdmc+";
@@ -214,7 +212,7 @@
         let cardsHTML = data.map(buildCardHTML).join('');
         cardsHTML += cardsHTML; 
 
-        // Penambahan Wrapper Khusus untuk Auto-Sync Lebar Presisi
+        // Penambahan Wrapper Khusus untuk Lebar 1296px
         const widgetHTML = `
             <div id="${WIDGET_ID}-wrapper">
                 <div class="jp-inner-spacing">
@@ -237,19 +235,19 @@
         const cssHTML = `
             <style>
                 /* ==============================================================
-                   BUNGKUSAN LUAR: LEBAR OTOMATIS & JARAK 15PX
+                   BUNGKUSAN LUAR: LEBAR PASTI 1296PX
                    ============================================================== */
                 #${WIDGET_ID}-wrapper { 
                     width: 100%; 
-                    margin: 0 auto 15px auto !important; /* Disesuaikan 15px */
+                    max-width: 1296px !important; /* MENGUNCI LEBAR DI 1296PX */
+                    margin: 0 auto 15px auto !important; /* TETAP DI TENGAH (CENTER) */
                     padding: 0; 
                     box-sizing: border-box;
-                    transition: max-width 0.3s ease;
                     font-family: 'Exo 2', sans-serif;
                 }
 
                 .jp-inner-spacing {
-                    padding: 0 8px; /* Rumus presisi sejajar */
+                    padding: 0 8px; /* Memberi ruang sedikit agar sejajar dengan kolom */
                     width: 100%;
                     box-sizing: border-box;
                 }
@@ -259,7 +257,7 @@
                 }
 
                 /* ==============================================================
-                   STYLING KOTAK: SIKU 4PX
+                   STYLING KOTAK: SIKU 4PX & BORDER PINK 1PX
                    ============================================================== */
                 .sapatoto-jp-wrapper { 
                     width: 100%;
@@ -277,22 +275,22 @@
                    ============================================================== */
                 .jp-header { 
                     display: flex; align-items: center; justify-content: center; 
-                    background: linear-gradient(90deg, #fcd34d, #f59e0b); /* Kuning Promosi */
+                    background: linear-gradient(90deg, #fcd34d, #f59e0b); 
                     padding: 12px 15px; 
                     margin-bottom: 15px; 
-                    border-bottom: 2px solid #d97706; /* Kuning Gelap */
+                    border-bottom: 2px solid #d97706; 
                 }
                 .jp-header h4 { 
                     margin: 0; 
-                    color: #1a252f !important; /* Teks Hitam/Biru Gelap */
+                    color: #1a252f !important; 
                     font-weight: 900; 
                     text-transform: uppercase; 
-                    text-shadow: none !important; /* Hilangkan shadow agar bersih */
+                    text-shadow: none !important; 
                     font-size: 1.25rem; 
                     letter-spacing: 1px; 
                 }
                 .jp-header h4 i {
-                    color: #1a252f !important; /* Ikon juga gelap */
+                    color: #1a252f !important; 
                     margin-right: 8px;
                 }
 
@@ -339,8 +337,9 @@
                 .jp-user-date span:first-child { color: #ecf0f1; font-weight: 600; font-size: 0.75rem; }
                 .jp-user-date i { color: #a855f7; margin-right: 2px; }
                 
+                /* RESPONSIVE MOBILE TAMPILAN 100% */
                 @media (max-width: 768px) { 
-                    #${WIDGET_ID}-wrapper { padding: 0 !important; }
+                    #${WIDGET_ID}-wrapper { max-width: 100% !important; padding: 0 !important; }
                     .jp-inner-spacing { padding: 0 15px !important; } 
                     .jp-card { width: 140px; } 
                     .jp-amount { font-size: 0.9rem; } 
@@ -352,40 +351,7 @@
         target.insertAdjacentHTML('beforebegin', cssHTML + widgetHTML);
 
         // =========================================
-        // FUNGSI SENSOR PRESISI AUTO-SYNC LEBAR
-        // =========================================
-        function syncSliderWidth() {
-            var sliderWidget = document.getElementById(WIDGET_ID + '-wrapper');
-            if (!sliderWidget) return;
-            
-            if (window.innerWidth <= 768) {
-                sliderWidget.style.maxWidth = '100%';
-                sliderWidget.style.paddingLeft = '0px';
-                sliderWidget.style.paddingRight = '0px';
-                return;
-            }
-
-            var referenceElement = document.querySelector('#row-togel'); 
-            if (referenceElement && referenceElement.parentElement) {
-                var mainContainer = referenceElement.parentElement; 
-                var exactWidth = mainContainer.getBoundingClientRect().width;
-                var computedStyle = window.getComputedStyle(mainContainer);
-                
-                if (exactWidth > 0) {
-                    sliderWidget.style.maxWidth = exactWidth + 'px';
-                    sliderWidget.style.paddingLeft = computedStyle.paddingLeft;
-                    sliderWidget.style.paddingRight = computedStyle.paddingRight;
-                }
-            }
-        }
-
-        setTimeout(syncSliderWidth, 50);
-        setInterval(syncSliderWidth, 500); 
-        window.addEventListener('resize', syncSliderWidth);
-
-
-        // =========================================
-        // LOGIKA DRAG & SWIPE
+        // LOGIKA DRAG & SWIPE (TIDAK ADA AUTO-SYNC LEBAR LAGI)
         // =========================================
         const container = document.getElementById('jp-slider-container');
         let isDown = false; let startX; let scrollLeft; let exactScrollLeft = 0;
