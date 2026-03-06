@@ -100,10 +100,9 @@
             wds.push({ user: getRandomUsername(), amount: getWithdrawAmount(), time: generateNaturalDate(i * 3) });
         }
 
-        // [LOGIKA BARU]: Warna Icon dipisah berdasarkan tipe (Deposit = Pink, WD = Ungu)
         const buildRow = (item, type) => {
             const amountClass = type === 'deposit' ? 'tx-deposit' : 'tx-withdraw';
-            const iconColor = type === 'deposit' ? '#ec4899' : '#a855f7'; // Penentu warna logo member
+            const iconColor = type === 'deposit' ? '#ec4899' : '#a855f7'; 
             
             return `
                 <div class="tx-item">
@@ -155,7 +154,7 @@
                                     <div class="tx-header border-pink">
                                         <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> LIVE DEPOSIT
                                     </div>
-                                    <div class="tx-table-header">
+                                    <div class="tx-table-header header-pink">
                                         <div class="tx-col-user">USER</div>
                                         <div class="tx-col-time" style="text-align:center;">WAKTU</div>
                                         <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
@@ -171,7 +170,7 @@
                                     <div class="tx-header border-purple">
                                         <i class="bi bi-cash-coin tx-icon-purple"></i> LIVE WITHDRAW
                                     </div>
-                                    <div class="tx-table-header">
+                                    <div class="tx-table-header header-purple">
                                         <div class="tx-col-user">USER</div>
                                         <div class="tx-col-time" style="text-align:center;">WAKTU</div>
                                         <div class="tx-col-amount" style="text-align:right;">NOMINAL</div>
@@ -227,7 +226,7 @@
                     .tx-card {
                         width: 100%;
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
-                        border-radius: 4px !important; /* LENGKUNGAN 4PX */
+                        border-radius: 4px !important; 
                         overflow: hidden;
                         transition: transform 0.3s ease, box-shadow 0.3s ease;
                     }
@@ -270,17 +269,28 @@
                     .tx-icon-purple { color: #c084fc; margin-right: 8px; font-size: 1.2em; }
 
                     /* =========================================================
-                       [UBAHAN BARU] HEADER TABEL: KUNING TEGAS & TEKS GELAP
+                       HEADER TABEL: WARNA PINK & UNGU DENGAN TEKS TERANG
                        ========================================================= */
                     .tx-table-header {
                         display: flex;
                         padding: 8px 15px;
-                        background: linear-gradient(90deg, #fcd34d, #f59e0b); /* Kuning Gaming */
-                        border-bottom: 2px solid #d97706; /* Garis bawah kuning gelap */
-                        color: #1a252f !important; /* Teks Hitam/Biru Gelap */
+                        color: #ffffff !important; /* Tulisan putih terang */
                         font-weight: 900;
                         font-size: 0.8rem;
                         flex-shrink: 0;
+                        text-shadow: 0 1px 2px rgba(0,0,0,0.5); /* Supaya teks lebih jelas terbaca */
+                    }
+
+                    /* Header Khusus Deposit */
+                    .header-pink {
+                        background: linear-gradient(90deg, #be185d, #ec4899);
+                        border-bottom: 2px solid #9d174d;
+                    }
+
+                    /* Header Khusus Withdraw */
+                    .header-purple {
+                        background: linear-gradient(90deg, #7e22ce, #a855f7);
+                        border-bottom: 2px solid #581c87;
                     }
 
                     .tx-item {
