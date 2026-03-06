@@ -12,12 +12,12 @@
         }
 
         /* ==============================================================
-           BUNGKUSAN LUAR & DALAM UNTUK PRESISI LEBAR AUTO-SYNC
+           BUNGKUSAN LUAR: Padding TIDAK BOLEH !important agar JS bisa bekerja
            ============================================================== */
         #jackpot-outer-wrapper {
             width: 100%;
             margin: 0 auto 25px auto !important;
-            padding: 0 !important; /* Dibiarkan 0 agar disuntik JS */
+            padding: 0; /* KUNCI PERBAIKAN LEBAR: !important dihapus */
             box-sizing: border-box;
             transition: max-width 0.3s ease;
             font-family: 'Exo 2', sans-serif !important;
@@ -26,7 +26,7 @@
         }
 
         .jackpot-inner-spacing {
-            padding: 0 8px; /* Rumus sejajar 8px untuk PC */
+            padding: 0 8px; /* Sama persis dengan Pintas dan Transaksi */
             width: 100%;
             box-sizing: border-box;
         }
@@ -56,7 +56,7 @@
             justify-content: center;
             align-items: center;
             background-color: var(--dark-bg); 
-            border-radius: 3px !important; /* Sedikit lebih kecil dari border luar */
+            border-radius: 3px !important; /* Mengikuti border luar */
             min-height: 90px;
             position: relative;
             padding: 20px 15px; 
@@ -65,7 +65,7 @@
             box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
             background-image: radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.15) 1px, transparent 0);
             background-size: 4px 4px;
-            overflow: hidden; /* Mencegah efek cahaya keluar batas */
+            overflow: hidden; 
         }
 
         /* ==============================================================
@@ -84,12 +84,12 @@
 
         @keyframes shineSweeper {
             0% { left: -150%; }
-            15% { left: 200%; } /* Lewat cepat di awal */
-            100% { left: 200%; } /* Jeda lama sebelum mengulang */
+            15% { left: 200%; } 
+            100% { left: 200%; } 
         }
 
         /* ==============================================================
-           ✨ EFEK PREMIUM 2: PARTIKEL API NEON (SPARKS) MELAYANG
+           ✨ EFEK PREMIUM 2: PARTIKEL API NEON (SPARKS) LEBIH BANYAK!
            ============================================================== */
         .jackpot-spark {
             position: absolute;
@@ -97,18 +97,27 @@
             border-radius: 50%;
             opacity: 0;
             z-index: 1;
-            animation: floatUp 4s infinite linear;
         }
-        .spark-1 { left: 15%; animation-delay: 0s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
-        .spark-2 { left: 35%; animation-delay: 1.5s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
-        .spark-3 { left: 65%; animation-delay: 2.2s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
-        .spark-4 { left: 85%; animation-delay: 0.8s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+        
+        /* 12 Partikel dengan posisi dan kecepatan yang berbeda */
+        .spark-1 { left: 5%; animation: floatUp 3.5s infinite linear 0s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+        .spark-2 { left: 15%; animation: floatUp 4s infinite linear 1.2s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+        .spark-3 { left: 25%; animation: floatUp 4.5s infinite linear 0.5s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+        .spark-4 { left: 35%; animation: floatUp 3s infinite linear 2s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+        .spark-5 { left: 45%; animation: floatUp 5s infinite linear 0.8s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+        .spark-6 { left: 55%; animation: floatUp 3.8s infinite linear 1.5s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+        .spark-7 { left: 65%; animation: floatUp 4.2s infinite linear 0.2s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+        .spark-8 { left: 75%; animation: floatUp 3.6s infinite linear 1.8s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+        .spark-9 { left: 85%; animation: floatUp 4.8s infinite linear 0.9s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+        .spark-10 { left: 95%; animation: floatUp 3.2s infinite linear 2.5s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
+        .spark-11 { left: 50%; animation: floatUp 4.1s infinite linear 3s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
+        .spark-12 { left: 20%; animation: floatUp 3.9s infinite linear 2.8s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
 
         @keyframes floatUp {
             0% { bottom: -10px; opacity: 0; transform: scale(0.5); }
-            20% { opacity: 0.6; }
-            80% { opacity: 0.6; }
-            100% { bottom: 100%; opacity: 0; transform: scale(1.2); }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.8; }
+            100% { bottom: 100%; opacity: 0; transform: scale(1.5); }
         }
         
         /* Judul Jackpot */
@@ -198,6 +207,37 @@
     styleElement.innerHTML = jackpotStylesSapatoto;
     document.head.appendChild(styleElement);
 
+    // HTML Lengkap (Termasuk 12 Partikel)
+    const jackpotHTMLFinal = `
+        <div id="jackpot-outer-wrapper">
+            <div class="jackpot-inner-spacing">
+                <div class="jackpot-animated-border">
+                    <div class="jackpot-display-box-content">
+                        
+                        <div class="jackpot-shine"></div>
+                        <div class="jackpot-spark spark-1"></div>
+                        <div class="jackpot-spark spark-2"></div>
+                        <div class="jackpot-spark spark-3"></div>
+                        <div class="jackpot-spark spark-4"></div>
+                        <div class="jackpot-spark spark-5"></div>
+                        <div class="jackpot-spark spark-6"></div>
+                        <div class="jackpot-spark spark-7"></div>
+                        <div class="jackpot-spark spark-8"></div>
+                        <div class="jackpot-spark spark-9"></div>
+                        <div class="jackpot-spark spark-10"></div>
+                        <div class="jackpot-spark spark-11"></div>
+                        <div class="jackpot-spark spark-12"></div>
+                        
+                        <div class="jackpot-main-title">
+                            <i class="bi bi-trophy-fill"></i>
+                            <span class="jackpot-animated-text">PROGRESSIVE JACKPOTS</span>
+                        </div>
+                        <div id="dynamic-jackpot-value-final" class="jackpot-value-final">IDR 32.462.646.763</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
 
     // --- 2. FUNGSI LOGIKA COUNTER DINAMIS ---
     function startDynamicJackpotCounterFinal() {
@@ -225,79 +265,69 @@
         setInterval(updateJackpotValue, updateInterval);
     }
 
-    // --- 3. FUNGSI UNTUK MENYISIPKAN HTML & AUTO-SYNC ---
-    function injectJackpotHTMLFinal() {
-        const targetElement = document.getElementById('row-togel');
-        
-        if (document.getElementById('jackpot-outer-wrapper')) {
+    // --- 3. FUNGSI SENSOR PRESISI AUTO-SYNC ---
+    function syncJackpotWidth() {
+        var jackpotWidget = document.getElementById('jackpot-outer-wrapper');
+        if (!jackpotWidget) return;
+
+        if (window.innerWidth <= 768) {
+            jackpotWidget.style.maxWidth = '100%';
+            jackpotWidget.style.paddingLeft = '0px';
+            jackpotWidget.style.paddingRight = '0px';
             return;
         }
 
-        if (!targetElement) {
-            setTimeout(injectJackpotHTMLFinal, 200);
-            return;
-        }
-
-        const jackpotHTMLFinal = `
-            <div id="jackpot-outer-wrapper">
-                <div class="jackpot-inner-spacing">
-                    <div class="jackpot-animated-border">
-                        <div class="jackpot-display-box-content">
-                            <div class="jackpot-shine"></div>
-                            <div class="jackpot-spark spark-1"></div>
-                            <div class="jackpot-spark spark-2"></div>
-                            <div class="jackpot-spark spark-3"></div>
-                            <div class="jackpot-spark spark-4"></div>
-                            
-                            <div class="jackpot-main-title">
-                                <i class="bi bi-trophy-fill"></i>
-                                <span class="jackpot-animated-text">PROGRESSIVE JACKPOTS</span>
-                            </div>
-                            <div id="dynamic-jackpot-value-final" class="jackpot-value-final">IDR 32.462.646.763</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        targetElement.insertAdjacentHTML('beforebegin', jackpotHTMLFinal);
-        startDynamicJackpotCounterFinal();
-
-        // ==========================================================
-        // FUNGSI SENSOR PRESISI (Sama persis dengan Transaksi & Pintas)
-        // ==========================================================
-        function syncJackpotWidth() {
-            var jackpotWidget = document.getElementById('jackpot-outer-wrapper');
+        var referenceElement = document.querySelector('#row-togel'); 
+        if (referenceElement && referenceElement.parentElement) {
+            var mainContainer = referenceElement.parentElement; 
+            var exactWidth = mainContainer.getBoundingClientRect().width;
+            var computedStyle = window.getComputedStyle(mainContainer);
             
-            if (window.innerWidth <= 768) {
-                if (jackpotWidget) {
-                    jackpotWidget.style.maxWidth = '100%';
-                    jackpotWidget.style.paddingLeft = '0px';
-                    jackpotWidget.style.paddingRight = '0px';
-                }
-                return;
-            }
-
-            var referenceElement = document.querySelector('#row-togel'); 
-            if (jackpotWidget && referenceElement && referenceElement.parentElement) {
-                var mainContainer = referenceElement.parentElement; 
-                var exactWidth = mainContainer.getBoundingClientRect().width;
-                var computedStyle = window.getComputedStyle(mainContainer);
-                
-                if (exactWidth > 0) {
-                    jackpotWidget.style.maxWidth = exactWidth + 'px';
-                    jackpotWidget.style.paddingLeft = computedStyle.paddingLeft;
-                    jackpotWidget.style.paddingRight = computedStyle.paddingRight;
-                }
+            if (exactWidth > 0) {
+                jackpotWidget.style.maxWidth = exactWidth + 'px';
+                jackpotWidget.style.paddingLeft = computedStyle.paddingLeft;
+                jackpotWidget.style.paddingRight = computedStyle.paddingRight;
             }
         }
+    }
 
-        // Jalankan sinkronisasi lebar
+    // --- 4. FUNGSI INJEKSI ANTI-SALIP (MENJAMIN POSISI DI BAWAH TRANSAKSI) ---
+    let injectAttempts = 0;
+    function injectJackpotSafely() {
+        if (document.getElementById('jackpot-outer-wrapper')) return;
+
+        // Cari elemen Transaksi
+        const transactionWidget = document.getElementById('sapatoto-recent-transactions');
+        // Cari elemen Togel (Sebagai cadangan)
+        const fallbackTarget = document.getElementById('row-togel');
+
+        if (transactionWidget) {
+            // Jika Transaksi sudah ada, suntik persis di BAWAH-nya
+            transactionWidget.insertAdjacentHTML('afterend', jackpotHTMLFinal);
+            finishSetup();
+        } else if (injectAttempts > 15 && fallbackTarget) {
+            // Jika ditunggu lama transaksi tidak muncul (mungkin dicabut), pakai cadangan Togel
+            fallbackTarget.insertAdjacentHTML('beforebegin', jackpotHTMLFinal);
+            finishSetup();
+        } else {
+            // Tunggu sebentar dan coba lagi
+            injectAttempts++;
+            setTimeout(injectSafely, 200);
+        }
+    }
+
+    function finishSetup() {
+        startDynamicJackpotCounterFinal();
         setTimeout(syncJackpotWidth, 50);
         setInterval(syncJackpotWidth, 1000); 
         window.addEventListener('resize', syncJackpotWidth);
     }
 
-    // --- 4. EKSEKUSI ---
-    document.addEventListener('DOMContentLoaded', injectJackpotHTMLFinal);
+    // --- 5. EKSEKUSI ---
+    document.addEventListener('DOMContentLoaded', injectJackpotSafely);
+    
+    // Fallback jika dimuat terlambat
+    if (document.readyState === 'complete') {
+        injectJackpotSafely();
+    }
 })();
