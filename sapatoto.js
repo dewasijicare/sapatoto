@@ -38,11 +38,12 @@
         }
 
         /* ==============================================================
-           PRESISI TOMBOL LOGIN DAFTAR PROMO SEJAJAR PINTAS 100%
+           PRESISI TOMBOL LOGIN DAFTAR PROMO SEJAJAR PINTAS 1296PX
            ============================================================== */
         #sapatoto-action-buttons-wrapper { 
             width: 100%; 
-            margin: 0 auto 15px auto !important; 
+            max-width: 1296px !important; /* LEBAR DIKUNCI 1296PX */
+            margin: 0 auto 15px auto !important; /* OTOMATIS DI TENGAH */
             padding: 0; 
             box-sizing: border-box; 
             transition: max-width 0.3s ease; 
@@ -72,7 +73,7 @@
             letter-spacing: 1px; 
             text-transform: uppercase; 
             padding: 12px 0 !important; 
-            border-radius: 4px !important; /* <--- DIUBAH MENJADI 4PX */
+            border-radius: 4px !important; /* LENGKUNGAN 4PX */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -80,7 +81,11 @@
 
         /* Responsif Mobile / HP */
         @media (max-width: 768px) {
-            #sapatoto-action-buttons-wrapper { margin: 0 auto 10px auto !important; padding: 0 !important; }
+            #sapatoto-action-buttons-wrapper { 
+                max-width: 100% !important; /* KEMBALI FULL DI HP */
+                margin: 0 auto 10px auto !important; 
+                padding: 0 !important; 
+            }
             .action-btns-inner-spacing { 
                 padding: 0 15px !important; 
                 gap: 8px; 
@@ -88,7 +93,7 @@
             .action-btn-col .btn { 
                 font-size: 0.85rem !important; 
                 padding: 10px 0 !important; 
-                border-radius: 4px !important; /* <--- MOBILE JUGA DIUBAH MENJADI 4PX */
+                border-radius: 4px !important; 
             }
         }
 
@@ -1202,28 +1207,8 @@
             
             rowParent.dataset.styledDesktopBtns = 'true';
         }
-
-        var btnWidget = document.getElementById('sapatoto-action-buttons-wrapper');
-        if (btnWidget) {
-            if (window.innerWidth <= 768) {
-                btnWidget.style.maxWidth = '100%';
-                btnWidget.style.paddingLeft = '0px';
-                btnWidget.style.paddingRight = '0px';
-            } else {
-                var referenceElement = document.querySelector('#row-togel'); 
-                if (referenceElement && referenceElement.parentElement) {
-                    var mainContainer = referenceElement.parentElement; 
-                    var exactWidth = mainContainer.getBoundingClientRect().width;
-                    var computedStyle = window.getComputedStyle(mainContainer);
-                    
-                    if (exactWidth > 0) {
-                        btnWidget.style.maxWidth = exactWidth + 'px';
-                        btnWidget.style.paddingLeft = computedStyle.paddingLeft;
-                        btnWidget.style.paddingRight = computedStyle.paddingRight;
-                    }
-                }
-            }
-        }
+        
+        // DIHAPUS: Blok Auto-Sync Lebar pakai Javascript karena sudah dikunci di CSS max-width 1296px
     }
     
     function runDynamicStyling() {
@@ -1272,12 +1257,6 @@
         setInterval(runDynamicStyling, 250); 
         runDynamicStyling(); 
         
-        window.addEventListener('resize', () => {
-            if(typeof styleDesktopActionButtons === 'function') {
-                styleDesktopActionButtons();
-            }
-        });
-
         document.body.addEventListener('change', (event) => {
             if (event.target.id === 'agentmemberbankid') {
                 const receiverBankSpan = document.getElementById('receiver-bank');
