@@ -100,11 +100,14 @@
             wds.push({ user: getRandomUsername(), amount: getWithdrawAmount(), time: generateNaturalDate(i * 3) });
         }
 
+        // [LOGIKA BARU]: Warna Icon dipisah berdasarkan tipe (Deposit = Pink, WD = Ungu)
         const buildRow = (item, type) => {
             const amountClass = type === 'deposit' ? 'tx-deposit' : 'tx-withdraw';
+            const iconColor = type === 'deposit' ? '#ec4899' : '#a855f7'; // Penentu warna logo member
+            
             return `
                 <div class="tx-item">
-                    <div class="tx-col-user"><i class="bi bi-person-circle text-muted me-1" style="color:#a855f7 !important;"></i><span class="fw-bold text-light">${item.user}</span></div>
+                    <div class="tx-col-user"><i class="bi bi-person-circle me-1" style="color:${iconColor} !important;"></i><span class="fw-bold text-light">${item.user}</span></div>
                     <div class="tx-col-time"><i class="bi bi-clock"></i> ${item.time}</div>
                     <div class="tx-col-amount ${amountClass}">${formatIDR(item.amount)}</div>
                 </div>
@@ -148,7 +151,7 @@
                         <div class="sapatoto-trx-flex">
                             
                             <div class="trx-column">
-                                <div class="tx-card d-flex flex-column">
+                                <div class="tx-card tx-card-deposit d-flex flex-column">
                                     <div class="tx-header border-pink">
                                         <i class="bi bi-box-arrow-in-down tx-icon-pink"></i> LIVE DEPOSIT
                                     </div>
@@ -164,7 +167,7 @@
                             </div>
 
                             <div class="trx-column">
-                                <div class="tx-card d-flex flex-column">
+                                <div class="tx-card tx-card-withdraw d-flex flex-column">
                                     <div class="tx-header border-purple">
                                         <i class="bi bi-cash-coin tx-icon-purple"></i> LIVE WITHDRAW
                                     </div>
@@ -186,12 +189,9 @@
 
             const cssHTML = `
                 <style>
-                    /* =========================================================
-                       BUNGKUSAN LUAR: PERBAIKAN MARGIN UNTUK JARAK 15PX
-                       ========================================================= */
+                    /* BUNGKUSAN LUAR: Jarak 15px Presisi */
                     #sapatoto-recent-transactions { 
                         width: 100%; 
-                        /* Menarik kotak ke atas sebesar 10px untuk menutupi sisa margin Pintas Widget */
                         margin: -10px auto 15px auto !important; 
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif; 
@@ -222,21 +222,36 @@
                     }
 
                     /* =========================================================
-                       STYLING KOTAK: BORDER PINK & LENGKUNGAN 4PX
+                       BASE CARD STYLING
                        ========================================================= */
                     .tx-card {
                         width: 100%;
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
-                        border-radius: 4px !important; /* LENGKUNGAN DIUBAH KE 4PX */
+                        border-radius: 4px !important; /* LENGKUNGAN 4PX */
                         overflow: hidden;
-                        box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); /* EFEK CAHAYA PINK */
-                        border: 1px solid #ec4899; /* GARIS TEPI PINK SAPATOTO */
                         transition: transform 0.3s ease, box-shadow 0.3s ease;
                     }
-                    .tx-card:hover {
+
+                    /* TEMA BOX DEPOSIT: BORDER PINK & GLOW PINK */
+                    .tx-card-deposit {
+                        box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+                        border: 1px solid #ec4899;
+                    }
+                    .tx-card-deposit:hover {
                         transform: translateY(-3px);
                         box-shadow: 0 5px 25px rgba(236, 72, 153, 0.8);
                         border-color: #f472b6;
+                    }
+
+                    /* TEMA BOX WITHDRAW: BORDER UNGU & GLOW UNGU */
+                    .tx-card-withdraw {
+                        box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+                        border: 1px solid #a855f7;
+                    }
+                    .tx-card-withdraw:hover {
+                        transform: translateY(-3px);
+                        box-shadow: 0 5px 25px rgba(168, 85, 247, 0.8);
+                        border-color: #c084fc;
                     }
 
                     .tx-header {
@@ -254,13 +269,16 @@
                     .tx-icon-pink { color: #f472b6; margin-right: 8px; font-size: 1.2em; }
                     .tx-icon-purple { color: #c084fc; margin-right: 8px; font-size: 1.2em; }
 
+                    /* =========================================================
+                       [UBAHAN BARU] HEADER TABEL: KUNING TEGAS & TEKS GELAP
+                       ========================================================= */
                     .tx-table-header {
                         display: flex;
                         padding: 8px 15px;
-                        background-color: rgba(236, 72, 153, 0.05);
-                        border-bottom: 1px solid #34495e;
-                        color: #bdc3c7;
-                        font-weight: 700;
+                        background: linear-gradient(90deg, #fcd34d, #f59e0b); /* Kuning Gaming */
+                        border-bottom: 2px solid #d97706; /* Garis bawah kuning gelap */
+                        color: #1a252f !important; /* Teks Hitam/Biru Gelap */
+                        font-weight: 900;
                         font-size: 0.8rem;
                         flex-shrink: 0;
                     }
@@ -312,7 +330,6 @@
                     @media (max-width: 768px) {
                         #sapatoto-recent-transactions {
                             padding: 0 15px !important; 
-                            /* Tetap menarik 10px ke atas di mobile agar seragam */
                         }
                         .trx-inner-wrapper {
                             padding: 0 !important; 
