@@ -19,16 +19,14 @@
         .btn-gaming-blue { background: linear-gradient(45deg, #00f2fe, #4facfe) !important; border: none !important; color: #fff !important; font-weight: 700; text-transform: uppercase; box-shadow: 0 0 15px rgba(0, 242, 254, 0.6), inset 0 0 5px rgba(255,255,255,.4) !important; transition: all .3s ease; }
         .btn-gaming-blue:hover { transform: scale(1.05); background: linear-gradient(45deg, #4facfe, #00f2fe) !important; box-shadow: 0 0 20px rgba(0, 242, 254, 0.8), 0 0 30px rgba(79, 172, 254, 0.6), inset 0 0 5px rgba(255,255,255,.8) !important; color: #fff !important; }
 
-        /* ==============================================================
-           WARNA KUNING TERANG DENGAN TEKS GELAP UNTUK PROMOSI
-           ============================================================== */
+        /* WARNA KUNING TERANG DENGAN TEKS GELAP UNTUK PROMOSI */
         .btn-gaming-yellow {
             background: linear-gradient(45deg, #fcd34d, #f59e0b) !important;
             border: 1px solid #fbbf24 !important;
-            color: #1a252f !important; /* Teks Gelap/Hitam Biru */
-            font-weight: 900 !important; /* Tulisan Sangat Tebal */
+            color: #1a252f !important;
+            font-weight: 900 !important;
             text-transform: uppercase !important;
-            text-shadow: none !important; /* Hapus shadow putih agar teks gelap tajam */
+            text-shadow: none !important; 
             box-shadow: 0 0 15px rgba(245, 158, 11, 0.6), inset 0 0 5px rgba(255,255,255,.5) !important;
             transition: all .3s ease;
         }
@@ -45,7 +43,7 @@
         #sapatoto-action-buttons-wrapper { 
             width: 100%; 
             margin: 0 auto 15px auto !important; 
-            padding: 0; /* KUNCI UTAMA: !important dihapus agar JS Auto-Sync bisa menyuntikkan padding kerangka situs */
+            padding: 0; 
             box-sizing: border-box; 
             transition: max-width 0.3s ease; 
         }
@@ -53,8 +51,8 @@
         .action-btns-inner-spacing { 
             display: flex; 
             flex-wrap: nowrap; 
-            gap: 12px; /* Jarak pas antar tombol */
-            padding: 0 8px; /* KUNCI KEDUA: Disamakan persis dengan rumus 8px milik Pintas Widget */
+            gap: 12px; 
+            padding: 0 8px; 
             width: 100%; 
             box-sizing: border-box; 
         }
@@ -74,7 +72,7 @@
             letter-spacing: 1px; 
             text-transform: uppercase; 
             padding: 12px 0 !important; 
-            border-radius: 12px !important; 
+            border-radius: 4px !important; /* <--- DIUBAH MENJADI 4PX */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -82,7 +80,6 @@
 
         /* Responsif Mobile / HP */
         @media (max-width: 768px) {
-            /* Di mobile, JS mati, jadi kita gunakan !important untuk mengunci paddingnya */
             #sapatoto-action-buttons-wrapper { margin: 0 auto 10px auto !important; padding: 0 !important; }
             .action-btns-inner-spacing { 
                 padding: 0 15px !important; 
@@ -91,7 +88,7 @@
             .action-btn-col .btn { 
                 font-size: 0.85rem !important; 
                 padding: 10px 0 !important; 
-                border-radius: 8px !important;
+                border-radius: 4px !important; /* <--- MOBILE JUGA DIUBAH MENJADI 4PX */
             }
         }
 
