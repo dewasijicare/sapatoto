@@ -2,78 +2,34 @@
     const jackpotStylesSapatoto = `
         @import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Exo+2:wght@700;900&display=swap');
         
-        :root {
-            --neon-pink: #f472b6;
-            --neon-pink-dark: #ec4899;
-            --neon-purple: #a855f7;
-            --neon-purple-dark: #9333ea;
-            --dark-bg: #1a252f;
-        }
+        :root { --neon-pink: #f472b6; --neon-pink-dark: #ec4899; --neon-purple: #a855f7; --neon-purple-dark: #9333ea; --dark-bg: #1a252f; }
 
-        /* ==============================================================
-           BUNGKUSAN LUAR: PONDASI ANTI-TERTIMPA
-           ============================================================== */
+        /* PONDASI BETON ANTI-TERTIMPA */
         #jackpot-outer-wrapper {
-            width: 100%;
+            width: 100% !important;
             max-width: 1296px !important; 
             margin: 0 auto 15px auto !important; 
-            padding: 0; 
-            box-sizing: border-box;
-            transition: max-width 0.3s ease;
+            padding: 0 !important; 
+            box-sizing: border-box !important;
             font-family: 'Exo 2', sans-serif !important;
             
-            /* PONDASI BETON ANTI-OVERLAP */
-            display: block !important;
-            clear: both !important;
-            position: relative;
-            z-index: 10; 
+            display: block !important;    /* WAJIB BLOCK */
+            clear: both !important;       /* MENCEGAH FLOAT MENYUSUP */
+            overflow: hidden !important;  /* MEMOTONG TUMPANGAN DARI BAWAH */
+            min-height: 100px !important; /* MEMAKSA RUANG TERSEDIA */
+            position: relative !important;
         }
 
         .jackpot-inner-spacing { padding: 0 8px; width: 100%; box-sizing: border-box; }
+        .jackpot-animated-border { position: relative; border-radius: 4px !important; padding: 1px; width: 100%; background: linear-gradient(45deg, var(--neon-pink-dark), var(--neon-purple-dark)); animation: borderPulseSapatoto 2s ease-in-out infinite alternate; box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); }
+        @keyframes borderPulseSapatoto { 0% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); filter: hue-rotate(0deg); } 100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); filter: hue-rotate(30deg); } }
 
-        .jackpot-animated-border {
-            position: relative; border-radius: 4px !important; padding: 1px; width: 100%;
-            background: linear-gradient(45deg, var(--neon-pink-dark), var(--neon-purple-dark));
-            animation: borderPulseSapatoto 2s ease-in-out infinite alternate;
-            box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
-        }
-
-        @keyframes borderPulseSapatoto {
-            0% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); filter: hue-rotate(0deg); }
-            100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); filter: hue-rotate(30deg); }
-        }
-
-        .jackpot-display-box-content {
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background-color: var(--dark-bg); border-radius: 3px !important; min-height: 90px;
-            position: relative; padding: 20px 15px; z-index: 2; width: 100%;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
-            background-image: radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.15) 1px, transparent 0);
-            background-size: 4px 4px; overflow: hidden; 
-        }
-
-        .jackpot-shine {
-            position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
-            transform: skewX(-25deg); animation: shineSweeper 5s infinite; z-index: 1; pointer-events: none;
-        }
-
+        .jackpot-display-box-content { display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: var(--dark-bg); border-radius: 3px !important; min-height: 90px; position: relative; padding: 20px 15px; z-index: 2; width: 100%; box-shadow: inset 0 0 20px rgba(0,0,0,0.8); background-image: radial-gradient(circle at 1px 1px, rgba(236, 72, 153, 0.15) 1px, transparent 0); background-size: 4px 4px; overflow: hidden; }
+        .jackpot-shine { position: absolute; top: 0; left: -150%; width: 50%; height: 100%; background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%); transform: skewX(-25deg); animation: shineSweeper 5s infinite; z-index: 1; pointer-events: none; }
         @keyframes shineSweeper { 0% { left: -150%; } 15% { left: 200%; } 100% { left: 200%; } }
 
         .jackpot-spark { position: absolute; width: 4px; height: 4px; border-radius: 50%; opacity: 0; z-index: 1; }
-        .spark-1 { left: 5%; animation: floatUp 3.5s infinite linear 0s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
-        .spark-2 { left: 15%; animation: floatUp 4s infinite linear 1.2s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
-        .spark-3 { left: 25%; animation: floatUp 4.5s infinite linear 0.5s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
-        .spark-4 { left: 35%; animation: floatUp 3s infinite linear 2s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
-        .spark-5 { left: 45%; animation: floatUp 5s infinite linear 0.8s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
-        .spark-6 { left: 55%; animation: floatUp 3.8s infinite linear 1.5s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
-        .spark-7 { left: 65%; animation: floatUp 4.2s infinite linear 0.2s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
-        .spark-8 { left: 75%; animation: floatUp 3.6s infinite linear 1.8s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
-        .spark-9 { left: 85%; animation: floatUp 4.8s infinite linear 0.9s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
-        .spark-10 { left: 95%; animation: floatUp 3.2s infinite linear 2.5s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
-        .spark-11 { left: 50%; animation: floatUp 4.1s infinite linear 3s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); }
-        .spark-12 { left: 20%; animation: floatUp 3.9s infinite linear 2.8s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
-
+        .spark-1 { left: 5%; animation: floatUp 3.5s infinite linear 0s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); } .spark-2 { left: 15%; animation: floatUp 4s infinite linear 1.2s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); } .spark-3 { left: 25%; animation: floatUp 4.5s infinite linear 0.5s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); } .spark-4 { left: 35%; animation: floatUp 3s infinite linear 2s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); } .spark-5 { left: 45%; animation: floatUp 5s infinite linear 0.8s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); } .spark-6 { left: 55%; animation: floatUp 3.8s infinite linear 1.5s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); } .spark-7 { left: 65%; animation: floatUp 4.2s infinite linear 0.2s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); } .spark-8 { left: 75%; animation: floatUp 3.6s infinite linear 1.8s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); } .spark-9 { left: 85%; animation: floatUp 4.8s infinite linear 0.9s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); } .spark-10 { left: 95%; animation: floatUp 3.2s infinite linear 2.5s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); } .spark-11 { left: 50%; animation: floatUp 4.1s infinite linear 3s; background: var(--neon-pink); box-shadow: 0 0 8px var(--neon-pink); } .spark-12 { left: 20%; animation: floatUp 3.9s infinite linear 2.8s; background: var(--neon-purple); box-shadow: 0 0 8px var(--neon-purple); }
         @keyframes floatUp { 0% { bottom: -10px; opacity: 0; transform: scale(0.5); } 20% { opacity: 0.8; } 80% { opacity: 0.8; } 100% { bottom: 100%; opacity: 0; transform: scale(1.5); } }
         
         .jackpot-main-title { color: #fff; font-size: 1.2rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; white-space: nowrap; display: flex; align-items: center; justify-content: center; z-index: 5; position: relative; }
@@ -129,7 +85,13 @@
     }
 
     let injectAttempts = 0;
+    let hasInjected = false;
+
     function injectJackpotSafely() {
+        if (hasInjected) return;
+        
+        // BERSIHKAN VERSI LAMA YANG MENYANGKUT DI CACHE
+        document.querySelectorAll('.jackpot-container-main').forEach(el => el.remove());
         if (document.getElementById('jackpot-outer-wrapper')) return;
 
         const transactionWidget = document.getElementById('sapatoto-recent-transactions');
@@ -138,15 +100,18 @@
         if (transactionWidget) {
             transactionWidget.insertAdjacentHTML('afterend', jackpotHTMLFinal);
             startDynamicJackpotCounterFinal();
+            hasInjected = true;
         } else if (injectAttempts > 15 && fallbackTarget) {
             fallbackTarget.insertAdjacentHTML('beforebegin', jackpotHTMLFinal);
             startDynamicJackpotCounterFinal();
+            hasInjected = true;
         } else {
             injectAttempts++;
-            setTimeout(injectJackpotSafely, 200); 
         }
     }
 
-    document.addEventListener('DOMContentLoaded', injectJackpotSafely);
-    if (document.readyState === 'complete') injectJackpotSafely();
+    const checkInterval = setInterval(() => {
+        if (!hasInjected) injectJackpotSafely();
+        else clearInterval(checkInterval);
+    }, 250);
 })();
