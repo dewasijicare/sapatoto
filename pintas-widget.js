@@ -29,13 +29,16 @@
                 </div>
 
                 <style>
-                    /* BUNGKUSAN LUAR */
+                    /* ==============================================================
+                       BUNGKUSAN LUAR: LEBAR PASTI 1296PX DI TENGAH
+                       ============================================================== */
                     #pintas-widget-wrapper {
                         width: 100%;
-                        margin: 15px auto 25px auto; 
+                        max-width: 1296px !important; /* LEBAR DIKUNCI 1296PX */
+                        margin: 15px auto 25px auto !important; /* OTOMATIS DI TENGAH */
+                        padding: 0;
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif;
-                        transition: max-width 0.3s ease;
                     }
 
                     /* RUMUS PRESISI 8px SEJAJAR FITUR LAIN */
@@ -81,25 +84,25 @@
                     }
 
                     /* =======================================================
-                       [UBAHAN UTAMA] TATA LETAK TEKS: SEBARIS DI PC
+                       TATA LETAK TEKS: SEBARIS DI PC
                        ======================================================= */
                     .pintas-content {
                         display: flex;
                         flex-direction: row; /* Teks berjejer lurus menyamping di PC */
-                        flex-wrap: wrap; /* Jika layar agak sempit, aman tidak terpotong */
+                        flex-wrap: wrap; 
                         align-items: center;
                         justify-content: center;
                         line-height: 1.3;
                         text-align: center;
                     }
                     .pintas-sub {
-                        font-size: 1.1rem; /* Dibesarkan di PC agar mengisi ruang kosong */
+                        font-size: 1.1rem; 
                         color: #fbbf24; 
                         font-weight: 700;
                         letter-spacing: 1px;
                         text-transform: uppercase;
                         text-shadow: 0 0 5px rgba(251, 191, 36, 0.4);
-                        margin-right: 12px; /* Memberi jarak spasi ke judul utama */
+                        margin-right: 12px; 
                     }
                     .pintas-sub i { margin-right: 5px; }
                     .pintas-title {
@@ -134,22 +137,22 @@
                     }
                     
                     /* =======================================================
-                       [UBAHAN UTAMA] TATA LETAK TEKS: BERTUMPUK DI HP
+                       TATA LETAK TEKS: BERTUMPUK DI HP & LEBAR 100%
                        ======================================================= */
                     @media (max-width: 768px) {
-                        #pintas-widget-wrapper { padding: 0 !important; }
+                        #pintas-widget-wrapper { max-width: 100% !important; padding: 0 !important; }
                         .pintas-inner-spacing { padding: 0 15px !important; } 
                         
                         .pintas-content {
-                            flex-direction: column; /* Mengembalikan teks jadi atas-bawah */
+                            flex-direction: column; 
                             align-items: flex-start;
                             text-align: left;
                         }
                         
                         .pintas-sub { 
-                            font-size: 0.65rem; /* Dikecilkan kembali di HP */
-                            margin-right: 0; /* Jarak samping dihapus */
-                            margin-bottom: 2px; /* Memberi jarak ke bawah */
+                            font-size: 0.65rem; 
+                            margin-right: 0; 
+                            margin-bottom: 2px; 
                         }
                         .pintas-title { font-size: 1rem; }
                         .highlight-neon { margin-left: 4px; }
@@ -163,39 +166,7 @@
             // INJEKSI: Meletakkan widget persis di ATAS area Togel/Jackpot 
             target.insertAdjacentHTML('beforebegin', widgetHTML);
 
-            // ==========================================================
-            // FUNGSI SENSOR PRESISI AUTO-SYNC LEBAR KE TENGAH
-            // ==========================================================
-            function syncPintasWidth() {
-                var pintasWidget = document.getElementById('pintas-widget-wrapper');
-                
-                if (window.innerWidth <= 768) {
-                    if (pintasWidget) {
-                        pintasWidget.style.maxWidth = '100%';
-                        pintasWidget.style.paddingLeft = '0px';
-                        pintasWidget.style.paddingRight = '0px';
-                    }
-                    return;
-                }
-
-                var referenceElement = document.querySelector('#row-togel'); 
-                if (pintasWidget && referenceElement && referenceElement.parentElement) {
-                    var mainContainer = referenceElement.parentElement; 
-                    
-                    var exactWidth = mainContainer.getBoundingClientRect().width;
-                    var computedStyle = window.getComputedStyle(mainContainer);
-                    
-                    if (exactWidth > 0) {
-                        pintasWidget.style.maxWidth = exactWidth + 'px';
-                        pintasWidget.style.paddingLeft = computedStyle.paddingLeft;
-                        pintasWidget.style.paddingRight = computedStyle.paddingRight;
-                    }
-                }
-            }
-
-            setTimeout(syncPintasWidth, 50);
-            setInterval(syncPintasWidth, 1000); 
-            window.addEventListener('resize', syncPintasWidth);
+            // [HAPUS FUNGSI JS AUTO-SYNC KARENA SUDAH MENGGUNAKAN LEBAR PASTI 1296PX]
 
             return true;
         }
