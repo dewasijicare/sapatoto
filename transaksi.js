@@ -186,10 +186,13 @@
 
             const cssHTML = `
                 <style>
-                    /* BUNGKUSAN LUAR */
+                    /* =========================================================
+                       BUNGKUSAN LUAR: PERBAIKAN MARGIN UNTUK JARAK 15PX
+                       ========================================================= */
                     #sapatoto-recent-transactions { 
                         width: 100%; 
-                        margin: 0 auto 25px auto !important; 
+                        /* Menarik kotak ke atas sebesar 10px untuk menutupi sisa margin Pintas Widget */
+                        margin: -10px auto 15px auto !important; 
                         box-sizing: border-box;
                         font-family: 'Exo 2', sans-serif; 
                         transition: max-width 0.3s ease; 
@@ -218,19 +221,22 @@
                         flex-direction: column;
                     }
 
+                    /* =========================================================
+                       STYLING KOTAK: BORDER PINK & LENGKUNGAN 4PX
+                       ========================================================= */
                     .tx-card {
                         width: 100%;
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
-                        border-radius: 12px;
+                        border-radius: 4px !important; /* LENGKUNGAN DIUBAH KE 4PX */
                         overflow: hidden;
-                        box-shadow: 0 0 15px rgba(0,0,0,0.4);
-                        border: 1px solid #34495e;
+                        box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); /* EFEK CAHAYA PINK */
+                        border: 1px solid #ec4899; /* GARIS TEPI PINK SAPATOTO */
                         transition: transform 0.3s ease, box-shadow 0.3s ease;
                     }
                     .tx-card:hover {
                         transform: translateY(-3px);
-                        box-shadow: 0 5px 20px rgba(236, 72, 153, 0.3);
-                        border-color: #ec4899;
+                        box-shadow: 0 5px 25px rgba(236, 72, 153, 0.8);
+                        border-color: #f472b6;
                     }
 
                     .tx-header {
@@ -305,7 +311,8 @@
                     /* ======================================= */
                     @media (max-width: 768px) {
                         #sapatoto-recent-transactions {
-                            padding: 0 15px !important; /* KEMBALIKAN KE 15PX AGAR TIDAK MENABRAK DINDING */
+                            padding: 0 15px !important; 
+                            /* Tetap menarik 10px ke atas di mobile agar seragam */
                         }
                         .trx-inner-wrapper {
                             padding: 0 !important; 
@@ -334,8 +341,8 @@
                 if (window.innerWidth <= 768) {
                     if (trxWidget) {
                         trxWidget.style.maxWidth = '100%';
-                        trxWidget.style.paddingLeft = '15px';  // PERBAIKAN DI SINI
-                        trxWidget.style.paddingRight = '15px'; // PERBAIKAN DI SINI
+                        trxWidget.style.paddingLeft = '15px'; 
+                        trxWidget.style.paddingRight = '15px'; 
                     }
                     return;
                 }
