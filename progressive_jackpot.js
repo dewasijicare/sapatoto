@@ -4,20 +4,18 @@
         
         :root { --neon-pink: #f472b6; --neon-pink-dark: #ec4899; --neon-purple: #a855f7; --neon-purple-dark: #9333ea; --dark-bg: #1a252f; }
 
-        /* PONDASI BETON ANTI-TERTIMPA */
-        #jackpot-outer-wrapper {
+        /* DINDING PEMISAH MUTLAK (Mencegah Overlap) */
+        #sapatoto-jackpot-engine-v2 {
+            display: block !important;
             width: 100% !important;
             max-width: 1296px !important; 
             margin: 0 auto 15px auto !important; 
             padding: 0 !important; 
             box-sizing: border-box !important;
-            font-family: 'Exo 2', sans-serif !important;
-            
-            display: block !important;    /* WAJIB BLOCK */
-            clear: both !important;       /* MENCEGAH FLOAT MENYUSUP */
-            overflow: hidden !important;  /* MEMOTONG TUMPANGAN DARI BAWAH */
-            min-height: 100px !important; /* MEMAKSA RUANG TERSEDIA */
+            clear: both !important;
+            overflow: hidden !important;
             position: relative !important;
+            z-index: 10 !important; 
         }
 
         .jackpot-inner-spacing { padding: 0 8px; width: 100%; box-sizing: border-box; }
@@ -42,7 +40,7 @@
         @keyframes textGlowSapatoto { 0% { opacity: 0.9; text-shadow: 0 0 5px #fff, 0 0 10px var(--neon-purple), 0 0 20px var(--neon-pink-dark); } 100% { opacity: 1; text-shadow: 0 0 8px #fff, 0 0 15px var(--neon-pink), 0 0 30px var(--neon-purple), 0 0 50px var(--neon-pink-dark); } }
 
         @media (min-width: 992px) { .jackpot-value-final { font-size: 3.8rem; letter-spacing: 5px; } .jackpot-main-title { font-size: 1.4rem; } .jackpot-main-title i { font-size: 1.6rem; } }
-        @media (max-width: 768px) { #jackpot-outer-wrapper { max-width: 100% !important; padding: 0 !important; } .jackpot-inner-spacing { padding: 0 15px !important; } .jackpot-value-final { font-size: 7.5vw; letter-spacing: 0.5vw; } .jackpot-main-title { font-size: 1rem; } .jackpot-main-title i { font-size: 1.1rem; } }
+        @media (max-width: 768px) { #sapatoto-jackpot-engine-v2 { max-width: 100% !important; padding: 0 !important; } .jackpot-inner-spacing { padding: 0 15px !important; } .jackpot-value-final { font-size: 7.5vw; letter-spacing: 0.5vw; } .jackpot-main-title { font-size: 1rem; } .jackpot-main-title i { font-size: 1.1rem; } }
     `;
 
     const styleElement = document.createElement('style');
@@ -50,7 +48,7 @@
     document.head.appendChild(styleElement);
 
     const jackpotHTMLFinal = `
-        <div id="jackpot-outer-wrapper">
+        <div id="sapatoto-jackpot-engine-v2">
             <div class="jackpot-inner-spacing">
                 <div class="jackpot-animated-border">
                     <div class="jackpot-display-box-content">
@@ -74,44 +72,34 @@
         const maxIncrement = 15;
         const updateInterval = 80;
         const resetThreshold = 32462700000;
-        function updateJackpotValue() {
-            const increment = Math.floor(Math.random() * maxIncrement) + 1;
-            currentValue += increment;
+        setInterval(() => {
+            currentValue += Math.floor(Math.random() * maxIncrement) + 1;
             if (currentValue > resetThreshold) currentValue = 32462646763;
             element.textContent = 'IDR ' + currentValue.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        }
-        updateJackpotValue();
-        setInterval(updateJackpotValue, updateInterval);
+        }, updateInterval);
     }
-
-    let injectAttempts = 0;
-    let hasInjected = false;
 
     function injectJackpotSafely() {
-        if (hasInjected) return;
+        if (document.getElementById('sapatoto-jackpot-engine-v2')) return true;
         
-        // BERSIHKAN VERSI LAMA YANG MENYANGKUT DI CACHE
-        document.querySelectorAll('.jackpot-container-main').forEach(el => el.remove());
-        if (document.getElementById('jackpot-outer-wrapper')) return;
+        // MENGHAPUS VERSI LAMA AGAR TIDAK MENGGANGGU
+        document.querySelectorAll('.jackpot-container-main, #jackpot-outer-wrapper').forEach(el => el.remove());
 
-        const transactionWidget = document.getElementById('sapatoto-recent-transactions');
+        // Target utama adalah MENEMPEL DI BAWAH TRANSAKSI V2
+        const transactionV2 = document.getElementById('sapatoto-trx-engine-v2');
         const fallbackTarget = document.getElementById('row-togel');
 
-        if (transactionWidget) {
-            transactionWidget.insertAdjacentHTML('afterend', jackpotHTMLFinal);
+        if (transactionV2) {
+            transactionV2.insertAdjacentHTML('afterend', jackpotHTMLFinal);
             startDynamicJackpotCounterFinal();
-            hasInjected = true;
-        } else if (injectAttempts > 15 && fallbackTarget) {
+            return true;
+        } else if (fallbackTarget) {
             fallbackTarget.insertAdjacentHTML('beforebegin', jackpotHTMLFinal);
             startDynamicJackpotCounterFinal();
-            hasInjected = true;
-        } else {
-            injectAttempts++;
+            return true;
         }
+        return false;
     }
 
-    const checkInterval = setInterval(() => {
-        if (!hasInjected) injectJackpotSafely();
-        else clearInterval(checkInterval);
-    }, 250);
+    const checkInterval = setInterval(() => { if (injectJackpotSafely()) clearInterval(checkInterval); }, 300);
 })();
