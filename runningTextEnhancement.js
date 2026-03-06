@@ -1,11 +1,11 @@
 (function() {
-    // CSS untuk styling announcement (TEMA SAPATOTO: DARK & NEON PINK)
+    // CSS untuk styling announcement (TEMA SAPATOTO: DARK, NEON PINK & PURPLE)
     const announcementStyles = `
         /* BUNGKUSAN LUAR: Akan disinkronkan ukurannya oleh JS mengikuti kerangka web (Tombol & Pintas) */
         #announcement-outer-wrapper {
             width: 100%;
             margin: 15px auto 15px auto !important;
-            padding: 0; /* KUNCI: Jangan beri !important agar JS bisa mengatur jaraknya */
+            padding: 0; 
             box-sizing: border-box;
             transition: max-width 0.3s ease;
         }
@@ -21,7 +21,7 @@
         #announcement.gavan-themed-announcement {
             background: linear-gradient(145deg, #2c3e50, #1a252f) !important;
             border: 1px solid #ec4899 !important; 
-            border-radius: 4px !important; /* <--- SUDAH DIUBAH MENJADI 4PX */
+            border-radius: 4px !important; /* Lengkungan siku 4px */
             box-shadow: 0 0 15px rgba(236, 72, 153, 0.4) !important; 
             color: #ecf0f1 !important;
             padding: 10px 20px !important; 
@@ -30,38 +30,43 @@
             overflow: hidden !important;
             width: 100% !important;
             max-width: 100% !important; 
-            margin: 0 !important; /* Direset karena margin sudah diurus wrapper luar */
+            margin: 0 !important; 
             box-sizing: border-box !important;
         }
 
-        #announcement.gavan-themed-announcement i.fa-solid.fa-bullhorn {
-            color: #f472b6 !important; 
-            text-shadow: 0 0 8px #f472b6;
+        /* ==========================================================
+           [UBAHAN BARU] ICON NOTICE BERWARNA UNGU NEON & GLOW UNGU
+           ========================================================== */
+        #announcement.gavan-themed-announcement i.fa-solid.fa-bullhorn,
+        #announcement.gavan-themed-announcement i.bi-megaphone {
+            color: #a855f7 !important; /* Ungu Sapatoto */
+            text-shadow: 0 0 8px #a855f7;
             margin-right: 12px;
             font-size: 1.2em;
-            animation: pulse-glow-sapatoto 2s infinite ease-in-out;
+            animation: pulse-glow-purple 2s infinite ease-in-out; /* Menggunakan animasi glow ungu */
             flex-shrink: 0;
         }
 
         #announcement.gavan-themed-announcement marquee {
             flex-grow: 1;
-            color: #ffe600 !important; 
+            color: #ffe600 !important; /* Teks Kuning */
             min-width: 0;
             letter-spacing: 0.5px;
             font-weight: 700; 
             text-shadow: 0 0 8px rgba(255, 230, 0, 0.5); 
         }
 
-        @keyframes pulse-glow-sapatoto {
-            0%, 100% { transform: scale(1); text-shadow: 0 0 8px rgba(244, 114, 182, 0.6); }
-            50% { transform: scale(1.1); text-shadow: 0 0 15px rgba(244, 114, 182, 0.8), 0 0 25px rgba(236, 72, 153, 0.6); }
+        /* ANIMASI CAHAYA UNGU KHUSUS ICON */
+        @keyframes pulse-glow-purple {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 8px rgba(168, 85, 247, 0.6); }
+            50% { transform: scale(1.1); text-shadow: 0 0 15px rgba(168, 85, 247, 0.8), 0 0 25px rgba(147, 51, 234, 0.6); }
         }
 
         /* PERLINDUNGAN MOBILE / HP */
         @media (max-width: 768px) {
             #announcement-outer-wrapper { padding: 0 !important; margin: 10px auto 10px auto !important; }
             .announcement-inner-spacing { padding: 0 15px !important; } /* Jarak aman tepi HP */
-            #announcement.gavan-themed-announcement { border-radius: 4px !important; padding: 8px 15px !important; } /* <--- MOBILE JUGA DIUBAH MENJADI 4PX */
+            #announcement.gavan-themed-announcement { border-radius: 4px !important; padding: 8px 15px !important; }
         }
     `;
 
