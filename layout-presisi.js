@@ -1,68 +1,68 @@
 (function() {
     const layoutPresisiStyles = `
         /* ==============================================================
-           1. PRESISI HEADER MENU (NAVBAR TOP)
+           1. PRESISI HEADER MENU (TERKUNCI 1296PX DI TENGAH)
            ============================================================== */
-        /* Mengakali class fixed-top bawaan agar bisa di-center sejajar 1296px */
-        #navbar-top-wrapper.fixed-top {
-            width: 100% !important;
+        /* Memaksa pembungkus header dan navigasi atas untuk patuh di 1296px */
+        header, .fixed-top, #navbar-top-wrapper, #navbar-top, nav.navbar.bg-dark:not(.fixed-bottom) {
             max-width: 1296px !important;
             margin: 0 auto !important;
             left: 0 !important;
             right: 0 !important;
         }
 
-        #navbar-top {
-            width: 100% !important;
-            border-radius: 0 !important; /* Pastikan tidak ada lengkungan */
-            border: none !important;     /* Pastikan tidak ada garis */
-            box-shadow: none !important;
+        /* Melindungi Menu Bawah (Mobile) agar tetap 100% layar */
+        .fixed-bottom {
+            max-width: 100% !important;
+            left: 0 !important;
+            right: 0 !important;
         }
 
         /* ==============================================================
-           2. PRESISI BANNER SLIDER & TINGGI 600PX (Tanpa Border/Siku)
+           2. PRESISI BANNER SLIDER (TINGGI 600PX, TANPA BORDER/SIKU)
            ============================================================== */
-        #main-slider {
+        /* Menembak semua kemungkinan Class/ID Banner di sistem Pay4D/Nexus */
+        #main-slider, .carousel, .slider-wrapper, #myCarousel {
             width: 100% !important;
-            max-width: 1296px !important; /* LEBAR DIKUNCI 1296PX */
-            margin: 0 auto 15px auto !important; /* TENGAH & JARAK 15PX KE BAWAH */
-            border: none !important;             /* HAPUS BORDER */
-            border-radius: 0 !important;         /* HAPUS ROUND CORNER */
-            box-shadow: none !important;         /* HAPUS SHADOW */
+            max-width: 1296px !important;
+            margin: 0 auto 15px auto !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            display: block !important;
+            clear: both !important;
             background-color: transparent !important;
         }
 
-        #main-slider .carousel-inner {
-            border-radius: 0 !important;         /* HAPUS ROUND CORNER DI DALAM */
+        #main-slider .carousel-inner, .carousel .carousel-inner {
+            border-radius: 0 !important;
         }
 
-        /* Menarik tinggi gambar menjadi 600px dengan proporsi cover */
-        #main-slider .carousel-item img {
+        /* Menarik tinggi gambar menjadi persis 600px (Anti-Gepeng) */
+        #main-slider .carousel-item img, .carousel .carousel-item img {
             height: 600px !important;
-            object-fit: cover !important;        /* Mencegah gambar menjadi gepeng */
-            object-position: center top !important; /* Fokus pada bagian tengah-atas gambar */
+            object-fit: cover !important;
+            object-position: center top !important;
             width: 100% !important;
             border-radius: 0 !important;
         }
 
         /* ==============================================================
-           3. RESPONSIVE MOBILE / HP
+           3. RESPONSIVE MOBILE / HP (KEMBALI KE LAYAR PENUH)
            ============================================================== */
         @media (max-width: 768px) {
-            /* Header dan Banner kembali 100% di layar HP */
-            #navbar-top-wrapper.fixed-top,
-            #main-slider {
+            header, .fixed-top, #navbar-top-wrapper, #navbar-top, nav.navbar:not(.fixed-bottom),
+            #main-slider, .carousel, .slider-wrapper, #myCarousel {
                 max-width: 100% !important;
             }
             
-            /* Tinggi gambar di HP disesuaikan agar tidak kebesaran memenuhi layar */
-            #main-slider .carousel-item img {
+            /* Banner di HP diturunkan tingginya agar tidak memenuhi 1 layar utuh */
+            #main-slider .carousel-item img, .carousel .carousel-item img {
                 height: 250px !important; 
             }
         }
     `;
 
-    // Eksekusi penanaman CSS ke dalam Website
     function injectLayoutStyles() {
         const existingStyle = document.getElementById('sapatoto-layout-presisi');
         if (existingStyle) {
@@ -75,7 +75,6 @@
         document.head.appendChild(styleElement);
     }
 
-    // Jalankan skrip 
     injectLayoutStyles();
     document.addEventListener('DOMContentLoaded', injectLayoutStyles);
 })();
