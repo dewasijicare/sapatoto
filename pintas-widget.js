@@ -53,7 +53,7 @@
                         background: linear-gradient(145deg, #2c3e50, #1a252f);
                         border: 1px solid #ec4899;
                         box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
-                        border-radius: 4px !important; /* <--- SUDAH DIUBAH MENJADI 4PX */
+                        border-radius: 4px !important; /* LENGKUNGAN 4PX */
                         padding: 12px 20px;
                         position: relative;
                         overflow: hidden;
@@ -80,20 +80,26 @@
                         animation: blastOff 2s infinite ease-in-out;
                     }
 
+                    /* =======================================================
+                       [UBAHAN UTAMA] TATA LETAK TEKS: SEBARIS DI PC
+                       ======================================================= */
                     .pintas-content {
                         display: flex;
-                        flex-direction: column;
+                        flex-direction: row; /* Teks berjejer lurus menyamping di PC */
+                        flex-wrap: wrap; /* Jika layar agak sempit, aman tidak terpotong */
+                        align-items: center;
                         justify-content: center;
                         line-height: 1.3;
-                        text-align: left;
+                        text-align: center;
                     }
                     .pintas-sub {
-                        font-size: 0.75rem;
+                        font-size: 1.1rem; /* Dibesarkan di PC agar mengisi ruang kosong */
                         color: #fbbf24; 
                         font-weight: 700;
                         letter-spacing: 1px;
                         text-transform: uppercase;
                         text-shadow: 0 0 5px rgba(251, 191, 36, 0.4);
+                        margin-right: 12px; /* Memberi jarak spasi ke judul utama */
                     }
                     .pintas-sub i { margin-right: 5px; }
                     .pintas-title {
@@ -102,6 +108,8 @@
                         font-weight: 900;
                         text-transform: uppercase;
                         text-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
+                        display: flex;
+                        align-items: center;
                     }
                     
                     .highlight-neon {
@@ -111,6 +119,7 @@
                         -webkit-text-fill-color: transparent;
                         font-weight: 900;
                         animation: neonGradientFlow 3s ease infinite;
+                        margin-left: 6px;
                     }
 
                     @keyframes blastOff {
@@ -124,14 +133,29 @@
                         100% { background-position: 0% 50%; }
                     }
                     
-                    /* PENYESUAIAN MOBILE / HP */
+                    /* =======================================================
+                       [UBAHAN UTAMA] TATA LETAK TEKS: BERTUMPUK DI HP
+                       ======================================================= */
                     @media (max-width: 768px) {
                         #pintas-widget-wrapper { padding: 0 !important; }
                         .pintas-inner-spacing { padding: 0 15px !important; } 
+                        
+                        .pintas-content {
+                            flex-direction: column; /* Mengembalikan teks jadi atas-bawah */
+                            align-items: flex-start;
+                            text-align: left;
+                        }
+                        
+                        .pintas-sub { 
+                            font-size: 0.65rem; /* Dikecilkan kembali di HP */
+                            margin-right: 0; /* Jarak samping dihapus */
+                            margin-bottom: 2px; /* Memberi jarak ke bawah */
+                        }
                         .pintas-title { font-size: 1rem; }
-                        .pintas-sub { font-size: 0.65rem; }
+                        .highlight-neon { margin-left: 4px; }
+                        
                         .pintas-icon-container { font-size: 1.8rem; margin-right: 12px; }
-                        .sapatoto-pintas-banner { padding: 10px 15px; border-radius: 4px !important; } /* <--- HP JUGA 4PX */
+                        .sapatoto-pintas-banner { padding: 10px 15px; border-radius: 4px !important; }
                     }
                 </style>
             `;
