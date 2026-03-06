@@ -1,7 +1,7 @@
 (function() {
     const layoutPresisiStyles = `
         /* ==============================================================
-           1. KUNCI CONTAINER GLOBAL 1214PX
+           1. KUNCI CONTAINER GLOBAL 1214PX (Menjaga Ruang Fitur Bawah)
            ============================================================== */
         @media (min-width: 1200px) {
             .container {
@@ -11,9 +11,10 @@
         }
 
         /* ==============================================================
-           2. HEADER PALING ATAS: PRESISI 1209PX (POTONG 2.5PX KIRI-KANAN)
+           2. HEADER PALING ATAS: PRESISI 1204PX (POTONG 2.5PX KIRI-KANAN)
            ============================================================== */
-        /* Bungkus luar dibiarkan tembus pandang */
+        /* Bungkus luar dibiarkan tembus pandang secara mutlak */
+        #navbar-top-wrapper,
         #navbar-top-wrapper.fixed-top {
             background: transparent !important;
             border: none !important;
@@ -21,9 +22,10 @@
             pointer-events: none !important; 
         }
 
-        /* Navigasi dalam dipotong menjadi 1209px agar pas dengan fitur bawah */
-        #navbar-top {
-            max-width: 1209px !important; /* UKURAN SUPER AKURAT */
+        /* Navigasi dalam dipotong menjadi 1204px agar sejajar lurus */
+        #navbar-top,
+        nav#navbar-top {
+            max-width: 1204px !important; /* UKURAN SUPER AKURAT */
             width: 100% !important;
             margin: 0 auto !important;
             padding-left: 15px !important;  
@@ -42,10 +44,10 @@
         .fixed-bottom { pointer-events: auto !important; }
 
         /* ==============================================================
-           3. BANNER SLIDER: PRESISI 1209PX (POTONG 2.5PX KIRI-KANAN)
+           3. BANNER SLIDER: PRESISI 1204PX (POTONG 2.5PX KIRI-KANAN)
            ============================================================== */
         .sapatoto-banner-wrapper {
-            max-width: 1209px !important; /* UKURAN SUPER AKURAT */
+            max-width: 1204px !important; /* UKURAN SUPER AKURAT */
             width: 100% !important;
             margin: 0 auto 15px auto !important; 
             padding-left: 15px !important;  
@@ -82,8 +84,8 @@
            4. RESPONSIVE MOBILE / HP
            ============================================================== */
         @media (max-width: 768px) {
-            #navbar-top-wrapper.fixed-top { pointer-events: auto !important; }
-            #navbar-top {
+            #navbar-top-wrapper, #navbar-top-wrapper.fixed-top { pointer-events: auto !important; }
+            #navbar-top, nav#navbar-top {
                 max-width: 100% !important;
                 width: 100% !important;
                 border-radius: 0 !important;
@@ -101,7 +103,7 @@
     `;
 
     function injectCSS() {
-        const id = 'sapatoto-layout-presisi-v1209';
+        const id = 'sapatoto-layout-presisi-v1204';
         if (document.getElementById(id)) return;
         const styleElement = document.createElement('style');
         styleElement.id = id;
