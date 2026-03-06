@@ -1,97 +1,128 @@
 (function() {
+    // ==============================================================
+    // 1. INJEKSI CSS SUPER SPESIFIK (Tingkat Prioritas Tertinggi)
+    // ==============================================================
     const layoutPresisiStyles = `
-        /* ==============================================================
-           1. KUNCI RAHASIA: MEMAKSA KERANGKA BAWAH MENYUSUL KE 1296PX
-           ============================================================== */
-        /* Ini membebaskan fitur-fitur agar bisa sejajar dengan Header & Banner */
+        /* Paksa semua Folder Container menjadi 1296px di Desktop */
         @media (min-width: 1200px) {
-            .container {
+            body .container, 
+            body .container-lg, 
+            body .container-md, 
+            body .container-sm, 
+            body .container-xl {
                 max-width: 1296px !important;
             }
         }
 
-        /* ==============================================================
-           2. PRESISI HEADER MENU FIX (DIKUNCI KE TENGAH LAYAR)
-           ============================================================== */
-        /* Trik Transform agar posisi "fixed" bisa tepat di tengah tanpa menabrak layar */
-        #navbar-top-wrapper.fixed-top, header.fixed-top {
+        /* Kunci Header di 1296px dan posisikan di tengah */
+        body #navbar-top-wrapper.fixed-top, 
+        body header.fixed-top {
             width: 100% !important;
             max-width: 1296px !important;
-            left: 50% !important;
-            right: auto !important;
-            transform: translateX(-50%) !important;
-            margin: 0 !important;
-        }
-
-        /* Melindungi Menu Bawah di HP agar tetap layar penuh */
-        nav.navbar.fixed-bottom {
-            max-width: 100% !important;
+            margin: 0 auto !important;
             left: 0 !important;
-            transform: none !important;
             right: 0 !important;
         }
 
-        /* ==============================================================
-           3. PRESISI BANNER SLIDER FIX (ANTI-LEBAR & TINGGI 600PX)
-           ============================================================== */
-        #main-slider, .slider-wrapper, #myCarousel {
+        /* Kunci Banner Slider di 1296px, Hapus Border/Siku */
+        body #main-slider, 
+        body .carousel, 
+        body .slider-wrapper {
             width: 100% !important;
             max-width: 1296px !important;
-            margin: 0 auto 15px auto !important; /* Jarak pas 15px ke Running text */
-            display: block !important;
-            overflow: hidden !important; 
-            border: none !important;             /* HAPUS BORDER */
-            border-radius: 0 !important;         /* HAPUS LENGKUNGAN */
-            box-shadow: none !important;         /* HAPUS CAHAYA */
+            margin: 0 auto 15px auto !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
             background-color: transparent !important;
         }
-
-        #main-slider .carousel-inner {
+        
+        body #main-slider .carousel-inner, 
+        body .carousel .carousel-inner {
             border-radius: 0 !important;
         }
 
-        /* Menarik tinggi gambar menjadi 600px proporsional (Anti-Gepeng) */
-        #main-slider .carousel-item img, .carousel .carousel-item img {
+        /* Tinggi Banner 600px proporsional */
+        body #main-slider .carousel-item img, 
+        body .carousel .carousel-item img {
             height: 600px !important;
-            width: 100% !important;
             object-fit: cover !important;
             object-position: center top !important;
+            width: 100% !important;
             border-radius: 0 !important;
         }
 
-        /* ==============================================================
-           4. RESPONSIVE MOBILE / HP (KEMBALI KE LAYAR PENUH)
-           ============================================================== */
+        /* Pengecualian untuk Mobile (Kembali Full Layar) */
         @media (max-width: 768px) {
-            #navbar-top-wrapper.fixed-top, header.fixed-top {
-                max-width: 100% !important;
-                left: 0 !important;
-                transform: none !important; /* Matikan efek tengah di HP */
-            }
-            
-            #main-slider, .slider-wrapper, #myCarousel {
+            body #navbar-top-wrapper.fixed-top, 
+            body header.fixed-top,
+            body #main-slider, 
+            body .carousel {
                 max-width: 100% !important;
             }
-            
-            /* Tinggi gambar Banner di HP diturunkan agar tidak menutupi 1 layar penuh */
-            #main-slider .carousel-item img, .carousel .carousel-item img {
+            body #main-slider .carousel-item img, 
+            body .carousel .carousel-item img {
                 height: 250px !important; 
             }
         }
     `;
 
-    function injectLayoutStyles() {
-        const existingStyle = document.getElementById('sapatoto-layout-presisi');
-        if (existingStyle) {
-            existingStyle.innerHTML = layoutPresisiStyles;
-            return;
-        }
+    function injectCSS() {
+        if (document.getElementById('sapatoto-layout-presisi')) return;
         const styleElement = document.createElement('style');
         styleElement.id = 'sapatoto-layout-presisi';
         styleElement.innerHTML = layoutPresisiStyles;
         document.head.appendChild(styleElement);
     }
+    injectCSS();
 
-    injectLayoutStyles();
-    document.addEventListener('DOMContentLoaded', injectLayoutStyles);
+    // ==============================================================
+    // 2. JURUS PAKSA (BRUTE FORCE) JAVASCRIPT INLINE-STYLE
+    // ==============================================================
+    // Fungsi ini akan terus memantau dan memaksa elemen patuh pada 1296px
+    function enforceAbsoluteLayout() {
+        // Jangan paksa jika dibuka di layar HP
+        if (window.innerWidth <= 768) {
+            const header = document.getElementById('navbar-top-wrapper');
+            if (header) header.style.setProperty('max-width', '100%', 'important');
+            const slider = document.getElementById('main-slider') || document.querySelector('.carousel');
+            if (slider) slider.style.setProperty('max-width', '100%', 'important');
+            return; 
+        }
+
+        // 1. PAKSA HEADER
+        const headerWrapper = document.getElementById('navbar-top-wrapper');
+        if (headerWrapper) {
+            headerWrapper.style.setProperty('max-width', '1296px', 'important');
+            headerWrapper.style.setProperty('margin', '0 auto', 'important');
+            headerWrapper.style.setProperty('left', '0', 'important');
+            headerWrapper.style.setProperty('right', '0', 'important');
+        }
+
+        // 2. PAKSA BANNER SLIDER
+        const sliderElement = document.getElementById('main-slider') || document.querySelector('.carousel');
+        if (sliderElement) {
+            sliderElement.style.setProperty('max-width', '1296px', 'important');
+            sliderElement.style.setProperty('margin', '0 auto 15px auto', 'important');
+            sliderElement.style.setProperty('border', 'none', 'important');
+            sliderElement.style.setProperty('border-radius', '0', 'important');
+            sliderElement.style.setProperty('box-shadow', 'none', 'important');
+        }
+
+        // 3. PAKSA FOLDER CONTAINER UTAMA
+        const containers = document.querySelectorAll('.container');
+        containers.forEach(container => {
+            container.style.setProperty('max-width', '1296px', 'important');
+        });
+    }
+
+    // Jalankan setiap setengah detik (mengalahkan script bawaan website)
+    setInterval(enforceAbsoluteLayout, 500);
+    
+    // Jalankan juga saat layar diubah ukurannya
+    window.addEventListener('resize', enforceAbsoluteLayout);
+    
+    // Jalankan pertama kali saat siap
+    document.addEventListener('DOMContentLoaded', enforceAbsoluteLayout);
+
 })();
