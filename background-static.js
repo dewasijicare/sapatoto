@@ -5,7 +5,7 @@
            ============================================================== */
         body {
             /* 1. GANTI URL DI BAWAH INI DENGAN LINK GAMBAR WALLPAPER ANDA */
-            background-image: url('https://link-gambar-wallpaper-anda.com/gambar.jpg') !important;
+            background-image: url('https://cdn.jsdelivr.net/gh/dewasijicare/sapatoto@b935462141bedbe895a01c2f317e45fb92313e40/bg.jpg') !important;
             
             /* Warna dasar gelap untuk berjaga-jaga sebelum gambar selesai loading */
             background-color: #0c0c1e !important; 
@@ -47,4 +47,5 @@
     // Jalankan skrip saat website dimuat
     injectStaticBackground();
     document.addEventListener('DOMContentLoaded', injectStaticBackground);
+
 })();
