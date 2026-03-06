@@ -12,11 +12,12 @@
         }
 
         /* ==============================================================
-           BUNGKUSAN LUAR: Lebar otomatis ditarik oleh JS
+           BUNGKUSAN LUAR: LEBAR PASTI 1296PX & TENGAH
            ============================================================== */
         #jackpot-outer-wrapper {
             width: 100%;
-            margin: 0 auto 15px auto !important; /* Jarak 15px seragam dengan fitur atasnya */
+            max-width: 1296px !important; /* LEBAR DIKUNCI 1296PX */
+            margin: 0 auto 15px auto !important; /* OTOMATIS DI TENGAH DENGAN JARAK 15PX */
             padding: 0; 
             box-sizing: border-box;
             transition: max-width 0.3s ease;
@@ -26,7 +27,7 @@
         }
 
         .jackpot-inner-spacing {
-            padding: 0 8px; /* Sama persis dengan Pintas dan Transaksi */
+            padding: 0 8px; /* Jarak aman tepi sejajar 8px */
             width: 100%;
             box-sizing: border-box;
         }
@@ -37,7 +38,7 @@
         .jackpot-animated-border {
             position: relative;
             border-radius: 4px !important; /* SIKU 4PX */
-            padding: 1px; /* KETEBALAN BORDER DIKURANGI MENJADI 1PX */
+            padding: 1px; /* KETEBALAN BORDER 1PX */
             width: 100%;
             background: linear-gradient(45deg, var(--neon-pink-dark), var(--neon-purple-dark));
             animation: borderPulseSapatoto 2s ease-in-out infinite alternate;
@@ -56,7 +57,7 @@
             justify-content: center;
             align-items: center;
             background-color: var(--dark-bg); 
-            border-radius: 3px !important; /* Mengikuti border luar */
+            border-radius: 3px !important; 
             min-height: 90px;
             position: relative;
             padding: 20px 15px; 
@@ -191,9 +192,9 @@
             .jackpot-main-title i { font-size: 1.6rem; }
         }
 
-        /* Responsive Mobile / HP */
+        /* Responsive Mobile / HP: KEMBALI 100% AGAR AMAN */
         @media (max-width: 768px) {
-            #jackpot-outer-wrapper { padding: 0 !important; }
+            #jackpot-outer-wrapper { max-width: 100% !important; padding: 0 !important; }
             .jackpot-inner-spacing { padding: 0 15px !important; } 
             .jackpot-value-final { font-size: 7.5vw; letter-spacing: 0.5vw; }
             .jackpot-main-title { font-size: 1rem; }
@@ -264,59 +265,36 @@
         setInterval(updateJackpotValue, updateInterval);
     }
 
-    // --- 3. FUNGSI INJEKSI & SINKRONISASI LEBAR ---
-    function injectJackpotWidget() {
-        // Incar elemen di bawahnya agar posisi Jackpot selalu aman (sebelum Togel)
-        const target = document.querySelector('#row-togel');
-        const existing = document.getElementById('jackpot-outer-wrapper');
+    // --- 3. FUNGSI INJEKSI ANTI-SALIP ---
+    let injectAttempts = 0;
+    function injectJackpotSafely() {
+        if (document.getElementById('jackpot-outer-wrapper')) return;
 
-        if (target && !existing) {
-            
-            // Injeksi tepat di atas Togel (Otomatis berada di bawah Transaksi)
-            target.insertAdjacentHTML('beforebegin', jackpotHTMLFinal);
-            
+        // Cari elemen Transaksi
+        const transactionWidget = document.getElementById('sapatoto-recent-transactions');
+        // Cari elemen Togel (Sebagai cadangan)
+        const fallbackTarget = document.getElementById('row-togel');
+
+        if (transactionWidget) {
+            // Jika Transaksi sudah ada, suntik persis di BAWAH-nya
+            transactionWidget.insertAdjacentHTML('afterend', jackpotHTMLFinal);
             startDynamicJackpotCounterFinal();
-
-            // Fungsi Auto-Sync Lebar (Sama persis seperti widget lain)
-            function syncJackpotWidth() {
-                var jackpotWidget = document.getElementById('jackpot-outer-wrapper');
-                
-                if (window.innerWidth <= 768) {
-                    if (jackpotWidget) {
-                        jackpotWidget.style.maxWidth = '100%';
-                        jackpotWidget.style.paddingLeft = '0px';
-                        jackpotWidget.style.paddingRight = '0px';
-                    }
-                    return;
-                }
-
-                var referenceElement = document.querySelector('#row-togel'); 
-                if (jackpotWidget && referenceElement && referenceElement.parentElement) {
-                    var mainContainer = referenceElement.parentElement; 
-                    
-                    var exactWidth = mainContainer.getBoundingClientRect().width;
-                    var computedStyle = window.getComputedStyle(mainContainer);
-                    
-                    if (exactWidth > 0) {
-                        jackpotWidget.style.maxWidth = exactWidth + 'px';
-                        jackpotWidget.style.paddingLeft = computedStyle.paddingLeft;
-                        jackpotWidget.style.paddingRight = computedStyle.paddingRight;
-                    }
-                }
-            }
-
-            setTimeout(syncJackpotWidth, 50);
-            setInterval(syncJackpotWidth, 500); 
-            window.addEventListener('resize', syncJackpotWidth);
-
-            return true;
+        } else if (injectAttempts > 15 && fallbackTarget) {
+            // Jika ditunggu lama transaksi tidak muncul, pakai cadangan Togel
+            fallbackTarget.insertAdjacentHTML('beforebegin', jackpotHTMLFinal);
+            startDynamicJackpotCounterFinal();
+        } else {
+            // Tunggu sebentar dan coba lagi (Fungsi JS Auto-Sync sudah dibuang total)
+            injectAttempts++;
+            setTimeout(injectJackpotSafely, 200); 
         }
-        return false;
     }
 
-    // --- 4. EKSEKUSI KUAT (LOOP SAMPAI MUNCUL) ---
-    const checkInterval = setInterval(() => {
-        if (injectJackpotWidget()) clearInterval(checkInterval);
-    }, 500);
-
+    // --- 4. EKSEKUSI ---
+    document.addEventListener('DOMContentLoaded', injectJackpotSafely);
+    
+    // Fallback jika dimuat terlambat
+    if (document.readyState === 'complete') {
+        injectJackpotSafely();
+    }
 })();
