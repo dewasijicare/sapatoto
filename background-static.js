@@ -5,7 +5,7 @@
            ============================================================== */
         html, body {
             /* Ganti URL di bawah ini dengan link gambar yang SUDAH PASTI BISA DIBUKA */
-            background-image: url('https://cdn.jsdelivr.net/gh/dewasijicare/sapatoto@b935462141bedbe895a01c2f317e45fb92313e40/bg.jpg') !important;
+            background-image: url('https://cdn.jsdelivr.net/gh/dewasijicare/sapatoto@7b009ade5f78befeb8da453af09525be563d4192/background.jpg') !important;
             background-color: #0c0c1e !important; 
             background-attachment: fixed !important; 
             background-position: center top !important; 
@@ -50,3 +50,4 @@
     injectStaticBackground();
     document.addEventListener('DOMContentLoaded', injectStaticBackground);
 })();
+
