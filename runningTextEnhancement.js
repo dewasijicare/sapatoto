@@ -76,7 +76,7 @@
         const announcement = document.getElementById('announcement');
         const mainSlider = document.getElementById('main-slider'); 
         
-        // PERBAIKAN 1: Deteksi wrapper baru agar tidak salah masuk ke dalam bungkusan Member Panel
+        // Deteksi wrapper baru agar tidak salah masuk ke dalam bungkusan Member Panel
         const memberPanel = document.getElementById('sapatoto-member-panel-wrapper') || document.getElementById('member-status-panel'); 
         const actionBtns = document.getElementById('sapatoto-action-buttons-wrapper'); 
 
@@ -118,20 +118,28 @@
             announcement.style.marginTop = '';
             announcement.style.marginBottom = '';
 
-            // PERBAIKAN 2: Timpa class sepenuhnya agar terbebas dari jeratan .container Bootstrap
+            // Timpa class sepenuhnya agar terbebas dari jeratan .container Bootstrap
             announcement.className = 'gavan-themed-announcement';
             announcement.dataset.moved = 'true'; 
 
-            // PERBAIKAN 3: Percepat laju teks agar tidak menunggu lama saat refresh
-            const marqueeTag = announcement.querySelector('marquee');
-            if (marqueeTag) {
-                // 1. Naikkan kecepatan secara drastis ke 25 (default bawaannya 6)
-                marqueeTag.setAttribute('scrollamount', '25'); 
+            // RE-RENDER MARQUEE: Membersihkan spasi gaib & mengatur kecepatan berdasarkan perangkat
+            const oldMarquee = announcement.querySelector('marquee');
+            if (oldMarquee) {
+                // 1. Bersihkan semua spasi kosong (&nbsp; dan spasi biasa yang berlebih)
+                let cleanText = oldMarquee.innerHTML.replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
                 
-                // 2. Bersihkan spasi kosong/gaib berlebih di awal teks yang membuatnya lama muncul
-                let currentText = marqueeTag.innerHTML;
-                currentText = currentText.replace(/^(&nbsp;|\s)+/g, '').trim();
-                marqueeTag.innerHTML = currentText;
+                // 2. Deteksi ukuran layar pemain
+                const isMobile = window.innerWidth <= 768;
+                // Jika HP kecepatannya 5 (standar), jika PC kecepatannya 15 (dipercepat karena layar lebar)
+                const scrollSpeed = isMobile ? '5' : '15'; 
+                
+                // 3. Buat marquee baru yang bersih dengan kecepatan dinamis
+                const newMarquee = document.createElement('marquee');
+                newMarquee.setAttribute('scrollamount', scrollSpeed); 
+                newMarquee.innerHTML = cleanText;
+                
+                // 4. Ganti yang lama dengan yang baru
+                oldMarquee.replaceWith(newMarquee);
             }
         }
     }
@@ -158,8 +166,6 @@
         });
 
         observer.observe(document.body, { childList: true, subtree: true });
-        
-        // FUNGSI SENSOR AUTO-SYNC DIHAPUS KARENA SUDAH MENGGUNAKAN LEBAR PASTI 1296PX
     });
 
     if (document.readyState === 'complete') {
@@ -168,7 +174,3 @@
     }
 
 })();
-
-
-
-
