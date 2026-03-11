@@ -340,7 +340,7 @@
                 /* RESPONSIVE MOBILE TAMPILAN 100% */
                 @media (max-width: 768px) { 
                     #${WIDGET_ID}-wrapper { max-width: 100% !important; padding: 0 !important; }
-                    .jp-inner-spacing { padding: 0 15px !important; } 
+                    .jp-inner-spacing { padding: 0 !important; }
                     .jp-card { width: 140px; } 
                     .jp-amount { font-size: 0.9rem; } 
                     .jp-header h4 { font-size: 1.05rem; } 
@@ -445,3 +445,4 @@
     });
 
 })();
+
