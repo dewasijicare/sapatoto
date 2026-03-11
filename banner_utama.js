@@ -36,19 +36,20 @@
         const $parent = $oldSlider.parent();
         $oldSlider.remove();
 
-        // 1. Buat Wrapper: Batasi lebar maksimal area slider agar tidak full-width
-        const $sliderWrapper = $('<div id="custom-slider-wrapper" style="max-width: 1166px; margin: 0 auto; overflow: hidden;"></div>');
+        // 1. Buat Wrapper: Tambahkan border pink di sini
+        // Anda bisa mengganti #ff007f dengan kode warna pink spesifik web Anda jika kurang pas
+        const $sliderWrapper = $('<div id="custom-slider-wrapper" style="max-width: 1166px; margin: 0 auto; overflow: hidden; border: 4px solid #ff007f;"></div>');
 
         // 2. Buat elemen slider di dalam wrapper
         const $newSlider = $('<div class="owl-carousel owl-theme" id="custom-main-slider"></div>');
         $newSlider.data('custom-injected', true); 
 
-        // 3. Masukkan gambar ke dalam slider (Lebar gambar cukup 100% dari wrapper)
+        // 3. Masukkan gambar ke dalam slider
         bannerUrls.forEach((url, index) => {
             const itemHtml = `
                 <div class="item">
                     <a href="javascript:void(0);">
-                        <img src="${url}" class="img-fluid" alt="Banner Sapatoto ${index + 1}" style="width: 100%; aspect-ratio: 1166/600; object-fit: cover;">
+                        <img src="${url}" class="img-fluid" alt="Banner Sapatoto ${index + 1}" style="width: 100%; aspect-ratio: 1166/600; object-fit: cover; display: block;">
                     </a>
                 </div>
             `;
@@ -79,5 +80,6 @@
         replaceExistingSlider();
     }
 })();
+
 
 
