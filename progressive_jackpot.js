@@ -18,7 +18,7 @@
             z-index: 10 !important; 
         }
 
-        .jackpot-inner-spacing { padding: 0 !important; width: 100%; box-sizing: border-box; }
+        .jackpot-inner-spacing { padding: 0 8px; width: 100%; box-sizing: border-box; }
         .jackpot-animated-border { position: relative; border-radius: 4px !important; padding: 1px; width: 100%; background: linear-gradient(45deg, var(--neon-pink-dark), var(--neon-purple-dark)); animation: borderPulseSapatoto 2s ease-in-out infinite alternate; box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); }
         @keyframes borderPulseSapatoto { 0% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); filter: hue-rotate(0deg); } 100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); filter: hue-rotate(30deg); } }
 
@@ -103,4 +103,5 @@
 
     const checkInterval = setInterval(() => { if (injectJackpotSafely()) clearInterval(checkInterval); }, 300);
 })();
+
 
