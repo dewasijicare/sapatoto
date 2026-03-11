@@ -52,7 +52,7 @@
             const itemHtml = `
                 <div class="item">
                     <a href="javascript:void(0);">
-                        <img src="${url}" class="img-fluid rounded-3" alt="Banner Sapatoto ${index + 1}" style="width: 100%; aspect-ratio: 1166/600; object-fit: cover;">
+                        <img src="${url}" class="img-fluid" alt="Banner Sapatoto ${index + 1}" style="max-width: 1166px; width: 100%; aspect-ratio: 1166/600; object-fit: cover; margin: 0 auto; display: block;">
                     </a>
                 </div>
             `;
@@ -82,3 +82,4 @@
         replaceExistingSlider();
     }
 })();
+
