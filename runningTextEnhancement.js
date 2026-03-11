@@ -125,8 +125,13 @@
             // PERBAIKAN 3: Percepat laju teks agar tidak menunggu lama saat refresh
             const marqueeTag = announcement.querySelector('marquee');
             if (marqueeTag) {
-                // Default kecepatan biasanya 6, kita naikkan menjadi 12 agar cepat masuk ke layar
-                marqueeTag.setAttribute('scrollamount', '12'); 
+                // 1. Naikkan kecepatan secara drastis ke 25 (default bawaannya 6)
+                marqueeTag.setAttribute('scrollamount', '25'); 
+                
+                // 2. Bersihkan spasi kosong/gaib berlebih di awal teks yang membuatnya lama muncul
+                let currentText = marqueeTag.innerHTML;
+                currentText = currentText.replace(/^(&nbsp;|\s)+/g, '').trim();
+                marqueeTag.innerHTML = currentText;
             }
         }
     }
@@ -163,6 +168,7 @@
     }
 
 })();
+
 
 
 
