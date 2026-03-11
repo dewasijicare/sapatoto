@@ -129,7 +129,7 @@
 
                 @media (max-width: 768px) {
                     #sapatoto-trx-engine-v2 { max-width: 100% !important; padding: 0 !important; }
-                    .trx-inner-wrapper { padding: 0 15px !important; }
+                    .trx-inner-wrapper { padding: 0 !important; }
                     .sapatoto-trx-flex { gap: 15px; }
                     .tx-col-time { font-size: 0.65rem; }
                     .tx-item { font-size: 0.75rem; padding: 0 10px; }
@@ -151,3 +151,4 @@
 
     const checkInterval = setInterval(() => { if (injectTransactionsWidget()) clearInterval(checkInterval); }, 300);
 })();
+
