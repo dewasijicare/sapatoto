@@ -110,7 +110,7 @@
         .balance-toggle-icon { margin-left: 8px; cursor: pointer; vertical-align: middle; }
         #member-status-panel a { display: inline-flex; align-items: center; }
         #member-status-panel .balance-toggle-icon { font-size: 24px; color: #a855f7; }
-        #member-status-panel.glassmorphism { border-color: #a855f7 !important; box-shadow: 0 0 20px rgba(168, 85, 247, 0.6) !important; }
+        #member-status-panel.glassmorphism { border-color: #a855f7 !important; box-shadow: 0 0 20px rgba(168, 85, 247, 0.6) !important; border-radius: 4px !important; }
         #member-status-panel.glassmorphism:hover { box-shadow: 0 5px 25px rgba(168, 85, 247, 0.7) !important; }
         #member-status-panel strong { color: #a855f7 !important; text-shadow: 0 0 5px rgba(168, 85, 247, 0.6) !important; }
         #nav-tab { flex-wrap: nowrap; overflow-x: auto; border-bottom: none !important; padding-bottom: 5px; margin-bottom: -1px; }
@@ -1276,5 +1276,6 @@
         }
     });
 })();
+
 
 
