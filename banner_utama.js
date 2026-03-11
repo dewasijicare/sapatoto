@@ -25,53 +25,50 @@
     // 2. FUNGSI INJEKSI KE SLIDER BAWAAN (OWL CAROUSEL)
     // ========================================================================
     function replaceExistingSlider() {
-        // Karena Sapatoto pakai jQuery dan OwlCarousel, kita tunggu sampai library-nya siap diload
         if (typeof $ === 'undefined' || typeof $.fn.owlCarousel === 'undefined') {
             setTimeout(replaceExistingSlider, 100);
             return;
         }
 
-        // PERBAIKAN: Target ID disesuaikan dengan struktur HTML Sapatoto (#main-slider)
         const $oldSlider = $('#main-slider');
-        
-        // Cek apakah banner asli ada, dan pastikan kita belum melakukan injeksi
         if ($oldSlider.length === 0 || $oldSlider.data('custom-injected')) return;
 
-        // Simpan posisi wadah aslinya
         const $parent = $oldSlider.parent();
-
-        // Hapus slider bawaan website sepenuhnya agar tidak terjadi bentrok script
         $oldSlider.remove();
 
-        // Bangun ulang kerangka slider dengan ID baru agar tidak bentrok dengan script bawaan bootstrap
-        const $newSlider = $('<div class="owl-carousel owl-theme" id="custom-main-slider"></div>');
-        $newSlider.data('custom-injected', true); // Penanda agar tidak meloop
+        // 1. Buat Wrapper: Batasi lebar maksimal area slider agar tidak full-width
+        const $sliderWrapper = $('<div id="custom-slider-wrapper" style="max-width: 1166px; margin: 0 auto; overflow: hidden;"></div>');
 
-        // Masukkan daftar gambar webp ke dalam slider baru
+        // 2. Buat elemen slider di dalam wrapper
+        const $newSlider = $('<div class="owl-carousel owl-theme" id="custom-main-slider"></div>');
+        $newSlider.data('custom-injected', true); 
+
+        // 3. Masukkan gambar ke dalam slider (Lebar gambar cukup 100% dari wrapper)
         bannerUrls.forEach((url, index) => {
             const itemHtml = `
                 <div class="item">
                     <a href="javascript:void(0);">
-                        <img src="${url}" class="img-fluid" alt="Banner Sapatoto ${index + 1}" style="max-width: 1166px; width: 100%; aspect-ratio: 1166/600; object-fit: cover; margin: 0 auto; display: block;">
+                        <img src="${url}" class="img-fluid" alt="Banner Sapatoto ${index + 1}" style="width: 100%; aspect-ratio: 1166/600; object-fit: cover;">
                     </a>
                 </div>
             `;
             $newSlider.append(itemHtml);
         });
 
-        // Tempelkan slider baru ke posisi asli di dalam wadah HTML
-        $parent.prepend($newSlider);
+        // 4. Tempelkan slider ke dalam wrapper, lalu wrapper ke posisi asli di HTML
+        $sliderWrapper.append($newSlider);
+        $parent.prepend($sliderWrapper);
 
-        // Aktifkan kembali Owl Carousel dengan konfigurasi yang rapi
+        // Aktifkan Owl Carousel
         $newSlider.owlCarousel({
             items: 1,
             loop: true,
             autoplay: true,
-            autoplayTimeout: 4000, // Ganti gambar tiap 4 detik
+            autoplayTimeout: 4000, 
             autoplayHoverPause: true,
             nav: false, 
             dots: false, 
-            margin: 0 // PERBAIKAN: Ubah margin ke 0 agar gambar penuh/sejajar tanpa terpotong
+            margin: 0 
         });
     }
 
@@ -82,4 +79,5 @@
         replaceExistingSlider();
     }
 })();
+
 
