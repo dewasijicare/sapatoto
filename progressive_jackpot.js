@@ -18,7 +18,7 @@
             z-index: 10 !important; 
         }
 
-        .jackpot-inner-spacing { padding: 0 8px; width: 100%; box-sizing: border-box; }
+        .jackpot-inner-spacing { padding: 0 !important; width: 100%; box-sizing: border-box; }
         .jackpot-animated-border { position: relative; border-radius: 4px !important; padding: 1px; width: 100%; background: linear-gradient(45deg, var(--neon-pink-dark), var(--neon-purple-dark)); animation: borderPulseSapatoto 2s ease-in-out infinite alternate; box-shadow: 0 0 15px rgba(236, 72, 153, 0.4); }
         @keyframes borderPulseSapatoto { 0% { box-shadow: 0 0 10px rgba(236, 72, 153, 0.5); filter: hue-rotate(0deg); } 100% { box-shadow: 0 0 15px rgba(168, 85, 247, 0.6); filter: hue-rotate(30deg); } }
 
@@ -40,7 +40,7 @@
         @keyframes textGlowSapatoto { 0% { opacity: 0.9; text-shadow: 0 0 5px #fff, 0 0 10px var(--neon-purple), 0 0 20px var(--neon-pink-dark); } 100% { opacity: 1; text-shadow: 0 0 8px #fff, 0 0 15px var(--neon-pink), 0 0 30px var(--neon-purple), 0 0 50px var(--neon-pink-dark); } }
 
         @media (min-width: 992px) { .jackpot-value-final { font-size: 3.8rem; letter-spacing: 5px; } .jackpot-main-title { font-size: 1.4rem; } .jackpot-main-title i { font-size: 1.6rem; } }
-        @media (max-width: 768px) { #sapatoto-jackpot-engine-v2 { max-width: 100% !important; padding: 0 !important; } .jackpot-inner-spacing { padding: 0 15px !important; } .jackpot-value-final { font-size: 7.5vw; letter-spacing: 0.5vw; } .jackpot-main-title { font-size: 1rem; } .jackpot-main-title i { font-size: 1.1rem; } }
+        @media (max-width: 768px) { #sapatoto-jackpot-engine-v2 { max-width: 100% !important; padding: 0 !important; } .jackpot-inner-spacing { padding: 0 !important; } .jackpot-value-final { font-size: 7.5vw; letter-spacing: 0.5vw; } .jackpot-main-title { font-size: 1rem; } .jackpot-main-title i { font-size: 1.1rem; } }
     `;
 
     const styleElement = document.createElement('style');
@@ -103,3 +103,4 @@
 
     const checkInterval = setInterval(() => { if (injectJackpotSafely()) clearInterval(checkInterval); }, 300);
 })();
+
