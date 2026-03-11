@@ -209,6 +209,16 @@
         #maincontent tbody tr.table-warning th { color: #fff !important; background-color: #2c3e50 !important; border-color: #34495e !important; }
         #maincontent .td-input textarea.form-control { background-color: #2c3e50 !important; color: #ecf0f1 !important; border: 1px solid #34495e !important; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); resize: vertical; }
         #maincontent .td-input textarea.form-control::placeholder { color: rgba(236, 240, 241, 0.5) !important; }
+
+        /* ==============================================================
+           PRESISI LEBAR MEMBER PANEL (SALDO & USERNAME) SEJAJAR FITUR LAIN
+           ============================================================== */
+        #sapatoto-member-panel-wrapper { width: 100%; max-width: 1296px !important; margin: 0 auto 15px auto !important; padding: 0; box-sizing: border-box; transition: max-width 0.3s ease; }
+        .member-panel-inner-spacing { padding: 0 8px; width: 100%; box-sizing: border-box; }
+        @media (max-width: 768px) {
+            #sapatoto-member-panel-wrapper { max-width: 100% !important; margin-bottom: 10px !important; }
+            .member-panel-inner-spacing { padding: 0 !important; }
+        }
     `;
     const styleElement = document.createElement('style');
     document.head.appendChild(styleElement);
@@ -277,10 +287,27 @@
         const panel = document.querySelector('#member-status-panel'); 
         if (!panel || panel.dataset.styled === 'true') return; 
 
-        // MENGHAPUS CLASS BUNDAR BAWAAN BOOTSTRAP SECARA PAKSA
+        // 1. MENGHAPUS CLASS BUNDAR BAWAAN BOOTSTRAP (Siku 4px)
         panel.classList.remove('rounded', 'rounded-1', 'rounded-2', 'rounded-3', 'rounded-4', 'rounded-5', 'rounded-pill');
         panel.style.setProperty('border-radius', '4px', 'important');
 
+        // 2. MEMBUAT BUNGKUSAN (WRAPPER) UNTUK PRESISI LEBAR 1296PX
+        const panelParent = panel.parentElement;
+        if (panelParent && panelParent.id !== 'sapatoto-member-panel-wrapper') {
+            const outerWrapper = document.createElement('div');
+            outerWrapper.id = 'sapatoto-member-panel-wrapper';
+            const innerSpacing = document.createElement('div');
+            innerSpacing.className = 'member-panel-inner-spacing';
+            
+            panelParent.insertBefore(outerWrapper, panel);
+            innerSpacing.appendChild(panel);
+            outerWrapper.appendChild(innerSpacing);
+            
+            // Hapus margin bawah bawaan karena sudah diwakili oleh wrapper
+            panel.style.setProperty('margin-bottom', '0', 'important');
+        }
+
+        // 3. SISA KODE BAWAAN (Modifikasi Teks Halo)
         const greetingDiv = Array.from(panel.querySelectorAll('div')).find(div => div.textContent.includes('Halo,')); 
         if (greetingDiv) { 
             const usernameStrong = greetingDiv.querySelector('strong'); 
@@ -1294,6 +1321,7 @@
         }
     });
 })();
+
 
 
 
