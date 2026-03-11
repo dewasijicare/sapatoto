@@ -130,8 +130,8 @@
                 
                 // 2. Deteksi ukuran layar pemain
                 const isMobile = window.innerWidth <= 768;
-                // Jika HP kecepatannya 5 (standar), jika PC kecepatannya 15 (dipercepat karena layar lebar)
-                const scrollSpeed = isMobile ? '5' : '15'; 
+                // Jika HP kecepatannya 5 (standar), jika PC kecepatannya 8 (lebih santai untuk layar lebar)
+                const scrollSpeed = isMobile ? '5' : '8'; 
                 
                 // 3. Buat marquee baru yang bersih dengan kecepatan dinamis
                 const newMarquee = document.createElement('marquee');
@@ -174,3 +174,4 @@
     }
 
 })();
+
