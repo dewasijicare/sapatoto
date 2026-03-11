@@ -71,7 +71,7 @@
         }
     `;
 
-    / Fungsi untuk memindahkan dan membungkus pengumuman
+    // Fungsi untuk memindahkan dan membungkus pengumuman
     function moveAndStyleAnnouncementConditional() {
         const announcement = document.getElementById('announcement');
         const mainSlider = document.getElementById('main-slider'); 
@@ -163,5 +163,6 @@
     }
 
 })();
+
 
 
