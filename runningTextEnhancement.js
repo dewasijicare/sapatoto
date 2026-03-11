@@ -71,11 +71,13 @@
         }
     `;
 
-    // Fungsi untuk memindahkan dan membungkus pengumuman
+    / Fungsi untuk memindahkan dan membungkus pengumuman
     function moveAndStyleAnnouncementConditional() {
         const announcement = document.getElementById('announcement');
         const mainSlider = document.getElementById('main-slider'); 
-        const memberPanel = document.getElementById('member-status-panel'); 
+        
+        // PERBAIKAN 1: Deteksi wrapper baru agar tidak salah masuk ke dalam bungkusan Member Panel
+        const memberPanel = document.getElementById('sapatoto-member-panel-wrapper') || document.getElementById('member-status-panel'); 
         const actionBtns = document.getElementById('sapatoto-action-buttons-wrapper'); 
 
         // Jika announcement tidak ada atau sudah dipindahkan, hentikan
@@ -92,7 +94,7 @@
         innerSpacing.className = 'announcement-inner-spacing';
         outerWrapper.appendChild(innerSpacing);
 
-        // Prioritas utama: Pasang di atas tombol jika tombolnya ada
+        // Prioritas penempatan letak
         if (actionBtns) {
             actionBtns.insertAdjacentElement('beforebegin', outerWrapper);
             innerSpacing.appendChild(announcement);
@@ -116,9 +118,16 @@
             announcement.style.marginTop = '';
             announcement.style.marginBottom = '';
 
-            announcement.classList.remove('bg-primary', 'p-1', 'my-3');
-            announcement.classList.add('gavan-themed-announcement');
+            // PERBAIKAN 2: Timpa class sepenuhnya agar terbebas dari jeratan .container Bootstrap
+            announcement.className = 'gavan-themed-announcement';
             announcement.dataset.moved = 'true'; 
+
+            // PERBAIKAN 3: Percepat laju teks agar tidak menunggu lama saat refresh
+            const marqueeTag = announcement.querySelector('marquee');
+            if (marqueeTag) {
+                // Default kecepatan biasanya 6, kita naikkan menjadi 12 agar cepat masuk ke layar
+                marqueeTag.setAttribute('scrollamount', '12'); 
+            }
         }
     }
 
@@ -154,4 +163,5 @@
     }
 
 })();
+
 
