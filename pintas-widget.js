@@ -141,7 +141,7 @@
                        ======================================================= */
                     @media (max-width: 768px) {
                         #pintas-widget-wrapper { max-width: 100% !important; padding: 0 !important; }
-                        .pintas-inner-spacing { padding: 0 15px !important; } 
+                        .pintas-inner-spacing { padding: 0 !important; }
                         
                         .pintas-content {
                             flex-direction: column; 
@@ -179,3 +179,4 @@
     }, 500);
 
 })();
+
