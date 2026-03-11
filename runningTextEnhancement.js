@@ -66,7 +66,7 @@
         /* PERLINDUNGAN MOBILE / HP: KEMBALI 100% LEBAR LAYAR */
         @media (max-width: 768px) {
             #announcement-outer-wrapper { max-width: 100% !important; margin: 10px auto 10px auto !important; padding: 0 !important; }
-            .announcement-inner-spacing { padding: 0 15px !important; } /* Jarak aman tepi HP */
+            .announcement-inner-spacing { padding: 0 !important; } 
             #announcement.gavan-themed-announcement { border-radius: 4px !important; padding: 8px 15px !important; }
         }
     `;
@@ -154,3 +154,4 @@
     }
 
 })();
+
