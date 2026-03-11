@@ -332,7 +332,7 @@
                 .jp-info { padding: 10px; text-align: center; }
                 .jp-provider { font-size: 0.65rem; color: #bdc3c7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; font-weight: bold;}
                 .jp-name { font-size: 0.85rem; color: #fff; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 6px; }
-                .jp-amount { font-size: 1.05rem; color: #f1c40f; font-weight: 900; text-shadow: 0 0 10px rgba(241, 196, 15, 0.8); margin-bottom: 8px; background: rgba(0,0,0,0.4); padding: 5px; border-radius: 5px; border: 1px dashed #f1c40f; }
+                .jp-amount { font-size: 1.05rem; color: #f1c40f; font-weight: 900; text-shadow: 0 0 10px rgba(241, 196, 15, 0.8); margin-bottom: 8px; background: rgba(0,0,0,0.4); padding: 5px; border-radius: 5px; border: 1px dashed #f1c40f; white-space: nowrap; }
                 .jp-user-date { display: flex; flex-direction: column; align-items: center; font-size: 0.65rem; color: #bdc3c7; gap: 3px; }
                 .jp-user-date span:first-child { color: #ecf0f1; font-weight: 600; font-size: 0.75rem; }
                 .jp-user-date i { color: #a855f7; margin-right: 2px; }
@@ -342,7 +342,7 @@
                     #${WIDGET_ID}-wrapper { max-width: 100% !important; padding: 0 !important; }
                     .jp-inner-spacing { padding: 0 !important; }
                     .jp-card { width: 140px; } 
-                    .jp-amount { font-size: 0.9rem; } 
+                    .jp-amount { font-size: 0.75rem; padding: 4px 2px; }
                     .jp-header h4 { font-size: 1.05rem; } 
                 }
             </style>
@@ -445,4 +445,5 @@
     });
 
 })();
+
 
