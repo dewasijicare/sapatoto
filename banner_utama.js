@@ -1,7 +1,7 @@
+<script>
 (function() {
-    // ========================================================================
-    // 1. DAFTAR URL BANNER
-    // ========================================================================
+    console.log("=== SAPATOTO CUSTOM SLIDER: SCRIPT MENTAH JALAN (UKURAN FIXED) ===");
+
     const bannerUrls = [
         "https://cdn.jsdelivr.net/gh/dewasijicare/sapatoto@main/SLIDE%20BANNER%20SAPATOTO%201.webp",
         "https://cdn.jsdelivr.net/gh/dewasijicare/sapatoto@main/SLIDE%20BANNER%20SAPATOTO%202.webp",
@@ -21,64 +21,99 @@
         "https://cdn.jsdelivr.net/gh/dewasijicare/sapatoto@main/SLIDE%20BANNER%20SAPATOTO%2016.webp"
     ];
 
-    // ========================================================================
-    // 2. FUNGSI INJEKSI KE SLIDER BAWAAN (OWL CAROUSEL)
-    // ========================================================================
-    function replaceExistingSlider() {
-        // Karena Sapatoto pakai jQuery dan OwlCarousel, kita tunggu sampai library-nya siap diload
-        if (typeof $ === 'undefined' || typeof $.fn.owlCarousel === 'undefined') {
-            setTimeout(replaceExistingSlider, 100);
-            return;
-        }
+    const styleId = "sapatoto-vanilla-slider-css";
+    if (!document.getElementById(styleId)) {
+        const style = document.createElement("style");
+        style.id = styleId;
+        style.innerHTML = `
+            /* Sembunyikan slider bawaan tanpa menghapusnya dari DOM */
+            #slider.hidden-by-inject { 
+                display: none !important; 
+            }
+            
+            /* CSS Slider Buatan Kita (Disesuaikan proporsinya) */
+            #sapatoto-custom-slider {
+                position: relative; 
+                width: 100%; 
+                margin: 0 auto 15px auto;
+                border-radius: 8px; 
+                overflow: hidden;
+                box-shadow: 0 5px 15px rgba(236, 72, 153, 0.3); 
+                background-color: transparent; 
+                display: block;
+                line-height: 0; /* Mencegah celah kosong di bawah gambar */
+            }
+            .sapatoto-slide-track { 
+                display: flex; 
+                width: 100%; 
+                transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+            }
+            .sapatoto-slide { 
+                width: 100%; 
+                flex-shrink: 0; 
+            }
+            .sapatoto-slide img { 
+                width: 100%; 
+                height: auto; /* Membiarkan tinggi gambar menyesuaikan lebar layar */
+                display: block; 
+            }
+        `;
+        document.head.appendChild(style);
+    }
 
-        // PERBAIKAN: Target ID disesuaikan dengan struktur HTML Sapatoto (#main-slider)
-        const $oldSlider = $('#main-slider');
+    function createVanillaSlider() {
+        const container = document.createElement('div');
+        container.id = 'sapatoto-custom-slider';
         
-        // Cek apakah banner asli ada, dan pastikan kita belum melakukan injeksi
-        if ($oldSlider.length === 0 || $oldSlider.data('custom-injected')) return;
+        const track = document.createElement('div');
+        track.className = 'sapatoto-slide-track';
 
-        // Simpan posisi wadah aslinya
-        const $parent = $oldSlider.parent();
-
-        // Hapus slider bawaan website sepenuhnya agar tidak terjadi bentrok script
-        $oldSlider.remove();
-
-        // Bangun ulang kerangka slider dengan ID baru agar tidak bentrok dengan script bawaan bootstrap
-        const $newSlider = $('<div class="owl-carousel owl-theme" id="custom-main-slider"></div>');
-        $newSlider.data('custom-injected', true); // Penanda agar tidak meloop
-
-        // Masukkan daftar gambar webp ke dalam slider baru
-        bannerUrls.forEach((url, index) => {
-            const itemHtml = `
-                <div class="item">
-                    <a href="javascript:void(0);">
-                        <img src="${url}" class="img-fluid rounded-3" alt="Banner Sapatoto ${index + 1}" style="width: 100%; aspect-ratio: 1166/600; object-fit: cover;">
-                    </a>
-                </div>
-            `;
-            $newSlider.append(itemHtml);
+        bannerUrls.forEach((url, i) => {
+            const slide = document.createElement('div');
+            slide.className = 'sapatoto-slide';
+            
+            const img = document.createElement('img');
+            img.src = url;
+            img.loading = i === 0 ? 'eager' : 'lazy'; // Gambar pertama load cepat
+            
+            slide.appendChild(img);
+            track.appendChild(slide);
         });
 
-        // Tempelkan slider baru ke posisi asli di dalam wadah HTML
-        $parent.prepend($newSlider);
+        container.appendChild(track);
+        
+        let currentIndex = 0;
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % bannerUrls.length;
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }, 4000);
 
-        // Aktifkan kembali Owl Carousel dengan konfigurasi yang rapi
-        $newSlider.owlCarousel({
-            items: 1,
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 4000, // Ganti gambar tiap 4 detik
-            autoplayHoverPause: true,
-            nav: false, 
-            dots: false, 
-            margin: 0 // PERBAIKAN: Ubah margin ke 0 agar gambar penuh/sejajar tanpa terpotong
-        });
+        return container;
     }
 
-    // Eksekusi fungsi saat dokumen sudah siap
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', replaceExistingSlider);
-    } else {
-        replaceExistingSlider();
+    function tryInjectSlider() {
+        const oldSlider = document.getElementById('slider');
+        if (!oldSlider) return false;
+
+        if (!oldSlider.classList.contains('hidden-by-inject')) {
+            oldSlider.classList.add('hidden-by-inject');
+            const newSlider = createVanillaSlider();
+            oldSlider.parentNode.insertBefore(newSlider, oldSlider);
+            console.log("=== SAPATOTO SLIDER: UKURAN FIXED SUKSES DI-INJECT! ===");
+            return true; 
+        }
+        return false; 
     }
+
+    let attempts = 0;
+    const injectInterval = setInterval(() => {
+        attempts++;
+        if (tryInjectSlider()) {
+            clearInterval(injectInterval);
+        } else if (attempts >= 50) {
+            clearInterval(injectInterval);
+        }
+    }, 200);
+
 })();
+</script>
