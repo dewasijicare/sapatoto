@@ -60,13 +60,15 @@
         $sliderWrapper.append($newSlider);
         $parent.prepend($sliderWrapper);
 
-        // Aktifkan Owl Carousel
+        // Aktifkan kembali Owl Carousel dengan konfigurasi yang rapi
         $newSlider.owlCarousel({
             items: 1,
             loop: true,
             autoplay: true,
             autoplayTimeout: 4000, 
             autoplayHoverPause: true,
+            animateOut: 'fadeOut', // Banner lama memudar menghilang
+            animateIn: 'fadeIn',   // Banner baru memudar muncul
             nav: false, 
             dots: false, 
             margin: 0 
@@ -80,6 +82,7 @@
         replaceExistingSlider();
     }
 })();
+
 
 
 
