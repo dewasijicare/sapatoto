@@ -5,7 +5,7 @@
            ============================================================== */
         html, body {
             /* Ganti URL di bawah ini dengan link gambar yang SUDAH PASTI BISA DIBUKA */
-            background-image: url('https://cdn.jsdelivr.net/gh/dewasijicare/sapatoto@25300c78761bfe3063c6d25cf2077f597f0528d5/background.jpg') !important;
+            background-image: url('https://cdn.jsdelivr.net/gh/dewasijicare/sapatoto@908e60250b02fccb432e680c5b0d6760ea8f0411/backg.jpg') !important;
             background-color: #0c0c1e !important; 
             background-attachment: fixed !important; 
             background-position: center top !important; 
