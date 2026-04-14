@@ -103,7 +103,7 @@
             const buttonsData = [
                 {
                     text: "WHATSAPP SAPATOTO",
-                    link: "https://wa.me/6282312054466",
+                    link: "https://wa.me/6282379884286",
                     icon: "bi-whatsapp"
                 },
                 {
