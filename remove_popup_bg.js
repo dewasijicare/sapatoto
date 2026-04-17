@@ -1,50 +1,36 @@
 (function() {
-    // Kita gunakan interval untuk mengecek berkali-kali setiap 100 milidetik.
-    // Ini berguna untuk 'menangkap' elemen yang munculnya delay karena animasi.
     let attempts = 0;
     
-    let clearPopupInterval = setInterval(function() {
+    // Gunakan interval untuk menunggu popup muncul
+    let autoCloseInterval = setInterval(function() {
         attempts++;
 
-        // 1. Cari gambar spesifik sebagai penanda utama
+        // 1. Cari gambar popup sebagai penanda
         const popupImage = document.querySelector('img[alt="popup image"]');
-        
-        // 2. Cari juga SEMUA backdrop gelap yang ada di halaman
-        const backdrops = document.querySelectorAll('.modal-backdrop');
 
-        // Jika gambar ditemukan ATAU ada backdrop yang mengunci layar
-        if (popupImage || backdrops.length > 0) {
-            
-            // Eksekusi penghapusan wadah popup jika gambarnya ada
-            if (popupImage) {
-                const modal = popupImage.closest('.modal');
-                if (modal) modal.remove();
-                
-                const modalContent = popupImage.closest('.modal-content');
-                if (modalContent) modalContent.remove();
-            }
+        if (popupImage) {
+            // 2. Cari wadah modal-content
+            const modalContent = popupImage.closest('.modal-content');
 
-            // Eksekusi penghapusan SEMUA backdrop gelap
-            backdrops.forEach(function(bg) {
-                bg.remove();
-            });
+            if (modalContent) {
+                // 3. Cari tombol OK di dalam popup tersebut
+                const closeButton = modalContent.querySelector('button[data-bs-dismiss="modal"]');
 
-            // Buka kembali kunci scroll pada body (wajib agar halaman bisa di-scroll lagi)
-            document.body.classList.remove('modal-open');
-            document.body.style.overflow = '';
-            document.body.style.paddingRight = '';
-            
-            // Jika kita sudah yakin elemen spesifiknya dihapus, kita bisa hentikan intervalnya
-            if (popupImage) {
-                clearInterval(clearPopupInterval);
+                if (closeButton) {
+                    // 4. Simulasikan klik pada tombol OK
+                    closeButton.click();
+                    
+                    // Hentikan script karena tugas sudah selesai
+                    clearInterval(autoCloseInterval); 
+                    return; 
+                }
             }
         }
 
-        // Hentikan proses pencarian setelah 5 detik (50 attempts x 100ms) 
-        // agar script tidak berjalan terus-menerus dan membebani browser.
-        if (attempts > 50) {
-            clearInterval(clearPopupInterval);
+        // Hentikan script setelah 10 detik agar tidak membebani browser
+        // (100 percobaan x 100 milidetik = 10.000 ms / 10 detik)
+        if (attempts > 100) {
+            clearInterval(autoCloseInterval);
         }
-        
     }, 100);
 })();
