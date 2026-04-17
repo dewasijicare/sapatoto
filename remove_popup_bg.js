@@ -1,61 +1,53 @@
 (function() {
-    // 1. SUNTIKAN CSS SUPER SPESIFIK
-    const style = document.createElement('style');
-    style.innerHTML = `
-        /* Sembunyikan bagian dalam popup */
-        .modal-content:has(a[href*="sapatoto-event-mahjong-ways-1-2"]) {
-            display: none !important;
-        }
-        
-        /* KUNCI UTAMA: Jika wadah luar (.modal) yang berwarna gelap, kita buat transparan dan tembus pandang (bisa di-klik tembus) */
-        .modal:has(a[href*="sapatoto-event-mahjong-ways-1-2"]) {
-            background-color: transparent !important;
-            pointer-events: none !important; /* Agar klik kursor tembus ke website di belakangnya */
-            z-index: -1 !important;
-        }
-
-        /* Jaga-jaga jika masih ada backdrop bawaan Bootstrap */
-        .modal-backdrop {
-            display: none !important;
-            opacity: 0 !important;
-        }
-
-        /* Pastikan halaman bisa di-scroll kembali */
-        body {
-            overflow: auto !important;
-            padding-right: 0 !important;
-        }
-    `;
-    document.head.appendChild(style);
-
-    // 2. SIMULASI KLIK NATIVE (Tembus proteksi framework)
     let attempts = 0;
-    let clickInterval = setInterval(function() {
+    
+    let tryCloseGracefully = setInterval(function() {
         attempts++;
         
-        // Cari tombol OK di dalam struktur link promo tersebut
-        const promoLink = document.querySelector('a[href*="sapatoto-event-mahjong-ways-1-2"]');
+        // 1. Cari gambar dan wadah utamanya
+        const popupImage = document.querySelector('img[alt="popup image"]');
         
-        if (promoLink) {
-            const modalContent = promoLink.closest('.modal-content');
-            if (modalContent) {
-                const btnOk = modalContent.querySelector('button[data-bs-dismiss="modal"]');
-                
-                if (btnOk) {
-                    // Gunakan MouseEvent asli (bukan sekadar .click()) agar framework mendeteksinya sebagai klik sungguhan
-                    const clickEvent = new MouseEvent('click', {
-                        bubbles: true,
-                        cancelable: true,
-                        view: window
-                    });
-                    btnOk.dispatchEvent(clickEvent);
+        if (popupImage) {
+            const modalElement = popupImage.closest('.modal');
+            
+            if (modalElement) {
+                // METODE A: Coba tutup menggunakan API Bootstrap Modern (Versi 5)
+                if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+                    let modalInstance = bootstrap.Modal.getInstance(modalElement);
+                    if (!modalInstance) {
+                        modalInstance = new bootstrap.Modal(modalElement);
+                    }
+                    modalInstance.hide(); // Perintah resmi menutup popup
                     
-                    clearInterval(clickInterval); // Berhenti mencari jika sudah diklik
+                    clearInterval(tryCloseGracefully);
+                } 
+                // METODE B: Coba tutup menggunakan API Bootstrap Lama / jQuery (Versi 3 & 4)
+                else if (typeof window.jQuery !== 'undefined' && window.jQuery.fn.modal) {
+                    window.jQuery(modalElement).modal('hide'); // Perintah resmi menutup popup via jQuery
+                    
+                    clearInterval(tryCloseGracefully);
+                }
+                // METODE C: Jalur Kasar Ekstrem (Memburu semua elemen berbau "gelap" / "overlay")
+                else {
+                    modalElement.style.display = 'none';
+                    
+                    // Cari kelas-kelas umum yang sering dipakai untuk background gelap
+                    const backdrops = document.querySelectorAll('.modal-backdrop, .overlay, [class*="backdrop"], [class*="overlay"], [style*="z-index: 1040"]');
+                    backdrops.forEach(bg => {
+                        bg.style.display = 'none';
+                        bg.style.opacity = '0';
+                        bg.remove();
+                    });
+                    
+                    document.body.classList.remove('modal-open');
+                    document.body.style.overflow = 'auto';
+                    document.body.style.paddingRight = '0';
                 }
             }
         }
         
-        // Berhenti setelah 5 detik agar script tidak berjalan terus menerus
-        if (attempts > 50) clearInterval(clickInterval); 
+        // Berhenti mencoba setelah 5 detik (50 x 100ms)
+        if (attempts > 50) clearInterval(tryCloseGracefully);
+        
     }, 100);
 })();
