@@ -1,9 +1,36 @@
-document.addEventListener("DOMContentLoaded", function() {
-    
+Melihat dari screenshot yang Anda kirimkan, langkah yang Anda lakukan sebenarnya sudah sangat tepat! Anda sudah mengunggahnya ke GitHub dengan benar dan memanggilnya di panel admin menggunakan CDN jsDelivr beserta atribut defer.
+
+Namun, jika popup masih tidak muncul, ada dua kemungkinan utama yang biasa terjadi pada struktur setup seperti ini. Mari kita selesaikan satu per satu:
+
+1. Uji Coba Terkena Fitur "Anti-Spam" (Sangat Sering Terjadi)
+Pada script sebelumnya, kita menanamkan fitur Session Storage agar popup tidak mengganggu pengunjung (hanya muncul 1 kali).
+
+Jika saat proses testing Anda sempat melihatnya sebentar lalu menutupnya, atau Anda pernah menekan tombol "OK", maka browser Anda mengingatnya dan tidak akan menampilkannya lagi di tab tersebut.
+
+Solusi: Coba buka website Anda sekarang menggunakan Tab Samaran (Incognito Window) di Chrome (tekan Ctrl + Shift + N) atau Private Window di browser lain. Jika di tab samaran popupnya muncul, berarti script Anda sebenarnya sudah berjalan sempurna!
+
+2. Bentrok Antara defer dan DOMContentLoaded
+Jika di tab samaran tetap tidak muncul, masalahnya ada pada cara pemanggilan script.
+
+Di panel admin, Anda menggunakan pemanggilan:
+<script defer src="...">
+
+Atribut defer berfungsi menunda eksekusi script sampai seluruh HTML selesai dimuat. Namun, di dalam file popup.js di GitHub Anda, ada kode document.addEventListener("DOMContentLoaded", ...).
+
+Karena script sudah di-defer, terkadang browser melewati event DOMContentLoaded ini (karena dianggap sudah lewat), sehingga isi script di dalamnya tidak pernah dijalankan.
+
+Solusi: Buka kembali file popup.js di GitHub Anda, edit, dan hapus bungkus DOMContentLoaded tersebut.
+
+Berikut adalah kode yang sudah disesuaikan untuk langsung menembak karena Anda sudah menggunakan defer di panel admin. Silakan copy-paste dan timpa seluruh isi file popup.js di GitHub Anda dengan ini:
+
+JavaScript
+// Kita hilangkan document.addEventListener("DOMContentLoaded") karena 
+// tag script di admin panel sudah menggunakan atribut 'defer'
+
+(function() {
     // --- FITUR ANTI-SPAM ---
-    // Cek apakah pengunjung sudah pernah menutup popup ini sebelumnya
     if (sessionStorage.getItem('promoPopupSapatoto_Closed')) {
-        return; // Jika sudah, hentikan script dan jangan munculkan popup
+        return; // Hentikan script jika sudah pernah ditutup
     }
 
     // 1. Membuat elemen background gelap (Backdrop)
@@ -15,8 +42,8 @@ document.addEventListener("DOMContentLoaded", function() {
         left: '0',
         width: '100vw',
         height: '100vh',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Latar belakang gelap
-        zIndex: '999999', // Paling depan
+        backgroundColor: 'rgba(0, 0, 0, 0.8)', 
+        zIndex: '999999', 
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -29,19 +56,17 @@ document.addEventListener("DOMContentLoaded", function() {
     Object.assign(modal.style, {
         position: 'relative',
         width: '90%',
-        maxWidth: '450px', // Ukuran ideal untuk gambar promo
-        transform: 'scale(0.8)', // Efek zoom-in
+        maxWidth: '450px', 
+        transform: 'scale(0.8)', 
         transition: 'transform 0.3s ease-in-out'
     });
 
     // 3. Membuat Link dan Gambar Promo
     const link = document.createElement('a');
-    // Ganti URL href di bawah ini dengan link halaman promo yang sesuai
     link.href = '/promotion/detail/2018/sapatoto-event-mahjong-ways-1-2'; 
     link.style.display = 'block';
 
     const img = document.createElement('img');
-    // Menggunakan link gambar CDN yang Anda berikan
     img.src = 'https://cdn.jsdelivr.net/gh/dewasijicare/sapatoto@39d4530be3459c36bde75d0c7b5837fc530646bd/popup-sapatoto.webp';
     img.alt = 'Promo Event Sapatoto';
     Object.assign(img.style, {
@@ -57,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 4. Membuat bagian bawah untuk tombol OK
     const footer = document.createElement('div');
     Object.assign(footer.style, {
-        backgroundColor: '#1b1b1b', // Warna gelap senada dengan website
+        backgroundColor: '#1b1b1b', 
         padding: '12px',
         borderBottomLeftRadius: '12px',
         borderBottomRightRadius: '12px',
@@ -68,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const btnOk = document.createElement('button');
     btnOk.innerText = 'OK';
     Object.assign(btnOk.style, {
-        backgroundColor: '#ec4899', // Warna pink neon khas Sapatoto
+        backgroundColor: '#ec4899', 
         color: '#ffffff',
         border: 'none',
         padding: '12px',
@@ -81,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function() {
         transition: 'background-color 0.2s'
     });
     
-    // Efek hover sederhana pada tombol
     btnOk.onmouseover = function() { this.style.backgroundColor = '#d9468c'; }
     btnOk.onmouseout = function() { this.style.backgroundColor = '#ec4899'; }
     
@@ -93,10 +117,10 @@ document.addEventListener("DOMContentLoaded", function() {
     backdrop.appendChild(modal);
     document.body.appendChild(backdrop);
 
-    // Mengunci scroll website saat popup aktif
+    // Mengunci scroll website
     document.body.style.overflow = 'hidden';
 
-    // 6. Memunculkan popup dengan animasi yang mulus
+    // 6. Memunculkan popup
     setTimeout(() => {
         backdrop.style.opacity = '1';
         modal.style.transform = 'scale(1)';
@@ -110,20 +134,15 @@ document.addEventListener("DOMContentLoaded", function() {
         // Simpan data di Session Storage agar tidak muncul lagi
         sessionStorage.setItem('promoPopupSapatoto_Closed', 'true');
         
-        // Tunggu animasi selesai sebelum menghapus HTML
         setTimeout(() => {
             backdrop.remove();
-            document.body.style.overflow = ''; // Bebaskan scroll
+            document.body.style.overflow = ''; 
         }, 300);
     }
 
-    // 8. Event Listener untuk menutup popup
+    // 8. Event Listener
     btnOk.addEventListener('click', closePopup);
-    
-    // Tutup popup juga jika user mengklik area gelap di luar gambar
     backdrop.addEventListener('click', function(e) {
-        if (e.target === backdrop) {
-            closePopup();
-        }
+        if (e.target === backdrop) closePopup();
     });
-});
+})();
