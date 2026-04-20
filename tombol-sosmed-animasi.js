@@ -108,7 +108,7 @@
                 },
                 {
                     text: "GROUP FACEBOOK",
-                    link: "https://www.facebook.com/groups/1633061267257649",
+                    link: "/",
                     icon: "bi-facebook"
                 }
             ];
